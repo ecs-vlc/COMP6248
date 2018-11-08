@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>{{page.title}}</title>
+    <link rel="stylesheet" href="{{page.rdir}}stylesheets/styles.css">
+    <link rel="stylesheet" href="{{page.rdir}}stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="{{page.rdir}}javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="{{page.rdir}}stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  </head>
+  <body>
+      {% if page.githubHeader == "true" %}
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/jonhare/COMP6237">View On GitHub</a></li>
+          <li class="downloads"><a href="http://jenkins.ecs.soton.ac.uk/job/COMP6237/lastSuccessfulBuild/artifact/app/target/COMP6237-1.0-SNAPSHOT-jar-with-dependencies.jar">EXECUTABLE JAR</a></li>
+          <li class="downloads"><a href="https://github.com/jonhare/COMP6237/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/jonhare/COMP6237/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+      {% endif %}
+    <div class="wrapper">
+      <section>
+        <div id="title">
+          <div style="background-image: url({{page.rdir}}images/matrix.png); height: 250px; position: relative">
+            <div style="position: absolute; bottom: 0; width: 850px; opacity:0.8; filter:alpha(opacity=80); background-color: #000000; padding-top:20px">
+              <h1>{{page.title}}</h1>
+              <p>{{page.subtitle}}</p>
+            </div>
+          </div>
+          <hr>
+          <span class="credits left">{{page.credits}}</span>
+        </div>
+        <div style="text-align: justify">
+         {{content}}
+        </div>
+      </section>
+      <section style="text-align:center">
+        <span style="font-size: 11px; font-family: 'OpenSansRegular', "Helvetica Neue", Helvetica, Arial, sans-serif; font-weight: normal; color: #696969;">Copyright &copy;2018 <a href="http://www.soton.ac.uk">The University of Southampton</a>. All rights reserved.</span>
+      </section>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->    
+  </body>
+</html>
