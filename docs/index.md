@@ -12,7 +12,7 @@ Deep learning has revolutionised numerous fields in recent years. We've witnesse
 
 This module will look at how differentiable programming works, from theoretical foundations right through to practical implementation. We'll study key aspects such as automatic differentiation, look at models for _deep learning_ such as convolutional and recurrent neural networks, as well as considering current research in depth. 
 
-The overall aim of this module is not to teach you to be able to train pre-existing models, but rather to equip you with the fundamental skills to be able to understand and implement models and ideas that are currently being developed by researchers. We intend to equip you with the knowledge needed to understand new ideas as they are published, and give you the ability to constructively critisise, and identify limitations, of some of different approaches.
+The overall aim of this module is not to teach you to be able to train pre-existing models (although you will learn to do that!), but rather to equip you with the fundamental skills to be able to understand and implement models and ideas that are currently being developed by researchers. We intend to equip you with the knowledge needed to understand new ideas as they are published, and give you the ability to constructively critisise, and identify limitations, of some of different approaches.
 
 
 ## Lectures
