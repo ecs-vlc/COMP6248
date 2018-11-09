@@ -12,14 +12,14 @@ Deep learning has revolutionised numerous fields in recent years. We've witnesse
 
 This module will look at how differentiable programming works, from theoretical foundations right through to practical implementation. We'll study key aspects such as automatic differentiation, look at models for _deep learning_ such as convolutional and recurrent neural networks, as well as considering current research in depth. 
 
-The overall aim of this module is not to teach you to be able to train pre-existing models (although you will learn to do that!), but rather to equip you with the fundamental skills to be able to understand and implement models and ideas that are currently being developed by researchers. We intend to equip you with the knowledge needed to understand new ideas as they are published, and give you the ability to constructively critisise, and identify limitations, of some of different approaches.
+The overall aim of this module is not to teach you to be able to train pre-existing models (although you will learn to do that!), but rather to equip you with the fundamental skills to be able to understand and implement models and ideas that are currently being developed by researchers. We intend to equip you with the knowledge needed to understand new ideas as they are published, and give you the ability to constructively critisise, and identify limitations, of different approaches.
 
 
-## Lectures
+## Lectures and assigned reading
 
 The lectures for this course will be given by <a href="http://www.ecs.soton.ac.uk/people/kf2u17">Dr Kate Farrahi</a> ([email](mailto:kf2u17@ecs.soton.ac.uk)) and <a href="http://www.ecs.soton.ac.uk/people/jsh2">Dr Jonathon Hare</a> ([email](mailto:jsh2@ecs.soton.ac.uk)). 
 
-The lecture slots are not yet confirmed, but there will be two lectures each week. The current working timetable/plan is below, and illustrates the topics we intend to cover:
+The lecture slots are not yet confirmed, but there will be two lectures each week. The current working timetable/plan is below, and illustrates the topics we intend to cover. Many of the lectures are coupled with assigned reading materials that you should read before the lecture takes place. This will broaden your understanding of the topic whilst giving you the skills required to read and understand the key points from recent research literature.
 
 
 ## Labs
@@ -29,7 +29,7 @@ The lecture slots are not yet confirmed, but there will be two lectures each wee
 The lab schedule is below:
 
 
-## Assigned Reading
+## Online Quizzes
 
 
 ## Coursework assignment
