@@ -7,7 +7,7 @@ credits: Maintained by <a href="http://www.ecs.soton.ac.uk/people/kf2u17">Dr Kat
 rdir: '../../'
 ---
 
-# COMP6248 Differentiable Programming/Deep Learning: Lab 1 - Introducing PyTorch
+# Lab 1 - Introducing PyTorch
 
 _[Jonathon Hare, 19th Dec 2018](https://github.com/ecs-vlc/COMP6248)_
 
@@ -48,7 +48,8 @@ The following is a list of the notebooks for this lab, with links to open direct
 
 
 1.1 Linear Regression | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ecs-vlc/COMP6248/blob/master/docs/labs/lab1/1_1_linear_regression.ipynb) | [download](https://github.com/ecs-vlc/COMP6248/blob/master/docs/labs/lab1/1_1_linear_regression.ipynb)
-
+1.2 Logistic Regression | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ecs-vlc/COMP6248/blob/master/docs/labs/lab1/1_2_logistic_regression.ipynb) | [download](https://github.com/ecs-vlc/COMP6248/blob/master/docs/labs/lab1/1_2_logistic_regression.ipynb)
+1.3 Softmax Regression | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ecs-vlc/COMP6248/blob/master/docs/labs/lab1/1_3_softmax_regression.ipynb) | [download](https://github.com/ecs-vlc/COMP6248/blob/master/docs/labs/lab1/1_3_softmax_regression.ipynb)
 
 __Important:__ At the end of the lab you must save your notebooks and associated files to a safe location. At the end of the third lab you will be required to submit them (together with the notebooks for labs 2 and 3) to handin: __TBC__. You must use the exact Jupyter notebooks we provide as they contain metadata which is used for assessing the exercises within them.
 
