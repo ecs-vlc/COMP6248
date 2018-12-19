@@ -51,6 +51,7 @@ The following is a list of the notebooks for this lab, with links to open direct
 1.2 Logistic Regression | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ecs-vlc/COMP6248/blob/master/docs/labs/lab1/1_2_logistic_regression.ipynb) | [preview](https://github.com/ecs-vlc/COMP6248/blob/master/docs/labs/lab1/1_2_logistic_regression.ipynb) | [download](https://raw.githubusercontent.com/ecs-vlc/COMP6248/master/docs/labs/lab1/1_2_logistic_regression.ipynb)
 1.3 Softmax Regression | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ecs-vlc/COMP6248/blob/master/docs/labs/lab1/1_3_softmax_regression.ipynb) | [preview](https://github.com/ecs-vlc/COMP6248/blob/master/docs/labs/lab1/1_3_softmax_regression.ipynb) | [download](https://raw.githubusercontent.com/ecs-vlc/COMP6248/master/docs/labs/lab1/1_3_softmax_regression.ipynb)
 
+
 __Important:__ At the end of the lab you must save your notebooks and associated files to a safe location. At the end of the third lab you will be required to submit them (together with the notebooks for labs 2 and 3) to handin: __TBC__. You must use the exact Jupyter notebooks we provide as they contain metadata which is used for assessing the exercises within them.
 
 ## Prerequisites for running on your own machines
@@ -59,7 +60,7 @@ If you wish to run locally, you'll need access to a computer with the following 
 
 - `Python` (>= 3.6)
 - `notebook` (>=5.4.1)
-- `pytorch` (>= 1.0)
+- `pytorch` (>= 1.0.0)
 - `matplotlib` (>= 2.2.2)
 
 If you want to work on your own machine we recommend using the Anaconda python distribution. Running `conda install pytorch torchvision -c pytorch` (see [https://pytorch.org/get-started/locally/](https://pytorch.org/get-started/locally/) for more options) will install both pytorch and torchvision (used in later labs). 
