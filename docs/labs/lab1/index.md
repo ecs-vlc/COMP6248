@@ -1,10 +1,19 @@
+---
+layout: index
+title: "COMP6248 Differentiable Programming (and Deep Learning)"
+subtitle: "2018-19"
+githubHeader: "false"
+credits: Maintained by <a href="http://www.ecs.soton.ac.uk/people/kf2u17">Dr Kate Farrahi</a> and <a href="http://www.ecs.soton.ac.uk/people/jsh2">Dr Jonathon Hare</a>.
+rdir: '../../'
+---
+
 # COMP6248 Differentiable Programming/Deep Learning: Lab 1 - Introducing PyTorch
 
-_[Jonathon Hare, 2nd Nov 2018](https://github.com/ecs-vlc/COMP6248)_
+_[Jonathon Hare, 19th Dec 2018](https://github.com/ecs-vlc/COMP6248)_
 
 ## Change History
 
-- 20181102: Initial version
+- 20181219: Initial version
 
 ## Acknowledgements
 
@@ -38,6 +47,7 @@ To work through this lab you'll use the Python 3 language in a Jupyter Notebook 
 The following is a list of the notebooks for this lab, with links to open directly in Google Colab (creating a copy for you in your Google Drive), or to download locally. You should work through the notebooks in numeric order as they follow on from each other. 
 
 
+1.1 Linear Regression | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ecs-vlc/COMP6248/blob/master/docs/labs/lab1/1_1_linear_regression.ipynb) | [download](https://github.com/ecs-vlc/COMP6248/blob/master/docs/labs/lab1/1_1_linear_regression.ipynb)
 
 
 __Important:__ At the end of the lab you must save your notebooks and associated files to a safe location. At the end of the third lab you will be required to submit them (together with the notebooks for labs 2 and 3) to handin: __TBC__. You must use the exact Jupyter notebooks we provide as they contain metadata which is used for assessing the exercises within them.
@@ -51,4 +61,4 @@ If you wish to run locally, you'll need access to a computer with the following 
 - `pytorch` (>= 1.0)
 - `matplotlib` (>= 2.2.2)
 
-If you want to work on your own machine we recommend using the Anaconda python distribution. Running `conda install pytorch torchvision -c pytorch` (see https://pytorch.org/get-started/locally/ for more options) will install both pytorch and torchvision (used in later labs). 
+If you want to work on your own machine we recommend using the Anaconda python distribution. Running `conda install pytorch torchvision -c pytorch` (see [https://pytorch.org/get-started/locally/](https://pytorch.org/get-started/locally/) for more options) will install both pytorch and torchvision (used in later labs). 
