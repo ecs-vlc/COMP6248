@@ -31,24 +31,75 @@
   \titlepage
 }
 
-\begin{frame}
-\frametitle{Machine Learning Recap}
-
-\end{frame}
-
-\begin{frame}
-	\frametitle{What is Differentiable Programming?}
-	
+\begin{frame}{pause}
+\frametitle{Machine Learning - A Recap}
+{\tiny All credit for this slide goes to Niranjan}\\
+\vspace{5mm}
+\begin{tabular}{ll}
+Data & $\{\bm{x}_n, \bm{y}_n\}^N_{n=1} \qquad \{\bm{x}_n\}^N_{n=1}$ 
+\vspace{3mm} \\ \pause
+Function Approximator & $\bm{y} = f (\bm{x}, \bm{\theta}) + \nu$ 
+\vspace{3mm} \\ \pause
+Parameter Estimation & $E_0 = \sum^N_{n=1} \{\|\bm{y}_n - f (\bm{x}_n; \bm{\theta})\|\}^2$
+\vspace{3mm} \\ \pause
+Prediction & $\bm{\hat y}_{N+1} = f(\bm{x}_{N+1}, \bm{\hat \theta})$
+\vspace{3mm} \\ \pause
+Regularization & $E_1 = \sum^N_{n=1} \{\|\bm{y}_n - f (\bm{x}_n; \bm{\theta})\|\}^2 + g(\|\bm\theta\|)$
+\vspace{3mm} \\ \pause
+Modelling Uncertainty & $p(\bm\theta|\{\bm x_n, \bm y_n\}_{n=1}^N)$
+\vspace{3mm} \\ \pause
+Probabilistic Inference & $\mathop{\mathbb{E}}[g(\bm\theta)] = \int g(\bm\theta)p(\bm\theta)d\bm\theta = \frac{1}{N_s}\sum_{n=1}^{N_s}g(\bm\theta^{(n)})$
+\vspace{3mm} \\ \pause
+Sequence Modelling & $\bm x_n = f(\bm x_{n-1}, \bm\theta)$
+\end{tabular}
+\vspace{5mm}
 \end{frame}
 
 \begin{frame}
 \frametitle{What is Deep Learning?}
 
+Deep learning is primarily characterised by function compositions: \\ \vspace{10mm}
+\begin{itemize}
+	\item<+-> Feedforward networks: $\bm{y} = f (g(\bm{x}, \bm\theta_g), \bm{\theta_f})$
+	\begin{itemize}
+		\item Often with relatively simple functions (e.g. $f(\bm x, \bm{\theta}_f) = \sigma(\bm{x}^\top \bm{\theta}_f)$)
+	\end{itemize} \vspace{3mm}
+	\item<+-> Recurrent networks: $\bm y_t = f(\bm y_{t-1}, \bm x_t, \bm\theta) = f(f(\bm y_{t-2}, \bm x_{t-1}, \bm\theta), \bm\theta) = \dots$
+\end{itemize}
+\vspace{10mm}
+
+\uncover<+->{
+In the early days the focus of deep learning was on learning functions for classification. Nowadays the functions are much more general in their inputs and outputs.
+}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{What is Differentiable Programming?}
+	
+\begin{itemize}
+	\item<+-> Differentiable programming is a term coined by Yann Lecun\footnote{https://www.facebook.com/yann.lecun/posts/10155003011462143} to describe a superset of Deep Learning.
+	\item<+-> Captures the idea that computer programs can be constructed of parameterised functional blocks in which the parameters are learned using some form of gradient-based optimisation.
+	\begin{itemize}
+		\item<+-> The implication is that we need to be able to compute gradients with respect to the parameters of these functional blocks. We'll start explore this in detail next week...
+		\item<+-> The idea of Differentiable Programming also opens up interesting possibilities: 
+		\begin{itemize}
+			\item The functional blocks don't need to be direct functions in a mathematical sense; more generally they can be \emph{algorithms}.
+			\item What if the functional block we're learning parameters for is itself an algorithm that optimises the parameters of an internal algorithm using a gradient based optimiser?!\footnote{See our ICLR 2019 paper: https://arxiv.org/abs/1812.03928}
+		\end{itemize}
+	\end{itemize}
+\end{itemize}
 \end{frame}
 
 \begin{frame}
 \frametitle{Is all Deep Learning Differentiable Programming?}
-
+\begin{itemize}
+	\item Not necessarily!
+	\begin{itemize}
+		\item<+-> Most deep learning systems are trained using first order gradient-based optimisers, but there is an active body of research on gradient-free methods.
+		\item<+-> There is an increasing interest in methods that use different styles of learning, such as Hebbian learning, within deep networks. More broadly there are a number of us\footnote{including at least myself, my PhD students and Geoff Hinton!} who are interested in biologically motivated models and learning methods.
+	\end{itemize}
+\end{itemize}
 \end{frame}
 
 \begin{frame}
