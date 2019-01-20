@@ -54,25 +54,45 @@
 
 \begin{frame}
 \frametitle{The big idea: optimisation by following gradients}
-\framesubtitle{A simple 1D example}
+\begin{itemize}
+	\item<+-> Gradient based optimisation is a \emph{big} field!
+	\begin{itemize}
+		\item<+-> First order methods, second order methods, subgradient methods...
+	\end{itemize}
+	\item With deep learning we're primarily interested in first-order methods\only<2->{\footnote{Second order gradient optimisers are potentially better, but for systems with many variables are currently impractical as they require computing the Hessian.}}.
+	\begin{itemize}
+		\item<+-> Primarily using variants of gradient descent: a function $F(\bm x)$ has \emph{a} minima\only<3->{\footnote{not necessarily global or unique}} at a point $\bm x = \bm a$ where $\bm a$ is given by applying $\bm{a}_{n+1} = \bm a - \alpha \nabla F(\bm a_n)$ until convergence.
+	\end{itemize}
+\end{itemize}
 \end{frame}
 
-\begin{frame}
-\frametitle{The big idea: optimisation by following gradients}
-\framesubtitle{A simple 2D example}
-\end{frame}
+% \begin{frame}
+% \frametitle{The big idea: optimisation by following gradients}
+% \framesubtitle{A simple 1D example}
+% \end{frame}
 
-\begin{frame}
-\frametitle{The big idea: optimisation by following gradients}
-\framesubtitle{A more indicative example}
-\end{frame}
+% \begin{frame}
+% \frametitle{The big idea: optimisation by following gradients}
+% \framesubtitle{A simple 2D example}
+% \end{frame}
+
+% \begin{frame}
+% \frametitle{The big idea: optimisation by following gradients}
+% \framesubtitle{A more indicative example}
+% \end{frame}
 
 \begin{frame}
 \frametitle{Recap: what are gradients and how do we find them?}
 \framesubtitle{The derivative in 1D}
-% \begin{itemize}
-	
-% \end{itemize}
+\begin{itemize}
+	\item<+-> Recall that the gradient of a straight line is $\frac{\Delta x}{\Delta y}$.
+	\item<+-> For an arbitrary real-valued function, $f(a)$, we can approximate the derivative, $f'(a)$ using the gradient of the \emph{secant line} defined by $(a,f(a))$ and a point a small distance, $h$, away $(a+h,f(a+h))$: $f'(a) \approx \frac{f(a+h) - f(a)}{h}$.
+	\begin{itemize}
+		\item<+-> This expression is `Newton's Difference Quotient'.
+		\item<+-> As $h$ becomes smaller, the approximated derivative becomes more accurate. 
+		\item<+-> If we take the limit as $h \to 0$, then we have an exact expression for the derivative: $\frac{df}{da} = f'(a) = \lim_{h\to0} \frac{f(a+h) - f(a)}{h}$.
+	\end{itemize}
+\end{itemize}
 \end{frame}
 
 \begin{frame}
@@ -83,7 +103,7 @@
     \onslide<+->{\frac{dy}{dx} &= \lim_{h\to0} \frac{(x+h)^2 - x^2}{h} \\}
     \onslide<+->{\frac{dy}{dx} &= \lim_{h\to0} \frac{x^2 + h^2 + 2hx - x^2}{h} \\}
     \onslide<+->{\frac{dy}{dx} &= \lim_{h\to0} \frac{h^2 + 2hx}{h} \\}
-    \onslide<+->{\frac{dy}{dx} &= \lim_{h\to0} h + 2x) \\}
+    \onslide<+->{\frac{dy}{dx} &= \lim_{h\to0} (h + 2x) \\}
     \onslide<+->{\frac{dy}{dx} &= 2x}
 \end{align*}
 \end{frame}
@@ -94,15 +114,15 @@
 
 % central difference as opposed to one sided
 \begin{itemize}
-\item For numerical computation of gradients it is better to use a "centralised" definition of the gradient:
+\item For numerical computation of derivatives it is better to use a "centralised" definition of the derivative:
 \begin{itemize}
 	\item<+-> $f'(a) = \lim_{h\to0} \frac{f(a+h) - f(a-h)}{2h}$
-	\item<+-> This is known as the \emph{symmetric difference quotient}
+	\item<+-> The bit inside the limit is known as the \emph{symmetric difference quotient}
 	\item<+-> For small values of $h$ this has less error than the standard one-sided difference quotient.
 \end{itemize}
-\item<+-> If you are going to use this to estimate gradients you need to be aware of potential rounding errors due to floating point representations.
+\item<+-> If you are going to use this to estimate derivatives you need to be aware of potential rounding errors due to floating point representations.
 \begin{itemize}
-	\item Calculating gradients this way using less than 64-bit precision is rarely going to be useful. (Numbers are not represented exactly, so even if $h$ is represented exactly, $x+h$ will probably not be)
+	\item Calculating derivatives this way using less than 64-bit precision is rarely going to be useful. (Numbers are not represented exactly, so even if $h$ is represented exactly, $x+h$ will probably not be)
 	\item You need to pick an appropriate $h$ - too small and the subtraction will have a large rounding error!
 \end{itemize}
 \end{itemize}
@@ -119,7 +139,7 @@
 	\end{itemize}
 	\item<+-> The chain rule of calculus tells us how to differentiate compositions of functions:
 	\begin{itemize}
-		\item $\frac{dz}{dx}=\frac{dz}{dy}\frac{dy}{x}$
+		\item $\frac{dz}{dx}=\frac{dz}{dy}\frac{dy}{dx}$
 	\end{itemize}
 \end{itemize}
 \end{frame}
@@ -131,7 +151,7 @@
 {\small Note that this is a silly example that just serves to demonstrate the principle!}
 \begin{align*}
     \onslide<+->{z &= x^4 \\}
-    \onslide<+->{z &= (x^2)^2 = y^2 \quad\rm{where}\quad y=x^2 \\}
+    \onslide<+->{z &= (x^2)^2 = y^2 \quad{\rm where}\quad y=x^2 \\}
     \onslide<+->{\frac{dz}{dx} &= \frac{dz}{dy}\frac{dy}{dx} = (2y) (2x) = (2x^2) (2x) = 4x^3}
 \end{align*}
 \uncover<+->{
@@ -148,16 +168,60 @@ Equivalently, from first principles:
 
 \begin{frame}
 \frametitle{Recap: what are gradients and how do we find them?}
+\framesubtitle{Vector functions}
+\begin{itemize}
+	\item<+-> What if we're dealing with a \emph{vector} function, $\bm y(t)$?
+	\begin{itemize}
+		\item<+-> This can be split into its constituent coordinate functions: $\bm y(t) = (y_1(t),\dots,y_n(t))$.
+		\item<+-> Thus the derivative is a vector (the `tangent vector'), $\bm y'(t)=(y_1'(t),\dots,y_n'(t))$, which consists of the derivatives of the coordinate functions.
+		\item<+-> Equivalently, $\bm y'(t) = \lim_{h\to0} \frac{\bm y(t+h) - \bm y(t)}{h}$ if the limit exists.
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Recap: what are gradients and how do we find them?}
 \framesubtitle{Functions of multiple variables: partial differentiation}
 
-
+\begin{itemize}
+	\item What if the function we're trying to deal with has multiple variables\footnote{A multivariate function} (e.g. $f(x, y) = x^2 + xy + y^2$)?
+	\begin{itemize}
+		\item<+-> This expression has a pair of \emph{partial derivatives}, $\frac{\partial f}{\partial x} = 2x+y$ and $\frac{\partial f}{\partial y} = x + 2y$, computed by differentiating with respect to each variable $x$ and $y$ whilst holding the other(s) constant.
+	\end{itemize}
+	\item<+-> In general, the partial derivative of a function $f(x_1,\dots,x_n)$ at a point $(a_1,\dots,a_n)$ is given by: \\ $\frac{\partial f}{\partial x_i}(a_1,\dots,a_n) = \lim_{h\to0}\frac{f(a_1\dots,a_i+h,\dots,a_n)-f(a_1\dots,a_i,\dots,a_n)}{h}$.
+	\item<+-> The vector of partial derivatives of a scalar-value multivariate function, $f((x_1,\dots,x_n)$ at a point $(a_1,\dots,a_n)$, can be arranged into a vector:
+	$\nabla f(a_1,\dots,a_n) = \big(\frac{\partial f}{\partial x_1}(a_1,\dots,a_n), \dots, \frac{\partial f}{\partial x_n}(a_1,\dots,a_n) \big)$.
+	\begin{itemize}
+		\item<+-> This is the \textbf{gradient} of $f$ at $a$.
+	\end{itemize}
+	\item<+-> In the case of a vector-valued multivariate function, the partial derivatives form a matrix called the \textbf{Jacobian}.
+\end{itemize}
 \end{frame}
 
 \begin{frame}
 \frametitle{Recap: what are gradients and how do we find them?}
 \framesubtitle{Functions of vectors and matrices: partial differentiation}
+\begin{itemize}
+	\item<+-> For the kinds of functions (and programs) that we'll look at \emph{optimising} in this course have a number of typical properties:
+	\begin{itemize}
+		\item<+-> They are scalar-valued
+		\begin{itemize}
+			\item We'll look at programs with \emph{multiple losses}, but ultimately we can just consider optimising with respect to the \emph{sum} of the losses.
+		\end{itemize}
+		\item<+-> They involve multiple variables, which are often wrapped up in the form of vectors or matrices, and more generally tensors.
+		\item<+-> \textbf{How will we find the gradients of these?}
+	\end{itemize}
+\end{itemize}
+\end{frame}
 
+\begin{frame}
+\frametitle{Recap: what are gradients and how do we find them?}
+\framesubtitle{Functions of tensors}
+% \begin{itemize}
+% f(x,y) = x^2 + xy + y^2 = (x+y)^2 - xy
+% f(z) = zz^T - = x^2+y^2
 
+% \end{itemize}
 \end{frame}
 
 \begin{frame}
