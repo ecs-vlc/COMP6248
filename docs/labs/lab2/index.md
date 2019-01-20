@@ -21,7 +21,7 @@ This lab is derived from material that I produced for a training session on Auto
 
 ## Introduction 
 
-Automatic Differentiation (AD) the key to writing and optimising complex differentiable programs. With AD we no do not have to rely on hand-computing or automatically computing analytic solutions to gradients, nor do we have to rely on, potentially highly inaccurate, numerical gradient estimates.
+Automatic Differentiation (AD) the key to writing and optimising complex differentiable programs. With AD we no do not have to rely on hand-computing or automatically computing analytic solutions to gradients, nor do we have to rely on, potentially highly inaccurate, numerical gradient estimates. 
 
 Surprisingly, Automatic Differentiation is actually not that hard to implement. In this lab we'll start by hand-coding simple forward and reverse mode AD systems in Python so we can get a feeling for how they work, before moving on to looking at how AD works in PyTorch.
 
@@ -35,6 +35,8 @@ Through this lab you'll learn how to:
 ## Getting started 
 
 To work through this lab you'll use the Python 3 language in a Jupyter Notebook environment, with the `pytorch` tensor library. We will primarily be using [Google Colab](http://colab.research.google.com/) to run the notebooks as this gives you access to an environment with all the tools required. If you wish to run the notebooks locally, see the information in the section below.
+
+You will likely need to refer to the "autograd" lecture slides for this lab - you can get those here: [http://comp6248.ecs.soton.ac.uk/lectures/autograd.pdf](http://comp6248.ecs.soton.ac.uk/lectures/autograd.pdf).
 
 The following is a list of the notebooks for this lab, with links to open directly in Google Colab (once opened you should immediately save a copy in your Google Drive otherwise anything you do will be lost once the browser closes), or to download locally. You should work through the notebooks in numeric order as they follow on from each other. 
 
