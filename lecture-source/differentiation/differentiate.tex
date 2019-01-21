@@ -423,8 +423,8 @@ We can then differentiate with respect to specific variables $\hat{U}_{rq}$ and 
 and use this as the basis for a gradient descent algorithm:
 
 \begin{align*}
-	\hat{U}_{rq} &\Leftarrow \hat{U}_{rq} - \lambda \sum_r \sum_c \hat{V}_{cq}e_{rc} \\
-	\hat{V}_{cq} &\Leftarrow \hat{V}_{cq} - \lambda \sum_r \sum_c \hat{U}_{rq}e_{rc}
+	\hat{U}_{rq} &\Leftarrow \hat{U}_{rq} + \lambda \sum_r \sum_c \hat{V}_{cq}e_{rc} \\
+	\hat{V}_{cq} &\Leftarrow \hat{V}_{cq} + \lambda \sum_r \sum_c \hat{U}_{rq}e_{rc}
 \end{align*}
 }
 
