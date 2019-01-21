@@ -1,4 +1,15 @@
-\documentclass{beamer}
+\ifdefined\beamerclass
+\else
+    \def\beamerclass{beamer}
+\fi
+\documentclass[\beamerclass]{beamer}
+
+\usepackage{pgfpages}
+\mode<handout>{
+	% \setbeamercolor{background canvas}{bg=black!20}
+	\pgfpagesuselayout{2 on 1}[a4paper,border shrink=5mm]
+}
+
 \usepackage{lmodern}
 \usepackage{listings}
 \usepackage{amsmath}
@@ -59,9 +70,9 @@
 	\begin{itemize}
 		\item<+-> First order methods, second order methods, subgradient methods...
 	\end{itemize}
-	\item With deep learning we're primarily interested in first-order methods\only<2->{\footnote{Second order gradient optimisers are potentially better, but for systems with many variables are currently impractical as they require computing the Hessian.}}.
+	\item<+-> With deep learning we're primarily interested in first-order methods\only<3->{\footnote{Second order gradient optimisers are potentially better, but for systems with many variables are currently impractical as they require computing the Hessian.}}.
 	\begin{itemize}
-		\item<+-> Primarily using variants of gradient descent: a function $F(\bm x)$ has \emph{a} minima\only<3->{\footnote{not necessarily global or unique}} at a point $\bm x = \bm a$ where $\bm a$ is given by applying $\bm{a}_{n+1} = \bm a - \alpha \nabla F(\bm a_n)$ until convergence.
+		\item<+-> Primarily using variants of gradient descent: a function $F(\bm x)$ has \emph{a} minima\only<4->{\footnote{not necessarily global or unique}} at a point $\bm x = \bm a$ where $\bm a$ is given by applying $\bm{a}_{n+1} = \bm a - \alpha \nabla F(\bm a_n)$ until convergence.
 	\end{itemize}
 \end{itemize}
 \end{frame}
@@ -216,26 +227,218 @@ Equivalently, from first principles:
 
 \begin{frame}
 \frametitle{Recap: what are gradients and how do we find them?}
-\framesubtitle{Functions of tensors}
-% \begin{itemize}
-% f(x,y) = x^2 + xy + y^2 = (x+y)^2 - xy
-% f(z) = zz^T - = x^2+y^2
+\framesubtitle{The chain rule for vectors}
+\uncover<+->{
+Suppose that $\bm x \in \mathbb{R}^m$, $\bm y \in \mathbb{R}^n$, $g$ maps from $\mathbb{R}^m$ to $\mathbb{R}^n$ and $f$ maps from $\mathbb{R}^n$ to $\mathbb{R}$.
+}
 
-% \end{itemize}
+\uncover<+->{
+If $\bm y = g(\bm x)$ and $z = f(\bm y)$, then \\
+\begin{align*}
+	\frac{\partial z}{\partial x_i} &= \sum_j \frac{\partial z}{\partial y_j} \frac{\partial y_j}{\partial x_i}.
+\end{align*}
+}
+
+\uncover<+->{
+Equivalently, in vector notation: \\
+\begin{align*}
+	\nabla_{\bm x}z &= (\frac{\partial \bm y}{\partial \bm x})^\top \nabla_{\bm y}z
+\end{align*}
+where $\frac{\partial \bm y}{\partial \bm x}$ is the $n \times m$ Jacobian matrix of $g$.
+}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Recap: what are gradients and how do we find them?}
+\framesubtitle{The chain rule for Tensors}
+\begin{itemize}
+	\item<+-> Conceptually, the simplest way to think about gradients of tensors is to imagine flattening them into vectors, computing the vector-valued gradient and then reshaping the gradient back into a tensor. 
+	\begin{itemize}
+		\item<+-> In this way we're still just mutiplying Jacobians by gradients. 
+	\end{itemize}
+	\item<+-> More formally, consider the gradient of a scalar $z$ with respect to a tensor $\mathbf{X}$ to be denoted as $\nabla_{\mathbf{X}}z$. 
+	\begin{itemize}
+		\item<+-> Indices into $\mathbf{X}$ now have multiple coordinates, but we can generalise by using a single variable $i$ to represent the complete tuple of indices. 
+		\begin{itemize}
+			\item<+-> For all index tuples $i$, $(\nabla_{\mathbf{X}}z)_i$ gives $\frac{\partial z}{\partial \mathsf{X}_i}$.
+		\end{itemize}
+		\item<+-> Thus, if $\mathbf{Y} = g(\mathbf{X})$ and $z = f(\mathbf{Y})$ then $\nabla_{\mathbf{X}}z = \sum_j (\nabla_{\mathbf{X}}\mathsf{Y}_j)\frac{\partial z}{\partial \mathsf{Y}_j}$.
+	\end{itemize}
+\end{itemize}
+
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Recap: what are gradients and how do we find them?}
+\framesubtitle{Example: $\nabla_{\bm W} f(\bm X \bm W)$}
+\begin{itemize}
+\item<1-> Let $\bm D = \bm X \bm W$ where the rows of $\bm X \in \mathbb{R}^{n \times m}$ contain some fixed \emph{features}, and $\bm W \in \mathbb{R}^{m \times h}$ is a matrix of weights.
+\item<1-> Also let $L = f(\bm D)$ be some scalar function of $\bm D$ that we wish to minimise. 
+\item<2-> What are the derivatives of $L$ with respect to the weights $\bm W$?
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Recap: what are gradients and how do we find them?}
+\framesubtitle{Example: $\nabla_{\bm W} f(\bm X \bm W)$}
+\begin{itemize}
+	\item<+-> Start by considering a specific weight, $W_{uv}$: 
+$\frac{\partial L}{\partial W_{uv}} = \sum_{i,j}\frac{\partial L}{\partial D_{ij}}\frac{\partial D_{ij}}{\partial W_{uv}}$.
+	\item<+-> We know that $\frac{\partial D_{ij}}{\partial W_{uv}}=0$ if $j \neq v$ because $D_{ij}$ is the dot product of row $i$ of $\bm X$ and column $j$
+ of $\bm W$.
+ 	\item<+-> Therefore, we can simplify the summation to only consider cases where $j=v$: $\sum_{i,j}\frac{\partial L}{\partial D_{ij}}\frac{\partial D_{ij}}{\partial W_{uv}} = \sum_i \frac{\partial L}{\partial D_{iv}}\frac{\partial D_{iv}}{\partial W_{uv}}$.
+ 	\item<+-> What is $\frac{\partial D_{iv}}{\partial W_{uv}}$?
+ 		\begin{align*}
+ 			\uncover<+->{D_{iv} &= \sum_{k=1}^{q} X_{ik} W_{kv} \\}
+ 			\uncover<+->{\frac{\partial D_{iv}}{\partial W_{uv}} &= \frac{\partial}{\partial W_{uv}} \sum_{k=1}^{q} X_{ik} W_{kv} = \sum_{k=1}^{q} \frac{\partial}{\partial W_{uv}} X_{ik} W_{kv} \\}
+ 			\uncover<+->{\therefore \frac{\partial D_{iv}}{\partial W_{uv}} &= X_{iu} \\}
+ 		\end{align*}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Recap: what are gradients and how do we find them?}
+\framesubtitle{Example: $\nabla_{\bm W} f(\bm X \bm W)$}
+\begin{itemize}
+	\item<+-> Putting every together, we have: $\frac{\partial L}{\partial W_{uv}} = \sum_{i}\frac{\partial L}{\partial D_{iv}}X_{iu}$.
+	\item<+-> As we're summing over multiplications of scalars, we can change the order: $\frac{\partial L}{\partial W_{uv}} = \sum_{i}X_{iu}\frac{\partial L}{\partial D_{iv}}$.
+	\item<+-> and note that the sum over $i$ is doing a dot product with row $u$ and column $v$ if we transpose $X_{iu}$ to $X^\top_{ui}$: $\frac{\partial L}{\partial W_{uv}} = \sum_{i}X^\top_{ui}\frac{\partial L}{\partial D_{iv}}$.
+	\item<+-> \vspace{5mm} We can then see that if we want this for all values of $\bm W$ it simply generalises to: $\frac{\partial L}{\partial \bm W} = \bm X^\top\frac{\partial L}{\partial \bm D}$.
+\end{itemize}
 \end{frame}
 
 \begin{frame}
 \frametitle{Recap: Singular Value Decomposition and its applications}
-% \begin{itemize}
-	
-% \end{itemize}
+Let's now change direction - we're going to look at an early success story resulting from using some differentiation and the Singular Value Decomposition (SVD).
+\\[1em]
+For complex $\bm A:$ \\
+\begin{align*}
+\bm A &= \bm U \bm \Sigma \bm V^*
+\end{align*}
+where $\bm V^*$ is the \emph{conjugate transpose} of $\bm V$.\\[1em]
+For real $\bm A:$ \\
+\begin{align*}
+\bm A &= \bm U \bm \Sigma \bm V^\top
+\end{align*}
+\end{frame}
+
+\begin{frame}
+\frametitle{Recap: Singular Value Decomposition and its applications}
+\begin{itemize}
+	\item SVD has many uses:
+	\begin{itemize}
+		\uncover<+->{
+		\item Computing the Eigendecomposition:
+		\begin{itemize}
+			\item Eigenvectors of $\bm A\bm A^\top$ are columns of $\bm U$,
+			\item Eigenvectors of $\bm A^\top\bm A$ are columns of $\bm V$,
+			\item and the non-zero values of $\bm\Sigma$ are the square roots of the non-zero eigenvalues of both $\bm A\bm A^\top$ and $\bm A^\top\bm A$.
+		\end{itemize}}
+		\uncover<+->{
+		\item Dimensionality reduction
+		\begin{itemize}
+			\item ...use to compute PCA
+		\end{itemize}}
+		\uncover<+->{
+		\item Computing the Moore-Penrose Pseudoinverse
+		\begin{itemize}
+			\item for real $\bm A$: $\bm A^+ = \bm V \bm\Sigma^+ \bm U^\top$ where $\bm\Sigma^+$ is formed by taking the reciprocal of every non-zero diagonal element and transposing the result.
+		\end{itemize}}
+		\uncover<+->{
+		\item<+-> Low-rank approximation and matrix completion
+		\begin{itemize}
+			\item if you take the $\rho$ columns of $\bm U$, and the $\rho$ rows of $\bm V^\top$ corresponding to the $\rho$ largest singular values, you can form the matrix $\bm A_\rho = \bm U_\rho \bm \Sigma_\rho \bm V^\top_\rho$ which will be the $best$ rank-$\rho$ approximation of the original $\bm A$ in terms of the Frobenius norm.
+		\end{itemize}}
+	\end{itemize}
+\end{itemize}
 \end{frame}
 
 \begin{frame}
 \frametitle{Example: Computing SVD using gradients - The Netflix Challenge}
-% \begin{itemize}
-	
-% \end{itemize}
+\begin{itemize}
+	\uncover<+->{\item There are many standard ways of computing the SVD:
+	\begin{itemize}
+		\item e.g. `Power iteration', or `Arnoldi iteration' or `Lanczos algorithm' coupled with the `Gram-Schmidt process' for orthonormalisation
+	\end{itemize}}
+	\uncover<+->{\item but, these don't necessarily scale up to really big problems
+	\begin{itemize}
+		\item e.g. computing the SVD of a sparse matrix with 17770 rows, 480189 columns and 100480507 non-zero entries!
+		\item this corresponds to the data provided by Netflix when they launched the \emph{Netflix Challenge} in 2006. 
+	\end{itemize}}
+	\item<+-> OK, so what can you do?
+	\begin{itemize}
+		\item<+-> The `Simon Funk' solution: realise that there is a really simple (and quick) way to compute the SVD by following gradients...
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Example: Computing SVD using gradients - The Netflix Challenge}
+\framesubtitle{Deriving a gradient-descent solution to SVD}
+\begin{itemize}
+	\item<+-> One of the definitions of rank-$\rho$ SVD of a matrix $\bm A$ is that it minimises reconstruction error in terms of the Frobenius norm.
+	\item<+-> Without loss of generality we can write SVD as a 2-matrix decomposition $\bm A = \hat{\bm U} \hat{\bm V}^T$ by rolling in the square roots of $\bm\Sigma$ to both $\hat{\bm U}$ and $\hat{\bm V}$: $\hat{\bm U} = \bm U \bm\Sigma^{0.5}$ and $\hat{\bm V}^\top = \bm \Sigma^{0.5} \bm V^\top$.
+	\item<+-> Then we can define the decomposition as finding $\min\limits_{\hat{\bm U}, \hat{\bm V}}( \| \bm A - \hat{\bm U}\hat{\bm V}^\top \|_{\rm F} )$
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Example: Computing SVD using gradients - The Netflix Challenge}
+\framesubtitle{Deriving a gradient-descent solution to SVD}
+\uncover<+->{
+Start by expanding our optimisation problem:
+
+\begin{align*}
+	\min\limits_{\hat{\bm U}, \hat{\bm V}}( \| \bm A - \hat{\bm U}\hat{\bm V}^\top \|_{\rm F} ) &= \min\limits_{\hat{\bm U}, \hat{\bm V}}( \sum_r \sum_c (A_{rc} - \hat{U}_r\hat{V}_c)^2 )	\\
+			  &= \min\limits_{\hat{\bm U}, \hat{\bm V}}( \sum_r \sum_c (A_{rc} - \sum_{p=1}^{\rho}\hat{U}_{rp}\hat{V}_{cp})^2 )	 
+\end{align*}
+}
+\uncover<+->{
+Let $e_{rc} = A_{rc} - \sum_{p=0}^{\rho}\hat{U}_{rp}\hat{V}_{cp}$ denote the error. Then, our problem becomes:
+
+\begin{align*}
+{\rm Minimise}\,J &= \sum_r \sum_c e_{rc}^2
+\end{align*}
+
+We can then differentiate with respect to specific variables $\hat{U}_{rq}$ and $\hat{V}_{cq}$
+}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Example: Computing SVD using gradients - The Netflix Challenge}
+\framesubtitle{Deriving a gradient-descent solution to SVD}
+\uncover<+->{
+We can then differentiate with respect to specific variables $\hat{U}_{rq}$ and $\hat{V}_{cq}$:
+\begin{align*}
+	\frac{\partial J}{\partial \hat{U}_{rq}} &= \sum_r \sum_c 2e_{rc} \frac{\partial e}{\partial \hat{U}_{rq}} = -2 \sum_r \sum_c \hat{V}_{cq}e \\
+	\frac{\partial J}{\partial \hat{V}_{cq}} &= \sum_r \sum_c 2e_{rc} \frac{\partial e}{\partial \hat{V}_{cq}} = -2 \sum_r \sum_c \hat{U}_{rq}e \\
+\end{align*}
+}
+
+\uncover<+->{
+and use this as the basis for a gradient descent algorithm:
+
+\begin{align*}
+	\hat{U}_{rq} &\Leftarrow \hat{U}_{rq} - \lambda \sum_r \sum_c \hat{V}_{cq}e_{rc} \\
+	\hat{V}_{cq} &\Leftarrow \hat{V}_{cq} - \lambda \sum_r \sum_c \hat{U}_{rq}e_{rc}
+\end{align*}
+}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Example: Computing SVD using gradients - The Netflix Challenge}
+\framesubtitle{Deriving a gradient-descent solution to SVD}
+
+\begin{itemize}
+	\item<+-> A stochastic version of this algorithm (updates on one single item of $\bm A$ at a time) helped win the Netflix Challenge competition in 2009.
+	\item<+-> It was both \emph{fast} and \emph{memory efficient}
+\end{itemize}
+
 \end{frame}
 
 \end{document}
