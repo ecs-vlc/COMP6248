@@ -97,7 +97,7 @@ If you need computational resources:
 
 * Google colab has GPU and TPU support in a Jupyter environment: https://colab.research.google.com
 * You should be able to get $300 of Google Cloud Credits here: https://cloud.google.com/free/
-* You have access to a GPU server built for this module: [usage Information](server.html)
+* You have access to a GPU server built for this module: [Usage Information](server.html)
 
 ## Questions
 If you have any problems/questions then [email](mailto:jsh2@ecs.soton.ac.uk) or speak to [Jon](http://ecs.soton.ac.uk/people/jsh2) in his office or after the lectures.
