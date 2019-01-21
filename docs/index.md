@@ -25,7 +25,7 @@ There will be two lectures each week. The lecture slots are on Wednesdays and Fr
 |------|--------|---------------|-------------------------------------------------|--------------------------------------------------------------------------------|-----------------------------------------| 
 | 1    | 30-Jan | 2A/2065 L/T H | Intro and background                            | [handouts/intro-handouts.pdf](handouts/intro-handouts.pdf)                     |                                         | 
 |      | 01-Feb | 58/1067 L/T   | Review of ML fundamentals                       |                                                                                |                                         | 
-| 2    | 06-Feb | 2A/2065 L/T H | The Power of Differentiation                    | [handouts/differentiation-handouts.pdf](handouts/differentiation-handouts.pdf) |                                         | 
+| 2    | 06-Feb | 2A/2065 L/T H | The Power of Differentiation                    | [handouts/differentiate-handouts.pdf](handouts/differentiation-handouts.pdf) |                                         | 
 |      | 08-Feb | 58/1067 L/T   | Automatic Differentiation                       | [handouts/autograd-handouts.pdf](handouts/autograd-handouts.pdf)               | https://openreview.net/pdf?id=BJJsrmfCZ | 
 | 3    | 13-Feb | 2A/2065 L/T H | MLPs                                            |                                                                                |                                         | 
 |      | 15-Feb | 58/1067 L/T   | MLPs                                            |                                                                                |                                         | 
