@@ -26,7 +26,7 @@ There will be two lectures each week. The lecture slots are on Wednesdays and Fr
 | 1    | 30-Jan | 2A/2065 L/T H | Intro and background                            | [intro-handouts.pdf](handouts/intro-handouts.pdf)                     |                                         | 
 |      | 01-Feb | 58/1067 L/T   | Review of ML fundamentals                       |                                                                                |                                         | 
 | 2    | 06-Feb | 2A/2065 L/T H | The Power of Differentiation                    | [differentiate-handouts.pdf](handouts/differentiate-handouts.pdf) |                                         | 
-|      | 08-Feb | 58/1067 L/T   | Automatic Differentiation                       | [autograd-handouts.pdf](handouts/autograd-handouts.pdf)               | https://openreview.net/pdf?id=BJJsrmfCZ | 
+|      | 08-Feb | 58/1067 L/T   | Automatic Differentiation                       | [autograd-handouts.pdf](handouts/autograd-handouts.pdf)               | [Automatic differentiation in PyTorch](https://openreview.net/pdf?id=BJJsrmfCZ) | 
 | 3    | 13-Feb | 2A/2065 L/T H | MLPs                                            |                                                                                |                                         | 
 |      | 15-Feb | 58/1067 L/T   | MLPs                                            |                                                                                |                                         | 
 | 4    | 20-Feb | 44/1041 L/T A | Deeper Networks                                 |                                                                                |                                         | 
