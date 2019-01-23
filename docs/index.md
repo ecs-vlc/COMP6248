@@ -55,20 +55,20 @@ There will be two lectures each week. The lecture slots are on Wednesdays and Fr
 
 The lab schedule is below:
 
-| Week | Date   | Location            | Topic                                                                                 | Submission Deadline | Handin link | 
-|------|--------|---------------------|---------------------------------------------------------------------------------------|---------------------|-------------| 
-| 1    | 29-Jan |                     | NO LAB                                                                                |                     |             | 
-| 2    | 05-Feb | 25/[1007/1009/1011] | Introducing PyTorch                                                                   | 22 Feb, 16:00       | TBC         | 
-| 3    | 12-Feb | 25/[1007/1009/1011] | Automatic Differentiation                                                             | 22 Feb, 16:00       | TBC         | 
-| 4    | 19-Feb | 25/[1007/1009/1011] | Backpropagation and optimisation                                                      | 22 Feb, 16:00       | TBC         | 
-| 5    | 26-Feb | 25/[1007/1009/1011] | Implementing simple Neural Networks using PyTorch and Torchbearer                     | 15 Mar, 16:00       | TBC         | 
-| 6    | 05-Mar | 25/[1007/1009/1011] | Implementing and training Convolutional Neural Networks using PyTorch and Torchbearer | 15 Mar, 16:00       | TBC         | 
-| 7    | 12-Mar | 25/[1007/1009/1011] | Using pretrained models and transfer learning                                         | 15 Mar, 16:00       | TBC         | 
-| 8    | 19-Mar | 25/[1007/1009/1011] | Recurrent Networks, Sequence Prediction and Embeddings                                | 3 May, 16:00        | TBC         | 
-| 9    | 26-Mar | 25/[1007/1009/1011] | Deep Generative Models                                                                | 3 May, 16:00        | TBC         | 
-| 10   | 30-Apr | 25/[1007/1009/1011] | Coursework Help and Advice                                                            |                     |             | 
-| 11   | 07-May | 25/[1007/1009/1011] | Coursework Help and Advice                                                            |                     |             | 
-| 12   | 14-May | 25/[1007/1009/1011] | Coursework Help and Advice                                                            |                     |             | 
+| Week | Date   | Location            | Topic                                                                                 | Submission Deadline | Handin link 										    | 
+|------|--------|---------------------|---------------------------------------------------------------------------------------|---------------------|-------------------------------------------------------| 
+| 1    | 29-Jan |                     | NO LAB                                                                                |                     |                                      				    | 
+| 2    | 05-Feb | 25/[1007/1009/1011] | Introducing PyTorch                                                                   | 22 Feb, 16:00       | http://handin.ecs.soton.ac.uk/handin/1819/COMP6248/1/ | 
+| 3    | 12-Feb | 25/[1007/1009/1011] | Automatic Differentiation                                                             | 22 Feb, 16:00       | http://handin.ecs.soton.ac.uk/handin/1819/COMP6248/1/ | 
+| 4    | 19-Feb | 25/[1007/1009/1011] | Backpropagation and optimisation                                                      | 22 Feb, 16:00       | http://handin.ecs.soton.ac.uk/handin/1819/COMP6248/1/ | 
+| 5    | 26-Feb | 25/[1007/1009/1011] | Implementing simple Neural Networks using PyTorch and Torchbearer                     | 15 Mar, 16:00       | http://handin.ecs.soton.ac.uk/handin/1819/COMP6248/2/ | 
+| 6    | 05-Mar | 25/[1007/1009/1011] | Implementing and training Convolutional Neural Networks using PyTorch and Torchbearer | 15 Mar, 16:00       | http://handin.ecs.soton.ac.uk/handin/1819/COMP6248/2/ | 
+| 7    | 12-Mar | 25/[1007/1009/1011] | Using pretrained models and transfer learning                                         | 15 Mar, 16:00       | http://handin.ecs.soton.ac.uk/handin/1819/COMP6248/2/ | 
+| 8    | 19-Mar | 25/[1007/1009/1011] | Recurrent Networks, Sequence Prediction and Embeddings                                | 3 May, 16:00        | http://handin.ecs.soton.ac.uk/handin/1819/COMP6248/3/ | 
+| 9    | 26-Mar | 25/[1007/1009/1011] | Deep Generative Models                                                                | 3 May, 16:00        | http://handin.ecs.soton.ac.uk/handin/1819/COMP6248/3/ | 
+| 10   | 30-Apr | 25/[1007/1009/1011] | Coursework Help and Advice                                                            |                     |             											| 
+| 11   | 07-May | 25/[1007/1009/1011] | Coursework Help and Advice                                                            |                     |             											| 
+| 12   | 14-May | 25/[1007/1009/1011] | Coursework Help and Advice                                                            |                     |             											| 
 
 
 ## Online Quizzes
