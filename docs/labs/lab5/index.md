@@ -1,4 +1,13 @@
-# COMP6248 Differentiable Programming/Deep Learning: Lab 5 - Implementing and training Convolutional Neural Networks using PyTorch and Torchbearer
+---
+layout: index
+title: "COMP6248 Differentiable Programming (and Deep Learning)"
+subtitle: "2018-19"
+githubHeader: "false"
+credits: Maintained by <a href="http://www.ecs.soton.ac.uk/people/kf2u17">Dr Kate Farrahi</a> and <a href="http://www.ecs.soton.ac.uk/people/jsh2">Dr Jonathon Hare</a>.
+rdir: '../../'
+---
+
+# Lab 5 - Implementing and training Convolutional Neural Networks using PyTorch and Torchbearer
 
 _[Jonathon Hare, 2nd Nov 2018](https://github.com/ecs-vlc/COMP6248)_
 

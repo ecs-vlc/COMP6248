@@ -7,7 +7,7 @@ credits: Maintained by <a href="http://www.ecs.soton.ac.uk/people/kf2u17">Dr Kat
 rdir: '../../'
 ---
 
-# COMP6248 Differentiable Programming/Deep Learning: Lab 4 - Implementing simple Neural Networks using PyTorch and Torchbearer
+# Lab 4 - Implementing simple Neural Networks using PyTorch and Torchbearer
 
 _[Jonathon Hare, 9th Oct 2018](https://github.com/ecs-vlc/COMP6248)_
 
