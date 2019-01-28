@@ -71,15 +71,15 @@ Sequence Modelling & $\bm x_n = f(\bm x_{n-1}, \bm\theta)$
 
 Deep learning is primarily characterised by function compositions: \\ \vspace{10mm}
 \begin{itemize}
-	\item<+-> Feedforward networks: $\bm{y} = f (g(\bm{x}, \bm\theta_g), \bm{\theta_f})$
+	\item<2-> Feedforward networks: $\bm{y} = f (g(\bm{x}, \bm\theta_g), \bm{\theta_f})$
 	\begin{itemize}
 		\item Often with relatively simple functions (e.g. $f(\bm x, \bm{\theta}_f) = \sigma(\bm{x}^\top \bm{\theta}_f)$)
 	\end{itemize} \vspace{3mm}
-	\item<+-> Recurrent networks: $\bm y_t = f(\bm y_{t-1}, \bm x_t, \bm\theta) = f(f(\bm y_{t-2}, \bm x_{t-1}, \bm\theta), \bm\theta) = \dots$
+	\item<3-> Recurrent networks: $\bm y_t = f(\bm y_{t-1}, \bm x_t, \bm\theta) = f(f(\bm y_{t-2}, \bm x_{t-1}, \bm\theta), \bm\theta) = \dots$
 \end{itemize}
 \vspace{10mm}
 
-\uncover<+->{
+\uncover<4->{
 In the early days the focus of deep learning was on learning functions for classification. Nowadays the functions are much more general in their inputs and outputs.
 }
 
