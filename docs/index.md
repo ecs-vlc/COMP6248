@@ -73,11 +73,13 @@ The lab schedule is below:
 
 ## Online Quizzes
 
+There will be two assessed online-quizzes. Details to follow.
 
 ## Coursework assignment
 
 Information on the coursework assignment (worth 40% of the module) is [here](coursework.html).
 
 ## Where to get additional help
+
 Talk to us! You are more than welcome to arrange to meet with us to discuss issues related to the course - we will be in the labs each week. The lab sessions are also facilitated by a team of our PhD students who are experts in the deep learning / differentiable programming field in their own right (many of them have published work in this space, or are close to achieving that). <a href="http://www.ecs.soton.ac.uk/people/kf2u17">Kate</a> ([email](mailto:kf2u17@ecs.soton.ac.uk)) and <a href="http://www.ecs.soton.ac.uk/people/jsh2">Jon</a> ([email](mailto:jsh2@ecs.soton.ac.uk)) can both be reached by email or by coming to find us in our offices (32/3015 for Kate & 32/3019 for Jon). 
 
