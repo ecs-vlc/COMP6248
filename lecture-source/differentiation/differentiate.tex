@@ -125,7 +125,7 @@
 
 % central difference as opposed to one sided
 \begin{itemize}
-\item For numerical computation of derivatives it is better to use a "centralised" definition of the derivative:
+\item For numerical computation of derivatives it is better to use a ``centralised'' definition of the derivative:
 \begin{itemize}
 	\item<+-> $f'(a) = \lim_{h\to0} \frac{f(a+h) - f(a-h)}{2h}$
 	\item<+-> The bit inside the limit is known as the \emph{symmetric difference quotient}
@@ -255,7 +255,7 @@ where $\frac{\partial \bm y}{\partial \bm x}$ is the $n \times m$ Jacobian matri
 \begin{itemize}
 	\item<+-> Conceptually, the simplest way to think about gradients of tensors is to imagine flattening them into vectors, computing the vector-valued gradient and then reshaping the gradient back into a tensor. 
 	\begin{itemize}
-		\item<+-> In this way we're still just mutiplying Jacobians by gradients. 
+		\item<+-> In this way we're still just multiplying Jacobians by gradients. 
 	\end{itemize}
 	\item<+-> More formally, consider the gradient of a scalar $z$ with respect to a tensor $\mathbf{X}$ to be denoted as $\nabla_{\mathbf{X}}z$. 
 	\begin{itemize}

@@ -48,8 +48,8 @@
 \frametitle{What is Automatic Differentiation (AD)?}
 To solve optimisation problems using gradient methods we need to compute the gradients (derivatives) of the objective with respect to the parameters.
 \begin{itemize}
-	\item In neural nets we're talking about the gradients of the loss function, $\mathbb{L}$ with respect to the parameters $\bm{\theta}$: 
-	$\nabla_{\bm{\theta}} \mathbb{L} = \frac{\partial \mathbb{L}}{\partial \bm{\theta}}$
+	\item In neural nets we're talking about the gradients of the loss function, $\mathcal{L}$ with respect to the parameters $\bm{\theta}$: 
+	$\nabla_{\bm{\theta}} \mathcal{L} = \frac{\partial \mathcal{L}}{\partial \bm{\theta}}$
 	\item AD is important - it's been suggested that ``Differentiable programming'' could be the term that ultimately replaces deep learning\footnote{\url{http://forums.fast.ai/t/differentiable-programming-is-this-why-we-switched-to-pytorch/9589/5}}.
 \end{itemize}
 \end{frame}
