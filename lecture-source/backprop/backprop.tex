@@ -363,7 +363,7 @@ If we assume a sigmoid activation function then $a_k^{(2)} = \frac{1}{1+ e^{-z_k
  
 \begin{equation}\label{eq:dhdw}
 \color{violet}
-\frac{\partial z_k{(2)}}{\partial w_{kj}^{(2)}} \color{black} = a_k^{(2)}
+\frac{\partial z_k{(2)}}{\partial w_{kj}^{(2)}} \color{black} = a_k^{(1)}
 \end{equation}
 
 Since $z_k^{(2)} =\sum_j w_{kj}^{(2)} a_k^{(1)}$ therefore,
@@ -425,19 +425,20 @@ where \color{green} $ \frac{\partial z_k^{(2)}}{\partial a_k^{(1)}} $ \color{bla
 
 \item Then 
 \begin{equation} \delta^L = \Delta_a J \odot \sigma^{\prime} (z^L) \end{equation} \pause
-
-\begin{equation} \delta^l = ((w^{l + 1})^T \delta^{l + 1}) \odot \sigma^{\prime} (z^L) \end{equation} \pause
-\begin{equation} \frac{\partial J}{\partial w_{jk}^l} = a_k^{l-1} \delta_j^l \end{equation} \pause
-\begin{equation} \frac{\partial J}{\partial b_j^l} =  \delta_j^l \end{equation}
+\item For the case of a MSE cost function: \pause
+\item  $\delta^L = (a^L - y) \odot \sigma^{\prime} (z^L)$ \pause
+%\begin{equation} \delta^l = ((w^{l + 1})^T \delta^{l + 1}) \odot \sigma^{\prime} (z^l) \end{equation} \pause
+%\begin{equation} \frac{\partial J}{\partial w_{jk}^l} = a_k^{l-1} \delta_j^l \end{equation} \pause
+%\begin{equation} \frac{\partial J}{\partial b_j^l} =  \delta_j^l \end{equation}
 \end{itemize}
 \end{frame}
 %-------------------------------------------------------------%
 
-\begin{frame}[fragile]\frametitle{Backpropagation in General}
-\begin{itemize}
-\item For the case of a MSE cost function:
-\item  $\delta^L = (a^L - y) \odot \sigma^{\prime} (z^L)$
-\end{itemize}
+\begin{frame}{pause}\frametitle{Backpropagation in General}
+\begin{equation} \delta^L = \Delta_a J \odot \sigma^{\prime} (z^L) \end{equation} \pause
+\begin{equation} \delta^l = ((w^{l + 1})^T \delta^{l + 1}) \odot \sigma^{\prime} (z^l) \end{equation} \pause
+\begin{equation} \frac{\partial J}{\partial w_{jk}^l} = a_k^{l-1} \delta_j^l \end{equation} \pause
+\begin{equation} \frac{\partial J}{\partial b_j^l} =  \delta_j^l \end{equation}
 \end{frame}
 %-------------------------------------------------------------%
 
