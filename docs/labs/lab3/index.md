@@ -23,10 +23,9 @@ Learning how to optimise the learning algorithm is very important, particularly 
 
 Through this lab you'll learn how to:
 
-* Implement a toy forward-mode AD system; 
-* Implement a toy reverse-mode AD system; 
-* Use PyTorch's built in AD system to evaluate the gradients of complex programs; and
-* Differentiate random variables drawn from distributions with respect to the distributions' parameters using the _reparameterisation trick_.
+* Implement gradient descent and plot how the parameters change over iterations of the algorithm; 
+* Implement stochastic gradient descent and add momentum to the implementation; 
+* Implement ADAM; 
 
 ## Getting started 
 To work through this lab you'll use the Python 3 language in a Jupyter Notebook environment, with the `pytorch` tensor library. We will primarily be using [Google Colab](http://colab.research.google.com/) to run the notebooks as this gives you access to an environment with all the tools required. If you wish to run the notebooks locally, see the information in the section below.
