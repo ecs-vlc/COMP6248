@@ -15,8 +15,6 @@ _[Kate Farrahi, 7th Jan 2018](https://github.com/ecs-vlc/COMP6248)_
 
 - 20190107: Initial version
 
-## Acknowledgements
-
 ## Introduction 
 
 Learning how to optimise the learning algorithm is very important, particularly when working with large amounts of data and models with many parameters to learn. We have covered a few optimisation algorithms in the lecture, which can be used to improve standard gradient descent and stochastic gradient descent. Momentum is used to add the exponentially weighted average of the gradient of the cost function obtained using backpropagation, which almost always improves the performance of learning. We also covered the Adam algorithm, which used a combination of both RMSProp and Momentum to optimise learning.
@@ -39,7 +37,7 @@ The following is a list of the notebooks for this lab, with links to open direct
 3.2 SGD, Momentum, and Adam | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ecs-vlc/COMP6248/blob/master/docs/labs/lab3/3_2_sgd_momentum_adam.ipynb) | [preview](https://github.com/ecs-vlc/COMP6248/blob/master/docs/labs/lab3/3_2_sgd_momentum_adam.ipynb) | [download](https://raw.githubusercontent.com/ecs-vlc/COMP6248/master/docs/labs/lab3/3_2_sgd_momentum_adam.ipynb)
 
 
-__Important:__ At the end of the lab you must save your notebooks and associated files to a safe location. At the end of the third lab you will be required to submit them (together with the notebooks for labs 2 and 3) to handin: [https://handin.ecs.soton.ac.uk/handin/1819/COMP6248/1/](https://handin.ecs.soton.ac.uk/handin/1819/COMP6248/1/). You must use the exact Jupyter notebooks we provide as they contain metadata which is used for assessing the exercises within them.
+__Important:__ At the end of the lab you must save your notebooks and associated files to a safe location. At the end of this lab you will be required to submit them (together with the notebooks for labs 1 and 2) to handin: [https://handin.ecs.soton.ac.uk/handin/1819/COMP6248/1/](https://handin.ecs.soton.ac.uk/handin/1819/COMP6248/1/). You must use the exact Jupyter notebooks we provide as they contain metadata which is used for assessing the exercises within them.
 
 ## Prerequisites for running on your own machines
 You'll need access to a computer with the following installed:
