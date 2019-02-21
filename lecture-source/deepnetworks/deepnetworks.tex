@@ -231,13 +231,15 @@ for all  $x\in I_{m}$.
 \begin{equation}
 a^{(l)} = \sigma(w^{(l)} a^{(l - 1)} + b^{(l)})  \odot m^{(l)}
 \end{equation} \pause
-\item For layer $L$, $a^{(L)} = \sigma(w^{(L)} a^{(L - 1)} + b^{(l)}) $ \pause
+\item For layer $L$, 
+\begin{equation}
+a^{(L)} = \sigma(w^{(L)} a^{(L - 1)} + b^{(l)})
+\end{equation} \pause
 \item For the backward pass of the backpropagation algorithm, 
-\begin{equation} \delta^L = \Delta_a J \odot \sigma^{\prime} (z^L)  \odot m^{(l)} \end{equation} 
+\begin{equation} \delta^L = \Delta_a J \odot \sigma^{\prime} (z^L) \end{equation} \pause
+\begin{equation} \delta^l = ((w^{l + 1})^T \delta^{l + 1}) \odot \sigma^{\prime} (z^l) \odot m^{(l)} \end{equation} 
 \end{itemize}
 \end{frame}
-%-------------------------------------------------------------%
-
 %-------------------------------------------------------------%
 
 \begin{frame}{pause}\frametitle{Why Does Dropout Work?}
