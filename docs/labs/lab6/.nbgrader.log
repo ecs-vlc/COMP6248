@@ -1,0 +1,63 @@
+[NotebookApp | WARNING] No nbgrader_config.py file found (rerun with --debug to see where nbgrader is looking)
+[NotebookApp | INFO] Loading the validate_assignment nbgrader serverextension
+[NotebookApp | INFO] Serving notebooks from local directory: /Users/jsh2/Work/COMP6248-Labs/source/lab6
+[NotebookApp | INFO] 0 active kernels
+[NotebookApp | INFO] The Jupyter Notebook is running at:
+[NotebookApp | INFO] http://localhost:8888/?token=7fc7ac1739d8a89f0d8b6323e0a9404ed699d7ca7fc43337
+[NotebookApp | INFO] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[NotebookApp | CRITICAL] 
+    
+    Copy/paste this URL into your browser when you connect for the first time,
+    to login with a token:
+        http://localhost:8888/?token=7fc7ac1739d8a89f0d8b6323e0a9404ed699d7ca7fc43337
+[NotebookApp | INFO] Accepting one-time-token-authenticated connection from ::1
+[NotebookApp | WARNING] Notebook 6_1_TransferLearning.ipynb is not trusted
+[NotebookApp | INFO] Kernel started: 6d6cb2e5-9b47-4106-8f68-d70ad4174dba
+[NotebookApp | INFO] Adapting to protocol v5.1 for kernel 6d6cb2e5-9b47-4106-8f68-d70ad4174dba
+[NotebookApp | INFO] interrupted
+[NotebookApp | CRITICAL] Shutdown confirmed
+[NotebookApp | INFO] Shutting down 1 kernel
+[NotebookApp | INFO] Kernel shutdown: 6d6cb2e5-9b47-4106-8f68-d70ad4174dba
+[NotebookApp | WARNING] No nbgrader_config.py file found (rerun with --debug to see where nbgrader is looking)
+[NotebookApp | INFO] Loading the validate_assignment nbgrader serverextension
+[NotebookApp | INFO] Serving notebooks from local directory: /Users/jsh2/Work/COMP6248-Labs/source/lab6
+[NotebookApp | INFO] 0 active kernels
+[NotebookApp | INFO] The Jupyter Notebook is running at:
+[NotebookApp | INFO] http://localhost:8888/?token=6c16630dc512c0a17048b037ee5cad83e9dc477cde536afb
+[NotebookApp | INFO] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[NotebookApp | CRITICAL] 
+    
+    Copy/paste this URL into your browser when you connect for the first time,
+    to login with a token:
+        http://localhost:8888/?token=6c16630dc512c0a17048b037ee5cad83e9dc477cde536afb
+[NotebookApp | INFO] Accepting one-time-token-authenticated connection from ::1
+[NotebookApp | WARNING] Notebook 6_1_TransferLearning.ipynb is not trusted
+[NotebookApp | INFO] Kernel started: 9dccb076-ade6-435a-8b8f-d77a32be31e8
+[NotebookApp | INFO] Adapting to protocol v5.1 for kernel 9dccb076-ade6-435a-8b8f-d77a32be31e8
+[NotebookApp | INFO] Saving file at /6_1_TransferLearning.ipynb
+[NotebookApp | WARNING] Notebook 6_1_TransferLearning.ipynb is not trusted
+[NotebookApp | INFO] Saving file at /6_1_TransferLearning.ipynb
+[NotebookApp | WARNING] Notebook 6_1_TransferLearning.ipynb is not trusted
+[NotebookApp | INFO] Saving file at /6_1_TransferLearning.ipynb
+[NotebookApp | WARNING] Notebook 6_1_TransferLearning.ipynb is not trusted
+[NotebookApp | INFO] Saving file at /6_1_TransferLearning.ipynb
+[NotebookApp | WARNING] Notebook 6_1_TransferLearning.ipynb is not trusted
+[NotebookApp | INFO] Saving file at /6_1_TransferLearning.ipynb
+[NotebookApp | WARNING] Notebook 6_1_TransferLearning.ipynb is not trusted
+[NotebookApp | INFO] Saving file at /6_1_TransferLearning.ipynb
+[NotebookApp | WARNING] Notebook 6_1_TransferLearning.ipynb is not trusted
+[NotebookApp | INFO] Saving file at /6_1_TransferLearning.ipynb
+[NotebookApp | WARNING] Notebook 6_1_TransferLearning.ipynb is not trusted
+[NotebookApp | INFO] Saving file at /6_1_TransferLearning.ipynb
+[NotebookApp | WARNING] Notebook 6_1_TransferLearning.ipynb is not trusted
+[NotebookApp | INFO] Saving file at /6_1_TransferLearning.ipynb
+[NotebookApp | WARNING] Notebook 6_1_TransferLearning.ipynb is not trusted
+[NotebookApp | INFO] Saving file at /6_1_TransferLearning.ipynb
+[NotebookApp | WARNING] Notebook 6_1_TransferLearning.ipynb is not trusted
+[NotebookApp | INFO] Saving file at /6_1_TransferLearning.ipynb
+[NotebookApp | WARNING] Notebook 6_1_TransferLearning.ipynb is not trusted
+[NotebookApp | INFO] Starting buffering for 9dccb076-ade6-435a-8b8f-d77a32be31e8:3683bc2b715a4bea8f056c6b2c801473
+[NotebookApp | INFO] interrupted
+[NotebookApp | CRITICAL] Shutdown confirmed
+[NotebookApp | INFO] Shutting down 1 kernel
+[NotebookApp | INFO] Kernel shutdown: 9dccb076-ade6-435a-8b8f-d77a32be31e8
