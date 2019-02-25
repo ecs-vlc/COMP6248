@@ -33,7 +33,13 @@ Through this part of the tutorial you'll learn how to:
 * How to extract _semantic_ features that can be used for transfer learning and finding similar features.
 
 ## Getting started 
-To work through this lab you'll use the Python 3 language in a Jupyter Notebook environment, with the `pytorch` deep learning library, the `torchvision` utility library and the `torchbearer`model training library. We'll also use the `matplotlib`, `scikit-learn` and `numpy` packages.
+To work through this lab you'll use the Python 3 language in a Jupyter Notebook environment, with the `pytorch` tensor library, the `torchvision` utility library and the `torchbearer`model training library. We'll also use the `matplotlib`, `scikit-learn` and `numpy` packages. We will primarily be using [Google Colab](http://colab.research.google.com/) to run the notebooks as this gives you access to an environment with all the tools required. If you wish to run the notebooks locally, see the information in the section below.
+
+There is only a single (long) notebook this week to simplify the use of external datasets on Colab. Use the link to open directly in Google Colab (once opened you should immediately save a copy in your Google Drive otherwise anything you do will be lost once the browser closes), or to download locally. 
+
+6.1 Transfer Learning and Fine Tuning | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ecs-vlc/COMP6248/blob/master/docs/labs/lab6/6_1_TransferLearning.ipynb) | [preview](https://github.com/ecs-vlc/COMP6248/blob/master/docs/labs/lab6/6_1_TransferLearning.ipynb) | [download](https://raw.githubusercontent.com/ecs-vlc/COMP6248/master/docs/labs/lab6/6_1_TransferLearning.ipynb)
+
+__Important:__ At the end of the lab you must save your notebooks and associated files to a safe location. At the end of the this lab you will be required to submit them (together with the notebooks for labs 4 and 5) to handin: [https://handin.ecs.soton.ac.uk/handin/1819/COMP6248/2/](https://handin.ecs.soton.ac.uk/handin/1819/COMP6248/2/). You must use the exact Jupyter notebooks we provide as they contain metadata which is used for assessing the exercises within them.
 
 ## Prerequisites for running on your own machines
 You'll need access to a computer with the following installed:
@@ -42,7 +48,7 @@ You'll need access to a computer with the following installed:
 - `notebook` (>=5.4.1)
 - `pytorch` (>= 0.4)
 - `torchvision` (>=0.2.1)
-- `torchbearer` (>= 0.2.3)
+- `torchbearer` (>= 0.2.6)
 - `NumPy` (>= 1.12.1)
 - `SciPy` (>= 1.0.1)
 - `scikit-learn` (>= 0.19.1)

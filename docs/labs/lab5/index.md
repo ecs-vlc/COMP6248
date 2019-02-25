@@ -49,7 +49,7 @@ The following is a list of the notebooks for this lab, with links to open direct
 5.4 More advanced networks | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ecs-vlc/COMP6248/blob/master/docs/labs/lab5/5_4_Topologies.ipynb) | [preview](https://github.com/ecs-vlc/COMP6248/blob/master/docs/labs/lab5/5_4_Topologies.ipynb) | [download](https://raw.githubusercontent.com/ecs-vlc/COMP6248/master/docs/labs/lab5/5_4_Topologies.ipynb)
 
 
-__Important:__ At the end of the lab you must save your notebooks and associated files to a safe location. At the end of the sixth lab you will be required to submit them (together with the notebooks for labs 5 and 6) to handin: __TBC__. You must use the exact Jupyter notebooks we provide as they contain metadata which is used for assessing the exercises within them.
+__Important:__ At the end of the lab you must save your notebooks and associated files to a safe location. At the end of the sixth lab you will be required to submit them (together with the notebooks for labs 4 and 6) to handin: [https://handin.ecs.soton.ac.uk/handin/1819/COMP6248/2/](https://handin.ecs.soton.ac.uk/handin/1819/COMP6248/2/). You must use the exact Jupyter notebooks we provide as they contain metadata which is used for assessing the exercises within them.
 
 ## Prerequisites for running on your own machines
 
