@@ -72,9 +72,3 @@ testing_features = np.array(testing_features)
 testing_labels = np.array(testing_labels)
 np.save("testing_features.npy", testing_features)
 np.save("testing_labels.npy", testing_labels)
-
-# from sklearn import svm
-# svmClassifier = svm.SVC(C=2.1, tol=0.23)
-# svmClassifier.fit(training_features, training_labels)
-
-
