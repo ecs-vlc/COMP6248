@@ -37,12 +37,12 @@ There will be two lectures each week. The lecture slots are on Wednesdays and Fr
 |      | 08-Mar | 58/1067 L/T   |   Recurrent Neural Networks                   |    [rnn-handout.pdf](handouts/rnns-handouts.pdf)    |[The Unreasonable Effectiveness of Recurrent Neural Networks](http://karpathy.github.io/2015/05/21/rnn-effectiveness/) 
 | 7    | 13-Mar | 2A/2065 L/T H |    __cancelled__     |                                                                                |                                         | 
 |      | 15-Mar | 58/1067 L/T   |   LSTMs and GRUs  | [lstm-handout.pdf](handouts/lstm-handouts.pdf)| [Recurrent Neural Network Regularization](https://arxiv.org/pdf/1409.2329.pdf) | 
-| 8    | 20-Mar | 2A/2065 L/T H | Embeddings                |                                                                                |                                         | 
-|      | 22-Mar | 58/1067 L/T   | Auto-encoder architectures  |                                                                                |                                         | 
-| 9    | 27-Mar | 2A/2065 L/T H | GANs  |                                                                                |                                         | 
-|      | 29-Mar | 58/1067 L/T   | Assorted topics  |                                                                                |                                         | 
+| 8    | 20-Mar | 2A/2065 L/T H |    Guest research lecture      |                                                                                |                                         | 
+|      | 22-Mar | 58/1067 L/T   | Embeddings |                                                                                |                                         | 
+| 9    | 27-Mar | 2A/2065 L/T H | Auto-encoder architectures |                                                                                |                                         | 
+|      | 29-Mar | 58/1067 L/T   | GANs    |                                                                                |                                         | 
 | 10   | 01-May | 2A/2065 L/T H | Assorted topics                         |                                                                                |                                         | 
-|      | 03-May | 58/1067 L/T   | Guest research lecture                          |                                                                                |                                         | 
+|      | 03-May | 58/1067 L/T   | Assorted topics                          |                                                                                |                                         | 
 | 11   | 06-May | 2A/2065 L/T H | Guest research lecture                          |                                                                                |                                         | 
 |      | 10-May | 58/1067 L/T   | Guest research lecture                          |                                                                                |                                         | 
 | 12   | 15-May | 2A/2065 L/T H | Wrap-up lecture                                 |                                                                                |                                         | 
