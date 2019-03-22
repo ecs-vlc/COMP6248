@@ -38,7 +38,7 @@ There will be two lectures each week. The lecture slots are on Wednesdays and Fr
 | 7    | 13-Mar | 2A/2065 L/T H |    __cancelled__     |                                                                                |                                         | 
 |      | 15-Mar | 58/1067 L/T   |   LSTMs and GRUs  | [lstm-handout.pdf](handouts/lstm-handouts.pdf)| [Recurrent Neural Network Regularization](https://arxiv.org/pdf/1409.2329.pdf) | 
 | 8    | 20-Mar | 2A/2065 L/T H |    Guest research lecture      |                                                                                |                                         | 
-|      | 22-Mar | 58/1067 L/T   | Embeddings |                                                                                |                                         | 
+|      | 22-Mar | 58/1067 L/T   | Embeddings [Embeddings-handout.pdf](handouts/Embeddings-handouts.pdf)| [Efficient Estimation of Word Representations in Vector Space](https://arxiv.org/pdf/1301.3781.pdf)                                         | 
 | 9    | 27-Mar | 2A/2065 L/T H | Auto-encoder architectures |                                                                                |                                         | 
 |      | 29-Mar | 58/1067 L/T   | GANs    |                                                                                |                                         | 
 | 10   | 01-May | 2A/2065 L/T H | Assorted topics                         |                                                                                |                                         | 
