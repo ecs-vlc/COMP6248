@@ -65,7 +65,7 @@ The lab schedule is below:
 | 6    | 05-Mar | 25/[1007/1009/1011] | [Implementing and training Convolutional Neural Networks using PyTorch and Torchbearer](./labs/lab5/) | 22 Mar, 16:00       | [COMP6248/2/](http://handin.ecs.soton.ac.uk/handin/1819/COMP6248/2/) | 
 | 7    | 12-Mar | 25/[1007/1009/1011] | [Using pretrained models and transfer learning](./labs/lab6)                                         | 22 Mar, 16:00       | [COMP6248/2/](http://handin.ecs.soton.ac.uk/handin/1819/COMP6248/2/) | 
 | 8    | 19-Mar | 25/[1007/1009/1011] | Catch-up week                                |         |  | 
-| 9    | 26-Mar | 25/[1007/1009/1011] | Recurrent Networks, Sequence Prediction and Embeddings                                | 3 May, 16:00        | [COMP6248/3/](http://handin.ecs.soton.ac.uk/handin/1819/COMP6248/3/) | 
+| 9    | 26-Mar | 25/[1007/1009/1011] | [Recurrent Networks, Sequence Prediction and Embeddings](./labs/lab7)                                | 3 May, 16:00        | [COMP6248/3/](http://handin.ecs.soton.ac.uk/handin/1819/COMP6248/3/) | 
 | 9    | 30-Apr | 25/[1007/1009/1011] | Deep Generative Models                                                                | 3 May, 16:00        | [COMP6248/3/](http://handin.ecs.soton.ac.uk/handin/1819/COMP6248/3/) | 
 | 11   | 07-May | 25/[1007/1009/1011] | Coursework Help and Advice                                                            |                     |             											| 
 | 12   | 14-May | 25/[1007/1009/1011] | Coursework Help and Advice                                                            |                     |             											| 
