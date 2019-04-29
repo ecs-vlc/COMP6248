@@ -1,0 +1,43 @@
+[NotebookApp | WARNING] No nbgrader_config.py file found (rerun with --debug to see where nbgrader is looking)
+[NotebookApp | INFO] Loading the validate_assignment nbgrader serverextension
+[NotebookApp | INFO] Serving notebooks from local directory: /Users/jsh2/Work/COMP6248-Labs/source/lab8
+[NotebookApp | INFO] 0 active kernels
+[NotebookApp | INFO] The Jupyter Notebook is running at:
+[NotebookApp | INFO] http://localhost:8889/?token=70610c50af6a26190ac74093dd75910606faf81399ac59cc
+[NotebookApp | INFO] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[NotebookApp | CRITICAL] 
+    
+    Copy/paste this URL into your browser when you connect for the first time,
+    to login with a token:
+        http://localhost:8889/?token=70610c50af6a26190ac74093dd75910606faf81399ac59cc
+[NotebookApp | WARNING] 404 GET /api/contents/source/lab8?type=directory&_=1556550351195 (127.0.0.1): No such file or directory: source/lab8
+[NotebookApp | WARNING] No such file or directory: source/lab8
+[NotebookApp | WARNING] 404 GET /api/contents/source/lab8?type=directory&_=1556550351195 (127.0.0.1) 2.93ms referer=http://localhost:8889/tree/source/lab8
+[NotebookApp | INFO] Accepting one-time-token-authenticated connection from 127.0.0.1
+[NotebookApp | WARNING] Notebook 8_1_Autoencoder.ipynb is not trusted
+[NotebookApp | INFO] Kernel started: 5e69cb0a-e4b5-4ed0-b487-4a0fd80a6301
+[NotebookApp | INFO] Adapting to protocol v5.1 for kernel 5e69cb0a-e4b5-4ed0-b487-4a0fd80a6301
+[NotebookApp | INFO] interrupted
+[NotebookApp | CRITICAL] Shutdown confirmed
+[NotebookApp | INFO] Shutting down 1 kernel
+[NotebookApp | INFO] Kernel shutdown: 5e69cb0a-e4b5-4ed0-b487-4a0fd80a6301
+[NotebookApp | WARNING] No nbgrader_config.py file found (rerun with --debug to see where nbgrader is looking)
+[NotebookApp | INFO] Loading the validate_assignment nbgrader serverextension
+[NotebookApp | INFO] Serving notebooks from local directory: /Users/jsh2/Work/COMP6248-Labs/source/lab8
+[NotebookApp | INFO] 0 active kernels
+[NotebookApp | INFO] The Jupyter Notebook is running at:
+[NotebookApp | INFO] http://localhost:8889/?token=cf9123c37c14d8a8d00d47410fe612cd0f6909384afb5248
+[NotebookApp | INFO] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[NotebookApp | CRITICAL] 
+    
+    Copy/paste this URL into your browser when you connect for the first time,
+    to login with a token:
+        http://localhost:8889/?token=cf9123c37c14d8a8d00d47410fe612cd0f6909384afb5248
+[NotebookApp | INFO] Accepting one-time-token-authenticated connection from 127.0.0.1
+[NotebookApp | WARNING] Notebook 8_3_VAE.ipynb is not trusted
+[NotebookApp | INFO] Kernel started: 8def6372-8d5d-486c-bcb5-f07990aceee0
+[NotebookApp | INFO] Adapting to protocol v5.1 for kernel 8def6372-8d5d-486c-bcb5-f07990aceee0
+[NotebookApp | INFO] interrupted
+[NotebookApp | CRITICAL] Shutdown confirmed
+[NotebookApp | INFO] Shutting down 1 kernel
+[NotebookApp | INFO] Kernel shutdown: 8def6372-8d5d-486c-bcb5-f07990aceee0
