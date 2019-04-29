@@ -35,7 +35,7 @@ The following is a list of the notebooks for this lab, with links to open direct
 8.3 VAE | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ecs-vlc/COMP6248/blob/master/docs/labs/lab8/8_3_VAE.ipynb) | [preview](https://github.com/ecs-vlc/COMP6248/blob/master/docs/labs/lab8/8_3_VAE.ipynb) | [download](https://raw.githubusercontent.com/ecs-vlc/COMP6248/master/docs/labs/lab8/8_3_VAE.ipynb)
 
 
-__Important:__ At the end of the lab you must save your notebooks and associated files to a safe location. At the end of the this lab you will be required to submit them (together with the notebooks for lab 8) to handin: [https://handin.ecs.soton.ac.uk/handin/1819/COMP6248/3/](https://handin.ecs.soton.ac.uk/handin/1819/COMP6248/3/). You must use the exact Jupyter notebooks we provide as they contain metadata which is used for assessing the exercises within them.
+__Important:__ At the end of the lab you must save your notebooks and associated files to a safe location. At the end of the this lab you will be required to submit them (together with the notebooks for lab 7) to handin: [https://handin.ecs.soton.ac.uk/handin/1819/COMP6248/3/](https://handin.ecs.soton.ac.uk/handin/1819/COMP6248/3/). You must use the exact Jupyter notebooks we provide as they contain metadata which is used for assessing the exercises within them.
 
 
 ## Prerequisites for running on your own machines
