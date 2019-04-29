@@ -7,7 +7,7 @@ credits: Maintained by <a href="http://www.ecs.soton.ac.uk/people/kf2u17">Dr Kat
 rdir: '../../'
 ---
 
-# Lab 7 - Recurrent Networks, Sequence Prediction and Embeddings
+# Lab 8 - Autoencoders and generative modelling
 
 _[Kate Farrahi, 29th April 2019](https://github.com/ecs-vlc/COMP6248)_
 
