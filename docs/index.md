@@ -44,7 +44,7 @@ There will be two lectures each week. The lecture slots are on Wednesdays and Fr
 | 10   | 01-May | 2A/2065 L/T H |   GANs|     | [GANs](https://papers.nips.cc/paper/5423-generative-adversarial-nets.pdf), [DCGANs](https://arxiv.org/pdf/1511.06434.pdf), [Wasserstein GANs](https://arxiv.org/pdf/1701.07875.pdf)                                     | 
 |      | 03-May | 58/1067 L/T   | Assorted topics                          |                                                                                |                                         | 
 | 11   | 06-May | 2A/2065 L/T H | Guest research lecture                          |                                                                                |                                         | 
-|      | 10-May | 58/1067 L/T   | Guest research lecture                          |                                                                                |                                         | 
+|      | 08-May | 58/1067 L/T   | Guest research lecture (Matt - Disentanglement)                          | [disentanglement.pdf](handouts/disentanglement.pdf)                                                                                |                                         | 
 | 12   | 15-May | 2A/2065 L/T H | Wrap-up lecture                                 |                                                                                |                                         | 
 |      | 17-May | 58/1067 L/T   |                                                 |                                                                                |                                         | 
 
