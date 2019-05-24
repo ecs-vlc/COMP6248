@@ -75,7 +75,7 @@ Deep learning is primarily characterised by function compositions: \\ \vspace{10
 	\begin{itemize}
 		\item Often with relatively simple functions (e.g. $f(\bm x, \bm{\theta}_f) = \sigma(\bm{x}^\top \bm{\theta}_f)$)
 	\end{itemize} \vspace{3mm}
-	\item<3-> Recurrent networks: $\bm y_t = f(\bm y_{t-1}, \bm x_t, \bm\theta) = f(f(\bm y_{t-2}, \bm x_{t-1}, \bm\theta), \bm\theta) = \dots$
+	\item<3-> Recurrent networks: $\bm y_t = f(\bm y_{t-1}, \bm x_t, \bm\theta) = f(f(\bm y_{t-2}, \bm x_{t-1}, \bm\theta), \bm x_t, \bm\theta) = \dots$
 \end{itemize}
 \vspace{10mm}
 
@@ -134,8 +134,22 @@ In the early days the focus of deep learning was on learning functions for class
 	\frametitle{Success stories - Translation}
 
 \begin{itemize}
-\item ENGLISH TEXT\item The reason Boeing are doing this is to cram more seats in to make their planemore competitive with our products," said Kevin Keniston, head of passengercomfort at Europe's Airbus.\item TRANSLATED TO FRENCH\item La raison pour laquelle Boeing fait cela est de creer plus de sieges pour rendreson avion plus competitif avec nos produits", a declare Kevin Keniston, chefdu confort des passagers chez Airbus. \footnote{Wu, Yonghui, et al. "Google's neural machine translation system: Bridging the gap between human and machine translation." arXiv preprint arXiv:1609.08144 (2016).}
-%\item When asked about this, an official of the American administration replied:%The United States is not conducting electronic surveillance aimed at offices%of the World Bank and IMF in Washington."%%\item Interroge a ce sujet, un fonctionnaire de l'administration americaine a repondu:%Les Etats-Unis n'effectuent pas de surveillance electronique a l'intention des%bureaux de la Banque mondiale et du FMI a Washington"
+\item ENGLISH TEXT
+\item The reason Boeing are doing this is to cram more seats in to make their plane
+more competitive with our products," said Kevin Keniston, head of passenger
+comfort at Europe's Airbus.
+\item TRANSLATED TO FRENCH
+\item La raison pour laquelle Boeing fait cela est de creer plus de sieges pour rendre
+son avion plus competitif avec nos produits", a declare Kevin Keniston, chef
+du confort des passagers chez Airbus. \footnote{Wu, Yonghui, et al. "Google's neural machine translation system: Bridging the gap between human and machine translation." arXiv preprint arXiv:1609.08144 (2016).}
+
+%\item When asked about this, an official of the American administration replied:
+%The United States is not conducting electronic surveillance aimed at offices
+%of the World Bank and IMF in Washington."
+%
+%\item Interroge a ce sujet, un fonctionnaire de l'administration americaine a repondu:
+%Les Etats-Unis n'effectuent pas de surveillance electronique a l'intention des
+%bureaux de la Banque mondiale et du FMI a Washington"
 \end{itemize}
 \end{frame}
 
