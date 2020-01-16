@@ -90,5 +90,5 @@ Additional Notes from Lectures 5 and 8 can be found [here](handouts/KateNotes.pd
 
 ## Where to get additional help
 
-Talk to me! You are more than welcome to arrange to meet to discuss issues related to the course - I will be in the labs each week. The lab sessions are also facilitated by a team of our PhD students who are experts in the deep learning / differentiable programming field in their own right (many of them have published work in this space, or are close to achieving that). I can be reached by <a href="http://www.ecs.soton.ac.uk/people/jsh2">email</a> ([email](mailto:jsh2@ecs.soton.ac.uk)) or by coming to find me in my office (32/4043). 
+Talk to me! You are more than welcome to arrange to meet to discuss issues related to the course - I will be in the labs each week. The lab sessions are also facilitated by a team of our PhD students who are experts in the deep learning / differentiable programming field in their own right (many of them have published work in this space, or are close to achieving that). I can be reached by [email](mailto:jsh2@ecs.soton.ac.uk) or by coming to find me in my office (32/4043). 
 
