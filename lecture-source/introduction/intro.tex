@@ -25,7 +25,7 @@
 
 \title[COMP6248 Deep Learning]{COMP6248 Differentiable Programming}
 \subtitle{(and some Deep Learning)}
-\author{Kate Farrahi and Jonathon Hare}
+\author{Jonathon Hare}
 \institute[]
 {
   Vision, Learning and Control\\
@@ -38,7 +38,8 @@
 \setbeamertemplate{navigation symbols}{} %remove navigation symbols
 
 \begin{document}
-  \frame{
+
+\frame{
   \titlepage
 }
 
@@ -96,7 +97,7 @@ In the early days the focus of deep learning was on learning functions for class
 		\item<+-> The idea of Differentiable Programming also opens up interesting possibilities: 
 		\begin{itemize}
 			\item The functional blocks don't need to be direct functions in a mathematical sense; more generally they can be \emph{algorithms}.
-			\item What if the functional block we're learning parameters for is itself an algorithm that optimises the parameters of an internal algorithm using a gradient based optimiser?!\footnote{See our ICLR 2019 paper: https://arxiv.org/abs/1812.03928}
+			\item What if the functional block we're learning parameters for is itself an algorithm that optimises the parameters of an internal algorithm using a gradient based optimiser?!\footnote{See our ICLR 2019 paper: https://arxiv.org/abs/1812.03928 and NeurIPS 2019 paper: https://arxiv.org/abs/1906.06565}
 		\end{itemize}
 	\end{itemize}
 \end{itemize}
@@ -109,6 +110,7 @@ In the early days the focus of deep learning was on learning functions for class
 	\begin{itemize}
 		\item<+-> Most deep learning systems are trained using first order gradient-based optimisers, but there is an active body of research on gradient-free methods.
 		\item<+-> There is an increasing interest in methods that use different styles of learning, such as Hebbian learning, within deep networks. More broadly there are a number of us\footnote{including at least myself, my PhD students and Geoff Hinton!} who are interested in biologically motivated models and learning methods.
+		\item<+-> This course will primarily focus on differentiable methods, but we'll look at how relaxations can be made to make non-differentiable operators learnable with gradient-based optimisers.
 	\end{itemize}
 \end{itemize}
 \end{frame}
@@ -155,13 +157,21 @@ du confort des passagers chez Airbus. \footnote{Wu, Yonghui, et al. "Google's ne
 
 \begin{frame}
 	\frametitle{What is the objective of this module?}
+	
+	A word of warning: This is not a module about how to apply someone else's deep network architecture to a task, or how to train existing models!
+	\\[1em]
+	You will learn some of that along the way of course, but the real objective is for you to graduate knowing how to understand, critique and implement new and recent research papers on deep learning and associated topics.
+\end{frame}
+
+\begin{frame}
+	\frametitle{What is the objective of this module?}
 	\begin{enumerate}
-		\item To gain an in-depth theoretical and practical understanding of modern deep neural networks and their applications.
-		\item Understand the underlying mathematical and algorithmic principles of deep learning
-		\item Understand the key factors that have made deep learning successful for various applications
-		\item Apply existing deep learning models to real datasets
-		\item Gain facility in working with deep learning libraries in order to create and evaluate network architectures
-		\item Critically appraise the merits and shortcomings of model architectures on specific problems
+		\item<+-> To gain an in-depth theoretical and practical understanding of modern deep neural networks and their applications.
+		\item<+-> Understand the underlying mathematical and algorithmic principles of deep learning.
+		\item<+-> Understand the key factors that have made differentiable programming successful for various applications.
+		\item<+-> Apply existing deep learning models to real datasets.
+		\item<+-> Gain facility in working with deep learning libraries in order to create and evaluate network architectures.
+		\item<+-> Critically appraise the merits and shortcomings of model architectures on specific problems.
 	\end{enumerate}
 \end{frame}
 
@@ -175,7 +185,12 @@ du confort des passagers chez Airbus. \footnote{Wu, Yonghui, et al. "Google's ne
 	\frametitle{How is this module going to be delivered?}
 	
 	\begin{enumerate}
-	\item Reading material before the lectures
+		\item Lectures
+		\begin{enumerate}
+			\item Note: I am refreshing some material from last year, but the website still has links to the old slides.
+			\item You need to read the suggested papers/links before the lectures!
+		\end{enumerate}
+		\item Labs
 	\end{enumerate}
 \end{frame}
 
@@ -185,19 +200,21 @@ du confort des passagers chez Airbus. \footnote{Wu, Yonghui, et al. "Google's ne
 	\begin{center}
 	\begin{tabular}{ c c c }
 		 Lab & Date & Topic \\ \hline
-		 Lab 1 &  05/02/19 & Introducing PyTorch \\ 
-		 Lab 2 & 12/02/19 & Automatic Differentiation \\  
-		 Lab 3 & 19/02/19 & Optimisation   \\
-		 Lab 4 & 26/02/19 & NNs with PyTorch and Torchbearer   \\
- 		Lab 5 & 05/03/19 & CNNs with PyTorch and Torchbearer   \\
- 		Lab 6 & 12/03/19 & Transfer Learning \\
- 		Lab 7 & 19/03/19 & RNNs, Sequence Prediction and Embeddings \\
-		 Lab 8 & 26/03/19 & Deep Generative Models\\ \hline 
-		 & Break & \\
+		 Lab 1  & 05/02/20 & Introducing PyTorch \\ 
+		 Lab 2  & 12/02/20 & Automatic Differentiation \\  
+		 Lab 3  & 19/02/20 & Optimisation \\
+		 Lab 4  & 26/02/20 & NNs with PyTorch and Torchbearer \\
+		 		& 04/03/20 & \emph{NO LAB} \\
+ 		 Lab 5  & 11/03/20 & CNNs with PyTorch and Torchbearer \\
+ 		 Lab 6  & 18/03/20 & Transfer Learning \\
+ 		 Lab 7  & 18/03/20 & RNNs, Sequence Prediction and Embeddings \\
+ 		 \hline
+ 		 & Break & \\
 		 \hline
-		 Lab 9 & 30/04/19 & Coursework Help and Advice \\
-		 Lab 10 & 30/04/19 & Coursework Help and Advice \\
- 		 Lab 11 & 30/04/19 & Coursework Help and Advice \\
+		 Lab 7  & 22/04/20 & RNNs, Sequence Prediction and Embeddings \\
+		 Lab 8  & 29/04/19 & Deep Generative Models \\
+		        & 06/05/19 & Coursework Help and Advice \\
+ 		 	    & 13/05/19 & Coursework Help and Advice \\
 	\end{tabular}
 	\end{center}
 \end{frame}
@@ -206,48 +223,53 @@ du confort des passagers chez Airbus. \footnote{Wu, Yonghui, et al. "Google's ne
 	\frametitle{What do we expect you already know?}
 	
 	\begin{enumerate}
-	\item COMP3206 or COMP3223 or COMP6229 or COMP6245
-	\item Fundamentals of Linear Algebra, Probability and Statistics, Calculus
-	\item Programming in Python
+	\item<+-> COMP3223 or COMP6245 (fundamentals of statistical learning, MLPs, gradient descent, how to train and evaluate learning machines, supervised-vs-unsupervised)
+	\item<+-> Fundamentals of Matrix Algebra (matrix-matrix, matrix-vector and matrix-scalar operations, inverse, determinant, rank, Eigendecomposition, SVD), Probability \& Statistics (1st-order summary statistics, simple continous and discrete probability distributions, expected values, etc) and Multivariable Calculus (partial differentiation, chain-rule)
+	\item<+-> Programming in Python
 	\end{enumerate}
 \end{frame}
 
-%\begin{frame}
-%	\frametitle{What might you already know?}	
-%\end{frame}
+\begin{frame}
+	\frametitle{What might you already know?}	
+	\begin{enumerate}
+	\item<+-> How to use a deep learning framework (Keras, Tensorflow, PyTorch)?
+	\item<+-> How to train an existing model architecture using a GPU?
+	\item<+-> How to perform transfer learning?
+	\item<+-> How to perform differentiable sampling of a Multivariate Normal Distribution?
+	\end{enumerate}
+\end{frame}
 
 \begin{frame}
 	\frametitle{Assessment Structure}
 	\begin{enumerate}
 		\item Lab work $40\%$
-		\item Final project $40\%$ \\  
-		\item In-class tests $20\%$ \\	
+		\item Final project $40\%$  - Handin in Week 12 (15th May, 4PM) \\
+		\item Online quizzes $20\%$ - Planned for Thursdays in Weeks 6 (5th-Mar) and 10 (30-Apr) \\	
 	\end{enumerate}
 \end{frame}
 
-\begin{frame}
-	\frametitle{Assessment Timetable}
+% \begin{frame}
+% 	\frametitle{Assessment Timetable}
 	
-	\begin{center}
-	\begin{tabular}{ l c  c}
-		 Assessment & Date  & Time\\ \hline
-		 Labs 1-3  &  22/02/19 & 16:00 \\ 
-		 Coursework Team Information & 27/02/19 & 16:00 \\
-		 In - class Test 1 & 01/03/19 & midnight  \\		 
-		 Labs 4-6  & 15/03/19 & 16:00 \\  
-		 In - class Test 2 & 29/03/19 & midnight  \\		 
-		 Labs 7-8 & 03/05/19 & 16:00   \\
-		 Final Coursework Submission & 15/05/19 & 16:00 \\
-	\end{tabular}
-	\end{center}
+% 	\begin{center}
+% 	\begin{tabular}{ l c  c}
+% 		 Assessment & Date  & Time\\ \hline
+% 		 Labs 1-3  &  22/02/19 & 16:00 \\ 
+% 		 Coursework Team Information & 27/02/19 & 16:00 \\
+% 		 In - class Test 1 & 01/03/19 & midnight  \\		 
+% 		 Labs 4-6  & 15/03/19 & 16:00 \\  
+% 		 In - class Test 2 & 29/03/19 & midnight  \\		 
+% 		 Labs 7-8 & 03/05/19 & 16:00   \\
+% 		 Final Coursework Submission & 15/05/19 & 16:00 \\
+% 	\end{tabular}
+% 	\end{center}
 	
-\end{frame}
+% \end{frame}
 
 \begin{frame}
 	\frametitle{The Main Assignment}
 	\framesubtitle{The ICLR Reproducibility Challenge}
 	\url{http://comp6248.ecs.soton.ac.uk/coursework.html}
-	
 \end{frame}
 
 \end{document}

@@ -29,10 +29,10 @@ There will be two lectures each week. The lecture slots are on predominantly on 
 |      | 07-Feb | 67/1037       | Perceptrons, MLPs and Backpropagation                                    | [backprop-handouts.pdf](handouts/backprop-handouts.pdf)                        | [Learning representations by back-propagating errors](handouts/nature_article.pdf)                    | 
 | 3    | 10-Feb | Avenue L/T A  | Automatic Differentiation                                                | [autograd-handouts.pdf](handouts/autograd-handouts.pdf)                        | [Automatic differentiation in PyTorch](https://openreview.net/pdf?id=BJJsrmfCZ) | 
 |      | 12-Feb | SUSU Cinema   | Optimisation                                                             | [optimisation-handouts.pdf](handouts/optimisation-handouts.pdf)                                                                            |  [Adam: A Method for Stochastic Optimization](https://arxiv.org/abs/1412.6980)                                       | 
-| 4    | 17-Feb | Avenue L/T A  | A Biological Perspective					                               | [biological-inspiration-handouts.pdf](handouts/biological-inspiration-handouts.pdf)              |                                         | 
-|      | 19-Feb | SUSU Cinema   | Deeper Networks: Universal approximation, overfitting and regularisation | [deepnetworks-handouts.pdf](handouts/deepnetworks-handouts.pdf)                |        [Dropout:A Simple Way to Prevent Neural Networks from Overfitting](handouts/srivastava14a.pdf)                           | 
-| 5    | 24-Feb | Avenue L/T A  | Guest Lecture - TBC                                                      | | | 
-|      | 28-Feb | 67/1037       | Convolutional Networks                                                   | [Convolution-handouts.pdf](handouts/Convolution-handouts.pdf)                  | [handwritten digit recognition with a back-propagation network](https://papers.nips.cc/paper/293-handwritten-digit-recognition-with-a-back-propagation-network.pdf)                                        | 
+| 4    | 17-Feb | Avenue L/T A  | Deeper Networks: Universal approximation, overfitting and regularisation | [deepnetworks-handouts.pdf](handouts/deepnetworks-handouts.pdf)                |        [Dropout:A Simple Way to Prevent Neural Networks from Overfitting](handouts/srivastava14a.pdf)                           | 
+|      | 19-Feb | SUSU Cinema   | Convolutional Networks                                                   | [Convolution-handouts.pdf](handouts/Convolution-handouts.pdf)                  | [handwritten digit recognition with a back-propagation network](https://papers.nips.cc/paper/293-handwritten-digit-recognition-with-a-back-propagation-network.pdf)                                        | 
+| 5    | 24-Feb | Avenue L/T A  | Guest Lecture - Ethan Harris - Visualising Neural Networks               | | | 
+|      | 28-Feb | 67/1037       | A Biological Perspective                                                 | [biological-inspiration-handouts.pdf](handouts/biological-inspiration-handouts.pdf)              |                                         | 
 | 6    | 02-Mar | Avenue L/T A  | Networks Architectures for image classification                          | [Architectures-handouts.pdf](handouts/Architectures-handouts.pdf)                                                                              | [ImageNet Classification with Deep Convolutional Neural Networks](https://papers.nips.cc/, aper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf), [Striving for Simplicity: The All Convolutional Net](https://arxiv.org/pdf/1412.6806.pdf), [Very Deep Convolutional Networks for Large-Scale Image Recognition](https://arxiv.org/pdf/1409.1556.pdf), [Going Deeper with Convolutions](https://arxiv.org/pdf/1409.4842), [Deep Residual Learning for Image Recognition](https://arxiv.org/pdf/1512.03385.pdf) | 
 |      | 04-Mar | SUSU Cinema   | Networks Architectures for image classification (II)                     | as above                                                                               |                                         | 
 | 7    | 09-Mar | Avenue L/T A  | Recurrent Neural Networks                                                | [rnn-handout.pdf](handouts/rnns-handouts.pdf)    |[The Unreasonable Effectiveness of Recurrent Neural Networks](http://karpathy.github.io/2015/05/21/rnn-effectiveness/) 
@@ -65,18 +65,18 @@ The lab schedule is below:
 | 3    | 12-Feb | Zepler L2           | [Automatic Differentiation](./labs/lab2/)                                                             | 1 Mar, 16:00       | [COMP6248/1/](http://handin.ecs.soton.ac.uk/handin/1819/COMP6248/1/) | 
 | 4    | 19-Feb | Zepler L2           | [Optimisation](./labs/lab3/)                                                      | 1 Mar, 16:00       | [COMP6248/1/](http://handin.ecs.soton.ac.uk/handin/1819/COMP6248/1/) | 
 | 5    | 26-Feb | Zepler L2           | [Implementing simple Neural Networks using PyTorch and Torchbearer](./labs/lab4/)                    | 22 Mar, 16:00       | [COMP6248/2/](http://handin.ecs.soton.ac.uk/handin/1819/COMP6248/2/) | 
-| 6    | 05-Mar | Zepler L2           | [Implementing and training Convolutional Neural Networks using PyTorch and Torchbearer](./labs/lab5/) | 22 Mar, 16:00       | [COMP6248/2/](http://handin.ecs.soton.ac.uk/handin/1819/COMP6248/2/) | 
-| 7    | 12-Mar | Zepler L2           | [Using pretrained models and transfer learning](./labs/lab6)                                         | 22 Mar, 16:00       | [COMP6248/2/](http://handin.ecs.soton.ac.uk/handin/1819/COMP6248/2/) | 
-| 8    | 19-Mar | Zepler L2           | Catch-up week                                |         |  | 
-| 9    | 26-Mar | Zepler L2           | [Recurrent Networks, Sequence Prediction and Embeddings](./labs/lab7)                                | 10 May, 16:00        | [COMP6248/3/](http://handin.ecs.soton.ac.uk/handin/1819/COMP6248/3/) | 
-| 9    | 30-Apr | Zepler L2           | [Autoencoders and Deep Generative Models](./labs/lab8)                                                                | 10 May, 16:00        | [COMP6248/3/](http://handin.ecs.soton.ac.uk/handin/1819/COMP6248/3/) | 
-| 11   | 07-May | Zepler L2           | Coursework Help and Advice                                                            |                     |             											| 
-| 12   | 14-May | Zepler L2           | Coursework Help and Advice                                                            |                     |             											| 
+| 6    | 04-Mar |                     | _No Lab_ |||
+| 7    | 11-Mar | Zepler L2           | [Implementing and training Convolutional Neural Networks using PyTorch and Torchbearer](./labs/lab5/) | 22 Mar, 16:00       | [COMP6248/2/](http://handin.ecs.soton.ac.uk/handin/1819/COMP6248/2/) | 
+| 8    | 18-Mar | Zepler L2           | [Using pretrained models and transfer learning](./labs/lab6)                                         | 22 Mar, 16:00       | [COMP6248/2/](http://handin.ecs.soton.ac.uk/handin/1819/COMP6248/2/) | 
+| 9    | 22-Apr | Zepler L2           | [Recurrent Networks, Sequence Prediction and Embeddings](./labs/lab7)                                | 10 May, 16:00        | [COMP6248/3/](http://handin.ecs.soton.ac.uk/handin/1819/COMP6248/3/) | 
+| 10   | 29-Apr | Zepler L2           | [Autoencoders and Deep Generative Models](./labs/lab8)                                                                | 10 May, 16:00        | [COMP6248/3/](http://handin.ecs.soton.ac.uk/handin/1819/COMP6248/3/) | 
+| 11   | 06-May | Zepler L2           | Coursework Help and Advice                                                            |                     |             											| 
+| 12   | 13-May | Zepler L2           | Coursework Help and Advice                                                            |                     |             											| 
 -->
 
 ## Online Quizzes
 
-There will be two assessed online-quizzes. Details to follow.
+There will be two assessed online-quizzes; I'm planning for these to be on the 5th March and 30th April. More details to follow.
 
 ## Coursework assignment
 

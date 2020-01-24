@@ -1,15 +1,15 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Head matter - can we try to be consistent on
-% included packages
-\documentclass{beamer}
-\mode<presentation>
-{\usetheme{default}
- \usecolortheme{default}
- \usefonttheme{default}
- \setbeamertemplate{navigation symbols}{}
- \setbeamertemplate{footline}[frame number]
-% \setbeamertemplate{caption}[numbered]
- }
+\ifdefined\beamerclass
+\else
+    \def\beamerclass{beamer}
+\fi
+\documentclass[\beamerclass]{beamer}
+
+\usepackage{pgfpages}
+\mode<handout>{
+  % \setbeamercolor{background canvas}{bg=black!20}
+  \pgfpagesuselayout{2 on 1}[a4paper,border shrink=5mm]
+}
+
 \usepackage[english]{babel}
 \usepackage{algorithm}
 \usepackage[noend]{algpseudocode}
@@ -108,47 +108,73 @@
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Formatting for title page
-\title[Deep Learning]{Review of Machine Learning}
-\author{Kate Farrahi}
-\institute{ECS Southampton}
-\date{\today}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usetheme{Copenhagen}
+\hypersetup{pdfstartview={Fit}}
+\lstset{basicstyle=\small\ttfamily,breaklines=true}
+
+\title[COMP6248 Deep Learning]{Review of Machine Learning}
+\subtitle{(and some Deep Learning)}
+\author{Jonathon Hare}
+\institute[]
+{
+  Vision, Learning and Control\\
+  University of Southampton 
+}
+\date{}
+\subject{Computer Science}
+\useoutertheme{infolines}
+\setbeamertemplate{headline}{} %remove headline
+\setbeamertemplate{navigation symbols}{} %remove navigation symbols
+
 \begin{document}
 \begin{frame}
   \titlepage
 \end{frame}
 %%-------------------------------------------------------------%
 
-\begin{frame}[fragile]\frametitle{Three Types of Learning}
+\begin{frame}[fragile]\frametitle{Types of Learning}
 \begin{itemize}
 \item Supervised Learning - learn to predict an output when given an input vector
 
-\item Reinforcement Learning - learn to select an action to maximize the expected sum of future rewards (payoff)
-
 \item Unsupervised Learning - discover a good internal representation of the input
+
+\item Reinforcement Learning - learn to select an action to maximize the expectation of future rewards (payoff)
+
+\item Self-supervised Learning - learn with targets induced by a prior on the unlabelled training data
+
+\item Semi-supervised Learning - learn with few labelled examples and many unlabelled ones
 \end{itemize}
 
 \end{frame}
 %%-------------------------------------------------------------%
 
 \begin{frame}[fragile]\frametitle{Supervised Learning}
-\center{\includegraphics[width=\textwidth]{figs/SL.pdf}}
-\footnote{Newell, Alejandro, Kaiyu Yang, and Jia Deng. "Stacked hourglass networks for human pose estimation." European Conference on Computer Vision. Springer, Cham, 2016.}
+\center{\includegraphics[width=.9\textwidth]{figs/SL.pdf}} \\
+\footnotesize{Newell, Alejandro, Kaiyu Yang, and Jia Deng. ``Stacked hourglass networks for human pose estimation.'' ECCV'16. Springer, 2016.}
+\end{frame}
+%%-------------------------------------------------------------%
+
+\begin{frame}[fragile]\frametitle{Unsupervised Learning}
+\center{\includegraphics[width=7cm]{figs/UL.pdf}}
+\footnotesize{\url{https://skymind.ai/wiki/generative-adversarial-network-gan} and \url{https://github.com/robbiebarrat/art-DCGAN}}
 \end{frame}
 %%-------------------------------------------------------------%
 
 \begin{frame}[fragile]\frametitle{Reinforcement Learning}
 \center{\includegraphics[width=\textwidth]{figs/RL.pdf}}
-\footnote{Reference: Wikipedia \url{https://simple.wikipedia.org/wiki/Reinforcement_learning}}
+\footnotesize{Reference: Wikipedia \url{https://simple.wikipedia.org/wiki/Reinforcement_learning}}
 \end{frame}
 %%-------------------------------------------------------------%
 
+\begin{frame}[fragile]\frametitle{Self-supervised Learning}
+% \center{\includegraphics[width=7cm]{figs/UL.pdf}}
+% \footnotesize{\url{https://skymind.ai/wiki/generative-adversarial-network-gan} and \url{https://github.com/robbiebarrat/art-DCGAN}}
+\end{frame}
+%%-------------------------------------------------------------%
 
-\begin{frame}[fragile]\frametitle{Unsupervised Learning}
-\center{\includegraphics[width=7cm]{figs/UL.pdf}}
-\footnote{\url{https://skymind.ai/wiki/generative-adversarial-network-gan} and \url{https://github.com/robbiebarrat/art-DCGAN}}
+\begin{frame}[fragile]\frametitle{Semi-supervised Learning}
+% \center{\includegraphics[width=7cm]{figs/UL.pdf}}
+% \footnotesize{\url{https://skymind.ai/wiki/generative-adversarial-network-gan} and \url{https://github.com/robbiebarrat/art-DCGAN}}
 \end{frame}
 %%-------------------------------------------------------------%
 
