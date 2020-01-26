@@ -105,7 +105,21 @@
 }
 \makeatother
 
-
+\usepackage{amsmath}
+\usepackage{mathdots}
+\usepackage{yhmath}
+\usepackage{cancel}
+\usepackage{color}
+\usepackage{siunitx}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{amssymb}
+\usepackage{gensymb}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usetikzlibrary{fadings}
+\usetikzlibrary{patterns}
+\usetikzlibrary{shadows.blur}
 
 
 \usetheme{Copenhagen}
@@ -113,7 +127,7 @@
 \lstset{basicstyle=\small\ttfamily,breaklines=true}
 
 \title[COMP6248 Deep Learning]{Review of Machine Learning}
-\subtitle{(and some Deep Learning)}
+\subtitle{(and some Deep Network Fundamentals)}
 \author{Jonathon Hare}
 \institute[]
 {
@@ -126,7 +140,30 @@
 \setbeamertemplate{headline}{} %remove headline
 \setbeamertemplate{navigation symbols}{} %remove navigation symbols
 
+\definecolor{darkblue}{RGB}{37,55,97}
+\definecolor{mellowyellow}{RGB}{247,206,70}
+\definecolor{almostwhite}{RGB}{254,255,255}
+\definecolor{merrygreen}{RGB}{79,173,91}
+
+\addtobeamertemplate{footnote}{\hskip -2em}{}
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
 \begin{document}
+
+\begin{frame}[plain]
+        \begin{tikzpicture}[overlay, remember picture, shift={(current page.south west)},font={\fontfamily{Montserrat-TOsF}\selectfont}]
+        \fill [merrygreen,text=darkblue] (0,0) rectangle (\paperwidth, \paperheight);
+        \draw (4,7) node [align=left,text=almostwhite] {\Huge \begin{tabular}{l} \textbf{Train,} \\ \textbf{Validate,} \\ \textbf{Test} \end{tabular}};
+        \draw (11,1) node [align=left,text=almostwhite] {\includegraphics[scale=0.15]{../vlc.png}};
+        \end{tikzpicture}
+\end{frame}
+
+
 \begin{frame}
   \titlepage
 \end{frame}
@@ -149,41 +186,82 @@
 %%-------------------------------------------------------------%
 
 \begin{frame}[fragile]\frametitle{Supervised Learning}
-\center{\includegraphics[width=.9\textwidth]{figs/SL.pdf}} \\
-\footnotesize{Newell, Alejandro, Kaiyu Yang, and Jia Deng. ``Stacked hourglass networks for human pose estimation.'' ECCV'16. Springer, 2016.}
+\begin{center}
+  \includegraphics[width=.9\textwidth]{figs/SL.pdf}
+  \blfootnote{Newell, Alejandro, Kaiyu Yang, and Jia Deng. ``Stacked hourglass networks for human pose estimation.'' ECCV'16. Springer, 2016.}
+\end{center}
 \end{frame}
 %%-------------------------------------------------------------%
 
 \begin{frame}[fragile]\frametitle{Unsupervised Learning}
-\center{\includegraphics[width=7cm]{figs/UL.pdf}}
-\footnotesize{\url{https://skymind.ai/wiki/generative-adversarial-network-gan} and \url{https://github.com/robbiebarrat/art-DCGAN}}
+\begin{center}
+  \includegraphics[width=0.8\textwidth]{figs/k-means.png}
+\end{center}
 \end{frame}
 %%-------------------------------------------------------------%
 
 \begin{frame}[fragile]\frametitle{Reinforcement Learning}
-\center{\includegraphics[width=\textwidth]{figs/RL.pdf}}
-\footnotesize{Reference: Wikipedia \url{https://simple.wikipedia.org/wiki/Reinforcement_learning}}
+\begin{center}
+  \includegraphics[width=0.9\textwidth]{figs/RL.pdf}
+  \blfootnote{Reference: Wikipedia \url{https://simple.wikipedia.org/wiki/Reinforcement_learning}}
+\end{center}
 \end{frame}
 %%-------------------------------------------------------------%
 
 \begin{frame}[fragile]\frametitle{Self-supervised Learning}
-% \center{\includegraphics[width=7cm]{figs/UL.pdf}}
-% \footnotesize{\url{https://skymind.ai/wiki/generative-adversarial-network-gan} and \url{https://github.com/robbiebarrat/art-DCGAN}}
+\begin{center}
+  \resizebox{0.8\textwidth}{!}{\input{figs/emecomm_model.tikz}\unskip}
+  \blfootnote{Daniela Mihai and Jonathon Hare. Avoiding hashing and encouraging visual semantics in referential emergent language games. EmeComm\@NeurIPS 2019. https://arxiv.org/abs/1911.05546}
+\end{center}
+
 \end{frame}
 %%-------------------------------------------------------------%
 
 \begin{frame}[fragile]\frametitle{Semi-supervised Learning}
-% \center{\includegraphics[width=7cm]{figs/UL.pdf}}
-% \footnotesize{\url{https://skymind.ai/wiki/generative-adversarial-network-gan} and \url{https://github.com/robbiebarrat/art-DCGAN}}
+\begin{center}
+ \includegraphics[width=0.6\textwidth]{figs/SS.png}\blfootnote{Jeremy Howard. The wonderful and terrifying implications of computers that can learn. TEDxBrussels. \url{http://www.ted.com/talks/jeremy_howard_the_wonderful_and_terrifying_implications_of_computers_that_can_learn}}
+\end{center}
 \end{frame}
 %%-------------------------------------------------------------%
 
+\begin{frame}[fragile]\frametitle{Generative Models}
+\begin{itemize}
+  \item Many unsupervised and self-supervised models can be classed as `Generative Models'.
+  \item Given unlabelled data $X$, a unsupervised generative model learns $P[X]$.
+  \begin{itemize}
+    \item Could be direct modelling of the data (e.g. Gaussian Mixture Models)
+    \item Could be indirect modelling by learning to map the data to a parametric distribution in a lower dimensional space (e.g. a VAEs Encoder) or by learning a mapping from a parameterised distribution to the real data space (e.g. a VAE Decoder or GAN)
+  \end{itemize}
+  \item These are characterised by an ability to `sample' the model to `create' new data
+\end{itemize}
+%\url{http://robotics.stanford.edu/~ang/papers/nips01-discriminativegenerative.pdf}
+\end{frame}
+
+%%-------------------------------------------------------------%
+
+\begin{frame}[fragile]\frametitle{Generative vs. Discriminative Models (II)}
+Generative vs. discriminative approaches to classification use different statistical modelling.
+\begin{itemize}
+\item Discriminative models learn the boundary between classes. A discriminative models is a model of the conditional probability of the target $Y$ given an observation $X$: $P[Y|X]$.
+\item Generative models of labelled data model the distribution of individual classes. Given an observable variable $X$ and a target variable $Y$, a generative model is a statistical model that tries to model $P[X|Y]$ and $P[Y]$ in order to model the joint probability distribution $P[X, Y]$.\footnote{Some such models can be sampled conditionally based on a prior $Y$ - e.g. a Conditional VAE: \url{https://papers.nips.cc/paper/5775-learning-structured-output-representation-using-deep-conditional-generative-models}}
+\end{itemize} 
+
+% Additional Reading: \url{http://cs229.stanford.edu/notes/cs229-notes2.pdf}
+%\url{http://robotics.stanford.edu/~ang/papers/nips01-discriminativegenerative.pdf}
+\end{frame}
+
+%%-------------------------------------------------------------%
 
 \begin{frame}[fragile]\frametitle{Two Types of Supervised Learning}
 \begin{itemize}
-\item Classification:  The program is asked to specify which of $k$ categories some input belongs to. The learning algorithm produces a function $f : \mathbb{R}^n \rightarrow \{1, ..., k\}$.
-
-\item Regression:  The program is asked predict a numerical value given some input. The learning algorithm outputs a function $f: \mathbb{R}^n \rightarrow \mathbb{R}$.
+\item<+-> Classification:  The machine is asked to specify which of $k$ categories some input belongs to.
+\begin{itemize}
+  \item Multiclass classification - target is one of the $k$ classes
+  \item Multilabel classification - target is some number of the $k$ classes
+  \item In both cases, the machine is a function $f : \mathbb{R}^n \rightarrow \{1, ..., k\}$ (although it is most common for the learning algorithm to actually learn $\hat f : \mathbb{R}^n \rightarrow \mathbb{R}^k$).
+\end{itemize}
+\item<+-> Regression:  The machine is asked predict $k$ numerical values given some input. The machine is a function $f: \mathbb{R}^n \rightarrow \mathbb{R}^k$.
+\item<+-> Note that there are lots of exceptions in the form the inputs (and outputs) can take though! We'll see lots of variations in the coming weeks.
 \end{itemize}
 \end{frame}
 %%-------------------------------------------------------------%
@@ -192,36 +270,12 @@
 \begin{frame}[fragile]\frametitle{How Supervised Learning Typically Works}
 \begin{itemize}
 \item Start by choosing a model-class: $\hat y = f(\bm x; \bm W)$ where the model-class $f$ is a way of using some numerical parameters, $\bm W$, to map each input vector $\bm x$ to a predicted output $ \hat y$.
-\item Learning means adjusting the parameters to reduce the discrepancy between the target output $ y$ on each training case and the output $\hat y$, predicted by the model. %\footnote{Reference: Geoffrey Hinton \url{https://www.cs.toronto.edu/~hinton/coursera/lecture1/lec1e.mp4}}
+\item Learning means adjusting the parameters to reduce the discrepancy between the true target output $y$ on each training case and the output $\hat y$, predicted by the model. %\footnote{Reference: Geoffrey Hinton \url{https://www.cs.toronto.edu/~hinton/coursera/lecture1/lec1e.mp4}}
 \end{itemize}
 
 \end{frame}
+
 %%-------------------------------------------------------------%
-
-\begin{frame}[fragile]\frametitle{Generative vs. Discriminative Models}
-Generative vs. discriminative approaches to classification use different statistical modelling.
-\begin{itemize}
-\item Generative models model the distribution of individual classes. Given an observable variable $X$ and a target variable $Y$, a generative model is a statistical model that tries to model $P[X|Y]$ and $P[Y]$ in order to model the joint probability distribution $P[X, Y]$. 
-\item Discriminative models learn the boundary between classes.  A discriminative models is a model of the conditional probability of the target $Y$, given an observation $X$, $P[Y|X; W]$.  \footnote{Reference: \url{https://en.wikipedia.org/wiki/Generative_model}}
-\end{itemize} 
-
-Additional Reading
-\url{http://cs229.stanford.edu/notes/cs229-notes2.pdf}
-%\url{http://robotics.stanford.edu/~ang/papers/nips01-discriminativegenerative.pdf}
-\end{frame}
-%%-------------------------------------------------------------%
-
-%\begin{frame}[fragile]\frametitle{Deep Generative Models}
-%
-%Deep Generative Models (DGMs) are generative models that use ideas from deep learning.
-%\begin{itemize}
-%\item Autoencoder (AE) based models have an encoder and decoder. Popular models in this category are Variational autoencoders (VAEs), Deep Recurrent Attentive Writer (DRAW), Denoising VAEs, and Wasserstein AEs. 
-%\item Autoregressive models include PixelCNN, PixelRNN, Wavenet.
-%\end{itemize}
-%\footnote{Recent Trends in Deep Generative Models: a Review \url{https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8566353}}
-%\end{frame}
-%%%%-------------------------------------------------------------%
-
 
 \begin{frame}[fragile]\frametitle{Multilayer Perceptron}
 \begin{tikzpicture}[shorten >=1pt,->,draw=black!50, node distance=\layersep]
