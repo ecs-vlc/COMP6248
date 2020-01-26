@@ -1,9 +1,9 @@
 ---
 layout: index
 title: "COMP6248 Differentiable Programming (and Deep Learning)"
-subtitle: "2018-19"
+subtitle: "2019-20"
 githubHeader: "false"
-credits: Maintained by <a href="http://www.ecs.soton.ac.uk/people/kf2u17">Dr Kate Farrahi</a> and <a href="http://www.ecs.soton.ac.uk/people/jsh2">Dr Jonathon Hare</a>.
+credits: Maintained by <a href="http://www.ecs.soton.ac.uk/people/jsh2">Dr Jonathon Hare</a>.
 rdir: '../../'
 ---
 
@@ -14,6 +14,7 @@ _[Jonathon Hare, 9th Oct 2018](https://github.com/ecs-vlc/COMP6248)_
 ## Change History
 
 - 20181009: Initial version
+- 20200126: Minor updates for the 1920 AY
 
 ## Acknowledgements
 This lab started out its life as a Keras practical developed for the VLC group based on Jason Brownlee's ["Handwritten Digit Recognition using Convolutional Neural Networks in Python with Keras"](http://machinelearningmastery.com/handwritten-digit-recognition-using-convolutional-neural-networks-python-keras/) tutorial. It subsequently evolved as it was used in tutorials run for external organisations including Ordnance Survey, Lloyds Register and DISCNet. 
@@ -39,7 +40,6 @@ There is only a single (long) notebook this week to simplify the use of external
 
 6.1 Transfer Learning and Fine Tuning | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ecs-vlc/COMP6248/blob/master/docs/labs/lab6/6_1_TransferLearning.ipynb) | [preview](https://github.com/ecs-vlc/COMP6248/blob/master/docs/labs/lab6/6_1_TransferLearning.ipynb) | [download](https://raw.githubusercontent.com/ecs-vlc/COMP6248/master/docs/labs/lab6/6_1_TransferLearning.ipynb)
 
-__Important:__ At the end of the lab you must save your notebooks and associated files to a safe location. At the end of the this lab you will be required to submit them (together with the notebooks for labs 4 and 5) to handin: [https://handin.ecs.soton.ac.uk/handin/1819/COMP6248/2/](https://handin.ecs.soton.ac.uk/handin/1819/COMP6248/2/). You must use the exact Jupyter notebooks we provide as they contain metadata which is used for assessing the exercises within them.
 
 ## Prerequisites for running on your own machines
 You'll need access to a computer with the following installed:

@@ -1,9 +1,9 @@
 ---
 layout: index
 title: "COMP6248 Differentiable Programming (and Deep Learning)"
-subtitle: "2018-19"
+subtitle: "2019-20"
 githubHeader: "false"
-credits: Maintained by <a href="http://www.ecs.soton.ac.uk/people/kf2u17">Dr Kate Farrahi</a> and <a href="http://www.ecs.soton.ac.uk/people/jsh2">Dr Jonathon Hare</a>.
+credits: Maintained by <a href="http://www.ecs.soton.ac.uk/people/jsh2">Dr Jonathon Hare</a>.
 rdir: '../../'
 ---
 
@@ -14,6 +14,7 @@ _[Jonathon Hare, 2nd Nov 2018](https://github.com/ecs-vlc/COMP6248)_
 ## Change History
 
 - 20181102: Initial version
+- 20200126: Minor updates for the 1920 AY
 
 ## Acknowledgements
 
@@ -44,9 +45,6 @@ The following is a list of the notebooks for this lab, with links to open direct
 2.1 Forward Mode Automatic Differentiation | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ecs-vlc/COMP6248/blob/master/docs/labs/lab2/2_1_ForwardAD.ipynb) | [preview](https://github.com/ecs-vlc/COMP6248/blob/master/docs/labs/lab2/2_1_ForwardAD.ipynb) | [download](https://raw.githubusercontent.com/ecs-vlc/COMP6248/master/docs/labs/lab2/2_1_ForwardAD.ipynb)
 2.2 Reverse Mode Automatic Differentiation | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ecs-vlc/COMP6248/blob/master/docs/labs/lab2/2_2_ReverseAD.ipynb) | [preview](https://github.com/ecs-vlc/COMP6248/blob/master/docs/labs/lab2/2_2_ReverseAD.ipynb) | [download](https://raw.githubusercontent.com/ecs-vlc/COMP6248/master/docs/labs/lab2/2_2_ReverseAD.ipynb)
 2.3 Automatic Differentiation in PyTorch | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ecs-vlc/COMP6248/blob/master/docs/labs/lab2/2_3_PyTorchAD.ipynb) | [preview](https://github.com/ecs-vlc/COMP6248/blob/master/docs/labs/lab2/2_3_PyTorchAD.ipynb) | [download](https://raw.githubusercontent.com/ecs-vlc/COMP6248/master/docs/labs/lab2/2_3_PyTorchAD.ipynb)
-
-
-__Important:__ At the end of the lab you must save your notebooks and associated files to a safe location. At the end of the third lab you will be required to submit them (together with the notebooks for labs 2 and 3) to handin: [https://handin.ecs.soton.ac.uk/handin/1819/COMP6248/1/](https://handin.ecs.soton.ac.uk/handin/1819/COMP6248/1/). You must use the exact Jupyter notebooks we provide as they contain metadata which is used for assessing the exercises within them.
 
 ## Prerequisites for running on your own machines
 

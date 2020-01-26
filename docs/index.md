@@ -8,9 +8,9 @@ credits: Maintained by <a href="http://www.ecs.soton.ac.uk/people/jsh2">Dr Jonat
 
 Welcome to the homepage for the ECS [COMP6248 Deep Learning](https://secure.ecs.soton.ac.uk/module/COMP6248) module.
 
-Deep learning has revolutionised numerous fields in recent years. We've witnessed improvements in everything from computer vision through speech analysis to natural language processing as a result of the advent of cheap GPGPU compute coupled with large datasets and some neat algorithms. More broadly, the idea of 'Differentiable Programming' in which we define entire programs as compositions of differentiable operations which can then be optimised to fit data looks to become a new norm in how we utilise computers.
+Deep learning has revolutionised numerous fields in recent years. We've witnessed improvements in everything from computer vision through speech analysis to natural language processing as a result of the advent of cheap GPGPU compute coupled with large datasets and some neat algorithms. More broadly, the idea of 'Differentiable Programming', in which we define entire programs as compositions of differentiable operations which can then be optimised to fit data, looks to become a new norm in how we utilise computers.
 
-This module will look at how differentiable programming works, from theoretical foundations right through to practical implementation. We'll study key aspects such as automatic differentiation, look at models for _deep learning_ such as convolutional and recurrent neural networks, as well as considering current research in depth. 
+This module will look at how differentiable programming works, from theoretical foundations right through to practical implementation. We'll study key aspects such as automatic differentiation, look at models for _deep learning_ such as convolutional and recurrent neural networks, as well as considering current research in depth. Along the way we'll also look at aspects of biology and neuroscience, and see how ideas from these fields feed-in to current research.
 
 The overall aim of this module is not to teach you to be able to train pre-existing models (although you will learn to do that!), but rather to equip you with the fundamental skills to be able to understand and implement models and ideas that are currently being developed by researchers. We intend to equip you with the knowledge needed to understand new ideas as they are published, and give you the ability to constructively critisise, and identify limitations, of different approaches.
 
@@ -51,28 +51,28 @@ There will be two lectures each week. The lecture slots are on predominantly on 
 
 ## Labs
 
-40% of the marks for the module are for assessed lab sessions. Each week we are organising a 2-hour lab session which you will need to complete. The labs have been designed to put the theory covered in the lectures into context, and the equip you with practical skills in implementing and training differentiable programs.
+For 8 of the weeks we are organising a 2-hour lab session in which you will need to complete a series of worksheets. The worksheets have been designed to put the theory covered in the lectures into context, and the equip you with practical skills in implementing and training differentiable programs. A team of PhD-student demonstrators will be available in the lab to help you with any questions you might have about the topics you are working on.
 
-Lab information will be available soon. Labs will start in the second week (5th Feb) 9-11 on Wednesday mornings in Zepler Level 2.
+40% of the marks for the module are for lab work. Each of the 8 lab sessions will be accompanied by an additional assessed exercise for you to work through in your own time. You will have to work through the exercises __by yourself__ and write-up your findings. You will submit your answers/findings/working to all the assessed exercises to handin in week 11 for marking (6th May, 16:00). Each of the 8 exercises will be worth 5% of your overall module mark. We recommend that you do the exercise accompanying the lab as soon as possible after the lab session, rather than leaving them all to the end.
 
-<!---
-The lab schedule is below:
+Labs will start in the second week (5th Feb) 9-11 on Wednesday mornings in Zepler Level 2. The full lab schedule is below:
 
-| Week | Date   | Location            | Topic                                                                                 | Submission Deadline | Handin link 										    | 
-|------|--------|---------------------|---------------------------------------------------------------------------------------|---------------------|-------------------------------------------------------| 
-| 1    | 29-Jan |                     | NO LAB                               |                     |                    				    | 
-| 2    | 05-Feb | Zepler L2           | [Introducing PyTorch](./labs/lab1/)                                                                   | 1 Mar, 16:00       | [COMP6248/1/](http://handin.ecs.soton.ac.uk/handin/1819/COMP6248/1/) | 
-| 3    | 12-Feb | Zepler L2           | [Automatic Differentiation](./labs/lab2/)                                                             | 1 Mar, 16:00       | [COMP6248/1/](http://handin.ecs.soton.ac.uk/handin/1819/COMP6248/1/) | 
-| 4    | 19-Feb | Zepler L2           | [Optimisation](./labs/lab3/)                                                      | 1 Mar, 16:00       | [COMP6248/1/](http://handin.ecs.soton.ac.uk/handin/1819/COMP6248/1/) | 
-| 5    | 26-Feb | Zepler L2           | [Implementing simple Neural Networks using PyTorch and Torchbearer](./labs/lab4/)                    | 22 Mar, 16:00       | [COMP6248/2/](http://handin.ecs.soton.ac.uk/handin/1819/COMP6248/2/) | 
-| 6    | 04-Mar |                     | _No Lab_ |||
-| 7    | 11-Mar | Zepler L2           | [Implementing and training Convolutional Neural Networks using PyTorch and Torchbearer](./labs/lab5/) | 22 Mar, 16:00       | [COMP6248/2/](http://handin.ecs.soton.ac.uk/handin/1819/COMP6248/2/) | 
-| 8    | 18-Mar | Zepler L2           | [Using pretrained models and transfer learning](./labs/lab6)                                         | 22 Mar, 16:00       | [COMP6248/2/](http://handin.ecs.soton.ac.uk/handin/1819/COMP6248/2/) | 
-| 9    | 22-Apr | Zepler L2           | [Recurrent Networks, Sequence Prediction and Embeddings](./labs/lab7)                                | 10 May, 16:00        | [COMP6248/3/](http://handin.ecs.soton.ac.uk/handin/1819/COMP6248/3/) | 
-| 10   | 29-Apr | Zepler L2           | [Autoencoders and Deep Generative Models](./labs/lab8)                                                                | 10 May, 16:00        | [COMP6248/3/](http://handin.ecs.soton.ac.uk/handin/1819/COMP6248/3/) | 
-| 11   | 06-May | Zepler L2           | Coursework Help and Advice                                                            |                     |             											| 
-| 12   | 13-May | Zepler L2           | Coursework Help and Advice                                                            |                     |             											| 
--->
+| Week | Date   | Location  | Topic                                                                                                 |
+|------|--------|-----------|-------------------------------------------------------------------------------------------------------|
+| 1    | 29-Jan |           | NO LAB                                                                                                | 
+| 2    | 05-Feb | Zepler L2 | [Introducing PyTorch](./labs/lab1/)                                                                   |
+| 3    | 12-Feb | Zepler L2 | [Automatic Differentiation](./labs/lab2/)                                                             |
+| 4    | 19-Feb | Zepler L2 | [Optimisation](./labs/lab3/)                                                                          |
+| 5    | 26-Feb | Zepler L2 | [Implementing simple Neural Networks using PyTorch and Torchbearer](./labs/lab4/)                     |
+| 6    | 04-Mar |           | _No Lab_                                                                                              |
+| 7    | 11-Mar | Zepler L2 | [Implementing and training Convolutional Neural Networks using PyTorch and Torchbearer](./labs/lab5/) |
+| 8    | 18-Mar | Zepler L2 | [Using pretrained models and transfer learning](./labs/lab6)                                          | 
+| 9    | 22-Apr | Zepler L2 | [Recurrent Networks, Sequence Prediction and Embeddings](./labs/lab7)                                 | 
+| 10   | 29-Apr | Zepler L2 | [Autoencoders and Deep Generative Models](./labs/lab8)                                                |
+| 11   | 06-May | Zepler L2 | Coursework Help and Advice                                                                            |
+| 12   | 13-May | Zepler L2 | Coursework Help and Advice                                                                            | 
+
+__Note: I've made all the worksheet links available from last year. Please don't be surprised if we make some updates before each session!__
 
 ## Online Quizzes
 

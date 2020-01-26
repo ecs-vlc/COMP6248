@@ -1,9 +1,9 @@
 ---
 layout: index
 title: "COMP6248 Differentiable Programming (and Deep Learning)"
-subtitle: "2018-19"
+subtitle: "2019-20"
 githubHeader: "false"
-credits: Maintained by <a href="http://www.ecs.soton.ac.uk/people/kf2u17">Dr Kate Farrahi</a> and <a href="http://www.ecs.soton.ac.uk/people/jsh2">Dr Jonathon Hare</a>.
+credits: Maintained by <a href="http://www.ecs.soton.ac.uk/people/jsh2">Dr Jonathon Hare</a>.
 rdir: '../../'
 ---
 
@@ -14,6 +14,7 @@ _[Jonathon Hare, 3rd March 2019](https://github.com/ecs-vlc/COMP6248)_
 ## Change History
 
 - 20190303: Initial version
+- 20200126: Minor updates for the 1920 AY
 
 ## Acknowledgements
 This lab started out its life as a Keras practical developed for Lloyds Register and DISCNet. The LSTM-based Nietzsche generator described in the first part of the lab is inspired by the Keras examples. The remaining parts of the lab are based around [Ben Trevett's](https://github.com/bentrevett/pytorch-sentiment-analysis) excellent PyTorch & TorchText tutorial ([MIT License](https://github.com/bentrevett/pytorch-sentiment-analysis/blob/master/LICENSE)). 
@@ -48,9 +49,6 @@ The following is a list of the notebooks for this lab, with links to open direct
 7.2 Word Embeddings | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ecs-vlc/COMP6248/blob/master/docs/labs/lab7/7_2_WordEmbeddings.ipynb) | [preview](https://github.com/ecs-vlc/COMP6248/blob/master/docs/labs/lab7/7_2_WordEmbeddings.ipynb) | [download](https://raw.githubusercontent.com/ecs-vlc/COMP6248/master/docs/labs/lab7/7_2_WordEmbeddings.ipynb)
 7.3 Sequence Classification | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ecs-vlc/COMP6248/blob/master/docs/labs/lab7/7_3_SequenceClassification.ipynb) | [preview](https://github.com/ecs-vlc/COMP6248/blob/master/docs/labs/lab7/7_3_SequenceClassification.ipynb) | [download](https://raw.githubusercontent.com/ecs-vlc/COMP6248/master/docs/labs/lab7/7_3_SequenceClassification.ipynb)
 7.4 Convolutional Sequence Classification | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ecs-vlc/COMP6248/blob/master/docs/labs/lab7/7_4_CNNSequenceClassification.ipynb) | [preview](https://github.com/ecs-vlc/COMP6248/blob/master/docs/labs/lab7/7_4_CNNSequenceClassification.ipynb) | [download](https://raw.githubusercontent.com/ecs-vlc/COMP6248/master/docs/labs/lab7/7_4_CNNSequenceClassification.ipynb)
-
-
-__Important:__ At the end of the lab you must save your notebooks and associated files to a safe location. At the end of the this lab you will be required to submit them (together with the notebooks for lab 8) to handin: [https://handin.ecs.soton.ac.uk/handin/1819/COMP6248/3/](https://handin.ecs.soton.ac.uk/handin/1819/COMP6248/3/). You must use the exact Jupyter notebooks we provide as they contain metadata which is used for assessing the exercises within them.
 
 
 ## Prerequisites for running on your own machines

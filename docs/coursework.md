@@ -1,9 +1,10 @@
 ---
 layout: index
 title: "COMP6248 Differentiable Programming (and Deep Learning)"
-subtitle: "2018-19"
+subtitle: "2019-20"
 githubHeader: "false"
-credits: Maintained by <a href="http://www.ecs.soton.ac.uk/people/kf2u17">Dr Kate Farrahi</a> and <a href="http://www.ecs.soton.ac.uk/people/jsh2">Dr Jonathon Hare</a>.
+credits: Maintained by <a href="http://www.ecs.soton.ac.uk/people/jsh2">Dr Jonathon Hare</a>.
+rdir: '../../'
 ---
 
 # Deep Learning Coursework: The COMP6248 Reproducibility Challenge
@@ -14,24 +15,24 @@ Credit: 40% of overall module mark
 Team size: 3 students.
 
 ### Handin #1
-Due date: Friday 27th February 2019, 16:00.  
-Handin: [1718/COMP6237/1/](http://handin.ecs.soton.ac.uk/handin/1819/COMP6248/4/)  
+Due date: Friday 6th March 2020, 16:00.  
+Handin: [1718/COMP6237/1/](http://handin.ecs.soton.ac.uk/handin/1819/COMP6248/1/)  
 Required files: team.txt
 
 ### Handin #2
-Due date: Friday 17th May 2019, 16:00.  
-Handin: [1718/COMP6237/2/](http://handin.ecs.soton.ac.uk/handin/1819/COMP6248/5/)  
+Due date: Friday 15th May 2020, 16:00.  
+Handin: [1718/COMP6237/2/](http://handin.ecs.soton.ac.uk/handin/1819/COMP6248/2/)  
 Required files: paper.pdf; mark_split.pdf  
 
 ## Overview
-For the last two years the International Conference on Representation Learning (ICLR; pronounced "i-clear") has run a challenge encourgaging researchers to try to reproduce the work presented in papers submitted to the conference. The motivation for this has been as a way of trying to address a larger problem surrounding the lack of reproducability of published results in AI papers. This coursework takes direct inspiration from this challenge.
+For the last three years the International Conference on Representation Learning (ICLR; pronounced "i-clear") has run a challenge encourgaging researchers to try to reproduce the work presented in papers submitted to the conference. The motivation for this has been as a way of trying to address a larger problem surrounding the lack of reproducability of published results in AI papers. This coursework takes direct inspiration from this challenge.
 
-In this coursework you will form a team and choose a paper submitted to the ICLR conference from the past years. You will attempt to reproduce the results of your chosen paper and report back on your findings. 
+In this coursework you will form a team and choose a paper submitted to one of the ICLR 2020, ICLR 2019 or NeurIPS 2019 conferences. You will attempt to reproduce the results of your chosen paper and report back on your findings. 
 
 ## Details
-Students will form groups of three members. We've made a page on the student wiki to help you form teams: https://secure.ecs.soton.ac.uk/student/wiki/w/COMP6248-1819-classlist.
+Students will form groups of three members. I've made a page on the student wiki to help you form teams: https://secure.ecs.soton.ac.uk/student/wiki/w/COMP6248-1920-classlist.
 
-Each group will propose a paper to reproduce. All papers submitted to ICLR are publically available on the Open Review website (https://openreview.net/group?id=ICLR.cc) together with their reviews. You can pick a paper that was accepted, or one that was not. Kate, Jon and the lab demonstrators can offer advice on good and bad papers to try. You will need to be careful that you do not pick a paper that requires insane amounts of computation power (some of the papers claim experiments using hundreds of GPUs!). In some cases, the paper you pick might include experiments that require more resources than you have available, however in such cases it is fine to try to reproduce constrained or reduced versions of the experiments (e.g. with lower dimensional inputs, smaller datasets or less layers).
+Each group will propose a paper to reproduce. All papers submitted to ICLR are publically available on the Open Review website (https://openreview.net/group?id=ICLR.cc) together with their reviews. You can pick a paper that was accepted, or one that was not. The lab demonstrators and I can offer advice on good and bad papers to try. You will need to be careful that you do not pick a paper that requires insane amounts of computation power (some of the papers claim experiments using hundreds of GPUs!). In some cases, the paper you pick might include experiments that require more resources than you have available, however in such cases it is fine to try to reproduce constrained or reduced versions of the experiments (e.g. with lower dimensional inputs, smaller datasets or less layers).
 
 With your selected paper you should aim to replicate the experiments described in the paper. The goal is to assess if the experiments are reproducible, and to determine if the conclusions of the paper are supported by your findings. Your results can be either positive (i.e. confirm reproducibility), or negative (i.e. explain what you were unable to reproduce, and potentially explain why).
 
@@ -96,9 +97,10 @@ The final marks breakdown for a team that fails to agree will be determined by t
 ## Useful Resources
 If you need computational resources:
 
+* You can use the [ECS GPU compute service](https://sotonproduction.service-now.com/serviceportal?id=kb_article_view&sys_kb_id=31c11542dbad7b408ab945403996198d) for access to single RTX2070s overnight and at weekends.
+* You have access to a GPU server with 4 GTX 1080Ti GPUs built for this module: [Usage Information](server.html) and [more info](https://sotonproduction.service-now.com/serviceportal?id=kb_article_view&sys_kb_id=d7e0bb37db4a6b008ab9454039961957)
 * Google colab has GPU and TPU support in a Jupyter environment: https://colab.research.google.com
 * You should be able to get $300 of Google Cloud Credits here: https://cloud.google.com/free/
-* You have access to a GPU server built for this module: [Usage Information](server.html)
 
 ## Questions
 If you have any problems/questions then [email](mailto:jsh2@ecs.soton.ac.uk) or speak to [Jon](http://ecs.soton.ac.uk/people/jsh2) in his office or after the lectures.

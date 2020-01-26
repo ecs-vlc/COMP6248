@@ -1,9 +1,9 @@
 ---
 layout: index
 title: "COMP6248 Differentiable Programming (and Deep Learning)"
-subtitle: "2018-19"
+subtitle: "2019-20"
 githubHeader: "false"
-credits: Maintained by <a href="http://www.ecs.soton.ac.uk/people/kf2u17">Dr Kate Farrahi</a> and <a href="http://www.ecs.soton.ac.uk/people/jsh2">Dr Jonathon Hare</a>.
+credits: Maintained by <a href="http://www.ecs.soton.ac.uk/people/jsh2">Dr Jonathon Hare</a>.
 rdir: '../../'
 ---
 
@@ -14,6 +14,7 @@ _[Kate Farrahi, 29th April 2019](https://github.com/ecs-vlc/COMP6248)_
 ## Change History
 
 - 20190429: Initial version
+- 20200126: Minor updates for the 1920 AY
 
 ## Introduction 
 In this lab you'll explore Auto-Encoder architectures.
@@ -33,9 +34,6 @@ The following is a list of the notebooks for this lab, with links to open direct
 8.1 Auto-Encoder | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ecs-vlc/COMP6248/blob/master/docs/labs/lab8/8_1_Autoencoder.ipynb) | [preview](https://github.com/ecs-vlc/COMP6248/blob/master/docs/labs/lab8/8_1_Autoencoder.ipynb) | [download](https://raw.githubusercontent.com/ecs-vlc/COMP6248/master/docs/labs/lab8/8_1_Autoencoder.ipynb)
 8.2 Denoising AE | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ecs-vlc/COMP6248/blob/master/docs/labs/lab8/8_2_Denoising_Autoencoder.ipynb) | [preview](https://github.com/ecs-vlc/COMP6248/blob/master/docs/labs/lab8/8_2_Denoising_Autoencoder.ipynb) | [download](https://raw.githubusercontent.com/ecs-vlc/COMP6248/master/docs/labs/lab8/8_2_Denoising_Autoencoder.ipynb)
 8.3 VAE | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ecs-vlc/COMP6248/blob/master/docs/labs/lab8/8_3_VAE.ipynb) | [preview](https://github.com/ecs-vlc/COMP6248/blob/master/docs/labs/lab8/8_3_VAE.ipynb) | [download](https://raw.githubusercontent.com/ecs-vlc/COMP6248/master/docs/labs/lab8/8_3_VAE.ipynb)
-
-
-__Important:__ At the end of the lab you must save your notebooks and associated files to a safe location. At the end of the this lab you will be required to submit them (together with the notebooks for lab 7) to handin: [https://handin.ecs.soton.ac.uk/handin/1819/COMP6248/3/](https://handin.ecs.soton.ac.uk/handin/1819/COMP6248/3/). You must use the exact Jupyter notebooks we provide as they contain metadata which is used for assessing the exercises within them.
 
 
 ## Prerequisites for running on your own machines

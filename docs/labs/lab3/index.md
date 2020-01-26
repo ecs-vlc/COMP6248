@@ -1,9 +1,9 @@
 ---
 layout: index
 title: "COMP6248 Differentiable Programming (and Deep Learning)"
-subtitle: "2018-19"
+subtitle: "2019-20"
 githubHeader: "false"
-credits: Maintained by <a href="http://www.ecs.soton.ac.uk/people/kf2u17">Dr Kate Farrahi</a> and <a href="http://www.ecs.soton.ac.uk/people/jsh2">Dr Jonathon Hare</a>.
+credits: Maintained by <a href="http://www.ecs.soton.ac.uk/people/jsh2">Dr Jonathon Hare</a>.
 rdir: '../../'
 ---
 
@@ -14,6 +14,7 @@ _[Kate Farrahi, 7th Jan 2018](https://github.com/ecs-vlc/COMP6248)_
 ## Change History
 
 - 20190107: Initial version
+- 20200126: Minor updates for the 1920 AY
 
 ## Acknowledgements
 
@@ -38,8 +39,6 @@ The following is a list of the notebooks for this lab, with links to open direct
 3.1 Gradient Descent | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ecs-vlc/COMP6248/blob/master/docs/labs/lab3/3_1_gradient_descent.ipynb) | [preview](https://github.com/ecs-vlc/COMP6248/blob/master/docs/labs/lab3/3_1_gradient_descent.ipynb) | [download](https://raw.githubusercontent.com/ecs-vlc/COMP6248/master/docs/labs/lab3/3_1_gradient_descent.ipynb)
 3.2 SGD, Momentum, and Adam | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ecs-vlc/COMP6248/blob/master/docs/labs/lab3/3_2_sgd_momentum_adam.ipynb) | [preview](https://github.com/ecs-vlc/COMP6248/blob/master/docs/labs/lab3/3_2_sgd_momentum_adam.ipynb) | [download](https://raw.githubusercontent.com/ecs-vlc/COMP6248/master/docs/labs/lab3/3_2_sgd_momentum_adam.ipynb)
 
-
-__Important:__ At the end of the lab you must save your notebooks and associated files to a safe location. At the end of the third lab you will be required to submit them (together with the notebooks for labs 2 and 3) to handin: [https://handin.ecs.soton.ac.uk/handin/1819/COMP6248/1/](https://handin.ecs.soton.ac.uk/handin/1819/COMP6248/1/). You must use the exact Jupyter notebooks we provide as they contain metadata which is used for assessing the exercises within them.
 
 ## Prerequisites for running on your own machines
 You'll need access to a computer with the following installed:

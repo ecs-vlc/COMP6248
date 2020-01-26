@@ -37,7 +37,26 @@
 \setbeamertemplate{headline}{} %remove headline
 \setbeamertemplate{navigation symbols}{} %remove navigation symbols
 
+\definecolor{darkblue}{RGB}{37,55,97}
+\definecolor{mellowyellow}{RGB}{247,206,70}
+
+\addtobeamertemplate{footnote}{\hskip -2em}{}
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
 \begin{document}
+
+\begin{frame}[plain]
+        \begin{tikzpicture}[overlay, remember picture, shift={(current page.south west)},font={\fontfamily{Montserrat-TOsF}\selectfont}]
+        \fill [mellowyellow,text=darkblue] (0,0) rectangle (\paperwidth, \paperheight);
+        \draw (4,7) node [align=left,text=darkblue] {\Huge \begin{tabular}{l} \textbf{Differentiate} \\ \textbf{your} \\ \textbf{Objective} \end{tabular}};
+        \draw (11,1) node [align=left,text=darkblue] {\includegraphics[scale=0.15]{../vlc.png}};
+        \end{tikzpicture}
+\end{frame}
 
 \frame{
   \titlepage
@@ -117,64 +136,78 @@ In the early days the focus of deep learning was on learning functions for class
 
 \begin{frame}
 	\frametitle{Why should we care about this?}
-	\centering \includegraphics[width=0.9\textwidth]{Fig1.pdf}\footnote{Reference: Andrew Ng}
+	\centering \includegraphics[width=0.9\textwidth]{Fig1.pdf}\blfootnote{Reference: Andrew Ng}
 \end{frame}
 
 \begin{frame}
 	%\frametitle{Where did it all start \& what was the motivation?}
 	\frametitle{Success stories - Object detection and segmentation}
-	\centering \includegraphics[width=0.3\textwidth]{objseg.pdf}\footnote{Pinheiro, Pedro O., et al. "Learning to refine object segments." European Conference on Computer Vision. Springer, Cham, 2016.}
+	\centering \includegraphics[width=0.3\textwidth]{objseg.pdf}\blfootnote{Pinheiro, Pedro O., et al. "Learning to refine object segments." European Conference on Computer Vision. Springer, 2016.}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Success stories - Image generation}
-	\centering \includegraphics[width=0.8\textwidth]{imggen.pdf}\footnote{Radford, Alec, Luke Metz, and Soumith Chintala. "Unsupervised representation learning with deep convolutional generative adversarial networks." arXiv preprint arXiv:1511.06434 (2015).}
+	\centering \includegraphics[width=0.8\textwidth]{imggen.pdf}\blfootnote{Radford, Alec, Luke Metz, and Soumith Chintala. "Unsupervised representation learning with deep convolutional generative adversarial networks." arXiv preprint arXiv:1511.06434 (2015).}
 \end{frame}
 
 \begin{frame}
 	%\frametitle{Where did it all start \& what was the motivation?}
 	\frametitle{Success stories - Translation}
 
-\begin{itemize}
-\item ENGLISH TEXT
-\item The reason Boeing are doing this is to cram more seats in to make their plane
+ENGLISH TEXT\\
+The reason Boeing are doing this is to cram more seats in to make their plane
 more competitive with our products," said Kevin Keniston, head of passenger
 comfort at Europe's Airbus.
-\item TRANSLATED TO FRENCH
-\item La raison pour laquelle Boeing fait cela est de creer plus de sieges pour rendre
+\\[1em]
+TRANSLATED TO FRENCH\\
+La raison pour laquelle Boeing fait cela est de creer plus de sieges pour rendre
 son avion plus competitif avec nos produits", a declare Kevin Keniston, chef
-du confort des passagers chez Airbus. \footnote{Wu, Yonghui, et al. "Google's neural machine translation system: Bridging the gap between human and machine translation." arXiv preprint arXiv:1609.08144 (2016).}
+du confort des passagers chez Airbus. \blfootnote{Wu, Yonghui, et al. "Google's neural machine translation system: Bridging the gap between human and machine translation." arXiv preprint arXiv:1609.08144 (2016).}
 
-%\item When asked about this, an official of the American administration replied:
-%The United States is not conducting electronic surveillance aimed at offices
-%of the World Bank and IMF in Washington."
-%
-%\item Interroge a ce sujet, un fonctionnaire de l'administration americaine a repondu:
-%Les Etats-Unis n'effectuent pas de surveillance electronique a l'intention des
-%bureaux de la Banque mondiale et du FMI a Washington"
-\end{itemize}
 \end{frame}
 
 \begin{frame}
 	\frametitle{What is the objective of this module?}
 	
-	A word of warning: This is not a module about how to apply someone else's deep network architecture to a task, or how to train existing models!
+	\textbf{A word of warning: This is not a module about how to apply someone else's deep network architecture to a task, or how to train existing models!}
 	\\[1em]
 	You will learn some of that along the way of course, but the real objective is for you to graduate knowing how to understand, critique and implement new and recent research papers on deep learning and associated topics.
 \end{frame}
 
 \begin{frame}
 	\frametitle{What is the objective of this module?}
-	\begin{enumerate}
+	\begin{itemize}
 		\item<+-> To gain an in-depth theoretical and practical understanding of modern deep neural networks and their applications.
 		\item<+-> Understand the underlying mathematical and algorithmic principles of deep learning.
 		\item<+-> Understand the key factors that have made differentiable programming successful for various applications.
 		\item<+-> Apply existing deep learning models to real datasets.
 		\item<+-> Gain facility in working with deep learning libraries in order to create and evaluate network architectures.
 		\item<+-> Critically appraise the merits and shortcomings of model architectures on specific problems.
-	\end{enumerate}
+	\end{itemize}
 \end{frame}
 
+\begin{frame}
+	\frametitle{How is this module going to be delivered?}
+	
+	\begin{itemize}
+		\item<+-> Lectures (2 per week)
+		\begin{itemize}
+			\item Note: I am refreshing some material from last year, but the website still has links to the old slides.
+			\item You need to read the suggested papers/links before the lectures!
+			\item There is a little room for some flexibility later in the course on topics - tell me what you're interested in!
+		\end{itemize}
+		\item<+-> Labs (1x 2 hour session per week for 8 weeks + additional help sessions)
+		\begin{itemize}
+			\item Labs consist of a number of Juypter notebooks you will work though.
+			\begin{itemize}
+				\item You'll be using PyTorch as the primary framework, with Torchbearer to help out.
+				\item You will need to utilise GPU-compute for the later labs (we provide Google Colab links so you can use NVidia K80s in the cloud, but you'll also be able to use the RTX2070 in the lab machines if you wish).
+			\end{itemize}
+			\item I have scheduled lab sessions so you can get help and ask questions from myself and the demonstrator team.
+			\item After each lab you will have to do a follow-up exercise that will be marked.
+		\end{itemize}
+	\end{itemize}
+\end{frame}
 
 \begin{frame}
 	\frametitle{What will we cover in the module?}
@@ -182,23 +215,10 @@ du confort des passagers chez Airbus. \footnote{Wu, Yonghui, et al. "Google's ne
 \end{frame}
 
 \begin{frame}
-	\frametitle{How is this module going to be delivered?}
-	
-	\begin{enumerate}
-		\item Lectures
-		\begin{enumerate}
-			\item Note: I am refreshing some material from last year, but the website still has links to the old slides.
-			\item You need to read the suggested papers/links before the lectures!
-		\end{enumerate}
-		\item Labs
-	\end{enumerate}
-\end{frame}
-
-\begin{frame}
 	\frametitle{Lab session plan}
 	
 	\begin{center}
-	\begin{tabular}{ c c c }
+	\begin{tabular}{ l l l }
 		 Lab & Date & Topic \\ \hline
 		 Lab 1  & 05/02/20 & Introducing PyTorch \\ 
 		 Lab 2  & 12/02/20 & Automatic Differentiation \\  
@@ -207,7 +227,6 @@ du confort des passagers chez Airbus. \footnote{Wu, Yonghui, et al. "Google's ne
 		 		& 04/03/20 & \emph{NO LAB} \\
  		 Lab 5  & 11/03/20 & CNNs with PyTorch and Torchbearer \\
  		 Lab 6  & 18/03/20 & Transfer Learning \\
- 		 Lab 7  & 18/03/20 & RNNs, Sequence Prediction and Embeddings \\
  		 \hline
  		 & Break & \\
 		 \hline
@@ -222,30 +241,35 @@ du confort des passagers chez Airbus. \footnote{Wu, Yonghui, et al. "Google's ne
 \begin{frame}
 	\frametitle{What do we expect you already know?}
 	
-	\begin{enumerate}
+	\begin{itemize}
 	\item<+-> COMP3223 or COMP6245 (fundamentals of statistical learning, MLPs, gradient descent, how to train and evaluate learning machines, supervised-vs-unsupervised)
-	\item<+-> Fundamentals of Matrix Algebra (matrix-matrix, matrix-vector and matrix-scalar operations, inverse, determinant, rank, Eigendecomposition, SVD), Probability \& Statistics (1st-order summary statistics, simple continous and discrete probability distributions, expected values, etc) and Multivariable Calculus (partial differentiation, chain-rule)
+	\item<+-> Fundamentals of:
+	\begin{itemize}
+		\item Matrix Algebra (matrix-matrix, matrix-vector and matrix-scalar operations, inverse, determinant, rank, Eigendecomposition, SVD);
+		\item Probability \& Statistics (1st-order summary statistics, simple continous and discrete probability distributions, expected values, etc); and, 
+		\item Multivariable Calculus (partial differentiation, chain-rule).
+	\end{itemize}
 	\item<+-> Programming in Python
-	\end{enumerate}
+	\end{itemize}
 \end{frame}
 
 \begin{frame}
 	\frametitle{What might you already know?}	
-	\begin{enumerate}
+	\begin{itemize}
 	\item<+-> How to use a deep learning framework (Keras, Tensorflow, PyTorch)?
 	\item<+-> How to train an existing model architecture using a GPU?
 	\item<+-> How to perform transfer learning?
 	\item<+-> How to perform differentiable sampling of a Multivariate Normal Distribution?
-	\end{enumerate}
+	\end{itemize}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Assessment Structure}
-	\begin{enumerate}
-		\item Lab work $40\%$
-		\item Final project $40\%$  - Handin in Week 12 (15th May, 4PM) \\
-		\item Online quizzes $20\%$ - Planned for Thursdays in Weeks 6 (5th-Mar) and 10 (30-Apr) \\	
-	\end{enumerate}
+	\begin{itemize}
+		\item Lab work $40\%$ - Handin in week 11 (6th May, 4PM)
+		\item Final project $40\%$  - Handin in Week 12 (15th May, 4PM) (+ interim handin in week 6)
+		\item Online quizzes $20\%$ - Planned for Thursdays in Weeks 6 (5th-Mar) and 10 (30-Apr) 
+	\end{itemize}
 \end{frame}
 
 % \begin{frame}
