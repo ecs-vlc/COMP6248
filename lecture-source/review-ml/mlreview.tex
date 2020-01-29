@@ -153,6 +153,8 @@
   \endgroup
 }
 
+\DeclareMathOperator{\softmax}{softmax}
+
 \begin{document}
 
 \begin{frame}[plain]
@@ -277,161 +279,264 @@ Generative vs. discriminative approaches to classification use different statist
 
 %%-------------------------------------------------------------%
 
-\begin{frame}[fragile]\frametitle{Multilayer Perceptron}
-\begin{tikzpicture}[shorten >=1pt,->,draw=black!50, node distance=\layersep]
-    \tikzstyle{every pin edge}=[<-,shorten <=1pt]
-    \tikzstyle{neuron}=[circle,fill=black!25,minimum size=17pt,inner sep=0pt]
-    \tikzstyle{input neuron}=[neuron, fill=green!50];
-    \tikzstyle{output neuron}=[neuron, fill=red!50];
-    \tikzstyle{hidden neuron}=[neuron, fill=blue!50];
-    \tikzstyle{annot} = [text width=4em, text centered]
+\begin{frame}[fragile]\frametitle{Let's look at an unbiased Multilayer Perceptron...}
+  \begin{center}
+    \begin{tikzpicture}[shorten >=1pt,->,draw=black!50, node distance=\layersep]
+        \tikzstyle{every pin edge}=[<-,shorten <=1pt]
+        \tikzstyle{neuron}=[circle,fill=black!25,minimum size=17pt,inner sep=0pt]
+        \tikzstyle{input neuron}=[neuron, fill=green!50];
+        \tikzstyle{output neuron}=[neuron, fill=red!50];
+        \tikzstyle{hidden neuron}=[neuron, fill=blue!50];
+        \tikzstyle{annot} = [text width=4em, text centered]
 
-    % Draw the input layer nodes
-    \foreach \name / \y in {1,...,4}
-    % This is the same as writing \foreach \name / \y in {1/1,2/2,3/3,4/4}
-        \node[input neuron] (I-\name) at (0,-\y) {$x_\y$};
+        % Draw the input layer nodes
+        \foreach \name / \y in {1,...,4}
+        % This is the same as writing \foreach \name / \y in {1/1,2/2,3/3,4/4}
+            \node[input neuron] (I-\name) at (0,-\y) {$x_\y$};
 
-    % Draw the hidden layer nodes
-    \foreach \name / \y in {1,...,5}
-        \path[yshift=0.5cm]
-            node[hidden neuron] (H-\name) at (1.5*\layersep,-\y cm) {$h_\y$};
+        % Draw the hidden layer nodes
+        \foreach \name / \y in {1,...,5}
+            \path[yshift=0.5cm]
+                node[hidden neuron] (H-\name) at (1.5*\layersep,-\y cm) {$h_\y$};
 
-    % Draw the output layer node
-        \foreach \name / \y in {1,...,2}
-        \path[yshift=0.5cm]
-            node[output neuron, pin={[pin edge={->}]right:$\hat y_\y$}, right of=H-3] (O-\name) at (1.5*\layersep,-40-\y cm) {$o_\y$};
-    %\node[output neuron,pin={[pin edge={->}]right:Output}, right of=H-3] (O) {o};
+        % Draw the output layer node
+            \foreach \name / \y in {1,...,2}
+            \path[yshift=0.5cm]
+                node[output neuron, pin={[pin edge={->}]right:$\hat y_\y$}, right of=H-3] (O-\name) at (1.5*\layersep,-40-\y cm) {$o_\y$};
+        %\node[output neuron,pin={[pin edge={->}]right:Output}, right of=H-3] (O) {o};
 
-    % Connect every node in the input layer with every node in the
-    % hidden layer.
-    \path (I-1) edge node[anchor=south] {$w_{ji}^{(1)}$}(H-1);
-   \foreach \source in {1,...,4}
-        \foreach \dest in {1,...,5}
-       % \draw [arrow] (I-\source) - (H-\dest);
-            \path (I-\source) edge (H-\dest) ;
+        % Connect every node in the input layer with every node in the
+        % hidden layer.
+        \path (I-1) edge node[anchor=south] {$w_{ji}^{(1)}$}(H-1);
+       \foreach \source in {1,...,4}
+            \foreach \dest in {1,...,5}
+           % \draw [arrow] (I-\source) - (H-\dest);
+                \path (I-\source) edge (H-\dest) ;
 
-    % Connect every node in the hidden layer with the output layer
-    \path (H-1) edge node[anchor=south] {$w_{kj}^{(2)}$}(O-1);
-    \foreach \source in {1,...,5}
-       \foreach \dest in {1,...,2}
-        \path (H-\source) edge (O-\dest);
+        % Connect every node in the hidden layer with the output layer
+        \path (H-1) edge node[anchor=south] {$w_{kj}^{(2)}$}(O-1);
+        \foreach \source in {1,...,5}
+           \foreach \dest in {1,...,2}
+            \path (H-\source) edge (O-\dest);
 
-    % Annotate the layers
-    \node[annot,above of=H-1, node distance=1cm] (hl) {Hidden layer};
-    \node[annot,left of=hl] {Input layer};
-    \node[annot,right of=hl] {Output layer};
-\end{tikzpicture}
+        % Annotate the layers
+        \node[annot,above of=H-1, node distance=1cm] (hl) {Hidden layer};
+        \node[annot,left of=hl] {Input layer};
+        \node[annot,right of=hl] {Output layer};
+    \end{tikzpicture}
+  \end{center}
+  Without loss of generality, we can write the above as:
+  \begin{center}
+    $\hat y = g(f(\bm x; \bm W^{(1)}); \bm W^{(2)}) = g(\bm{W}^{(2)} f(\bm{W}^{(1)} \bm x))$\\
+  \end{center}
+  where $f$ and $g$ are activation functions.
+\end{frame}
+
+%%-------------------------------------------------------------%
+\begin{frame}[fragile]\frametitle{Common Activation Functions}
+
+\begin{itemize}
+  \item Identity
+  \item Sigmoid (aka Logistic)
+  \item Hyperbolic Tangent (tanh)
+  \item Rectified Linear Unit (ReLU) (aka Threshold Linear)
+\end{itemize}
+
+\end{frame}
+
+%%-------------------------------------------------------------%
+\begin{frame}[fragile]\frametitle{Final layer activations}
+
+\begin{center}
+    $\hat y = g(\bm{W}^{(2)} f(\bm{W}^{(1)} \bm x))$\\
+\end{center}
+
+\begin{itemize}
+  \item<+-> What form should the final layer function $g$ take? 
+  \item<+-> It depends on the task (and on the chosen loss function)...
+  \begin{itemize}
+    \item For regression it is typically linear (e.g. identity), but you might choose others if you say wanted to clamp the range of the network.
+    \item For binary classification (MLP has a single output), one would choose Sigmoid
+    \item For multilabel classification, typically one would choose Sigmoid
+    \item For multiclass classification, typically you would use the Softmax function
+  \end{itemize}
+\end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------%
 
-\begin{frame}[fragile]\frametitle{Review: Batch Gradient Descent}
+\begin{frame}[fragile]\frametitle{Softmax}
+The $\softmax$ is an activation function used at the output layer of a neural network that forces the outputs to sum to 1 so that they can represent a probability distribution across a discrete mutually exclusive alternatives.
 
-\bf{begin initialize} $n_H$, $w$, $Th$, $\eta$, $m \leftarrow 0$,  $r \leftarrow 0$ \\
-\hspace{1cm} \bf{do } $r \leftarrow r + 1$ (increment epoch) \\
-\hspace{2cm} $m \leftarrow 0$; $\Delta w \leftarrow 0$ \\
-\hspace{2cm} do $m \leftarrow m + 1$ \\
-\hspace{3cm} $x^m \leftarrow $ selected pattern \\ 
-\hspace{3cm} $\Delta w \leftarrow \Delta w -  \eta \frac{\partial J}{ \partial w}$ \\
-\hspace{2cm} until $m=M$ \\
-\hspace{2cm} $w \leftarrow w + \Delta w$ \\
-\hspace{1cm} until $J(w) < Th$ \\
-return $w$ \\
-end
+\begin{center}
+$\softmax(z)_i = \frac{e^{z_i}}{\sum_{j=1}^K e^{z_j}} \;\;\;\;\;\;\; \forall i = 1, 2, \dots, K$  
+\end{center}
 
-\end{frame}
-%-------------------------------------------------------------%
-
-
-\begin{frame}[fragile]\frametitle{Review: Stochastic Gradient Descent}
-
-\bf{begin initialize} $n_H$, $w$, $Th$, $\eta$, $m = 0$,  $r = 0$ \\
-\hspace{1cm} \bf{do } $r \leftarrow r + 1$ (increment epoch) \\
-\hspace{2cm} $m \leftarrow 0$\\
-\hspace{2cm} \bf{do } $m \leftarrow m + 1$ \\
-\hspace{3cm} $x^m \leftarrow$ selected pattern (randomly) \\
-\hspace{3cm} $w \leftarrow w -  \eta \frac{\partial J}{ \partial w}$ \\
-\hspace{2cm} until $m=M$ \\
-\hspace{1cm} until $J(w) < Th$ \\
-return $w$ \\
-end
+\begin{itemize}
+  \item Note that unlike the other activation functions you've seen, $\softmax$ makes reference to all the elements in the output.
+  \item The output of a softmax layer is a set of positive numbers which sum up to $1$ and can be thought of as a probability distribution.
+  \item Note: $\frac{\partial \softmax(z)_i }{z_i} = z_i (1 - z_i)$
+\end{itemize}
 
 \end{frame}
+
 %-------------------------------------------------------------%
 
+\begin{frame}[fragile]\frametitle{Ok, so let's talk loss functions}
+
+\begin{itemize}
+  \item<+-> The choice of loss function depends on the task (e.g. classification/regression/something else)
+  \item<+-> The choice also depends on the activation function of the last layer
+  \begin{itemize}
+    \item<+-> For numerical reasons (see Log-Sum-Exp in a few slides) many times the activation is computed directly within the loss rather than being part of the model
+    \item<+-> Some classification losses require \emph{raw outputs} (e.g. a linear layer) of the network as their input 
+    \begin{itemize}
+      \item These are often called \emph{unnormalised log probabilities} or \emph{logits}
+      \item An example would be hinge-loss used to create a Support Vector Machine that maximises the margin --- e.g.: $\ell_{hinge}(\hat y, y) = \max(0, 1-y \cdot \hat y)$ with a true label, $y \in \{-1,1\}$, for binary classification.
+    \end{itemize}
+  \end{itemize}
+  \item<+-> There are many different loss functions we might encounter (MSE, Cross-Entropy, KL-Divergence, huber, L1 (MAE), CTC, Triplet, ...) for different tasks.
+\end{itemize}
+
+\end{frame}
+
+%-------------------------------------------------------------%
 
 \begin{frame}[fragile]\frametitle{The Cost Function (measure of discrepancy) }
 
 Recall from Foundations of Machine Learning:
+
 \begin{itemize}
+\item Mean Squared Error (MSE) loss for a single data point (here assumed to be a vector, but equally applicable to a scalar) is given by \\
 
-\item Mean Squared Error (MSE) for $M$ data points is given by \\
+$\ell_{MSE}(\bm{\hat y}, \bm y) = \sum_i(\hat{y}_i - y_i)^2 = (\bm{\hat y} - \bm y)^\top (\bm{\hat y} - \bm y)$
 
-$MSE = \frac{1}{2*M} \sum_{i=1}^M (\hat{y}_i - y_i)^2 $
+\item<+-> We often multiply this by a constant factor of $\frac{1}{2}$ --- can anyone guess/remember why?
+\item<+-> $\ell_{MSE}(\bm{\hat y}, \bm y)$ is the predominant choice for regression problems with linear activation in the last layer
 
-\item  $\frac{1}{2*M} $ just a constant so can be replaced by $\frac{1}{2} $ or $\frac{1}{M}$
-\item Other cost functions can be used as well, for example the KL divergence or Hellinger distance \footnote{https://stats.stackexchange.com/questions/154879/a-list-of-cost-functions-used-in-neural-networks-alongside-applications}
-
-\item MSE can be slow to learn, especially if the predictions are very far off the targets \footnote{ http://neuralnetworksanddeeplearning.com/chap3.html}
-
-\item Cross-Entropy Cost function is generally a better choice of cost function (discussed next)
+\item<+-> For a classification problem with Softmax or Sigmoidal (or really anything non-linear) activations, MSE can cause slow learning, especially if the predictions are very far off the targets
+\begin{itemize}
+  \item Gradients of $\ell_{MSE}$ are proportional to the difference in target and predicted multiplied by the gradient of the activation function\footnote{ http://neuralnetworksanddeeplearning.com/chap3.html}
+  \item The Cross-Entropy loss function is generally a better choice in this case
+\end{itemize}
 \end{itemize} 
 
 \end{frame}
 %%-------------------------------------------------------------%
 
-\begin{frame}[fragile]\frametitle{Cross-Entropy Cost Function}
+\begin{frame}[fragile]\frametitle{Binary Cross-Entropy}
+
+For the binary classification case:\\
+\begin{center}
+$\ell_{BCE}(\hat y, y) = y \log(\hat y) + (1 - y) \log (1 - \hat y)$  
+\end{center}
 
 \begin{itemize}
-\item $J = -\frac{1}{M} \sum_x [y In(\hat y) + (1 - y) In (1 - \hat y)] $ \\ where $M$ is the number of data points in the training set
-\item The cross-entropy cost function is non-negative, $J > 0$
-\item $J \approx 0 $ when the prediction and targets are equal (i.e. $y = 0$ and $\hat y = 0$ or when $y = 1$ and $\hat y = 1$)
-\item $\frac{\partial J}{\partial w_{ij}} $ is proportional to the error in the output ($\hat y - y$) and therefore, the larger the error, the faster the neuron will learn! %\footnote{Discuss element of surprise and information theory https://datascience.stackexchange.com/questions/9302/the-cross-entropy-error-function-in-neural-networks, good expln here: \url{https://www.youtube.com/watch?v=k_S5fnKjO-4&list=PLkDaE6sCZn6Ec-XTbcX1uRg2_u4xOEky0&index=24}}
+
+\item The cross-entropy cost function is non-negative, $\ell_{BCE} > 0$
+\item $\ell_{BCE} \approx 0 $ when the prediction and targets are equal (i.e. $y = 0$ and $\hat y = 0$ or when $y = 1$ and $\hat y = 1$)
+\item With Sigmoidal final layer, $\frac{\partial \ell_{BCE}}{\partial \bm W^{(2)}_{i}} $ is proportional to just the error in the output ($\hat y - y$) and therefore, the larger the error, the faster the network will learn! %\footnote{Discuss element of surprise and information theory https://datascience.stackexchange.com/questions/9302/the-cross-entropy-error-function-in-neural-networks, good expln here: \url{https://www.youtube.com/watch?v=k_S5fnKjO-4&list=PLkDaE6sCZn6Ec-XTbcX1uRg2_u4xOEky0&index=24}}
+\item<+-> Note that the BCE is the negative log likelihood of the Bernoulli Distribution
 \end{itemize}
 
 \end{frame}
 %%-------------------------------------------------------------%
 
-\begin{frame}[fragile]\frametitle{Cross-Entropy Cost Function - What Does it Mean?}
+\begin{frame}[fragile]\frametitle{Binary Cross-Entropy --- Intuition}
 \begin{itemize}
-\item The cross-entropy can be thought of as a {\bf measure of surprise}. \\
-
+\item The cross-entropy can be thought of as a {\bf measure of surprise}.
 \item Given some input $x_i$, we can think of $\hat y_i$ as the estimated probability that $x_i$ belongs to class $1$, and $1-\hat y_i$ is the estimated probability that it belongs to class $0$.
-
-\item Note the extreme case of infinite cross-entropy, if your model believes that a class has 0 probability of occurrence, and yet the class appears in the data, the "surprise" of your model will be infinitely great. 
+\item Note the extreme case of infinite cross-entropy, if your model believes that a class has 0 probability of occurrence, and yet the class appears in the data, the `surprise' of your model will be infinitely great. 
 \end{itemize}
 \end{frame}
 %%-------------------------------------------------------------%
 
-\begin{frame}[fragile]\frametitle{General Cross-Entropy Cost Function for Neural Networks}
+\begin{frame}[fragile]\frametitle{Binary Cross-Entropy for multiple labels}
 
+In the case of multi-label classification with a network with multiple sigmoidal outputs you just sum the BCE over the outputs:
 
- $J = -\frac{1}{M} \sum_{i = 1}^M \sum_{k = 1}^K [y_k^{(i)} In (\hat y_k^{(i)}) + (1 - y_k^{(i)}) In (1 - \hat y_k^{(i)})] $ \\  
+\begin{center}
+  $\ell_{BCE} = \sum_{k = 1}^K [y_k \log (\hat y_k) + (1 - y_k) \log (1 - \hat y_k)] $ \\  
+\end{center}
 
-where $M$ is the number of data points in the training set and $K$ is the number of classes of the classification problem, $\hat y \in \mathbb{R}^K$
-
-%Use this reference: \url{https://www.youtube.com/watch?v=0twSSFZN9Mc}
+where $K$ is the number of classes of the classification problem, $\hat y \in \mathbb{R}^K$.
 \end{frame}
+
 %%-------------------------------------------------------------%
-
-\begin{frame}[fragile]\frametitle{Softmax}
-The softmax is an activation function used at the output layer of a neural network that forces the outputs  to sum to 1 so that they can represent a probability distribution across a discrete mutually exclusive alternatives.
-
-$ y_j = \frac{e^{z_j}}{\sum_{k=1}^K e^{z_j}} $, for $j = 1, 2, ..., K$
-
-Note $\frac{\partial y_i }{z_i} = y_i (1 - y_i) $
+\begin{frame}[fragile]\frametitle{Numerical Stability: The Log-Sum-Exp trick}
+\begin{center}
+$\ell_{BCE}(\hat y, y) = y \log(\hat y) + (1 - y) \log (1 - \hat y)$  
+\end{center}
 
 \begin{itemize}
-\item The output of a sofmax layer is a set of positive numbers which sum up to $1$ and can be thought of as a probability distribution
+  \item Consider what might happen early in training when the model might confidently predict a positive example as negative
+  \begin{itemize}
+    \item<+-> $\hat y = \sigma(z) \approx 0 \implies z<<0$
+    \item<+-> if $\hat y$ is small enough, it will become $0$ due to limited precision of floating-point representations
+    \item<+-> but then $\log(\hat y) = -\inf$, and everything will break!
+  \end{itemize}
+  \item<+-> To tackle this problem implementations usually combine the sigmoid computation and BCE into a single loss function that you would apply to a network with linear outputs (e.g. \texttt{BCEWithLogitsLoss}).
+  \item<+-> Internally, a trick called `log-sum-exp' is used to \emph{shift} the centre of an exponential sum so that only numerical underflow can potentially happen, rather than overflow\footnote{https://www.xarg.org/2016/06/the-log-sum-exp-trick-in-machine-learning/}.
+  \begin{itemize}
+    \item Ultimately this means you'll always get a numerically reasonable result (and will avoid NaNs and Infs originating from this point).
+  \end{itemize}
 \end{itemize}
 
 \end{frame}
 %%-------------------------------------------------------------%
 
-\begin{frame}[fragile]\frametitle{Softmax}
-Exercise: Construct an example showing explicitly that in a network with a sigmoid output layer, the output activations won't always sum to 1.
+\begin{frame}[fragile]\frametitle{Multiclass classification with Softmax Outputs}
+
+\begin{itemize}
+  \item<+-> Softmax can be thought of making the $K$ outputs of the network mimic a probability distribution.
+  \item<+-> The target label $y$ could also be represented as a distribution with a single 1 and zeros everywhere else.
+  \begin{itemize}
+    \item e.g. they are ``one-hot encoded''.
+  \end{itemize}
+  \item<+-> In such a case, the obvious loss function is the \emph{negative log likelihood} of the Categorical distribution (aka Multinoulli, Generalised Bernoulli, Multinomial with one sample)\footnote{Note: Keras calls this function `Categorical Cross-Entropy'; you would need to have a Softmax output layer to use this}: $\ell_{NNL} = - \sum_{k = 1}^K y_k \log \hat y_k$
+  \begin{itemize}
+    \item Note that in practice as $y_k$ is zero for all but one class you don't actually do this summation, and if $y$ is an integer class index you can write $\ell_{NNL} = - \log \hat y_y$.
+  \end{itemize}
+  \item<+-> Analogously to what we saw for BCE, Log-Sum-Exp can be used for better numerical stability.
+  \begin{itemize}
+    \item PyTorch combines LogSoftmax with NNL in one loss and calls this ``Categorical Cross-Entropy'' (so you would use this with a \emph{linear output layer})
+  \end{itemize}
+\end{itemize}
+
 \end{frame}
-%%-------------------------------------------------------------%
+
+%-------------------------------------------------------------%
+\begin{frame}[fragile]\frametitle{Reminder: Gradient Descent}
+
+\begin{itemize}
+  \item Define total loss as $\mathcal{L} = \sum_{(\bm x,y) \in \bm D} \ell(g(\bm x,\bm\theta), y)$ for some loss function $\ell$, dataset $\bm D$ and model $g$ with learnable parameters $\bm\theta$.
+  \item Define how many passes over the data to make (each one known as an Epoch)
+  \item Define a learning rate $\eta$
+\end{itemize}
+
+Gradient Descent updates the parameters $\bm\theta$ by moving them in the direction of the negative gradient with respect to the \textbf{total loss} $\mathcal{L}$ by the learning rate $\eta$ multiplied by the gradient:
+\\[1em]
+\hspace{1cm} \texttt{for each Epoch:}\\
+\hspace{2cm} $\bm\theta \leftarrow \bm\theta - \eta \nabla_{\bm\theta} \mathcal{L}$
+\end{frame}
+%-------------------------------------------------------------%
+
+\begin{frame}[fragile]\frametitle{Reminder: Stochastic Gradient Descent}
+
+\begin{itemize}
+  \item Define loss function $\ell$, dataset $\bm D$ and model $g$ with learnable parameters $\bm\theta$.
+  \item Define how many passes over the data to make (each one known as an Epoch)
+  \item Define a learning rate $\eta$
+\end{itemize}
+
+Stochastic Gradient Descent updates the parameters $\bm\theta$ by moving them in the direction of the negative gradient with respect to the loss of a \textbf{single item} $\ell$ by the learning rate $\eta$ multiplied by the gradient:
+\\[1em]
+\hspace{1cm} \texttt{for each Epoch:}\\
+  \hspace{2cm} \texttt{for each $(\bm x,y) \in \bm D$:}\\
+    \hspace{3cm} $\bm\theta \leftarrow \bm\theta - \eta \nabla_{\bm\theta} \ell$
+\end{frame}
+%-------------------------------------------------------------%
+
 
 \begin{frame}[fragile]\frametitle{A Quick Introduction to Tensors}
 A tensor, $T$, is a generalization of vectors and matrices, which can be thought of as a multidimensional array.
