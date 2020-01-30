@@ -465,7 +465,7 @@ where $K$ is the number of classes of the classification problem, $\hat y \in \m
 %%-------------------------------------------------------------%
 \begin{frame}[fragile]\frametitle{Numerical Stability: The Log-Sum-Exp trick}
 \begin{center}
-$\ell_{BCE}(\hat y, y) = y \log(\hat y) + (1 - y) \log (1 - \hat y)$  
+$\ell_{BCE}(\hat y, y) = -y \log(\hat y) - (1 - y) \log (1 - \hat y)$  
 \end{center}
 
 \begin{itemize}
@@ -509,7 +509,7 @@ $\ell_{BCE}(\hat y, y) = y \log(\hat y) + (1 - y) \log (1 - \hat y)$
 \begin{frame}[fragile]\frametitle{Reminder: Gradient Descent}
 
 \begin{itemize}
-  \item Define total loss as $\mathcal{L} = \sum_{(\bm x,y) \in \bm D} \ell(g(\bm x,\bm\theta), y)$ for some loss function $\ell$, dataset $\bm D$ and model $g$ with learnable parameters $\bm\theta$.
+  \item Define total loss as $\mathcal{L} = -\sum_{(\bm x,y) \in \bm D} \ell(g(\bm x,\bm\theta), y)$ for some loss function $\ell$, dataset $\bm D$ and model $g$ with learnable parameters $\bm\theta$.
   \item Define how many passes over the data to make (each one known as an Epoch)
   \item Define a learning rate $\eta$
 \end{itemize}
@@ -535,11 +535,15 @@ Stochastic Gradient Descent updates the parameters $\bm\theta$ by moving them in
   \hspace{2cm} \texttt{for each $(\bm x,y) \in \bm D$:}\\
     \hspace{3cm} $\bm\theta \leftarrow \bm\theta - \eta \nabla_{\bm\theta} \ell$
 \end{frame}
+
 %-------------------------------------------------------------%
 
-
 \begin{frame}[fragile]\frametitle{A Quick Introduction to Tensors}
-A tensor, $T$, is a generalization of vectors and matrices, which can be thought of as a multidimensional array.
+Broadly speaking a tensor is defined as a linear mapping between sets of algebraic objects\footnote{This statement is always entirely true}. \\
+
+A tensor $T$ can be thought of as a generalization of scalars, vectors and matrices to a single algebraic object.\\
+
+We can just think of this as a multidimensional array\footnote{This statement will upset mathematicians and physicists because its not always true for them (but it is for us!).}.
 
 \begin{itemize}
 \item A $0D$ tensor is a scalar
@@ -547,23 +551,34 @@ A tensor, $T$, is a generalization of vectors and matrices, which can be thought
 \item A $2D$ tensor is a matrix
 \item A $3D$ tensor can be thought of as a vector of identically sized matrices
 \item A $4D$ tensor can be thought of as a matrix of identically sized matrices or a sequence of $3D$ tensors
-\item etc.
+\item \dots
 \end{itemize}
 \end{frame}
-%%-------------------------------------------------------------%
 
-\begin{frame}[fragile]\frametitle{A Quick Introduction to Tensors}
+% %%-------------------------------------------------------------%
+
+\begin{frame}[fragile]\frametitle{Operations on Tensors in PyTorch}
 \begin{itemize}
-\item A tensor is a container which can house data in $N$ dimensions. Often and erroneously used interchangeably with the matrix (which is specifically a 2-dimensional tensor), tensors are generalizations of matrices to N-dimensional space.  
-\item Tensors are used to encode the data as well as the model parameters
-\item Data manipulation via tensors enables CPUs and GPUs to run at peak performance
+  \item PyTorch lets you do all the standard matrix operations on 2D tensors
+  \begin{itemize}
+    \item including important things you might not yet have seen like the hadamard product of two $N \times M$ matrices: $\bm A \odot \bm B)$
+  \end{itemize}
+  \item You can do element-wise add/divide/subtract/multiply to ND-tensors
+  \begin{itemize}
+    \item and even apply scalar functions element-wise ($\log, \sin, \exp, ...$)
+  \end{itemize}
+  \item PyTorch often lets you \emph{broadcast} operations (just like in numpy)
+  \begin{itemize}
+    \item if a PyTorch operation supports broadcast, then its Tensor arguments can be automatically expanded to be of equal sizes (without making copies of the data).\footnote{Important - read and understand this after the lab next week: https://pytorch.org/docs/stable/notes/broadcasting.html}
+  \end{itemize}
 \end{itemize}
 \end{frame}
-%%-------------------------------------------------------------%
 
-\begin{frame}[fragile]\frametitle{A Quick Introduction to Tensors}
-Link to PyTorch Tensor Basics
-\url{https://gist.github.com/kfarrahi/f8f51824b23252c81d5aaec461365e73}
-\end{frame}
+% %%-------------------------------------------------------------%
+
+% \begin{frame}[fragile]\frametitle{A Quick Introduction to Tensors}
+% Link to PyTorch Tensor Basics
+% \url{https://gist.github.com/kfarrahi/f8f51824b23252c81d5aaec461365e73}
+% \end{frame}
 %-------------------------------------------------------------%
 \end{document}
