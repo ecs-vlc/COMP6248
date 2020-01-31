@@ -375,7 +375,7 @@ $\softmax(z)_i = \frac{e^{z_i}}{\sum_{j=1}^K e^{z_j}} \;\;\;\;\;\;\; \forall i =
 \begin{itemize}
   \item Note that unlike the other activation functions you've seen, $\softmax$ makes reference to all the elements in the output.
   \item The output of a softmax layer is a set of positive numbers which sum up to $1$ and can be thought of as a probability distribution.
-  \item Note: $\frac{\partial \softmax(z)_i }{z_i} = z_i (1 - z_i)$
+  \item Note: $\frac{\partial \softmax(z)_i }{\partial z_i} = z_i (1 - z_i)$
 \end{itemize}
 
 \end{frame}
