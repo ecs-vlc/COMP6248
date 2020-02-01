@@ -428,7 +428,7 @@ $\ell_{MSE}(\bm{\hat y}, \bm y) = \sum_i(\hat{y}_i - y_i)^2 = (\bm{\hat y} - \bm
 
 For the binary classification case:\\
 \begin{center}
-$\ell_{BCE}(\hat y, y) = y \log(\hat y) + (1 - y) \log (1 - \hat y)$  
+$\ell_{BCE}(\hat y, y) = -y \log(\hat y) - (1 - y) \log (1 - \hat y)$  
 \end{center}
 
 \begin{itemize}
@@ -456,7 +456,7 @@ $\ell_{BCE}(\hat y, y) = y \log(\hat y) + (1 - y) \log (1 - \hat y)$
 In the case of multi-label classification with a network with multiple sigmoidal outputs you just sum the BCE over the outputs:
 
 \begin{center}
-  $\ell_{BCE} = \sum_{k = 1}^K [y_k \log (\hat y_k) + (1 - y_k) \log (1 - \hat y_k)] $ \\  
+  $\ell_{BCE} = -\sum_{k = 1}^K [y_k \log (\hat y_k) + (1 - y_k) \log (1 - \hat y_k)] $ \\  
 \end{center}
 
 where $K$ is the number of classes of the classification problem, $\hat y \in \mathbb{R}^K$.
