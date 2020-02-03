@@ -97,7 +97,7 @@
 	\end{itemize}
 	\item<+-> With deep learning we're primarily interested in first-order methods\only<3->{\footnote{Second order gradient optimisers are potentially better, but for systems with many variables are currently impractical as they require computing the Hessian.}}.
 	\begin{itemize}
-		\item<+-> Primarily using variants of gradient descent: a function $F(\bm x)$ has \emph{a} minima\only<4->{\footnote{not necessarily global or unique}} at a point $\bm x = \bm a$ where $\bm a$ is given by applying $\bm{a}_{n+1} = \bm a - \alpha \nabla F(\bm a_n)$ until convergence.
+		\item<+-> Primarily using variants of gradient descent: a function $F(\bm x)$ has \emph{a} minima\only<4->{\footnote{not necessarily global or unique}} at a point $\bm x = \bm a$ where $\bm a$ is given by applying $\bm{a}_{n+1} = \bm a_n - \alpha \nabla F(\bm a_n)$ until convergence from some initial point $\bm a_0$.
 	\end{itemize}
 \end{itemize}
 \end{frame}
@@ -300,8 +300,8 @@ where $\frac{\partial \bm y}{\partial \bm x}$ is the $n \times m$ Jacobian matri
 \framesubtitle{Example: $\nabla_{\bm W} f(\bm X \bm W)$}
 \begin{itemize}
 \item<1-> Let $\bm D = \bm X \bm W$ where the rows of $\bm X \in \mathbb{R}^{n \times m}$ contain some fixed \emph{features}, and $\bm W \in \mathbb{R}^{m \times h}$ is a matrix of weights.
-\item<1-> Also let $L = f(\bm D)$ be some scalar function of $\bm D$ that we wish to minimise. 
-\item<2-> What are the derivatives of $L$ with respect to the weights $\bm W$?
+\item<1-> Also let $\mathcal{L} = f(\bm D)$ be some scalar function of $\bm D$ that we wish to minimise. 
+\item<2-> What are the derivatives of $\mathcal{L}$ with respect to the weights $\bm W$?
 \end{itemize}
 \end{frame}
 
@@ -310,10 +310,10 @@ where $\frac{\partial \bm y}{\partial \bm x}$ is the $n \times m$ Jacobian matri
 \framesubtitle{Example: $\nabla_{\bm W} f(\bm X \bm W)$}
 \begin{itemize}
 	\item<+-> Start by considering a specific weight, $W_{uv}$: 
-$\frac{\partial L}{\partial W_{uv}} = \sum_{i,j}\frac{\partial L}{\partial D_{ij}}\frac{\partial D_{ij}}{\partial W_{uv}}$.
+$\frac{\partial \mathcal{L}}{\partial W_{uv}} = \sum_{i,j}\frac{\partial \mathcal{L}}{\partial D_{ij}}\frac{\partial D_{ij}}{\partial W_{uv}}$.
 	\item<+-> We know that $\frac{\partial D_{ij}}{\partial W_{uv}}=0$ if $j \neq v$ because $D_{ij}$ is the dot product of row $i$ of $\bm X$ and column $j$
  of $\bm W$.
- 	\item<+-> Therefore, we can simplify the summation to only consider cases where $j=v$: $\sum_{i,j}\frac{\partial L}{\partial D_{ij}}\frac{\partial D_{ij}}{\partial W_{uv}} = \sum_i \frac{\partial L}{\partial D_{iv}}\frac{\partial D_{iv}}{\partial W_{uv}}$.
+ 	\item<+-> Therefore, we can simplify the summation to only consider cases where $j=v$: $\sum_{i,j}\frac{\partial \mathcal{L}}{\partial D_{ij}}\frac{\partial D_{ij}}{\partial W_{uv}} = \sum_i \frac{\partial \mathcal{L}}{\partial D_{iv}}\frac{\partial D_{iv}}{\partial W_{uv}}$.
  	\item<+-> What is $\frac{\partial D_{iv}}{\partial W_{uv}}$?
  		\begin{align*}
  			\uncover<+->{D_{iv} &= \sum_{k=1}^{q} X_{ik} W_{kv} \\}
@@ -327,10 +327,10 @@ $\frac{\partial L}{\partial W_{uv}} = \sum_{i,j}\frac{\partial L}{\partial D_{ij
 \frametitle{Recap: what are gradients and how do we find them?}
 \framesubtitle{Example: $\nabla_{\bm W} f(\bm X \bm W)$}
 \begin{itemize}
-	\item<+-> Putting every together, we have: $\frac{\partial L}{\partial W_{uv}} = \sum_{i}\frac{\partial L}{\partial D_{iv}}X_{iu}$.
-	\item<+-> As we're summing over multiplications of scalars, we can change the order: $\frac{\partial L}{\partial W_{uv}} = \sum_{i}X_{iu}\frac{\partial L}{\partial D_{iv}}$.
-	\item<+-> and note that the sum over $i$ is doing a dot product with row $u$ and column $v$ if we transpose $X_{iu}$ to $X^\top_{ui}$: $\frac{\partial L}{\partial W_{uv}} = \sum_{i}X^\top_{ui}\frac{\partial L}{\partial D_{iv}}$.
-	\item<+-> \vspace{5mm} We can then see that if we want this for all values of $\bm W$ it simply generalises to: $\frac{\partial L}{\partial \bm W} = \bm X^\top\frac{\partial L}{\partial \bm D}$.
+	\item<+-> Putting every together, we have: $\frac{\partial \mathcal{L}}{\partial W_{uv}} = \sum_{i}\frac{\partial \mathcal{L}}{\partial D_{iv}}X_{iu}$.
+	\item<+-> As we're summing over multiplications of scalars, we can change the order: $\frac{\partial \mathcal{L}}{\partial W_{uv}} = \sum_{i}X_{iu}\frac{\partial \mathcal{L}}{\partial D_{iv}}$.
+	\item<+-> and note that the sum over $i$ is doing a dot product with row $u$ and column $v$ if we transpose $X_{iu}$ to $X^\top_{ui}$: $\frac{\partial \mathcal{L}}{\partial W_{uv}} = \sum_{i}X^\top_{ui}\frac{\partial \mathcal{L}}{\partial D_{iv}}$.
+	\item<+-> \vspace{5mm} We can then see that if we want this for all values of $\bm W$ it simply generalises to: $\frac{\partial \mathcal{L}}{\partial \bm W} = \bm X^\top\frac{\partial \mathcal{L}}{\partial \bm D}$.
 \end{itemize}
 \end{frame}
 
