@@ -1,0 +1,144 @@
+
+\documentclass[a4paper]{article}
+\usepackage[a4paper,top=2cm,bottom=2cm,left=1cm,right=3cm,marginparwidth=2cm]{geometry}
+\usepackage{lmodern}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage{textpos} % package for the positioning
+\usepackage{tcolorbox}
+\usepackage{pgf, tikz}
+\usetikzlibrary{arrows, automata}
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{0.3em}
+
+\begin{document}
+\setlength{\leftskip}{20pt}
+\title{Lab 1 Exercise - Playing with gradients and matrices in PyTorch}
+\author{Jonathon Hare (jsh2@ecs.soton.ac.uk)}
+
+\maketitle
+
+% \begin{abstract}
+% \end{abstract}
+% \tableofcontents
+
+This is the first of a series of exercises that you need to work through \textbf{on your own} after completing the accompanying lab session. You'll need to write up your results/answers/findings and submit this to ECS handin along with the other lab exercises near the end of the module. 
+
+We expect that you should use no more than one side of A4 to cover your responses to this exercise. This exercise is worth 5\% of your overall module grade.
+
+\section{Implement a matrix factorisation using gradient descent}\label{sgd}
+
+You saw (briefly) in the lectures that a form of low-rank matrix factorisation can be achieved by considering the following optimisation problem:
+
+\begin{equation}
+	\min\limits_{\hat{\bm U}, \hat{\bm V}}( \| \bm A - \hat{\bm U}\hat{\bm V}^\top \|_{\rm F}^2 )
+\end{equation}
+where $\bm A \in \mathbb{R}^{m \times n}$, $\hat{\bm U} \in \mathbb{R}^{m \times r}$, $\hat{\bm V} \in \mathbb{R}^{m \times r}$ and $r<\min(m,n)$. The following pseudocode gives an algorithm that uses gradient descent to optimise this problem:
+
+\begin{lstlisting}[mathescape=true,tabsize=4]
+	Inputs: 
+		$\bm A$: $\mathbb{R}^{m \times n}$ input matrix.
+		$r$: rank of the factorisation.
+		$N$: number of epochs.
+		$\eta$: learning rate.
+
+	Outputs:
+		$\hat{\bm U}$: $\mathbb{R}^{m \times r}$ matrix initialised with values from $\mathcal{U}(0,1)$.
+		$\hat{\bm V}$: $\mathbb{R}^{n \times r}$ matrix initialised with values from $\mathcal{U}(0,1)$.
+
+	Algorithm:
+		For epoch = 1 to $N$
+			For r = 1 to $m$
+				For c = 1 to $n$
+					$e = \bm{A}_{rc} - \hat{\bm U}_{r,*} (\hat{\bm V}_{c,*})^\top$
+					$\hat{\bm U}_{r,*} \leftarrow \hat{\bm U}_{r,*} + \eta \cdot e \cdot \hat{\bm V}_{c,*}$
+					$\hat{\bm V}_{c,*} \leftarrow \hat{\bm V}_{c,*} + \eta \cdot e \cdot \hat{\bm U}_{r,*}$
+		return $\hat{\bm U}, \hat{\bm V}$
+\end{lstlisting}
+
+\begin{tcolorbox}[title=1.1 Implement gradient-based factorisation (1 mark)]
+Implement the above code method using PyTorch by completing the following method:
+
+\begin{lstlisting}[language=Python]
+from typing import Tuple
+
+def sgd_factorise(A: torch.Tensor, rank: int, num_epochs=1000, 
+	lr=0.01) -> Tuple[torch.Tensor, torch.Tensor]:
+\end{lstlisting}
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=1.2 Factorise and compute reconstruction error (1 mark)]
+Use your code to compute the rank-2 factorisation of the following matrix and state the result (use the default values for learning rate and number of epochs):
+\begin{equation*}
+	\begin{bmatrix}
+		0.3374 & 0.6005 & 0.1735\\
+		3.3359 & 0.0492 & 1.8374\\
+		2.9407 & 0.5301 & 2.2620\\
+	\end{bmatrix}	
+\end{equation*}
+Compute the value of the reconstruction loss\footnote{Hint: you can use \texttt{torch.nn.functional.mse\_loss} with \texttt{reduction=`sum'} to do this.} $\| \bm A - \hat{\bm U}\hat{\bm V}^\top\|_{\rm F}^2$.
+\end{tcolorbox}
+
+\section{Compare your result to truncated SVD}
+
+A truncated Singular Value Decomposition is defined as:
+\begin{equation}
+	\tilde{\bm A} = \bm U_t \bm \Sigma_t \bm V_t^\top
+\end{equation}
+where $\tilde{\bm A} \in \mathbb{R}^{m \times n}$, $\bm U \in \mathbb{R}^{m \times t}$, $\bm S \in \mathbb{R}^{t \times t}$, $\bm V \in \mathbb{R}^{m \times t}$ and $t<\min(m,n)$.
+\\
+\begin{tcolorbox}[title=2.1 Compare to the truncated-SVD (1 mark)]
+Compute the SVD of the matrix $\bm A$ using \texttt{torch.svd}. Set the last singular value to zero, and compute the reconstruction. What is the error? How does it compare to the result from your algorithm above? Why is this the case\footnote{Maybe google Eckart-Young theorem}?
+\end{tcolorbox}
+
+\section{Matrix completion}
+One of the really neat things we can do with our gradient-based approach to matrix factorisation is to perform a task called \emph{matrix completion}. Assume for a moment that you have a problem where you have a number of observations corresponding to different instances, but that these observations are both noisy and incomplete (you don't have observations of all features for all instances). You might ask if you can use unsupervised learning to \emph{impute} the missing observations, and (potentially) remove some of the noise --- this is exactly what matrix completion is about. 
+
+Of course, to perform matrix completion, you do have to make some kind of assumption about the processes that produced the data you have. One assumption that you could make is that the process is controlled by a small number of \emph{latent variables}\footnote{you'll see many forms of latent variable model throughout this module, and also in advanced machine learning and in data-mining if you're taking them.}. Perhaps the simplest latent variable model is one based on low-rank  factorisation: the chosen rank in such a case literally controls the number of latent variables, and thus the complexity of the model. We have known about such models since at least the late 1980s (where a technique called Latent Semantic Indexing was invented), but it wasn't until 2006\footnote{http://sifter.org/~simon/journal/20061211.html} that we saw a gradient-based approach being proposed and used with a very large dataset. 
+
+The only difference between the pseudocode in Section~\ref{sgd}, and one that works with incomplete observations is that we would only perform gradient updates where we have observations:
+
+\begin{lstlisting}[mathescape=true,tabsize=4]
+		For epoch = 1 to $N$
+			For r = 1 to $m$
+				For c = 1 to $n$
+					if $\bm{A}_{rc}$ was observed
+						$e = \bm{A}_{rc} - \hat{\bm U}_{r,*} (\hat{\bm V}_{c,*})^\top$
+						$\hat{\bm U}_{r,*} \leftarrow \hat{\bm U}_{r,*} + \eta \cdot e \cdot \hat{\bm V}_{c,*}$
+						$\hat{\bm V}_{c,*} \leftarrow \hat{\bm V}_{c,*} + \eta \cdot e \cdot \hat{\bm U}_{r,*}$
+		return $\hat{\bm U}, \hat{\bm V}$
+\end{lstlisting}
+
+\begin{tcolorbox}[title=3.1 Implement masked factorisation (1 mark)]
+	Create a new version of your factorisation code that additionally takes a second matrix of the same shape of the matrix being factorised. This second matrix should be a binary mask, with 1's where the value is valid, and zeros elsewhere. Use the mask to only compute updates using the valid values.
+
+	Your implementation should have the following signature:
+
+	\begin{lstlisting}[language=Python]
+def sgd_factorise_masked(A: torch.Tensor, M: torch.Tensor, rank: int,
+	num_epochs=1000, lr=0.01) -> Tuple[torch.Tensor, torch.Tensor]: 
+	\end{lstlisting}
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=3.2 Reconstruct a matrix (1 mark)]
+	Use your function to compute the rank-2 factorisation of the following matrix (again using default learning rate and number of epochs):
+
+	\begin{equation*}
+	\begin{bmatrix}
+		0.3374 & 0.6005 & 0.1735 \\
+		       & 0.0492 & 1.8374 \\
+		2.9407 &        & 2.2620 \\
+	\end{bmatrix}	
+\end{equation*}
+
+	What is your estimate of the completed matrix? How does this compare to the original matrix $\bm A$? What does this tell you?
+\end{tcolorbox}
+
+\end{document}
+
+
+

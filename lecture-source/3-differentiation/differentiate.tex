@@ -405,7 +405,7 @@ For real $\bm A:$ \\
 \begin{itemize}
 	\item<+-> One of the definitions of rank-$\rho$ SVD of a matrix $\bm A$ is that it minimises reconstruction error in terms of the Frobenius norm.
 	\item<+-> Without loss of generality we can write SVD as a 2-matrix decomposition $\bm A = \hat{\bm U} \hat{\bm V}^T$ by rolling in the square roots of $\bm\Sigma$ to both $\hat{\bm U}$ and $\hat{\bm V}$: $\hat{\bm U} = \bm U \bm\Sigma^{0.5}$ and $\hat{\bm V}^\top = \bm \Sigma^{0.5} \bm V^\top$.
-	\item<+-> Then we can define the decomposition as finding $\min\limits_{\hat{\bm U}, \hat{\bm V}}( \| \bm A - \hat{\bm U}\hat{\bm V}^\top \|_{\rm F} )$
+	\item<+-> Then we can define the decomposition as finding $\min\limits_{\hat{\bm U}, \hat{\bm V}}( \| \bm A - \hat{\bm U}\hat{\bm V}^\top \|_{\rm F}^2 )$
 \end{itemize}
 \end{frame}
 
@@ -417,7 +417,7 @@ For real $\bm A:$ \\
 Start by expanding our optimisation problem:
 
 \begin{align*}
-	\min\limits_{\hat{\bm U}, \hat{\bm V}}( \| \bm A - \hat{\bm U}\hat{\bm V}^\top \|_{\rm F} ) &= \min\limits_{\hat{\bm U}, \hat{\bm V}}( \sum_r \sum_c (A_{rc} - \hat{U}_r\hat{V}_c)^2 )	\\
+	\min\limits_{\hat{\bm U}, \hat{\bm V}}( \| \bm A - \hat{\bm U}\hat{\bm V}^\top \|_{\rm F}^2 ) &= \min\limits_{\hat{\bm U}, \hat{\bm V}}( \sum_r \sum_c (A_{rc} - \hat{U}_r\hat{V}_c)^2 )	\\
 			  &= \min\limits_{\hat{\bm U}, \hat{\bm V}}( \sum_r \sum_c (A_{rc} - \sum_{p=1}^{\rho}\hat{U}_{rp}\hat{V}_{cp})^2 )	 
 \end{align*}
 }
