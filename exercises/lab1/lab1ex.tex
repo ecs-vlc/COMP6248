@@ -1,6 +1,6 @@
 
 \documentclass[a4paper]{article}
-\usepackage[a4paper,top=2cm,bottom=2cm,left=1cm,right=3cm,marginparwidth=2cm]{geometry}
+\usepackage[a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=2cm]{geometry}
 \usepackage{lmodern}
 \usepackage{listings}
 \usepackage{amsmath}
@@ -25,9 +25,9 @@
 % \end{abstract}
 % \tableofcontents
 
-This is the first of a series of exercises that you need to work through \textbf{on your own} after completing the accompanying lab session. You'll need to write up your results/answers/findings and submit this to ECS handin along with the other lab exercises near the end of the module. 
+This is the first of a series of exercises that you need to work through \textbf{on your own} after completing the accompanying lab session. You'll need to write up your results/answers/findings and submit this to ECS handin as a PDF document along with the other lab exercises near the end of the module (1 pdf document per lab). 
 
-We expect that you should use no more than one side of A4 to cover your responses to this exercise. This exercise is worth 5\% of your overall module grade.
+We expect that you should use \emph{no more} than one side of A4 to cover your responses to \emph{this} exercise. This exercise is worth 5\% of your overall module grade.
 
 \section{Implement a matrix factorisation using gradient descent}\label{sgd}
 
@@ -36,7 +36,7 @@ You saw (briefly) in the lectures that a form of low-rank matrix factorisation c
 \begin{equation}
 	\min\limits_{\hat{\bm U}, \hat{\bm V}}( \| \bm A - \hat{\bm U}\hat{\bm V}^\top \|_{\rm F}^2 )
 \end{equation}
-where $\bm A \in \mathbb{R}^{m \times n}$, $\hat{\bm U} \in \mathbb{R}^{m \times r}$, $\hat{\bm V} \in \mathbb{R}^{m \times r}$ and $r<\min(m,n)$. The following pseudocode gives an algorithm that uses gradient descent to optimise this problem:
+where $\bm A \in \mathbb{R}^{m \times n}$, $\hat{\bm U} \in \mathbb{R}^{m \times r}$, $\hat{\bm V} \in \mathbb{R}^{m \times r}$ and $r<\min(m,n)$. The following pseudocode gives an algorithm that uses gradient descent to optimise this problem  (note that $\hat{\bm U}_{r,*}$ refers to the entire $r$-th row of $\hat{\bm U}$):
 
 \begin{lstlisting}[mathescape=true,tabsize=4]
 	Inputs: 
