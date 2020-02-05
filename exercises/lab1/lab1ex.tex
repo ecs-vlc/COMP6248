@@ -36,7 +36,7 @@ You saw (briefly) in the lectures that a form of low-rank matrix factorisation c
 \begin{equation}
 	\min\limits_{\hat{\bm U}, \hat{\bm V}}( \| \bm A - \hat{\bm U}\hat{\bm V}^\top \|_{\rm F}^2 )
 \end{equation}
-where $\bm A \in \mathbb{R}^{m \times n}$, $\hat{\bm U} \in \mathbb{R}^{m \times r}$, $\hat{\bm V} \in \mathbb{R}^{m \times r}$ and $r<\min(m,n)$. The following pseudocode gives an algorithm that uses gradient descent to optimise this problem  (note that $\hat{\bm U}_{r,*}$ refers to the entire $r$-th row of $\hat{\bm U}$):
+where $\bm A \in \mathbb{R}^{m \times n}$, $\hat{\bm U} \in \mathbb{R}^{m \times r}$, $\hat{\bm V} \in \mathbb{R}^{n \times r}$ and $r<\min(m,n)$. The following pseudocode gives an algorithm that uses gradient descent to optimise this problem  (note that $\hat{\bm U}_{r,*}$ refers to the entire $r$-th row of $\hat{\bm U}$):
 
 \begin{lstlisting}[mathescape=true,tabsize=4]
 	Inputs: 
