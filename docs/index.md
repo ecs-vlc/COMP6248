@@ -59,7 +59,7 @@ Labs will start in the second week (5th Feb) 9-11 on Wednesday mornings in Zeple
 
 | Week | Date   | Location  | Topic                                                                                                 | Exercise Link                        |
 |------|--------|-----------|-------------------------------------------------------------------------------------------------------|--------------------------------------|
-| 1    | 29-Jan |           | NO LAB                                                                                                | [Lab 1 Exercise](./labex/labex1.pdf) |
+| 1    | 29-Jan |           | NO LAB                                                                                                | [Lab 1 Exercise](./labex/lab1ex.pdf) |
 | 2    | 05-Feb | Zepler L2 | [Introducing PyTorch](./labs/lab1/)                                                                   |                                      |
 | 3    | 12-Feb | Zepler L2 | [Automatic Differentiation](./labs/lab2/)                                                             |                                      |
 | 4    | 19-Feb | Zepler L2 | [Optimisation](./labs/lab3/)                                                                          |                                      |
