@@ -133,6 +133,9 @@
   \endgroup
 }
 
+\DeclareMathOperator{\softmax}{softmax}
+\DeclareMathOperator{\ReLU}{ReLU}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Formatting for title page
 \title[Backpropagation]{Backpropagation: Understanding the implications of the chain rule}
@@ -332,21 +335,112 @@
 
 \begin{frame}
   \frametitle{Unintuitive effects II: vanishing gradients of the sigmoid}
+  \begin{itemize}
+    \item<+-> It used to be popular to use sigmoids (or tanh) in the hidden layers...
+    \item<+-> Gradient of $\sigma(x) = \sigma(x)(1-\sigma(x))$
+    \item<+-> Thus as part of a larger network where this is the local gradient, if $x$ is large (+ve or -ve), then all gradients backwards from this point will be zero due to multiplication of the chain rule
+    \begin{itemize}
+      \item Why might $x$ be large?
+    \end{itemize}
+    \item<+-> Maximum gradient is achieved when $x=0$ ($x=0.5, dx=0.25$)
+    \begin{itemize}
+      \item<+-> This means that the maximum gradient that can flow out of a sigmoid will be a quarter of the input gradient
+      \begin{itemize}
+        \item<+-> What's the implication of this in a deep network with sigmoid activations?
+      \end{itemize}
+    \end{itemize}
+  \end{itemize}
 \end{frame}
-
-%vanishing gradient as we go deeper?
 
 \begin{frame}
   \frametitle{Unintuitive effects III: dying ReLUs}
+  \begin{itemize}
+    \item<+-> Modern networks tend to use ReLUs
+    \item<+-> Gradient is $1$ for $x>0$ and $0$ otherwise
+    \item<+-> Consider $\ReLU(\bm w^\top \bm x)$
+    \begin{itemize}
+      \item What happens if $\bm w$ is initialised badly?
+      \item What happens if $\bm w$ receives an update that means that $\bm w^\top \bm x < 0 \; \forall \; \bm x$?
+    \end{itemize}
+    \item<+-> These are dead ReLUs - ones that never fire for all training data
+    \begin{itemize}
+      \item Sometimes you can find that you have a large fraction of these
+      \item if you get them from the beginning, check weight initialisation and data normalisation
+      \item if they're appearing during training, maybe $\eta$ is too big?
+    \end{itemize}
+  \end{itemize}
 \end{frame}
 
 \begin{frame}
-  \frametitle{Unintuitive effects III: Exploding gradients in recurrent networks}
+  \frametitle{Unintuitive effects IV: Exploding gradients in recurrent networks}
+  \begin{itemize}
+    \item<+-> Recurrent networks apply a function recursively for some number of timesteps
+    \item<+-> Often this recursion involves a multiplication at each timestep, the gradients of which are all multiplied together because of the chain rule...
+    \item<+-> Consider $z = a \prod_n^\infty b$
+    \begin{itemize}
+      \item<+-> $z \to 0 if |b|<1$ 
+      \item<+-> $z \to \infty if |b|>1$ 
+    \end{itemize}
+    \item<+-> Same thing happens in the backward pass of an RNN (although with matrices rather than scalars, so the reasoning applies to the largest eigenvalue)
+  \end{itemize}
 \end{frame}
 
 \begin{frame}
   \frametitle{Gradient descent and SGD (again), and mini-batch SGD}
+  
+  We'll wrap up by looking again at gradient descent algorithms and their behaviours...
 \end{frame}
+
+%-------------------------------------------------------------%
+\begin{frame}[fragile]\frametitle{Reminder: Gradient Descent}
+
+\begin{itemize}
+  \item Define total loss as $\mathcal{L} = -\sum_{(\bm x,y) \in \bm D} \ell(g(\bm x,\bm\theta), y)$ for some loss function $\ell$, dataset $\bm D$ and model $g$ with learnable parameters $\bm\theta$.
+  \item Define how many passes over the data to make (each one known as an Epoch)
+  \item Define a learning rate $\eta$
+\end{itemize}
+
+Gradient Descent updates the parameters $\bm\theta$ by moving them in the direction of the negative gradient with respect to the \textbf{total loss} $\mathcal{L}$ by the learning rate $\eta$ multiplied by the gradient:
+\\[1em]
+\hspace{1cm} \texttt{for each Epoch:}\\
+\hspace{2cm} $\bm\theta \leftarrow \bm\theta - \eta \nabla_{\bm\theta} \mathcal{L}$
+\end{frame}
+%-------------------------------------------------------------%
+
+\begin{frame}[fragile]\frametitle{Reminder: Stochastic Gradient Descent}
+
+\begin{itemize}
+  \item Define loss function $\ell$, dataset $\bm D$ and model $g$ with learnable parameters $\bm\theta$.
+  \item Define how many passes over the data to make (each one known as an Epoch)
+  \item Define a learning rate $\eta$
+\end{itemize}
+
+Stochastic Gradient Descent updates the parameters $\bm\theta$ by moving them in the direction of the negative gradient with respect to the loss of a \textbf{single item} $\ell$ by the learning rate $\eta$ multiplied by the gradient:
+\\[1em]
+\hspace{1cm} \texttt{for each Epoch:}\\
+  \hspace{2cm} \texttt{for each $(\bm x,y) \in \bm D$:}\\
+    \hspace{3cm} $\bm\theta \leftarrow \bm\theta - \eta \nabla_{\bm\theta} \ell$
+\end{frame}
+
+%-------------------------------------------------------------%
+
+\begin{frame}[fragile]\frametitle{Mini-batch Gradient Descent}
+
+\begin{itemize}
+  \item Define a batch size $b$
+  \item Define batch loss as $\mathcal{L}_b = -\sum_{(\bm x,y) \in \bm D_b} \ell(g(\bm x,\bm\theta), y)$ for some loss function $\ell$and model $g$ with learnable parameters $\bm\theta$. $\bm D_b$ is a subset of dataset $\bm D$ of cardinality $b$.
+  \item Define how many passes over the data to make (each one known as an Epoch)
+  \item Define a learning rate $\eta$
+\end{itemize}
+
+Mini-batch Gradient Descent updates the parameters $\bm\theta$ by moving them in the direction of the negative gradient with respect to the loss of a \textbf{mini-batch} $\bm D_b$, $\mathcal{L}_b$ by the learning rate $\eta$ multiplied by the gradient:
+\\[1em]
+\hspace{1cm}partition the dataset $\bm D$ into an array of subsets of size $b$\\
+\hspace{1cm} \texttt{for each Epoch:}\\
+  \hspace{2cm} \texttt{for each $\bm D_b \in partitioned(\bm D$):}\\
+      \hspace{3cm} $\bm\theta \leftarrow \bm\theta - \eta \nabla_{\bm\theta} \mathcal{L}_b$
+\end{frame}
+
 
 
 \end{document}
