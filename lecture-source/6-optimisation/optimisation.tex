@@ -314,7 +314,7 @@ Mini-batch Gradient Descent updates the parameters $\bm\theta$ by moving them in
 
 \begin{frame}{pause}\frametitle{Momentum I}
 
-It's common for the `leaky' average (the `velocity', $v_t$) to be an weighted average of the instananeous gradient $g_t$ and the past velocity\footnote{There are quite a few variants of this; here we're following the PyTorch variant}:
+It's common for the `leaky' average (the `velocity', $v_t$) to be a weighted average of the instananeous gradient $g_t$ and the past velocity\footnote{There are quite a few variants of this; here we're following the PyTorch variant}:
 
 \begin{equation*}
   v_t = \beta v_{t-1} + g_t
