@@ -344,7 +344,7 @@ persist across multiple iterations
 
 Learning with momentum on iteration $t$ (batch at $t$ denoted by $b(t)$) is given by:
 \begin{align*}
-\bm v_t & \leftarrow \bm v_{t-1} + \nabla_{\bm\theta} \mathcal{L}_{b(t)} \\
+\bm v_t & \leftarrow \beta \bm v_{t-1} + \nabla_{\bm\theta} \mathcal{L}_{b(t)} \\
 \bm\theta_t & \leftarrow \bm\theta_{t-1} - \eta \bm v_t
 \end{align*}
 
