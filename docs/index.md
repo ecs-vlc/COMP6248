@@ -59,9 +59,9 @@ Labs will start in the second week (5th Feb) 9-11 on Wednesday mornings in Zeple
 
 | Week | Date   | Location  | Topic                                                                                                 | Exercise Link                        |
 |------|--------|-----------|-------------------------------------------------------------------------------------------------------|--------------------------------------|
-| 1    | 29-Jan |           | NO LAB                                                                                                | [Lab 1 Exercise](./labex/lab1ex.pdf) |
-| 2    | 05-Feb | Zepler L2 | [Introducing PyTorch](./labs/lab1/)                                                                   | [Lab 2 Exercise](./labex/lab2ex.pdf) |
-| 3    | 12-Feb | Zepler L2 | [Automatic Differentiation](./labs/lab2/)                                                             |                                      |
+| 1    | 29-Jan |           | NO LAB                                                                                                |                                      |
+| 2    | 05-Feb | Zepler L2 | [Introducing PyTorch](./labs/lab1/)                                                                   | [Lab 1 Exercise](./labex/lab1ex.pdf) |
+| 3    | 12-Feb | Zepler L2 | [Automatic Differentiation](./labs/lab2/)                                                             | [Lab 2 Exercise](./labex/lab2ex.pdf) |
 | 4    | 19-Feb | Zepler L2 | [Optimisation](./labs/lab3/)                                                                          |                                      |
 | 5    | 26-Feb | Zepler L2 | [Implementing simple Neural Networks using PyTorch and Torchbearer](./labs/lab4/)                     |                                      |
 | 6    | 04-Mar |           | _No Lab_                                                                                              |                                      |
