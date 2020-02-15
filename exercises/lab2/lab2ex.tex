@@ -106,7 +106,7 @@ Generally speaking\footnote{except when dealing with recurrent models}, PyTorch 
 	logits = torch.relu(data @ W1 + b1) @ W2 + b2
 \end{lstlisting}
 
-where $\mathrm{W1} \in \mathbb{R}^{4,12}$, $\mathrm{W2} \in \mathbb{R}^{12,4}$, and both $\mathrm{b1}$ and $\mathrm{b2} \in \mathbb{R}$. 
+where $\mathrm{W1} \in \mathbb{R}^{4,12}$, $\mathrm{W2} \in \mathbb{R}^{12,3}$, and both $\mathrm{b1}$ and $\mathrm{b2} \in \mathbb{R}$. 
 
 \begin{tcolorbox}[title=2.1 Implement the MLP (1 mark)]
 Given the above form of the MLP, write the code to perform 100 epochs of gradient descent with a learning rate of 0.01 on the training (\_tr) data. Use PyTorch's cross-entropy loss (\texttt{torch.nn.functional.cross\_entropy(logits, targets\_tr)}) as the objective. Initialise \texttt{W1} and \texttt{W2} with normally distributed random numbers, and \texttt{b1} and \texttt{b2} as zeros. You'll need to manually apply the gradient updates to \texttt{W1}, \texttt{W2}, \texttt{b1} and \texttt{b2} each epoch.
