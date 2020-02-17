@@ -36,11 +36,14 @@ We expect that you should aim to use one side of A4 to cover your responses to \
 
 \section{Exploring optimisation of analytic functions}\label{analytic}
 In the lab you looked at optimising Himmelblau's Function. Now we're going to explore something even more challenging. The Rastrigin Function is a fun optimisation challenge with many local minima and a single global minima:
-\center
-\includegraphics[width=0.8\textwidth]{Rastrigin_function.png}
+
+\begin{figure}[h!]
+	\center
+	\includegraphics[width=0.8\textwidth]{Rastrigin_function.png}
+\end{figure}
 
 \begin{tcolorbox}[title=1.1 Rastrigin (3 marks)]
-Consider the 2D Rastrigin function (\url{https://en.wikipedia.org/wiki/Rastrigin\_function}). Starting at $[5, 5]$ compute the point where the following optimisers arrive at after 100 epochs:
+Consider the 2D Rastrigin function (\url{https://en.wikipedia.org/wiki/Rastrigin_function}). Starting at $[5, 5]$ compute the point where the following optimisers arrive at after 100 epochs:
 
 \begin{itemize}
 	\item SGD (lr=0.01)
@@ -53,8 +56,41 @@ Create a loss plot showing the function value at each epoch for each of the diff
 \end{tcolorbox}
 
 \section{Optimisation of a SVM on real data}\label{SVM}
-The second part of the lab saw you apply a soft-margin SVM to artificially generated data and optimise its parameters with gradient descent. Now we're going to do the same with real data.
+The second part of the lab saw you apply a soft-margin SVM to artificially generated data and optimise its parameters with gradient descent. Now we're going to do the same with real data. Just like last week we'll use the Iris dataset, and split it into training and validation subsets (and normalise), but this time, we'll only be using two of the classes. Note that we'll also label our classes as $\{-1,1\}$:
 
+\begin{lstlisting}[language=Python]
+import torch
+import pandas as pd
+df = pd.read_csv('https://archive.ics.uci.edu/ml/machine-learning-databases'
+  +'/iris/iris.data', header=None)
+df = df.sample(frac=1, random_state=0) #shuffle
+
+df = df[df[4].isin(['Iris-setosa', 'Iris-versicolor'])] #filter
+
+# add label indices column
+mapping = {k: v for v, k in enumerate(df[4].unique())}  
+df[5] = (2 * df[4].map(mapping)) - 1 #labels in {-1,1}
+
+# normalise data
+alldata = torch.tensor(df.iloc[:, [0,1,2,3]].values, dtype=torch.float)
+alldata = (alldata - alldata.mean(dim=0)) / alldata.var(dim=0)
+
+# create datasets
+targets_tr = torch.tensor(df.iloc[:75, 5].values, dtype=torch.long)
+targets_va = torch.tensor(df.iloc[75:, 5].values, dtype=torch.long)
+data_tr = alldata[:75]
+data_va = alldata[75:]
+\end{lstlisting}
+
+\begin{tcolorbox}[title=2.1 Iris SVM (2 marks)]
+Use the following configurations to train Soft-margin Linear SVMs with three different amounts of weight decay (${0.1,  0.01, 0.001}$) on the training data, and compute accuracy on the validation set. 
+\begin{itemize}
+	\item SGD (lr=0.01)
+	\item SGD+Momentum (lr=0.01, momentum=0.9)
+	\item Adam (lr=0.001)
+\end{itemize}
+What is the accuracy for the nine different models? What is the best value for the weight decay parameter? What is the best optimiser configuration for this task \& why?
+\end{tcolorbox}
 
 \end{document}
 
