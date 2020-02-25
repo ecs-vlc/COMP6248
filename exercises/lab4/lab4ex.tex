@@ -1,0 +1,50 @@
+
+\documentclass[a4paper]{article}
+\usepackage[a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=2cm]{geometry}
+\usepackage{lmodern}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage{textpos} % package for the positioning
+\usepackage{tcolorbox}
+\usepackage{pgf, tikz}
+\usepackage{url}
+\usetikzlibrary{arrows, automata}
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{0.3em}
+
+\usepackage{textcomp}
+\begin{document}
+
+\lstset{language=Python,upquote=true}
+
+\setlength{\leftskip}{20pt}
+\title{Lab 4 Exercise - Fun with MLPs \& MNIST}
+\author{Jonathon Hare (jsh2@ecs.soton.ac.uk)}
+
+\maketitle
+
+% \begin{abstract}
+% \end{abstract}
+% \tableofcontents
+
+This is the exercise that you need to work through \textbf{on your own} after completing the forth lab session. You'll need to write up your results/answers/findings and submit this to ECS handin as a PDF document along with the other lab exercises near the end of the module (1 pdf document per lab). 
+
+We expect that you \textbf{will use no more than one side} of A4 to cover your responses to \emph{this} exercise. This exercise is worth 5\% of your overall module grade.
+
+\section{Wide MLPs on MNIST}\label{wide}
+
+In the lab exercise you built a \texttt{BaselineModel} which was a simple MLP with one hidden layer and trained it on MNIST. You're now going to explore this model further.
+
+\begin{tcolorbox}[title=1.1 Wider MLPs (5 marks)]
+Consider an MLP with a single hidden layer. How wide does the network need to be (how many hidden units) before it overfits\footnote{fails to generalise \emph{reasonably} to the MNIST test set} on the MNIST training dataset? Provide rationale (1 mark) and experimental evidence for your findings (see below), and suggest reasons why they might be so (1 mark).
+\\[1em]
+For practical purposes you're limited by available GPU memory; don't try training networks with more than 500,000 hidden units, which have almost 400 million learnable parameters! For experimental evidence you should include training curves (plots of loss and accuracy against epochs) with both the training and test data for a range of different sized models (3 marks).
+\end{tcolorbox}
+
+\end{document}
+
+
+
