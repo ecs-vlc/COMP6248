@@ -16,12 +16,12 @@ Team size: 3 students.
 
 ### Handin #1
 Due date: Friday 6th March 2020, 16:00.  
-Handin: [1718/COMP6237/1/](http://handin.ecs.soton.ac.uk/handin/1819/COMP6248/1/)  
+Handin: [1920/COMP6248/1/](https://handin.ecs.soton.ac.uk/handin/1920/COMP6248/1/)  
 Required files: team.txt
 
 ### Handin #2
 Due date: Friday 15th May 2020, 16:00.  
-Handin: [1718/COMP6237/2/](http://handin.ecs.soton.ac.uk/handin/1819/COMP6248/2/)  
+Handin: [1920/COMP6248/2/](https://handin.ecs.soton.ac.uk/handin/1920/COMP6248/2/)  
 Required files: paper.pdf; mark_split.pdf  
 
 ## Overview
