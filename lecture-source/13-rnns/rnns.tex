@@ -169,7 +169,7 @@
 \begin{frame}
   \titlepage
 
-  \tiny{A lot of the ideas in this lecture come from Andrej Karpathy's blog post on the Unreasonable Effectiveness of RNNs (\url{https://medium.com/@karpathy/yes-you-should-understand-backprop-e2f06eab496b}). Many of the images and animations and were made by Adam Pr\"ugel-Bennett.}
+  \tiny{A lot of the ideas in this lecture come from Andrej Karpathy's blog post on the Unreasonable Effectiveness of RNNs (\url{http://karpathy.github.io/2015/05/21/rnn-effectiveness/}). Many of the images and animations and were made by Adam Pr\"ugel-Bennett.}
 \end{frame}
 %-------------------------------------------------------------%
 
@@ -353,6 +353,13 @@ RNNs are Turing complete in the sense they can simulate arbitrary programs\footn
 \begin{frame}
 \frametitle{Going deep: Stacking RNNs}
 
+\begin{itemize}
+  \item<+-> RNNs can be trivially stacked into deeper networks
+  \item<+-> It's just function composition: \\[1em] $\bm{y}(t) = \bm{f}_2(\bm{f}_1(\bm{x}(t), \bm{c}_2(t-1)|\bm{W}_1), \bm{c}_2(t-1)|\bm{W}_2)$ \\[1em]
+  \item<+-> The output of the inner RNN at time $t$ is fed into the input of the outer RNN which produces the prediction $y$
+  \item<+-> Also note: RNNs are most often not used in isolation -  it's quite common to process the inputs and outputs with MLPs (or even convolutions)
+\end{itemize}
+
 \end{frame}
 
 %-------------------------------------------------------------%
@@ -362,11 +369,64 @@ RNNs are Turing complete in the sense they can simulate arbitrary programs\footn
 \begin{frame}
 \frametitle{Example: Character-level language modelling}
 
+\begin{itemize}
+  \item<+-> We'll end with an example: an RNN that learns to `generate' English text by learning to predict the next character in a sequence
+  \item<+-> This is ``Character-level Language Modelling''
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Example: Character-level language modelling}
+\begin{center}
+  \includegraphics[width=0.7\linewidth]{charseq.jpeg}
+\end{center}
+\blfootnote{Image from \url{http://karpathy.github.io/2015/05/21/rnn-effectiveness/}}
+\end{frame}
+
+\begin{frame}
+\frametitle{Training a Char-RNN}
+
+\begin{itemize}
+  \item The training data is just text data (e.g. sequences of characters)
+  \item The task is unsupervised (or rather self-supervised): given the previous characters predict the next one
+  \begin{itemize}
+    \item<+-> All you need to do is train on a reasonable sized corpus of text
+    \item<+-> Overfitting could be a problem: dropout is very useful here
+  \end{itemize}
+\end{itemize}
 \end{frame}
 
 \begin{frame}
 \frametitle{Sampling the Language Model}
 
+\begin{itemize}
+  \item Once the model is trained what can you do with it?
+  \item<+-> if you feed it an initial character it will output the logits of the next character
+  \item<+-> you can use the logits to select the next character and feed that in as the input character for the next timestep
+  \item<+-> how do you `sample' a character from the logits?
+  \begin{itemize}
+    \item<+-> you could pick the most likely (maximum-likelihood solution), but this might lead to generated text with very low variance (it might be boring and repetitive)
+    \item<+-> you could treat the softmax probabilities defined by the logits as a categorical distribution and sample from them
+    \begin{itemize}
+      \item you might increase the `temperature', $T$, of the softmax to make the distribution more diverse (less `peaky'): $q_i = \frac{\exp{(z_i/T)}}{\sum_j\exp{(z_j/T)}}$
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{quote}
+  A lot of the ideas in this lectu on the input c(t − 1), g (x i (x(t − 2), g (t − 1)|W )\\
+Iged snllhomitpon” ares Mnt Net) th\\
+
+pl\\
+Onaafed a tre the sidisicters of to prediction couponet on the logits its venvows usts sevouvd be this in as useuled at on in the pan Lerate’atectsrray to paet inputs D = Pxxpraition the rople, the next\\
+
+vog the state atite
+\end{quote}
+\begin{flushright}
+  - Sampled from a single layer RNN\footnote{LSTM, 128 dim hidden size, with linear input projection to 8-dimensions and output to the number of characters (84). Trained on the text of these slides for 50 epochs.}.
+\end{flushright}
 \end{frame}
 
 \end{document}

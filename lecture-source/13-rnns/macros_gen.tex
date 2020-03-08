@@ -1,0 +1,211 @@
+\usepackage[compat2,pdftex]{geometry}
+\usepackage[pdftex]{geometry}
+\geometry{headsep=-2.5ex,hscale=0.9,textwidth=25cm}
+\usepackage[pdftex]{xcolor}
+\usepackage{pause}
+\usepackage{background}
+%\usepackage[color=white]{background}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{epsfig}
+\usepackage{epstopdf}
+\usepackage{bm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{marvosym}
+\usepackage{cite}
+\usepackage{pifont}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{rotating}
+\usepackage{listings}
+\usepackage{pp4slide}
+%\usepackage{hyperref}
+\usepackage{pp4link}
+\usepackage{fancyvrb}
+\usepackage{multido}
+\usepackage{calc}
+
+\renewcommand{\ttdefault}{pcr}
+
+\newcommand{\squeeze}{\setlength{\itemsep}{-2pt}}
+%\renewcommand{\familydefault}{cmr}
+%\renewcommand{\labelitemii}{\textcolor{green}{$\star$}}
+\newcommand{\tick}{{\large \ding{51}}}
+\newcommand{\cross}{{\large \ding{55}}}
+%\DeclareMathAlphabet{\mat}{OT1}{cmss}{bx}{n}
+\DeclareMathAlphabet{\mat}{U}{eur}{b}{n}
+\newcommand{\figs}{/home/apb/figures}
+\newcommand{\stimes}{{\scriptstyle \times}}
+\newcommand{\tr}{\textsf{T}}
+\newcommand{\e}[1]{{\rm e}^{#1}}
+\newcommand{\E}[1]{{\rm e}^{{\displaystyle #1}}}
+\newcommand{\av}[2][]{\mathbb{E}_{#1\!}\left[ #2 \right]}
+\newcommand{\Var}[1]{\mathbb{V}\mathrm{ar}\left( #1 \right)}
+\newcommand{\pred}[1]{\left\llbracket { \small #1} \right\rrbracket}
+\newcommand{\logg}[1]{\log\!\left( #1 \right)}
+\newcommand{\prob}[1]{\mathbb{P}\left( #1 \right)}
+\newcommand{\Prob}[1]{\mathbb{P}\left( #1 \right)}
+\newcommand{\Step}{\mathop{\mat{\Theta}}}
+\newcommand\diag{\mathop{\mathrm{diag}}}
+\newcommand{\grad}{\bm{\nabla}}
+\newcommand{\gradx}{\bm{\nabla}_{\!\!\scriptscriptstyle \bm{x}}}
+\newcommand{\gradw}{\bm{\nabla}_{\!\!\scriptscriptstyle \bm{w}}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\data}{\mathcal{D}}
+\newcommand{\class}{\mathcal{C}}
+\newcommand{\hypo}{\mathcal{H}}
+\newcommand{\pd}[3][\,]{\frac{\partial^{#1}{#2}}{\partial\,{#3}}}
+\newcommand{\normal}[1]{\mathcal{N}\!\left( #1 \right)}
+\newcommand{\Dist}[2][Binom]{\mathrm{#1}\left( \strut {#2} \right)}
+\newcommand{\brackets}[1]{\!\left( #1 \right)}
+\newcommand{\KL}[2]{\mathop{\mathrm{KL}}\left(#1 \big\| #2\right)}
+\lstnewenvironment{matlab}[1][frame=TB]{\lstset{#1}}{}       
+%\renewcommand{\emph}[1]{\textcolor{red}{\textbf{#1}}}
+\newcommand{\myskip}[1]{}
+\newcommand{\jl}{\lstinline[basicstyle=\ttfamily\color{DarkGreen},%
+ keywordstyle=\bfseries\ttfamily\color{DarkGreen}]}
+\definecolor{EmphColor}{rgb}{0.0,0.0,1.0}
+\renewcommand{\emph}[1]{{\color{EmphColor}\textbf{#1}}}
+\newenvironment{psmallmatrix}
+  {\left(\begin{smallmatrix}}
+  {\end{smallmatrix}\right)}
+
+\definecolor{DarkGreen}{rgb}{0,0.5,0}
+\definecolor{DarkRed}{rgb}{0,0,0.5}
+\definecolor{HighLight}{rgb}{1,0,0}     % yellow
+\definecolor{TextColor}{rgb}{0.0,0.1,0.1}     % white
+\definecolor{TwoColor}{rgb}{0.0,0.5,0.1}      % used for switching colors
+
+\definecolor{HeadLineColor}{rgb}{1.0,0.0,0.0} % cyan
+\definecolor{SpecialColor}{rgb}{0.53,0.81,1.0}
+\renewcommand{\normalcolor}{\color{HeadLineColor}}
+
+\pausecolors{TwoColor}{TextColor}{HighLight}
+\pausecolors{EmphColor}{TextColor}{EmphColor}
+\pausecolors{DarkGreen}{DarkGreen}{DarkRed}
+\pausecolors{SpecialColor}{white}{HighLight}
+
+\newenvironment{PauseHighLight}{\color{TwoColor}\pausehighlight}{}
+\newcommand{\multipdf}[2][width=\linewidth]{\multiinclude[pause=\pauselevel{:+0}\pause,format=pdf,graphics={#1}]{#2}}
+
+\lstdefinelanguage{pseudo}
+ {keywords={all,and,begin,break,continue,do,else,elseif,%
+     end,endif,endfor,endwhile,%
+     exit,false,for,forall,goto,if,%
+     or,return,then,true,to,repeat,until,while},%
+  comment=[s]{/*}{*/},%
+  morecomment=[l]//,%
+  morestring=[d]"%
+ }[keywords,comments,strings]
+
+
+\lstloadlanguages{Java,pseudo}
+\lstset{
+  basicstyle=\footnotesize\ttfamily\color{DarkGreen},
+  keywordstyle=\bfseries\footnotesize\ttfamily\color{DarkGreen},
+  commentstyle=\footnotesize\it\rmfamily\color{blue},
+  language=Java,
+  }
+
+
+\lstnewenvironment{pseudo}[1][]{\lstset{language=pseudo,mathescape,literate={:=}{{$\gets$}}2 {!}{{$\neg$}}1 {!=}{{\!\!$\neq$\,\,}}2 {<=}{{\!\!$\leq$\,\,}}2 {>=}{{\!\!$\geq$\,\,}}2,escapechar=\#,#1}}{}
+\lstnewenvironment{java}[1][]{\lstset{escapechar=\$,#1}}{}
+
+\MyLogo{}
+%\Restriction{}
+%\rightfooter{\hyperlink{overview}{$\square$}}
+
+\newcommand{\keywords}[1]{\vfill{\noindent\it #1}}
+
+\newcounter{outlineitem}
+\setcounter{outlineitem}{0}
+\newcommand{\outlineitem}[2]{\item%
+  \def\targ{\value{emumi}}%
+  \ifnum\value{enumi}=\value{outlineitem}%
+  \color{HighLight}\textbf{#1}\toptarget{#2}\color{TextColor}%
+   \else\toplink{#2}{#1}\fi
+}
+\color{TwoColor}
+
+
+%-- Instead of writing \section we want the file structured by \section.
+\newcommand{\section}[2][0]{\foilhead[#1cm]{#2}}
+
+%-- Write each page into a \begin{slide} -- \end{slide} environment.
+\newenvironment{slide}{}{\pauselevel{=1}}
+
+\MyLogo{\pauselevel{=1}\Acrobatmenu{GoBack}{%
+  \color{TextColor}{Adam Pr\"ugel-Bennett}} \hspace{4cm}
+  % Clicking on the name steps one slide back.
+  \toplink{firstoutline}{\color{red}COMP6208 Advanced Machine Learning}%
+  %Clicking on the date jumps to the last page, which should be the
+  %table of contents.
+  \rightfooter{\Acrobatmenu{LastPage}{\qquad%
+  \textsf{\color{TextColor}\tiny\thepage}}}% page number
+  % Clicking on the page number steps one slide back.
+}
+\raggedright
+\newcommand{\Outline}{}
+
+\newcommand{\pb}{\pausebuild \color{TwoColor}}
+\newcommand{\pauseb}{\pauselevel{build, highlight}\pause}
+\newcommand{\hl}[1]{\pauselevel{=1, highlight =1 :1, highlight =#1 :#1}\pause}
+\newcommand{\hll}{\pauselevel{=1, highlight =1 :1}\pause}
+\newcommand{\pauseh}{\pauselevel{highlight}\pause}
+\newcommand{\nhl}[1]{\textcolor{TextColor}{#1}}
+\newcommand{\mypl}[1]{\pauselevel{=#1 :#1}\pause}
+\input supp-pdf.tex
+\DeclareGraphicsRule{*}{mps}{*}{}
+\usepackage{mpmulti}
+%\leftheader{}
+\rightheader{} % no more page numbers on top right
+
+
+\hypersetup{pdftitle={ECS Lectures},pdfsubject={Machine Learning}
+pdfauthor={Adam Prugel-Bennett},pdfkeywords={machine learning},
+pdfpagemode={FullScreen},
+bookmarksopen=false,
+hypertexnames=false,pdfstartview={FitV},colorlinks,linkcolor={blue},
+citecolor={green},urlcolor={blue}}
+
+
+
+\newcommand\bluepage{
+\clearpage
+\renewcommand\normalcolor{\color{yellow}}
+\pagecolor{blue}
+\renewcommand\Black{\color{white}}
+\color{white}
+\hypersetup{colorlinks=true}
+}
+
+\newcommand\whitepage{
+\clearpage
+\renewcommand\normalcolor{\color{black}}
+\pagecolor{white}
+\renewcommand\Black{\color{black}}
+\color{black}
+\hypersetup{colorlinks=true}
+}
+
+\whitepage
+\setlength{\unitlength}{1mm}
+
+\newenvironment{leftImage}[2][0.3]{%
+\begin{minipage}{#1\linewidth}
+  \includegraphics[width=\linewidth]{#2}
+\end{minipage}\hfil
+\begin{minipage}{0.98\linewidth - #1\linewidth}}%
+{\end{minipage}}
+
+\newenvironment{rightImage}[2][0.3]{%
+\newcommand{\foot}{\begin{minipage}{#1\linewidth}\includegraphics[width=\linewidth]{#2}\end{minipage}}
+\begin{minipage}{0.98\linewidth - #1\linewidth}}{\end{minipage}\foot\hfil}
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 
