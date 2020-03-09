@@ -296,11 +296,11 @@ RNNs are Turing complete in the sense they can simulate arbitrary programs\footn
 
 \begin{itemize}
   \item<+-> $\bm{y}(t) = \bm{f}(\bm{x}(t), \bm{c}(t-1)|\bm{W})$
-  \item<+-> and the state $\bm{c}(t) = \bm{g}(\bm{x}(t-1), \bm{c}(t-1)|\bm{W})$
+  \item<+-> and the state $\bm{c}(t) = \bm{g}(\bm{x}(t), \bm{c}(t-1)|\bm{W})$
   \item<+-> If the output $\bm{y}(t)$ depends on the input
-    $\bm{x}(t-3)$, then prediction will be
+    $\bm{x}(t-2)$, then prediction will be
     \begin{align*}
-      \bm{f}(\bm{x}(t), \bm{g}(\bm{x}(t-1), \bm{g}(\bm{x}(t-2), \bm{g}(\bm{x}(t-3)|\bm{W}), \bm{W}), \bm{W}), \bm{W})
+      \bm{f}(\bm{x}(t), \bm{g}(\bm{x}(t), \bm{g}(\bm{x}(t-1), \bm{g}(\bm{x}(t-2)|\bm{W}), \bm{W}), \bm{W}), \bm{W})
     \end{align*}
   \item<+-> it should be clear that the gradients of this with respect to the weights can be found with the chain rule
 \end{itemize}
@@ -340,7 +340,7 @@ RNNs are Turing complete in the sense they can simulate arbitrary programs\footn
 \only<2-> {
 \begin{itemize}
   \item $\sigma_h$ is usually $\tanh$
-  \item $\sigma_h$ is usually identity (linear) -- the $y$'s could be regressed values or logits
+  \item $\sigma_y$ is usually identity (linear) -- the $y$'s could be regressed values or logits
   \item<+-> the state $\bm h_t$ is referred to as the ``hidden state''
   \item<+-> the output at time $t$ is a projection of the hidden state at that time
   \item<+-> the hidden state at time $t$ is a summation of a projection of the input and a projection of the previous hidden state
