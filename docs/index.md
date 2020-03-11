@@ -65,7 +65,7 @@ Labs will start in the second week (5th Feb) 9-11 on Wednesday mornings in Zeple
 | 4    | 19-Feb | Zepler L2 | [Optimisation](./labs/lab3/)                                                                          | [Lab 3 Exercise](./labex/lab3ex.pdf) |
 | 5    | 26-Feb | Zepler L2 | [Implementing simple Neural Networks using PyTorch and Torchbearer](./labs/lab4/)                     | [Lab 4 Exercise](./labex/lab4ex.pdf) |
 | 6    | 04-Mar |           | _No Lab_                                                                                              |                                      |
-| 7    | 11-Mar | Zepler L2 | [Implementing and training Convolutional Neural Networks using PyTorch and Torchbearer](./labs/lab5/) |                                      |
+| 7    | 11-Mar | Zepler L2 | [Implementing and training Convolutional Neural Networks using PyTorch and Torchbearer](./labs/lab5/) | [Lab 5 Exercise](./labex/lab5ex.pdf) |
 | 8    | 18-Mar | Zepler L2 | [Using pretrained models and transfer learning](./labs/lab6)                                          |                                      |
 | 9    | 22-Apr | Zepler L2 | [Recurrent Networks, Sequence Prediction and Embeddings](./labs/lab7)                                 |                                      |
 | 10   | 29-Apr | Zepler L2 | [Autoencoders and Deep Generative Models](./labs/lab8)                                                |                                      |
