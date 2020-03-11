@@ -51,21 +51,21 @@ void gates(pair start, int lef, int upp, int n) {
   for (int i=0; i<n; ++i) {
     pair pos = start+i*(lef,upp);
     filldraw(circle(pos, 0.4), white);
-    real u =sqrt(0.32)/2;
-    draw(pos+(u,u)--pos-(u,u));
-    draw(pos+(-u,u)--pos-(-u,u));
+    filldraw(circle(pos, 0.1), black);
   }
   draw(box(start+2*(-lef,-upp), start+(1+n)*(lef,upp)), gray);
-  label("$\otimes$", start+((1+n)*lef, -2*upp), NW, gray(0.1));
+  label("$\odot$", start+((1+n)*lef, -2*upp), NW, gray(0.1));
 }
 
 void addGates(pair start, int lef, int upp, int n) {
   for (int i=0; i<n; ++i) {
     pair pos = start+i*(lef,upp);
     filldraw(circle(pos, 0.4), white);
+    
     real u = 0.4;
     draw(pos+(u,0)--pos-(u,0));
     draw(pos+(0,u)--pos-(0,u));
+
   }
   draw(box(start+2*(-lef,-upp), start+(1+n)*(lef,upp)), gray);
   label("$\oplus$", start+((1+n)*lef, -2*upp), NW, gray(0.1));
@@ -129,7 +129,7 @@ store();
 label(rotate(90)*Label("\Large Output"), (60, 7), W, heavygreen);
 ship();
 restore();
-label("\large $h_i(t) = \tanh(c_i(t)) \in \{-1,1\}$", (60, 7), W);
+label("\large $\tanh(c_j(t)) \in \{-1,1\}$", (60, 7), W);
 ship();
 restore();
 
@@ -163,11 +163,11 @@ store();
 label(rotate(90)*Label("\Large Forget Gate"), (20,18), 2W);
 ship();
 restore();
-label("\Large $\bm{f}(t) = \bm{\sigma}(\mat{W}_{\!f} \bm{z}(t))$", (26,21), 2E);
+label("\Large $\bm{f}(t) = \bm{\sigma}(\mat{W}_{\!f} \bm{z}(t) + \bm{b}_{\!f})$", (26,21), 2E);
 label("\Large $\bm{z}(t) = \left(\bm{x}(t),\bm{h}(t-1) \right)$", (27,14), 2E);
 ship();
-label("\Large $c_i(t) = f_i(t)\,c_i(t-1)$", (30,40), 2SE);
-label("\Large $c_i(t) = \sigma_i(\mat{W}_{\!f} \bm{z}(t))\,c_i(t-1)$", (30,35), 2SE);
+label("\Large $f_j(t)\,c_j(t-1)$", (30,40), 2SE);
+label("\Large $\sigma_j(\mat{W}_{\!f} \bm{z}(t) + \bm{b}_{\!f})\,c_j(t-1)$", (30,35), 2SE);
 ship();
 restore();
 vlines((40,6), 10, 3, heavygreen, -1);
@@ -183,7 +183,7 @@ store();
 label(rotate(90)*Label("\Large Add to Memory"), (40,18), 2W);
 ship();
 restore();
-label(rotate(90)*Label("\Large $\bm{g}(t) = \bm{\mathrm{tanh}}(\mat{W}_{\!g} \bm{z}(t))$"), (50,23), 2E);
+label(rotate(90)*Label("\Large $\bm{g}(t) = \bm{\mathrm{tanh}}(\mat{W}_{\!g} \bm{z}(t) + \bm{b}_{\!g})$"), (50,23), 2E);
 ship();
 restore();
 
@@ -199,11 +199,11 @@ store();
 label(rotate(90)*Label("\Large Gate Memory Update"), (40,18), 2W);
 ship();
 restore();
-label(rotate(90)*Label("\Large $\bm{i}(t) = \bm{\sigma}(\mat{W}_{\!i}\bm{z}(t))$"), (32,21), 2NW);
+label(rotate(90)*Label("\Large $\bm{i}(t) = \bm{\sigma}(\mat{W}_{\!i}\bm{z}(t) + \bm{b}_{\!i})$"), (32,21), 2NW);
 ship();
-label(rotate(90)*Label("\Large $\bm{g}(t) = \bm{\mathrm{tanh}}(\mat{W}_{\!g} \bm{z}(t))$"), (50,23), 2E);
-label(rotate(90)*Label("\Large $\bm{f}(t) = \bm{\sigma}(\mat{W}_{\!f} \bm{z}(t))$"), (22,21), 2NW);
-label("\Large $c_i(t) = f_i(t)\,c_i(t-1) + g_i(t)\,i_i(t)$", (35, 45),2N);
+label(rotate(90)*Label("\Large $\bm{g}(t) = \bm{\mathrm{tanh}}(\mat{W}_{\!g} \bm{z}(t) + \bm{b}_{\!g})$"), (50,23), 2E);
+label(rotate(90)*Label("\Large $\bm{f}(t) = \bm{\sigma}(\mat{W}_{\!f} \bm{z}(t) + \bm{b}_{\!f})$"), (22,21), 2NW);
+label("\Large $c_j(t) = f_j(t)\,c_j(t-1) + b_f + g_j(t)\,i_j(t) + b_i$", (35, 45),2N);
 ship();
 restore();
 hlines((54,2), 6, 3, orange, 0, 1);
@@ -214,9 +214,9 @@ store();
 label("\Large Gate Outputs", (50,0), 2S);
 ship();
 restore();
-label(rotate(90)*Label("\Large $\bm{o}(t) = \bm{\sigma}(\mat{W}_{\!o} \bm{z}(t))$"), (56,4), 2N);
+label(rotate(90)*Label("\Large $\bm{o}(t) = \bm{\sigma}(\mat{W}_{\!o} \bm{z}(t) + \bm{b}_o)$"), (56,4), 2N);
 ship();
-label(rotate(90)*Label("\Large $h_i(t) = o_i(t)\,\tanh(c_i(t))$"), (66, 0), NE);
+label(rotate(90)*Label("\Large $h_j(t) = o_j(t)\,\tanh(c_j(t))$"), (66, 0), NE);
 ship();
 restore();
 ship();

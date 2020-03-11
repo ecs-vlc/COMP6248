@@ -161,7 +161,7 @@
 
 \begin{frame}
   \titlepage
-  \tiny{Many of the images and animations used here were made by Adam Pr\"ugel-Bennett.}
+  \tiny{Some of the images and animations used here were originally designed by Adam Pr\"ugel-Bennett.}
 \end{frame}
 %-------------------------------------------------------------%
 
@@ -225,20 +225,21 @@
 \begin{frame}
 \frametitle{Update Equations}
 
+Initially, for $t=0$, $\bm{h}(0) = \bm{0}$
   \begin{itemize}
   \item<+-> Inputs $\bm{z}(t) = \left(\strut \bm{x}(t),\, \bm{h}(t-1)\right)$
-  \item<+-> Network updates ($\bm{W}_*$ are the free parameters)
+  \item<+-> Network updates ($\bm{W}_*$ and $\bm{b}_*$ are the learnable parameters)
     \begin{align*}
-      \bm{f}(t) &= \bm{\sigma}\!\left( \bm{W}_{\!f} \,\bm{z}(t) \right) &
-      \bm{i}(t) &= \bm{\sigma}\!\left( \bm{W}_{\!i} \,\bm{z}(t) \right) \\
-      \bm{g}(t) &= \text{\bf tanh}\!\left( \bm{W}_{\!g} \,\bm{z}(t) \right) &
-      \bm{o}(t) &= \bm{\sigma}\!\left( \bm{W}_{\!o} \,\bm{z}(t) \right)
+      \bm{f}(t) &= \bm{\sigma}\!\left( \bm{W}_{\!f} \,\bm{z}(t) + \bm{b}_f \right) &
+      \bm{i}(t) &= \bm{\sigma}\!\left( \bm{W}_{\!i} \,\bm{z}(t) + \bm{b}_i \right) \\
+      \bm{g}(t) &= \text{\bf tanh}\!\left( \bm{W}_{\!g} \,\bm{z}(t)  + \bm{b}_g \right) &
+      \bm{o}(t) &= \bm{\sigma}\!\left( \bm{W}_{\!o} \,\bm{z}(t) + \bm{b}_o \right)
     \end{align*}
   \item<+-> Long-term memory update
     \begin{align*}
-      \bm{c}(t) = \bm{f}(t) \otimes \bm{c}(t-1) + \bm{g}(t) \otimes \bm{i}(t)
+      \bm{c}(t) = \bm{f}(t) \odot \bm{c}(t-1) + \bm{g}(t) \odot \bm{i}(t)
     \end{align*}
-  \item<+-> Output $\bm{h}(t) = \bm{o}(t) \otimes \text{\bf tanh}\!\left( \bm{c}(t)\right)$
+  \item<+-> Output $\bm{h}(t) = \bm{o}(t) \odot \text{\bf tanh}\!\left( \bm{c}(t)\right)$
   \end{itemize}
 
 \end{frame}
@@ -246,13 +247,13 @@
 %-------------------------------------------------------------%
 
 \begin{frame}
-\frametitle{Training LSTM}
+\frametitle{Training LSTMs}
 
   \begin{itemize}
-  \item<+-> We can train an LSTM by unwrapping it in time
-  \item<+-> Note that it involves four dense layers with sigmoidal (or tanh) outputs
-  \item<+-> This means that typically it is very slow to train
-  \item<+-> There are a few variants of LSTMs, but all are very similar. The most popular is probably Gated Recurrent Unit (GRU)
+  \item<+-> We can train an LSTM by unwrapping it in time.
+  \item<+-> Note that it involves four dense layers with sigmoidal (or tanh) outputs.
+  \item<+-> This means that typically it is very slow to train.
+  \item<+-> There are a few variants of LSTMs, but all are very similar. The most popular is probably the Gated Recurrent Unit (GRU).
   \end{itemize}
 
 \end{frame}
@@ -261,67 +262,56 @@
 
 \begin{frame}[fragile]{pause}\frametitle{LSTM Success Stories}
 \begin{itemize}
-\item LSTMs have been used to win many competitions in speech and handwriting recognition
-\item Major technology companies including Google, Apple, and Microsoft are using LSTMs as fundamental components in new products. 
+\item LSTMs have been used to win many competitions in speech and handwriting recognition.
+\item Major technology companies including Google, Apple, and Microsoft are using LSTMs as fundamental components in products. 
 \item Google used LSTM for speech recognition on the smartphone, for Google Translate. 
 \item Apple uses LSTM for the "Quicktype" function on the iPhone and for Siri. 
 \item Amazon uses LSTM for Amazon Alexa.
-\item In 2017, Facebook performed some 4.5 billion automatic translations every day using long short-term memory networks \footnote{\url{https://en.wikipedia.org/wiki/Long_short-term_memory}}
+\item In 2017, Facebook performed some 4.5 billion automatic translations every day using long short-term memory networks\footnote{\url{https://en.wikipedia.org/wiki/Long_short-term_memory}}.
 \end{itemize}
 \end{frame}
+
 %-------------------------------------------------------------%
 
 \begin{frame}[fragile]{pause}\frametitle{Gated Recurrent Unit (GRU)}
 \begin{center}
-\includegraphics[width=8cm]{GRU.pdf}
+\includegraphics[width=0.85\textwidth]{gru.pdf}
 \end{center}
 \end{frame}
 %-------------------------------------------------------------%
 
 \begin{frame}[fragile]{pause}\frametitle{Gated Recurrent Unit (GRU)}
 \begin{itemize}
-\item $x_t$: input vector
-\item $h_t$: output vector
-\item $z_t$: update gate vector
-\item $r_t$: reset gate vector
-\item $W$, $U$, and $b$: parameter matrices and vector
-\item $sigm$ or $\sigma_g$ is the sigmoid function
-\item $tanh$ or $\sigma_h$ is the hyperbolic tangent
+\item $\bm{x}(t)$: input vector
+\item $\bm{h}(t)$: output vector (and `hidden state')
+\item $\bm{r}(t)$: reset gate vector
+\item $\bm{z}(t)$: update gate vector
+\item $\bm{n}(t)$: new state vector (before update is applied)
+\item $\bm{W}$ and $\bm{b}$: parameter matrices and biases 
 \end{itemize}
 \end{frame}
 %-------------------------------------------------------------%
 
 \begin{frame}[fragile]{pause}\frametitle{Gated Recurrent Unit (GRU)}
-Initially, for $t=0$, $h_0 = 0$
-\begin{eqnarray}
-z_t &=& \sigma_g (W_z x_t + U_z h_{t-1} + b_z)\nonumber\\\nonumber
-r_t &=& \sigma_g (W_r x_t + U_r h_{t-1} + b_r)\\\nonumber
-h_t &=& (1 - z_t) \odot h_{t-1} + z_t \odot \sigma_h (W_h x_t + U_h (r_t \odot h_{t-1}) + b_h) \nonumber
-\end{eqnarray}
+Initially, for $t=0$, $\bm{h}(0) = \bm{0}$
+\begin{align*}
+\bm{z}(t) &= \sigma (\bm{W}_z (\bm{x}(t), \bm{h}(t-1)) + \bm{b}_z) \\
+\bm{r}(t) &= \sigma (\bm{W}_r (\bm{x}(t), \bm{h}(t-1)) + \bm{b}_r) \\
+\bm{n}(t) &= \tanh (\bm{W}_n (\bm{x}(t), r(t) \odot h(t-1)) + \bm{b}_h) \\
+\bm{h}(t) &= (1 - \bm{z}(t)) \odot \bm{h}(t-1) + \bm{z}(t) \odot \bm{n}(t)
+\end{align*}
+\blfootnote{Most implementations follow the original paper and swap $(1 - \bm{z}(t))$ and $(\bm{z}(t))$ in the $\bm{h}(t)$ update; 
+this doesn't change the operation of the network, but does change the interpretation of the update gate, as the gate would have to produce a $0$ when an update was to occur, and a 1 when no update is to happen (which is somewhat counter-intuitive)!}
 \end{frame}
 %-------------------------------------------------------------%
 
-\begin{frame}[fragile]{pause}\frametitle{GRU vs. LSTM?}
+\begin{frame}[fragile]{pause}\frametitle{GRU or LSTM?}
 \begin{itemize}
 \item GRUs have two gates (reset and update) whereas LSTM has three gates (input/output/forget)
-\item GRU performance on par with LSTM but computationally more efficient (less complex).
-\item In general, if you have a very large dataset then LSTMs will likely perform better. 
+\item GRU performance on par with LSTM but computationally more efficient (less operations \& weights).
+\item In general, if you have a very large dataset then LSTMs will likely perform slightly better. 
 \item GRUs are a good choice for smaller datasets.
 \end{itemize}
-\end{frame}
-%-------------------------------------------------------------%
-
-\begin{frame}[fragile]{pause}\frametitle{Regularization in RNNs with LSTM units}
-\begin{center}
-\includegraphics{reg_lstms.pdf}\footnote{\url{https://arxiv.org/pdf/1409.2329.pdf}}
-\end{center}
-\end{frame}
-%-------------------------------------------------------------%
-
-\begin{frame}[fragile]{pause}\frametitle{Regularization in RNNs with LSTM units}
-\begin{center}
-\includegraphics{reglstm_dropout.pdf}\footnote{\url{https://arxiv.org/pdf/1409.2329.pdf}}
-\end{center}
 \end{frame}
 %-------------------------------------------------------------%
 
