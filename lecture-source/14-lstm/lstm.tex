@@ -38,6 +38,13 @@
 \usepackage{verbatim}
 %\setbeamertemplate{caption}[numbered]%\numberwithin{figure}{section}
 % Define block styles
+
+\usetheme{Copenhagen}
+\hypersetup{pdfstartview={Fit}}
+\lstset{basicstyle=\small\ttfamily,breaklines=true}
+
+\usepackage{xmpmulti}
+
 \tikzstyle{decision} = [diamond, draw, fill=blue!20, 
     text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
 \tikzstyle{block} = [rectangle, draw, fill=blue!20, 
@@ -105,108 +112,151 @@
 }
 \makeatother
 
+\definecolor{darkblue}{RGB}{37,55,97}
+\definecolor{mellowyellow}{RGB}{247,206,70}
+\definecolor{almostwhite}{RGB}{254,255,255}
+\definecolor{merrygreen}{RGB}{79,173,91}
+\definecolor{funkyorange}{RGB}{240,154,56}
 
+\addtobeamertemplate{footnote}{\hskip -2em}{}
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
 
+\DeclareMathOperator{\softmax}{softmax}
+\DeclareMathOperator{\ReLU}{ReLU}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Formatting for title page
-\title[Deep Learning]{LSTMs and GRUs}
-\author{Kate Farrahi}
-\institute{ECS Southampton}
-\date{\today}
+\title[LSTMs and GRUs]{Long Short Term Memories and Gated Recurrent Units}
+\author{Jonathon Hare}
+\institute[]
+{
+  Vision, Learning and Control\\
+  University of Southampton 
+}
+\date{}
+\subject{Computer Science}
+\useoutertheme{infolines}
+\setbeamertemplate{headline}{} %remove headline
+\setbeamertemplate{navigation symbols}{} %remove navigation symbols
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{document}
+
+\begin{frame}[plain]
+        \begin{tikzpicture}[overlay, remember picture, shift={(current page.south west)},font={\fontfamily{Montserrat-TOsF}\selectfont}]
+        \fill [merrygreen,text=almostwhite] (0,0) rectangle (\paperwidth, \paperheight);
+        \draw (5.5,7) node [align=left,text=almostwhite] {\Huge 
+        \begin{tabular}{l} 
+        \textbf{Forget} \textbf{to} \textbf{remember} \\
+        \textbf{Remember} \textbf{to} \textbf{forget} 
+        \end{tabular}};
+        \draw (11,1) node [align=left,text=almostwhite] {\includegraphics[scale=0.15]{../vlc.png}};
+        \end{tikzpicture}
+\end{frame}
+
 \begin{frame}
   \titlepage
+  \tiny{Many of the images and animations used here were made by Adam Pr\"ugel-Bennett.}
 \end{frame}
 %-------------------------------------------------------------%
 
-\begin{frame}[fragile]{pause}\frametitle{Vanishing Gradients in RNNs}
-The influence of a given input on the hidden layer, and therefore
-on the network output, decays as it cycles
-around the network's recurrent connections. This effect is referred to as the vanishing gradient problem.
-\end{frame}
-%-------------------------------------------------------------%
-
-\begin{frame}[fragile]{pause}\frametitle{Vanishing Gradients in RNNs}
-\begin{center}
-\includegraphics[width=10cm]{vangrad.pdf} \footnote{Graves, Alex. Supervised sequence labelling with recurrent neural networks. Springer, Berlin, Heidelberg, 2012. }
-\end{center}
-\end{frame}
-%-------------------------------------------------------------%
-
-\begin{frame}[fragile]{pause}\frametitle{Vanishing Gradients in RNNs}
+\begin{frame}
+\frametitle{Recap: An RNN is just a recursive function invocation}
 
 \begin{itemize}
-\item RNNs have difficulties learning long-range dependencies, i.e. interactions between words that are several steps apart.
-\item For example, consider the subject-verb agreement in the sentences below:
-\item {\em Our experiments} are based on a variety of datasets to observe the information trajectory of cascade learning and {\em show} consistency across the results.
-\item  {\em Our experiment} is based on a variety of datasets to observe the information trajectory of cascade learning and {\em shows} consistency across the results.
+  \item<1-> $\bm{y}(t) = \bm{f}(\bm{x}(t), \bm{c}(t-1)|\bm{W})$
+  \item<1-> and the state $\bm{c}(t) = \bm{g}(\bm{x}(t), \bm{c}(t-1)|\bm{W})$
+  \item<1-> If the output $\bm{y}(t)$ depends on the input
+    $\bm{x}(t-2)$, then prediction will be
+    \begin{align*}
+      \bm{f}(\bm{x}(t), \bm{g}(\bm{x}(t), \bm{g}(\bm{x}(t-1), \bm{g}(\bm{x}(t-2)|\bm{W}), \bm{W}), \bm{W}), \bm{W})
+    \end{align*}
+  \item<1-> it should be clear that the gradients of this with respect to the weights can be found with the chain rule
+  \item<2-> The back-propagated error will involve applying $\bm{f}$ multiple times
+  \item<3-> Each time the error will get multiplied by some factor $a$
+  \item<4-> If $\bm{y}(t)$ depends on the input $\bm{x}(t-\tau)$ then the back-propagated signal will be proportional to $a^{\tau-1}$
+  \item<5-> This either vanishes or explodes when $\tau$ becomes large
 \end{itemize}
 \end{frame}
+
 %-------------------------------------------------------------%
 
-\begin{frame}[fragile]{pause}\frametitle{Long Short-Term Memory (LSTM)}
-\begin{itemize}
-\item LSTM was proposed in 1997 by S. Hochreiter and J. Schmidhuber \footnote{Hochreiter, S., and J. Schmidhuber. "Long short-term memory." Neural computation 9.8 (1997): 1735-1780.}
-\item The initial version of LSTM block included cells, input and output gates.
-\item In 1999, Felix Gers and his advisor J. Schmidhuber and Fred Cummins introduced the forget gate into LSTM architecture, enabling the LSTM to reset its own state.
-\item In 2014, K. Cho et al. put forward a simplified variant called Gated recurrent unit (GRU)\footnote{Cho, K.; van Merrienboer, B.; Gulcehre, C.; Bahdanau, D.; Bougares, F.; Schwenk, H.; Bengio, Y. (2014). "Learning Phrase Representations using RNN Encoder-Decoder for Statistical Machine Translation". arXiv:1406.1078}.
-\end{itemize}
-\end{frame}
-%-------------------------------------------------------------%
-
-\begin{frame}[fragile]{pause}\frametitle{LSTM Memory Block}
+\begin{frame}
+\frametitle{Vanishing and Exploding Gradients}
 \begin{center}
-\includegraphics[width=5.5cm]{lstm_fig.pdf} \footnote{Graves, Alex. Supervised sequence labelling with recurrent neural networks. Springer, Berlin, Heidelberg, 2012. }
+  \multiinclude[<+>][format=pdf, graphics={width=\linewidth}] {recurrentVanish}
 \end{center}
 \end{frame}
+
 %-------------------------------------------------------------%
 
+\begin{frame}
+  \frametitle{LSTM Architecture}
 
-\begin{frame}[fragile]{pause}\frametitle{LSTM Network}
+  \begin{itemize}
+  \item<+-> LSTMs (long-short term memory) was designed to solve this problem
+  \item<+-> Key ideas: to retain a `long-term memory' requires
+    \begin{align*}
+      \bm{c}(t) = \bm{c}(t-1)
+    \end{align*}
+  \item<+-> Sometimes we have to forget and sometimes we have to change a memory
+  \item<+-> To do this we should use `gates' that saturate at 0 and 1
+  \item<+-> Sigmoid functions naturally saturate at 0 and 1
+  \end{itemize}
+
+\end{frame}
+
+%-------------------------------------------------------------%
+
+\begin{frame}
+\frametitle{LSTM Architecture}
 \begin{center}
-\includegraphics[width=6.5cm]{lstmnet.pdf} \footnote{Graves, Alex. Supervised sequence labelling with recurrent neural networks. Springer, Berlin, Heidelberg, 2012.}
+  \multiinclude[<+>][format=pdf, graphics={width=0.85\linewidth}] {lstm-dyn}
 \end{center}
 \end{frame}
+
 %-------------------------------------------------------------%
 
-\begin{frame}[fragile]{pause}\frametitle{LSTM Network}
-\begin{itemize}
-\item The multiplicative gates allow LSTM memory cells to store and access information over longer periods of time, thereby mitigating the vanishing gradient problem.
-\item As long as the input gate remains closed, the activation of the cell will not be overwritten and can be available to the network much later in the sequence.
-\item This preservation of information is shown in the next figure.
-\end{itemize}
+\begin{frame}
+\frametitle{Update Equations}
+
+  \begin{itemize}
+  \item<+-> Inputs $\bm{z}(t) = \left(\strut \bm{x}(t),\, \bm{h}(t-1)\right)$
+  \item<+-> Network updates ($\bm{W}_*$ are the free parameters)
+    \begin{align*}
+      \bm{f}(t) &= \bm{\sigma}\!\left( \bm{W}_{\!f} \,\bm{z}(t) \right) &
+      \bm{i}(t) &= \bm{\sigma}\!\left( \bm{W}_{\!i} \,\bm{z}(t) \right) \\
+      \bm{g}(t) &= \text{\bf tanh}\!\left( \bm{W}_{\!g} \,\bm{z}(t) \right) &
+      \bm{o}(t) &= \bm{\sigma}\!\left( \bm{W}_{\!o} \,\bm{z}(t) \right)
+    \end{align*}
+  \item<+-> Long-term memory update
+    \begin{align*}
+      \bm{c}(t) = \bm{f}(t) \otimes \bm{c}(t-1) + \bm{g}(t) \otimes \bm{i}(t)
+    \end{align*}
+  \item<+-> Output $\bm{h}(t) = \bm{o}(t) \otimes \text{\bf tanh}\!\left( \bm{c}(t)\right)$
+  \end{itemize}
+
 \end{frame}
+
 %-------------------------------------------------------------%
 
+\begin{frame}
+\frametitle{Training LSTM}
 
-\begin{frame}[fragile]{pause}\frametitle{LSTM preservation of gradient information}
-\begin{center}
-\includegraphics[width=8cm]{lstm_mem.pdf} \footnote{Generating sequences with recurrent neural networks. A Graves - arXiv preprint arXiv:1308.0850, 2013}
-\end{center}
-\end{frame}
-%-------------------------------------------------------------%
+  \begin{itemize}
+  \item<+-> We can train an LSTM by unwrapping it in time
+  \item<+-> Note that it involves four dense layers with sigmoidal (or tanh) outputs
+  \item<+-> This means that typically it is very slow to train
+  \item<+-> There are a few variants of LSTMs, but all are very similar. The most popular is probably Gated Recurrent Unit (GRU)
+  \end{itemize}
 
-\begin{frame}[fragile]{pause}\frametitle{LSTM preservation of gradient information}
-Adam's visualisations of LSTMs for COMP6208 are excellent:
-\begin{center}
-https://secure.ecs.soton.ac.uk/notes/comp6208/lectures/lstm.pdf
-\end{center}
 \end{frame}
-%-------------------------------------------------------------%
 
-\begin{frame}[fragile]{pause}\frametitle{LSTMs}
-\begin{eqnarray}
-z(t) &=& (x(t), y(t-1)) \\
-f(t) &=& \sigma(W_f z(t)) \\
- g(t) &=& \sigma(W_g z(t)) \\
- h(t) &=& tanh(W_h z(t)) \\
- c(t) &=& f(t) \odot c (t-1) + g(t) \odot h(t)\\
- o(t) &=& \sigma(W_o z(t)) \\
-y(t) &=& o(t) \odot tanh(c(t)) \\
-\end{eqnarray}
-\end{frame}
 %-------------------------------------------------------------%
 
 \begin{frame}[fragile]{pause}\frametitle{LSTM Success Stories}

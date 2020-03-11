@@ -97,7 +97,7 @@ test_data = MyDataset(size=500, random_offset=99999)
 \end{lstlisting}
 
 \begin{tcolorbox}[title=1.1 A simple CNN baseline (2 marks)]
-Implement the following CNN model, and train it using Adam (default parameters) for 100 epochs (use a GPU and be prepared to wait 6 or 7 minutes!). State the loss function you're using. \textbf{Comment} on the performance of the model.
+Implement the following CNN model, and train it using Adam (default parameters) for 100 epochs (use a GPU and be prepared to wait 6 or 7 minutes!). Use shuffled batches of 128 items. State the loss function you're using. \textbf{Comment} on the performance of the model.
 
 \begin{lstlisting}
 Convolution2D, channels=48, size=3x3, stride=1, padding=1
@@ -113,7 +113,7 @@ Linear, 2 outputs
 Clearly the CNN implemented in Section~\ref{init} has many parameters in its final hidden layers. One common way of reducing this is to use Global Max Pooling to flatten the feature maps into a vector (called \verb|AdaptiveMaxPool2d| in PyTorch).
 
 \begin{tcolorbox}[title=2.1 A simple CNN with global pooling (1 mark)]
-Implement the following CNN model, and train it using Adam (default parameters) for 100 epochs. \textbf{Comment} on the model performance.
+Implement the following CNN model, and train it using Adam (default parameters) for 100 epochs. Use shuffled batches of 128 items. \textbf{Comment} on the model performance.
 
 \begin{lstlisting}
 Convolution2D, channels=48, size=3x3, stride=1, padding=1
@@ -145,6 +145,6 @@ Modify the model from Section~\ref{second} as follows:
     x = torch.cat([x, idx], dim=1)
 	\end{lstlisting}
 \end{enumerate}
-Train the modified model using Adam (default parameters) for 100 epochs. \textbf{Comment} on the model performance. \textbf{Describe} the rationale for the modification that was made.
+Train the modified model using Adam (default parameters) for 100 epochs. Use shuffled batches of 128 items. \textbf{Comment} on the model performance. \textbf{Describe} the rationale for the modification that was made.
 \end{tcolorbox}
 \end{document}
