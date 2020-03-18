@@ -186,7 +186,7 @@
   \item<1-> If the output $\bm{y}(t)$ depends on the input
     $\bm{x}(t-2)$, then prediction will be
     \begin{align*}
-      \bm{f}(\bm{x}(t), \bm{g}(\bm{x}(t), \bm{g}(\bm{x}(t-1), \bm{g}(\bm{x}(t-2), c(t-3)|\bm{W}), \bm{W}), \bm{W}), \bm{W})
+      \bm{f}(\bm{x}(t), \bm{g}(\bm{x}(t), \bm{g}(\bm{x}(t-1), \bm{g}(\bm{x}(t-2), c(t-2)|\bm{W})| \bm{W})| \bm{W})| \bm{W})
     \end{align*}
   \item<1-> it should be clear that the gradients of this with respect to the weights can be found with the chain rule
   \item<2-> The back-propagated error will involve applying $\bm{f}$ multiple times
