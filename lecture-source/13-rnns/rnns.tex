@@ -300,7 +300,7 @@ RNNs are Turing complete in the sense they can simulate arbitrary programs\footn
   \item<+-> If the output $\bm{y}(t)$ depends on the input
     $\bm{x}(t-2)$, then prediction will be
     \begin{align*}
-      \bm{f}(\bm{x}(t), \bm{g}(\bm{x}(t), \bm{g}(\bm{x}(t-1), \bm{g}(\bm{x}(t-2)|\bm{W}), \bm{W}), \bm{W}), \bm{W})
+      \bm{f}(\bm{x}(t), \bm{g}(\bm{x}(t-1), \bm{g}(\bm{x}(t-2), \bm{g}(\bm{x}(t-3)|\bm{W})| \bm{W})| \bm{W})| \bm{W})
     \end{align*}
   \item<+-> it should be clear that the gradients of this with respect to the weights can be found with the chain rule
 \end{itemize}
