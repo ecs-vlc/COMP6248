@@ -1,3 +1,6 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Head matter - can we try to be consistent on
+% included packages
 \ifdefined\beamerclass
 \else
     \def\beamerclass{beamer}
@@ -10,6 +13,7 @@
   \pgfpagesuselayout{2 on 1}[a4paper,border shrink=5mm]
 }
 
+%\documentclass{beamer}
 \mode<presentation>
 {\usetheme{default}
  \usecolortheme{default}
@@ -46,6 +50,13 @@
 \usepackage{verbatim}
 %\setbeamertemplate{caption}[numbered]%\numberwithin{figure}{section}
 % Define block styles
+
+\usetheme{Copenhagen}
+\hypersetup{pdfstartview={Fit}}
+\lstset{basicstyle=\small\ttfamily,breaklines=true}
+
+\usepackage{xmpmulti}
+
 \tikzstyle{decision} = [diamond, draw, fill=blue!20, 
     text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
 \tikzstyle{block} = [rectangle, draw, fill=blue!20, 
@@ -113,83 +124,123 @@
 }
 \makeatother
 
+\definecolor{darkblue}{RGB}{37,55,97}
+\definecolor{mellowyellow}{RGB}{247,206,70}
+\definecolor{almostwhite}{RGB}{254,255,255}
+\definecolor{merrygreen}{RGB}{79,173,91}
+\definecolor{funkyorange}{RGB}{240,154,56}
 
+\addtobeamertemplate{footnote}{\hskip -2em}{}
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
 
+\DeclareMathOperator{\softmax}{softmax}
+\DeclareMathOperator{\ReLU}{ReLU}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Formatting for title page
-\title[Deep Learning]{Autoencoder Architectures}
-\author{Kate Farrahi}
-\institute{ECS Southampton}
-\date{\today}
+\title[Auto-encoders]{Unsupervised and self-supervised learning}
+\subtitle{Auto-Encoders}
+\author{Jonathon Hare}
+\institute[]
+{
+  Vision, Learning and Control\\
+  University of Southampton 
+}
+\date{}
+\subject{Computer Science}
+\useoutertheme{infolines}
+\setbeamertemplate{headline}{} %remove headline
+\setbeamertemplate{navigation symbols}{} %remove navigation symbols
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{document}
+
+\begin{frame}[plain]
+        \begin{tikzpicture}[overlay, remember picture, shift={(current page.south west)},font={\fontfamily{Montserrat-TOsF}\selectfont}]
+        \fill [mellowyellow,text=almostwhite] (0,0) rectangle (\paperwidth, \paperheight);
+        \draw (5.5,7) node [align=left,text=darkblue] {\Huge 
+        \begin{tabular}{l} 
+        \textbf{Learn}\\
+        \textbf{Latent} \\
+        \textbf{Representations} 
+        \end{tabular}};
+        \draw (11,1) node [align=left,text=darkblue] {\includegraphics[scale=0.15]{../vlc.png}};
+        \end{tikzpicture}
+\end{frame}
+
 \begin{frame}
   \titlepage
 \end{frame}
 %-------------------------------------------------------------%
+\begin{frame}
+\frametitle{Compressed and Latent Representations}
 
-%\begin{frame}[fragile]{pause}\frametitle{Vanishing Gradients in RNNs}
-%\end{frame}
+\end{frame}
+
+\begin{frame}
+\frametitle{Compression}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Generative Modelling from Latent Representations}
+
+\end{frame}
+
 %-------------------------------------------------------------%
-\begin{frame}[fragile]{pause}\frametitle{ Autoencoder}
+\begin{frame}
+\frametitle{Autoencoders}
 The aim of an autoencoder is to learn a representation (encoding) for a set of data, typically for dimensionality reduction, by training the network to ignore signal noise. 
 \begin{center}
-\includegraphics[width=7cm]{AE.pdf} \footnote{Image taken from Deep Learning book by Goodfellow et al.}
+\includegraphics[width=7cm]{AE.pdf}
 \end{center}
 \end{frame}
 %-------------------------------------------------------------%
 
-\begin{frame}[fragile]{pause}\frametitle{Deep Autoencoder}
+\begin{frame}[fragile]{pause}\frametitle{Deep Autoencoders}
 \begin{center}
 \includegraphics[width=10cm]{DAE.pdf} \footnote{Image taken from wikipedia}
 \end{center}
 \end{frame}
 %-------------------------------------------------------------%
 
-\begin{frame}[fragile]{pause}\frametitle{Denoising Autoencoder}
+\begin{frame}
+\frametitle{Denoising Autoencoders}
+
 \begin{itemize}
-\item Denoising autoencoders take a partially corrupted input and train to recover the original undistorted input. \pause
-\item To train an autoencoder to denoise data, it is necessary to perform a preliminary stochastic mapping to corrupt the data ($x \rightarrow \tilde x$).  \pause
-\item A normal autoencoder is used with $\tilde x$ is used as input and $ x$ as output. \pause
-\item In a denoising autoencoder, the loss should be computed on $\mathcal{L}(x, \hat x)$ as opposed to $\mathcal{L}(\tilde x, \hat x)$.
+\item<+-> Denoising autoencoders take a partially corrupted input and train to recover the original undistorted input.
+\item<+-> To train an autoencoder to denoise data, it is necessary to perform a preliminary stochastic mapping to corrupt the data ($x \rightarrow \tilde x$). 
+\item<+-> A normal autoencoder is used with $\tilde x$ is used as input and $ x$ as output.
+\item<+-> In a denoising autoencoder, the loss should be computed on $\mathcal{L}(x, \hat x)$ as opposed to $\mathcal{L}(\tilde x, \hat x)$.
 \end{itemize}
 \end{frame}
 %-------------------------------------------------------------%
-
-
-\begin{frame}[fragile]{pause}\frametitle{Sparse Autoencoder}
+\begin{frame}[fragile]{pause}\frametitle{Sparse Autoencoders}
 \begin{itemize}
 \item In a sparse autoencoder, there are more hidden units than inputs, but only a small number of the hidden units are allowed to be active at the same time.
 \end{itemize}
 \end{frame}
 %-------------------------------------------------------------%
-
-
-\begin{frame}[fragile]{pause}\frametitle{Autoencoder Applications}
+\begin{frame}
+\frametitle{Convolutional Autoencoders}
 \begin{itemize}
-\item Any basic AE (or its variant) is used to learn a compact representation of data. \pause
-\item You can learn automatic features from data. E.g. HAR with sensor data. \pause
-\item Denoising can help generalise over the test set since the data is distorted by adding noise. \pause
-\item Pretraining networks by learning your network weights using a stacked AE.
+\item 
 \end{itemize}
 \end{frame}
 %-------------------------------------------------------------%
 
-\begin{frame}[fragile]\frametitle{Variational Autoencoders (VAEs)}
-%\begin{center}
-\includegraphics[width=10cm]{VAE.pdf} \footnote{Slide taken from \url{https://www.slideshare.net/ckmarkohchang/variational-autoencoder}}
-%\end{center}
-\end{frame}
-%-------------------------------------------------------------%
-
-\begin{frame}[fragile]{pause}\frametitle{Variational Autoencoder}
+\begin{frame}\frametitle{Autoencoder Applications}
 \begin{itemize}
-\item In VAEs, data is generated by a directed graphical model $p(x|z)$. \pause
-\item The encoder is learning an approximation $q_{\phi}(z|x)$ to the posterior distribution $p_{\theta}(x|z)$, where $\phi$ and $\theta$ denote the parameters of the encoder and decoder, respectively. \pause
-\item The objective of the VAE has the following form $\mathcal{L} = D_{KL}(q_{\phi}(z|x) || p_{\theta}(z)) - \mathop{\mathbb{E}}_{q_{\phi}}(log  p_{\theta}(x|z))$
+\item<+-> Any basic AE (or its variant) is used to learn a compact representation of data.
+\item<+-> You can learn automatic features from data.
+\item<+-> Denoising can help generalise over the test set since the data is distorted by adding noise.
+\item<+-> Pretraining networks by learning your network weights using a stacked AE.
 \end{itemize}
 \end{frame}
-%-------------------------------------------------------------%
 
 \end{document}
