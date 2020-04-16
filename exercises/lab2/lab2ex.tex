@@ -33,7 +33,7 @@ This is the exercise that you need to work through \textbf{on your own} after co
 
 We expect that you should aim to use one side of A4 to cover your responses to \emph{this} exercise. This exercise is worth 5\% of your overall module grade.
 
-\section{Implement matrix factorisation using gradient descent (take 2)}\label{sgd}
+\section{Implement matrix factorisation using gradient descent (take 2)}\label{gd}
 
 Last week we implemented a low-rank matrix factorisation by considering gradient updates to a single element at a time. Let's revisit that problem, but this time we'll use PyTorch's AD framework to compute the gradients for us on the entire problem, and then use these with gradient descent algorithm. As a recap, the optimisation problem we are solving is:
 
@@ -48,7 +48,7 @@ Implement the optimisation problem using PyTorch's automatic differentiation fra
 \begin{lstlisting}[language=Python]
 from typing import Tuple
 
-def sgd_factorise_ad(A: torch.Tensor, rank: int, num_epochs=1000, 
+def gd_factorise_ad(A: torch.Tensor, rank: int, num_epochs=1000, 
 	lr=0.01) -> Tuple[torch.Tensor, torch.Tensor]:
 \end{lstlisting}
 
@@ -66,7 +66,7 @@ data = torch.tensor(df.iloc[:, [0,1,2,3]].values)
 data = data - data.mean(dim=0)
 \end{lstlisting}
 
-Use your \texttt{sgd\_factorise\_ad} function to compute the rank-2 factorisation of the \texttt{data} matrix using the default values for learning rate and number of epochs. What is the reconstruction loss? How does this reconstruction loss compare to the loss of a rank-2 reconstruction computed using a truncated Singular Value Decomposition of the same data?
+Use your \texttt{gd\_factorise\_ad} function to compute the rank-2 factorisation of the \texttt{data} matrix using the default values for learning rate and number of epochs. What is the reconstruction loss? How does this reconstruction loss compare to the loss of a rank-2 reconstruction computed using a truncated Singular Value Decomposition of the same data?
 \end{tcolorbox}
 
 \begin{tcolorbox}[title=1.3 Compare against PCA (1 mark)]
