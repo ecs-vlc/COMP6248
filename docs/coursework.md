@@ -20,7 +20,7 @@ Handin: [1920/COMP6248/1/](https://handin.ecs.soton.ac.uk/handin/1920/COMP6248/1
 Required files: team.txt
 
 ### Handin #2
-Due date: ~~Friday 15th May 2020, 16:00.~~  Friday 29th May 2020, 16:00.
+Due date: ~~Friday 15th May 2020, 16:00.~~  Friday 29th May 2020, 16:00.  
 Handin: [1920/COMP6248/2/](https://handin.ecs.soton.ac.uk/handin/1920/COMP6248/2/)  
 Required files: paper.pdf; mark_split.pdf  
 

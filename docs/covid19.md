@@ -20,8 +20,9 @@ At the time of the University closing on the 13th March, 14/23 lectures and 5/8 
 
 ## Welcome back message
 
-_Coming soon!_
-
+<figure class="video_container" style="text-align:center">
+	<iframe src="https://southampton.cloud.panopto.eu/Panopto/Pages/Embed.aspx?id=0c2f4462-bd77-4e2f-80a2-aba1006ba0cb&autoplay=false&offerviewer=true&showtitle=true&showbrand=false&start=0&interactivity=none" width="720" height="405" style="border: 1px solid #464646;" allowfullscreen allow="autoplay"></iframe>
+</figure>
 
 ## Remaining lectures
 
@@ -51,3 +52,10 @@ This should run in pretty much the same way the first one did (using blackboard)
 This will continue as before - it's worth 40% or the overall mark and carried out over the entire duration of the module. Students can ask the lab demonstrators for help during the scheduled lab sessions. We can also schedule another time for the demonstrators to be available for Q&A if there is demand. The deadline will be extended to the 
 29th May. 
 
+## Behind the scenes
+
+It's fair to say that all your lecturers are working hard to ensure that you're able to finish your modules and courses. We've had to improvise "lecture theatres" in our houses and learn some new skills in video production as you can see from my short behind-the-scenes video.
+
+<figure class="video_container" style="text-align:center">
+	<iframe src="https://southampton.cloud.panopto.eu/Panopto/Pages/Embed.aspx?id=af16e973-5a2d-4756-a5f5-aba1006eadb3&autoplay=false&offerviewer=true&showtitle=true&showbrand=false&start=0&interactivity=none" width="720" height="405" style="border: 1px solid #464646;" allowfullscreen allow="autoplay"></iframe>
+</figure>
