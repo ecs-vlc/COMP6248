@@ -363,7 +363,7 @@ Note that the autoencoder weights are not however constrained to be orthogonal (
 \begin{itemize}
 \item<+-> In a sparse autoencoder, there can be more hidden units than inputs, but only a small number of the hidden units are allowed to be active at the same time.
 \item<+-> This is simply achieved with a regularised loss function: $\ell = \ell_{mse} + \Omega(\bm{h})$
-\item<+-> A popular choice that you've seen before would be to use an l1 penalty $\Omega(\bm{h} = \lambda \sum_i | h_i |$
+\item<+-> A popular choice that you've seen before would be to use an l1 penalty $\Omega(\bm{h}) = \lambda \sum_i | h_i |$
   \begin{itemize}
     \item<+-> this of course does have a slight problem... what is the derivative of $y=|x|$ with respect to $x$ at $x=0$?
   \end{itemize}
@@ -390,8 +390,8 @@ Note that the autoencoder weights are not however constrained to be orthogonal (
 \begin{frame}
 \frametitle{Beyond Deterministic Autoencoders: Stochastic Encoders and Decoders}
 \begin{itemize}
-\item<+-> When we trained supervised classification networks we usually assume that the network produces an output distribution $p(\bm{y}|\bm{x})$ and try to minimise the log-likelihood $-\log(p\bm{y}|\bm{x})$.
-\item<+-> In a decoder of an autoencoder we could do the same thing and have the decoder learn $p_{decoder}(\bm{x}|\bm{h})$  by minimising $-\log(p\bm{x}|\bm{h})$.
+\item<+-> When we trained supervised classification networks we usually assume that the network produces an output distribution $p(\bm{y}|\bm{x})$ and try to minimise the negative log-likelihood $-\log(p(\bm{y}|\bm{x}))$.
+\item<+-> In a decoder of an autoencoder we could do the same thing and have the decoder learn $p_{decoder}(\bm{x}|\bm{h})$  by minimising $-\log(p(\bm{x}|\bm{h})$.
 \begin{itemize}
   \item<+-> A linear output layer could parameterise the mean of a Gaussian distribution for real-valued $\bm{x}$; in this case the negative log likelihood yields the MSE criterion.
   \item<+-> Binary $\bm{x}$ would correspond to a Bernoulli distribution parameterised by sigmoid outputs
