@@ -8,6 +8,7 @@
 \documentclass[\beamerclass]{beamer}
 
 \usepackage{pgfpages}
+\usepackage{pgfplots}
 \mode<handout>{
   % \setbeamercolor{background canvas}{bg=black!20}
   \pgfpagesuselayout{2 on 1}[a4paper,border shrink=5mm]
@@ -140,6 +141,9 @@
 
 \DeclareMathOperator{\softmax}{softmax}
 \DeclareMathOperator{\ReLU}{ReLU}
+\DeclareMathOperator{\argmax}{arg\,max}
+\DeclareMathOperator{\abs}{abs}
+\DeclareMathOperator{\huber}{huber}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Formatting for title page
@@ -161,14 +165,14 @@
 
 \begin{frame}[plain]
         \begin{tikzpicture}[overlay, remember picture, shift={(current page.south west)},font={\fontfamily{Montserrat-TOsF}\selectfont}]
-        \fill [mellowyellow,text=almostwhite] (0,0) rectangle (\paperwidth, \paperheight);
-        \draw (5.5,7) node [align=left,text=darkblue] {\Huge 
+        \fill [merrygreen,text=almostwhite] (0,0) rectangle (\paperwidth, \paperheight);
+        \draw (5.5,7) node [align=left,text=almostwhite] {\Huge 
         \begin{tabular}{l} 
-        \textbf{Learn}\\
-        \textbf{Latent} \\
-        \textbf{Representations} 
+        \textbf{Differentiate}\\
+        \textbf{Almost} \\
+        \textbf{Everywhere} 
         \end{tabular}};
-        \draw (11,1) node [align=left,text=darkblue] {\includegraphics[scale=0.15]{../vlc.png}};
+        \draw (11,1) node [align=left,text=almostwhite] {\includegraphics[scale=0.15]{../vlc.png}};
         \end{tikzpicture}
 \end{frame}
 
@@ -180,28 +184,326 @@
 
 \begin{frame}
 \frametitle{What are differentiable relaxations and reparameterisations?}
- ...and why do we need them?
+ 
+\begin{itemize}
+  \item<+-> We've seen that we can build arbitrary computational graphs from a variety of building blocks
+  \item<+-> But, those blocks need to be differentiable to work in our optimisation framework
+  \begin{itemize}
+    \item More specifically they need to be continuous and \emph{differentiable almost everywhere}.
+  \end{itemize}
+  \item<+-> That limits what we can do... Can we work around that?
+  \begin{itemize}
+    \item Relaxations --- make continuous (and differentiable everywhere) approximations.
+    \item Reparameterisations --- rewrite functions to factor out stochastic variables from the parameters.
+  \end{itemize}
+\end{itemize}
+
+
 \end{frame}
 
 %-------------------------------------------------------------%
 
 \begin{frame}
-\frametitle{Aside: continuity, smoothness and Lipschitz}
+\frametitle{Aside: continuity and differentiable almost everywhere}
+
+\begin{itemize}
+  \item<+-> Consider the $\ReLU$ function $f(x) = max(0,x)$
+  \begin{itemize}
+    \item<+-> $\ReLU$ is \emph{continuous}
+    \begin{itemize}
+      \item it does not have any abrupt changes in value
+      \item small changes in $x$ result in small changes to $f(x)$ everywhere in the domain of $x$
+    \end{itemize}
+    \item<+-> $\ReLU$ is \emph{differentiable almost everywhere}
+    \begin{itemize}
+      \item No gradient at $x=0$; only \emph{left} and \emph{right} gradients at that point
+      \item There are \emph{subgradients} at $x=0$; implementations usually just arbitrarily pick $f'(0)=0$
+    \end{itemize}
+  \end{itemize}
+  \item<+-> Functions that are differentiable almost everywhere or have subgradients tend to be compatible with gradient descent methods
+  \begin{itemize}
+    \item We expect that the loss landscape is different for each batch \& that we'll never actually reach a minima, and we only need to \emph{mostly} take steps in the right direction.
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------%
+
+\begin{frame}
+\frametitle{Relaxing $\ReLU$}
+
+\begin{columns}
+\begin{column}{0.6\textwidth}
+   \begin{itemize}
+     \item<+-> Softplus ($\ln(1+e^x)$) is a relaxation of $\ReLU$ that is \emph{differentiable everywhere}.
+     \item<+-> Its derivative is the Sigmoid function
+     \item<+-> Not widely used; counterintuitively, even though it neither saturates completely and is differentiable everywhere, empirically it has been shown that $\ReLU$ works better.
+   \end{itemize}
+\end{column}
+\begin{column}{0.4\textwidth}
+\begin{tikzpicture}
+  \begin{axis}[ 
+    % xlabel=$x$,
+    % ylabel=$f(x)$,
+    height=5cm,
+    width=5cm,
+    grid=major,
+    axis equal,
+  ] 
+    \addplot[red] {max(0,x)}; 
+    \addlegendentry{$\ReLU$}
+
+    \addplot[blue] {ln(1 + exp(x))}; 
+    \addlegendentry{Softplus}
+  \end{axis}
+\end{tikzpicture}
+\end{column}
+\end{columns}
 
 \end{frame}
 
 %-------------------------------------------------------------%
 
 \begin{frame}
-\frametitle{Softmax and Softargmax}
+\frametitle{Interpretations of $\softmax$}
 
+\begin{itemize}
+  \item<+-> Up until now we've really considered $\softmax$ as a generalisation of sigmoid (which represents a probability distribution over a binary variable) to many output categories.
+  \begin{itemize}
+    \item $\softmax$ transforms a vector of logits into a probability distribution over categories.
+  \end{itemize}
+\item<+-> As you might guess from the name, $\softmax$ is a relaxation...
+\begin{itemize}
+  \item<+-> but not of the max function like the name would suggest!
+  \item<+-> $\softmax$ can be viewed as a continuous and differentiable relaxation of the $\argmax$ function with one-hot output encoding.
+  \item<+-> The $\argmax$ function is not continuous or differentiable; $\softmax$ provides an approximation:
+
+  \begin{tabular}{crlllll}
+  $\bm x = $ & [ & 1.1 & 4.0 & -0.1 & 2.3 & ] \\
+  $\argmax(\bm x) = $ & [ & 0 & 1 & 0 & 0 & ] \\
+  $\softmax(\bm x) = $ &  [ & 0.044 & 0.797 & 0.013 & 0.146 & ] \\
+  \end{tabular}
+\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{The Softmax function with temperature}
+Consider what happens if you were to divide the input logits to a $\softmax$ by a scalar temperature parameter $T$.
+
+\begin{center}
+$\softmax(\bm x / T)_i = \frac{e^{x_i / T}}{\sum_{j=1}^K e^{x_j / T}} \;\;\;\;\;\;\; \forall i = 1, 2, \dots, K$  
+\end{center}
+
+\begin{figure}
+\centering
+\begin{tikzpicture}
+  \begin{axis}[
+    % xlabel=Cost,
+    % ylabel=Error,
+    ybar, 
+    xtick=data,
+    enlargelimits=0.15,
+    bar width=9pt,
+    height=7cm,
+    width=10cm,]
+  \addplot coordinates {
+    (0,0.2404)
+    (1,0.2779)
+    (2,0.2264)
+    (3,0.2553)
+  };
+  \addplot coordinates {
+    (0,0.2064)
+    (1,0.3687)
+    (2,0.1624)
+    (3,0.2624)
+  };
+  \addplot coordinates {
+    (0,0.0439)
+    (1,0.7973)
+    (2,0.0132)
+    (3,0.1456)
+  };
+  \addplot coordinates {
+    (0,2.9204e-03)
+    (1,9.6462e-01)
+    (2,2.6494e-04)
+    (3,3.2193e-02)
+  };
+  \legend{$T=20.0$, $T=5.0$, $T=1.0$, $T=0.5$}
+  \end{axis}
+\end{tikzpicture}  
+\end{figure}
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{$\argmax$ --- $\softmax$ with temperature}
+
+\begin{tabular}{crlllll}
+$\bm x = $ & [ & 1.1 & 4.0 & -0.1 & 2.3 & ] \\
+$\softmax(\bm x/1.0) = $ & [ & 0.044 & 0.797 & 0.013 & 0.146 & ]\\
+$\softmax(\bm x/0.8) = $ & [ & 0.023 & 0.868 & 0.005 & 0.104 & ]\\
+$\softmax(\bm x/0.6) = $ & [ & 0.008 & 0.937 & 0.001 & 0.055 & ]\\
+$\softmax(\bm x/0.4) = $ & [ & 6.997e-04 &  9.852e-01 & 3.484e-05 & 1.405e-02 & ] \\
+$\softmax(\bm x/0.2) = $ & [ & 5.042e-07 &  9.998e-01 & 1.250e-09 & 2.034e-04 & ] \\
+\end{tabular}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{$\argmax$ --- scalar approximation}
+
+\begin{itemize}
+  \item<+-> What if you want to get a scalar approximation to the index of the $\argmax$ rather than a probability distribution approximating the one-hot form?
+  \begin{itemize}
+    \item Caveat: we can't actually get a guaranteed integer representation as that would be non-differentiable; we'll have to live with a float that is an approximation.
+  \end{itemize}
+  \item<+-> First, consider how to convert a one-hot vector to index representation in a differentiable manner: $[0,0,1,0] \to 2$
+  \begin{itemize}
+    \item Just dot product with a vector of indices: $[0,1,2,3]$
+  \end{itemize}
+  \item<+-> The same process can be applied to the $\softmax$ distribution
+  \begin{itemize}
+    \item As temperature $T \to 0$, $\softmax(\bm x / T) \cdot [0, 1, \dots, N] \to \argmax(\bm x)$ for $\bm x \in \mathbb{R}^N$.
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{$\argmax$ --- scalar approximation}
+
+\centering
+\begin{align*}
+\bm x &= [ \begin{array}{cccc}1.1 & 4.0 & -0.1 & 2.3\end{array}]^\top \\
+\bm i &= [ \begin{array}{cccc}0.0 & 1.0 & 2.0 & 3.0\end{array}]^\top \\
+\softmax(\bm x/1.0)^\top \bm i &= 1.2606 \\
+\softmax(\bm x/0.8)^\top \bm i &= 1.1894 \\
+\softmax(\bm x/0.6)^\top \bm i &= 1.1037 \\
+\softmax(\bm x/0.4)^\top \bm i &= 1.0274 \\
+\softmax(\bm x/0.2)^\top \bm i &= 1.0004 \\
+\end{align*}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{max}
+
+\begin{itemize}
+  \item<+-> A similar trick applies to finding the maximum value of a vector:
+  \begin{itemize}
+    \item<+-> Use $\softmax(\bm x)$ as an approximate one-hot $\argmax$, and dot product with the vector $\bm x$.
+    \item<+-> As temperature $T \to 0$, $\softmax(\bm x / T)^\top \bm x \to \max(\bm x)$.
+  \end{itemize}
+\end{itemize}
+
+\only<+->{
+\centering
+\begin{align*}
+\bm x &= [ \begin{array}{cccc}1.1 & 4.0 & -0.1 & 2.3\end{array}]^\top \\
+\softmax(\bm x/1.0)^\top \bm x &= 3.571 \\
+\softmax(\bm x/0.8)^\top \bm x &= 3.736 \\
+\softmax(\bm x/0.6)^\top \bm x &= 3.881 \\
+\softmax(\bm x/0.4)^\top \bm x &= 3.974 \\
+\softmax(\bm x/0.2)^\top \bm x &= 3.999 \\
+\end{align*}
+}
 \end{frame}
 
 %-------------------------------------------------------------%
 
 \begin{frame}
-\frametitle{Relaxing the L1 norm / distance}
+\frametitle{L1 norm}
 
+\begin{columns}
+\begin{column}{0.6\textwidth}   
+\begin{itemize}
+  \item<+-> L1 norm is the sum of absolute values of a vector
+  \item<+-> We've seen that an L1 norm regulariser can induce sparsity in a model
+  \item<+-> $\abs$ is continuous and differentiable almost everywhere, but...
+  \item<+-> unlike ReLU, the gradients left and right of the discontinuity point in equal and opposite directions
+  \begin{itemize}
+    \item This can cause oscillations that prevent or hamper learning
+  \end{itemize}
+\end{itemize}
+\end{column}
+\begin{column}{0.4\textwidth}
+\begin{tikzpicture}[
+declare function={
+    dAbs(\x)= (\x<0) * (-1) + (\x>0) * (1);
+  }
+]
+  \begin{axis}[ 
+    % xlabel=$x$,
+    % ylabel=$f(x)$,
+    height=5cm,
+    width=5cm,
+    grid=major,
+    axis equal,
+    samples=1001
+  ] 
+    \addplot[blue] {abs(x)}; 
+    \addlegendentry{$\abs(x)$}
+
+    \addplot[red] {dAbs(x))}; 
+    \addlegendentry{$\abs'(x)$}
+  \end{axis}
+\end{tikzpicture}
+
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Relaxing the L1 norm}
+
+\begin{columns}
+\begin{column}{0.6\textwidth}   
+\begin{itemize}
+  \item<+-> Huber loss (aka Smooth L1 loss) relaxes L1 by mixing it with L2 near the origin:
+  \begin{equation*}
+    z_{i} =
+        \begin{cases}
+        0.5 (x_i - y_i)^2, & \text{if } |x_i - y_i| < 1 \\
+        |x_i - y_i| - 0.5, & \text{otherwise }
+        \end{cases}
+  \end{equation*}
+
+  \item<+-> In both cases gradients reduce in magnitude and switch direction smoothly which can lead to much less oscillation.
+\end{itemize}
+\end{column}
+\begin{column}{0.4\textwidth}
+\begin{tikzpicture}[
+declare function={
+    huber(\x)= (abs(\x)>=1) * (abs(x) - 0.5) + (abs(\x)<1) * (0.5 * x^2);
+  },
+declare function={
+    dhuber(\x)= (\x>=1) * (1) + (abs(\x)<1) * (x) + (\x<=-1) * (-1);
+  }
+]
+  \begin{axis}[ 
+    % xlabel=$x$,
+    % ylabel=$f(x)$,
+    height=5cm,
+    width=5cm,
+    grid=major,
+    axis equal,
+    samples=1001
+  ] 
+    \addplot[blue] {huber(x))}; 
+    \addlegendentry{$\huber(x)$}
+
+    \addplot[red] {dhuber(x))}; 
+    \addlegendentry{$\huber'(x)$}
+  \end{axis}
+\end{tikzpicture}
+
+\end{column}
+\end{columns}
 \end{frame}
 
 %-------------------------------------------------------------%

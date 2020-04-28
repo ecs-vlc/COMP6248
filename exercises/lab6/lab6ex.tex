@@ -1,0 +1,48 @@
+
+\documentclass[a4paper]{article}
+\usepackage[a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=2cm]{geometry}
+\usepackage{lmodern}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage{textpos} % package for the positioning
+\usepackage{tcolorbox}
+\usepackage{pgf, tikz}
+\usepackage{url}
+\usetikzlibrary{arrows, automata}
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{0.3em}
+
+\usepackage{textcomp}
+\begin{document}
+
+\lstset{language=Python,upquote=true}
+
+\setlength{\leftskip}{20pt}
+\title{Lab 6 Exercise - Reflections on transfer learning}
+\author{Jonathon Hare (jsh2@ecs.soton.ac.uk)}
+
+\maketitle
+
+% \begin{abstract}
+% \end{abstract}
+% \tableofcontents
+
+This is the exercise that you need to work through \textbf{on your own} after completing the sixth lab session. You'll need to write up your results/answers/findings and submit this to ECS handin as a PDF document along with the other lab exercises near the end of the module (1 pdf document per lab). 
+
+We expect that you \textbf{will use no more than one side} of A4 to cover your responses to \emph{this} exercise; \textbf{answers need only be brief and ideally you will use considerably less space}. This exercise is worth 5\% of your overall module grade.
+
+\section{Transfer Learning}
+In the lab notebook you built two different approaches to solving the boat data classification problem utilising a pretrained ResNet50 network. In the first you modified the classification head of the network and performed fine-tuning, whilst in the second you used features from the network to train SVM classifiers.
+\\[1em]
+\begin{tcolorbox}[title=Finetuning (2 marks)]
+Describe your methodology for finetuning your ResNet50 model and provide justification for your choices.
+\end{tcolorbox}
+\vspace{1em}
+\begin{tcolorbox}[title=Reflect on the two different approaches (3 marks)]
+Briefly compare the performance of the two approaches. Which one did you find worked better? Which one was fastest? 
+\end{tcolorbox}
+
+\end{document}
