@@ -140,6 +140,7 @@
 }
 
 \DeclareMathOperator{\softmax}{softmax}
+\DeclareMathOperator{\softplus}{softplus}
 \DeclareMathOperator{\ReLU}{ReLU}
 \DeclareMathOperator{\argmax}{arg\,max}
 \DeclareMathOperator{\abs}{abs}
@@ -193,7 +194,7 @@
   \end{itemize}
   \item<+-> That limits what we can do... Can we work around that?
   \begin{itemize}
-    \item Relaxations --- make continuous (and differentiable everywhere) approximations.
+    \item Relaxations --- make continuous (and potentially differentiable everywhere) approximations.
     \item Reparameterisations --- rewrite functions to factor out stochastic variables from the parameters.
   \end{itemize}
 \end{itemize}
@@ -235,9 +236,9 @@
 \begin{columns}
 \begin{column}{0.6\textwidth}
    \begin{itemize}
-     \item<+-> Softplus ($\ln(1+e^x)$) is a relaxation of $\ReLU$ that is \emph{differentiable everywhere}.
+     \item<+-> Softplus ($\softplus(x) = \ln(1+e^x)$) is a relaxation of $\ReLU$ that is \emph{differentiable everywhere}.
      \item<+-> Its derivative is the Sigmoid function
-     \item<+-> Not widely used; counterintuitively, even though it neither saturates completely and is differentiable everywhere, empirically it has been shown that $\ReLU$ works better.
+     \item<+-> Not widely used; counter-intuitively, even though it neither saturates completely and is differentiable everywhere, empirically it has been shown that $\ReLU$ works better.
    \end{itemize}
 \end{column}
 \begin{column}{0.4\textwidth}
@@ -274,7 +275,7 @@
   \end{itemize}
 \item<+-> As you might guess from the name, $\softmax$ is a relaxation...
 \begin{itemize}
-  \item<+-> but not of the max function like the name would suggest!
+  \item<+-> but not of the $\max$ function like the name would suggest!
   \item<+-> $\softmax$ can be viewed as a continuous and differentiable relaxation of the $\argmax$ function with one-hot output encoding.
   \item<+-> The $\argmax$ function is not continuous or differentiable; $\softmax$ provides an approximation:
 
@@ -361,7 +362,7 @@ $\softmax(\bm x/0.2) = $ & [ & 5.042e-07 &  9.998e-01 & 1.250e-09 & 2.034e-04 & 
 \begin{itemize}
   \item<+-> What if you want to get a scalar approximation to the index of the $\argmax$ rather than a probability distribution approximating the one-hot form?
   \begin{itemize}
-    \item Caveat: we can't actually get a guaranteed integer representation as that would be non-differentiable; we'll have to live with a float that is an approximation.
+    \item Caveat: we are not actually going get a guaranteed integer representation as that would be non-differentiable; we'll have to live with a float that is an approximation\footnote{for now --- we'll address this in a few slides time!}.
   \end{itemize}
   \item<+-> First, consider how to convert a one-hot vector to index representation in a differentiable manner: $[0,0,1,0] \to 2$
   \begin{itemize}
@@ -509,8 +510,45 @@ declare function={
 %-------------------------------------------------------------%
 
 \begin{frame}
+\frametitle{Backpropagation through random operations}
+
+\begin{itemize}
+  \item<+-> Up until now all the models we've considered have performed deterministic transformations of input variables $\bm x$.
+  \item<+-> What if we want to build a model that performs a stochastic transformation of $\bm x$?
+  \item<+-> A simple way to do this is to augment the input $\bm x$ with a random vector $\bm z$ sampled from some distribution 
+  \begin{itemize}
+    \item<+-> The network would learn a function $f(\bm x, \bm z)$ that is internally deterministic, but appears stochastic to an observer that does not have access to $\bm z$.
+    \item<+-> provided that $f$ is continuous and differentiable (almost everywhere) we can perform gradient based optimisation as usual.
+  \end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
 \frametitle{Differentiable Sampling}
 
+Consider 
+\begin{equation*}
+  y \sim \mathcal{N}(\mu, \sigma^2) 
+\end{equation*}
+How can we take derivatives of $y$ with respect to $\mu$ and $\sigma^2$?
+
+\end{frame}
+
+%-------------------------------------------------------------%
+
+\begin{frame}
+\frametitle{Differentiable Sampling}
+
+If we rewrite
+\begin{equation*}
+y = \mu + \sigma z \; \mathrm{where}\; z = \mathcal{N}(0,1)
+\end{equation*}
+Then it is clear that $y$ is a function of a deterministic operation with variables $\mu$ and $\sigma$ with an (extra) input $z$. 
+\begin{itemize}
+  \item<+-> Crucially the extra input is an r.v. whose distribution is not a function of any variables whose derivatives we wish to calculate.
+  \item<+-> The derivatives $dy/d\mu$ and $dy/d\sigma$ tell us how an infinitesimal change in $\mu$ or $\sigma$ would change $y$ if we could repeat the sampling operation with the \emph{same} value of $z$
+\end{itemize}
 \end{frame}
 
 %-------------------------------------------------------------%
@@ -518,34 +556,144 @@ declare function={
 \begin{frame}
 \frametitle{The reparameterisation trick}
 
+\begin{itemize}
+  \item<+-> The `trick' of factoring out the source of randomness into an extra input $z$ is often called the \textbf{reparameterisation trick}.
+  \item<+-> It doesn't just apply to the Gaussian distribution!
+  \begin{itemize}
+    \item<+->More generally we can express any probability distribution $p(\mathrm{y}; \bm\theta)$ or $p(\mathrm{y} | \bm x; \bm\theta)$ as $p(\mathrm{y}; \bm\omega)$ where $\bm\omega$ contains the parameters $\bm\theta$ and if applicable inputs $\bm x$.
+      \item<+-> A sample $\bm y \sim p(\mathrm{y}; \bm\omega)$ can be rewritten as $\bm y=f(\bm z, \bm\omega)$ where $\bm z$ is a source of randomness.
+      \item<+-> We can thus compute derivatives $\partial \bm y/\partial \bm\omega$ and use gradient based optimisation as long as
+      \begin{itemize}
+        \item $f$ is continuous and differentiable almost everywhere
+        \item $\bm\omega$ is not a function of $\bm z$
+        \item and $\bm z$ is not a function of $\bm\omega$
+      \end{itemize}
+    \end{itemize}
+\end{itemize}
+
 \end{frame}
 
 %-------------------------------------------------------------%
 
 \begin{frame}
-\frametitle{Sampling from a diagonal-covariance Gaussian}
+\frametitle{Backpropagation through discrete stochastic operations}
+
+\begin{itemize}
+  \item<+-> Consider a stochastic model $\bm y = f(\bm z, \bm \omega)$ where the outputs are \textbf{discrete}. 
+  \begin{itemize}
+    \item<+-> This implies $f$ must be a step function.
+    \item<+-> Derivatives of a step function at the step are undefined.
+    \item<+-> Derivatives are zero almost everywhere. 
+    \item<+-> If we have a loss $\mathcal{L}(\bm y)$ the gradients don't give us any information on how to update the parameters $\bm\theta$ to minimise the loss
+  \end{itemize}
+  \item<+-> Potential solutions:
+  \begin{itemize}
+    \item REINFORCE
+    \item A relaxation and another `trick': Gumbel Softmax and the Straight-through operator
+  \end{itemize}
+\end{itemize}
 
 \end{frame}
+
+%-------------------------------------------------------------%
+
+\begin{frame}
+\frametitle{REINFORCE: REward Increment = nonnegative Factor $\times$ Offset Reinforcement $\times$ Characteristic Eligibility}
+
+\begin{itemize}
+  \item<+-> $\mathbb{L}(f(\bm z, \bm\omega))$ has useless derivatives
+  \item<+-> But the expected loss $\mathbb{E}_{\bm z \sim p(\mathbf{z})} \mathcal{L}(f(\bm z, \bm \omega))$is often smooth and continuous.
+  \begin{itemize}
+    \item This is not tractable with high dimensional $\bm y$.
+    \item But, it can be estimated without bias using an Monte Carlo average.
+  \end{itemize}
+  \item<+-> REINFORCE is a family of algorithms that utilise this idea.
+\end{itemize}
+
+\end{frame}
+
+%-------------------------------------------------------------%
+
+\begin{frame}
+\frametitle{REINFORCE: REward Increment = nonnegative Factor $\times$ Offset Reinforcement $\times$ Characteristic Eligibility}
+
+The simplest form of REINFORCE is easy to derive by differentiating the expected loss:
+\footnotesize
+\begin{align}
+\mathbb{E}_{\bm z}[\mathcal{L}(\bm y)] &= \sum_{\bm y} \mathcal{L}(\bm y)p(\bm y)\\
+\frac{\partial \mathbb{E}[\mathcal{L}(\bm y)]}{\partial \bm\omega} &= \sum_{\bm y} \mathcal{L}(\bm y) \frac{\partial p(\bm y)}{\partial \bm\omega}\\
+&= \sum_{\bm y} \mathcal{L}(\bm y) p(\bm y) \frac{\partial \log p(\bm y)}{\partial \bm\omega}\\
+&\approx \frac{1}{m} \sum_{\bm y^{(i)} \sim p(\mathbf{y}), i=1}^{m} \mathcal{L}(\bm y^{(i)}) \frac{\partial \log p(\bm y^{(i)})}{\partial \bm\omega}
+\end{align}
+\normalsize
+
+\begin{itemize}
+  \item<+-> This gives us an unbiased MC estimator of the gradient.
+  \item<+-> Unfortunately this is a very high variance estimator, so it would require many samples of $y$ to be drawn to obtain a good estimate
+  \begin{itemize}
+    \item<+-> or equivalently, if only one sample were drawn, SGD would converge very slowly and \textbf{require} a small learning rate.
+  \end{itemize}
+\end{itemize}
+
+\end{frame}
+
 
 %-------------------------------------------------------------%
 
 \begin{frame}
 \frametitle{Sampling from a categorical distribution: Gumbel Softmax}
 
-\end{frame}
+The generation of a discrete token, $t$, from a vocabulary of $K$ tokens is achieved by sampling a categorical distribution 
+\begin{equation*}
+t \sim \operatorname{Cat}(p_1, \dots, p_K)\,; \,\sum_i p_i=1.
+\end{equation*} \pause
+Generating the probabilities $p_1, \dots, p_K$ directly from a neural network has potential numerical problems; it's much easier to generate logits, $x_1, \dots, x_K$. \pause
+\\[0.5em]
+The gumbel-softmax reparameterisation allows us to sample directly using the logits: 
+\begin{equation*}
+t = \underset{ i \in \{1,\cdots,K\} }{\operatorname{argmax}} x_i + z_i
+\end{equation*}
+where $z_1, \dots z_K$ are i.i.d Gumbel(0,1) variates  which can be computed from Uniform variates through $-\log(-\log(-\mathcal{U}(0,1)))$.
 
-%-------------------------------------------------------------%
+\end{frame}
 
 \begin{frame}
-\frametitle{The Straight-Through operator}
-
+\frametitle{Differentiable Sampling: Straight-Through Gumbel Softmax}
+Ok, but how does that help? $\operatorname{argmax}$ isn't differentiable! \pause
+\\[0.5em]
+...but we've already seen that we can relax $\argmax$ using
+\begin{equation*}
+  \operatorname{softargmax}(\bm y) = \sum_i \frac{e^{y_i/T}}{\sum_j e^{y_j/T}} i
+\end{equation*}
+where $T$ is the temperature parameter.
 \end{frame}
-
-%-------------------------------------------------------------%
 
 \begin{frame}
-\frametitle{The Straight-Through operator: implementation}
+\frametitle{Differentiable Sampling: Straight-Through Gumbel Softmax}
+But... this clearly gives us a result that will be non-integer; we cannot round or clip because it would be non-differentiable. \pause
+\\[0.5em]
+The Straight-Through operator allows us to take the result of a true $\operatorname{argmax}$ that has the gradient of the $\operatorname{softargmax}$:
+\begin{equation*}
+  \operatorname{STargmax}(\bm{y}) = \operatorname{softargmax}(\bm{y}) + \operatorname{stopgradient}(\operatorname{argmax}(\bm{y}) - \operatorname{softargmax}(\bm{y})) 
+\end{equation*}
+where $\operatorname{stopgradient}$ is defined such that $\operatorname{stopgradient}(\bm{a}) = \bm{a}$ and $\nabla \operatorname{stopgradient}(\bm{a}) = 0$.
+\pause
+\begin{block}{Straight-Through Gumbel Softmax}
+Combine the gumbel softmax trick with the $\operatorname{STargmax}$ to give you discrete samples, with a usable gradient\footnote{The ST operator is biased but low variance; in practice it works very well and is better than the high-variance unbiased estimates you could get through REINFORCE.}.
+\end{block}
 
 \end{frame}
 
+\begin{frame}
+\frametitle{Summary}
+
+\begin{itemize}
+  \item Differentiable programming works with functions that are continuous and differentiable almost everywhere.
+  \item Some non-continuous functions can be relaxed to make them more amenable to gradient based optimisation by making continuous approximations.
+  \item Some continuous functions with discontinuous gradients can be relaxed to make optimisation more stable.
+  \item Reparameterisations can allow us to differentiate through random operations such as sampling
+  \item We can even make networks output/utilise discrete variables by combining relaxations and reparameterisations.
+\end{itemize}
+
+\end{frame}
 \end{document}
