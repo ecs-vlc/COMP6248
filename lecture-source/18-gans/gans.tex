@@ -147,6 +147,17 @@
 \DeclareMathOperator{\abs}{abs}
 \DeclareMathOperator{\huber}{huber}
 
+\AtBeginSection[]{
+  \begin{frame}
+  \vfill
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center,shadow=false,rounded=true]{title}
+    \usebeamerfont{title}\insertsectionhead\par%
+  \end{beamercolorbox}
+  \vfill
+  \end{frame}
+}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Formatting for title page
 \title[Generative Models]{Deep Generative Modelling}
@@ -199,6 +210,7 @@
 
 %-------------------------------------------------------------%
 
+\section{Generative Modelling and Differentiable Generator Networks}
 \begin{frame}\frametitle{Recap: Generative Models}
 \begin{itemize}
   \item<1-> Learn models of the data: $p(\mathrm{x})$ 
@@ -410,6 +422,7 @@ Note: usually use an indirect means of learning $g$ rather than minimise $-\log(
 \end{frame}
 
 %-------------------------------------------------------------%
+\section{Variational Autoencoders}
 
 \begin{frame}\frametitle{Variational Autoencoders (VAEs)}
 
@@ -571,6 +584,7 @@ The ELBO expression we just derived is a cornerstone of variational inference:
 \end{center}
 \end{frame}
 %-------------------------------------------------------------%
+\section{Generative Adversarial Networks}
 
 \begin{frame}
 \frametitle{Generative Adversarial Networks (GANs)}
