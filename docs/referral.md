@@ -20,7 +20,7 @@ The task is to compare two different network architectures on the CIFAR-10 class
 	- A simple ResNet-18 network
 	- The same ResNet-18, but with Squeeze and Excitation blocks added to the skip connections
 
-You are free to determine your own training regime (optimisers, augmentation, etc.), however you should be fair in your experiments, and try not to bias the results towards one or other of the models by over-optimising the hyperparameters. You need to write a report that describes your experimental methodology and your results (e.g. classification accuracy and perhaps class confusion matrices, etc.). You should also reflect on what these results mean, and any limitations for your experiments.
+You are free to determine your own training regime (optimisers, augmentation, etc.), however you should be fair in your experiments, and try not to bias the results towards one or other of the models by over-optimising the hyperparameters. You need to write a report that describes your experimental methodology and your results (e.g. classification accuracy and perhaps class confusion matrices, etc.). You should also reflect on what these results mean, and any limitations of your experiments.
 
 ### Deliverables
 
