@@ -30,7 +30,7 @@ As a word of warning, this is a mathematical module: the predominant focus is on
 
 ## Lectures and assigned reading
 
-This year the lectures for this course will be given by <a href="http://www.ecs.soton.ac.uk/people/jsh2">Dr Jonathon Hare</a> ([email](mailto:jsh2@ecs.soton.ac.uk)) together with a few invited speakers. Kate Farrahi and Xiaohao Cai will be helping out with the running of online lectures, the running of the labs and the coursework assignment. We have a capable team of PhD students to facilitate the lab sessions.
+This year the lectures for this course will be given by <a href="http://www.ecs.soton.ac.uk/people/jsh2">Dr Jonathon Hare</a> ([email](mailto:jsh2@ecs.soton.ac.uk)) together with a few invited speakers. <a href="http://www.ecs.soton.ac.uk/people/kf2u17">Dr Kate Farrahi</a> and <a href="http://www.ecs.soton.ac.uk/people/xc1f20">Dr Xiaohao Cai</a> will be helping out with the running of online lectures, the running of the labs, and the coursework assignment. We have a capable team of PhD students to facilitate the lab sessions.
 
 There will be two lectures each week, one on Tuesdays at 12, and the other on Thursday's at 10. The lectures will all take place online and will be streamed live via Teams, as well as being recorded and made available through links placed on this page. 
 
