@@ -15,12 +15,12 @@ Credit: 40% of overall module mark
 Team size: 3 students.
 
 ### Handin #1
-Due date: Friday 5th March 2020, 16:00.  
+Due date: Friday 5th March 2021, 16:00.  
 Handin: [2021/COMP6248/1/](https://handin.ecs.soton.ac.uk/handin/2021/COMP6248/1/)  
 Required files: team.txt
 
 ### Handin #2
-Due date: Thursday 13th May 2020, 16:00.  
+Due date: Thursday 13th May 2021, 16:00.  
 Handin: [2021/COMP6248/3/](https://handin.ecs.soton.ac.uk/handin/2021/COMP6248/3/)  
 Required files: paper.pdf; mark_split.pdf; team.txt
 
