@@ -87,7 +87,7 @@ For 8 of the weeks (starting week 2) we are organising a 2-hour lab session in w
 
 40% of the marks for the module are for lab work. Each of the 8 lab sessions will be accompanied by an additional assessed exercise for you to work through in your own time. You will have to work through the exercises __by yourself__ and write-up your findings. You will submit your answers/findings/working to all the assessed exercises to [handin](https://handin.ecs.soton.ac.uk/handin/2021/COMP6248/2/) in week 10 for marking (29th April, 16:00). Each of the 8 exercises will be worth 5% of your overall module mark. We recommend that you do the exercise accompanying the lab as soon as possible after the lab session, rather than leaving them all to the end.
 
-Labs will start in the second week (11th Feb) 2-4 on Thursday afternoons. We intend to split the class into lab groups, each of which will be assigned a demonstrator, who will be available to your group for the session in a Team's side channel. The demonstrators can offer advice on both the labs as well as the group coursework, however you should not ask them about the assessed lab exercises that you complete after the lab.
+Labs will start in the second week (11th Feb) 1-3 on Thursday afternoons. We intend to split the class into lab groups, each of which will be assigned a demonstrator, who will be available to your group for the session in a Team's side channel. The demonstrators can offer advice on both the labs as well as the group coursework, however you should not ask them about the assessed lab exercises that you complete after the lab.
 
 The full lab schedule is below:
 
