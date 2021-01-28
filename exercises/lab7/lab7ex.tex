@@ -32,7 +32,7 @@
 
 This is the exercise that you need to work through \textbf{on your own} after completing the seventh lab session. You'll need to write up your results/answers/findings and submit this to ECS handin as a PDF document along with the other lab exercises near the end of the module (1 pdf document per lab). 
 
-We expect that you \textbf{will use no more than one side} of A4 to cover your responses to \emph{this} exercise. This exercise is worth 5\% of your overall module grade.
+You should use \emph{no more} than one side of A4 to cover your responses to \emph{this} exercise. This exercise is worth 5\% of your overall module grade.
 
 \section{Sequence-to-Sequence Modelling}\label{init}
 Sequence-to-Sequence modelling allows one (potentially variable length) input sequence to be translated to another output sequence (potentially of a different length) by transforming the input sequence into a fixed length vector, and using this to drive the generation of the output sequence. There are lots of algorithms and models that can achieve this, but a classic approach is the model proposed by Sutskever et al (\url{https://arxiv.org/abs/1409.3215}), which uses LSTMs to encode the input to a pair of vectors (the final hidden and cell states), and LSTMs to decode the pair of vectors into the desired output. Sequence-to-sequence models gained popularity as (then) state-of-the-art methods for language translation. 
