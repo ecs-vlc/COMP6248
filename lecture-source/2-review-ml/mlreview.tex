@@ -232,7 +232,7 @@
   \item Given unlabelled data $X$, a unsupervised generative model learns $P[X]$.
   \begin{itemize}
     \item Could be direct modelling of the data (e.g. Gaussian Mixture Models)
-    \item Could be indirect modelling by learning to map the data to a parametric distribution in a lower dimensional space (e.g. a VAEs Encoder) or by learning a mapping from a parameterised distribution to the real data space (e.g. a VAE Decoder or GAN)
+    \item Could be indirect modelling by learning to map the data to a parametric distribution in a lower dimensional space (e.g. a VAE's Encoder) or by learning a mapping from a parameterised distribution to the real data space (e.g. a VAE Decoder or GAN)
   \end{itemize}
   \item These are characterised by an ability to `sample' the model to `create' new data
 \end{itemize}
@@ -244,7 +244,7 @@
 \begin{frame}[fragile]\frametitle{Generative vs. Discriminative Models (II)}
 Generative vs. discriminative approaches to classification use different statistical modelling.
 \begin{itemize}
-\item Discriminative models learn the boundary between classes. A discriminative models is a model of the conditional probability of the target $Y$ given an observation $X$: $P[Y|X]$.
+\item Discriminative models learn the boundary between classes. A (probabilistic) discriminative model is a model of the conditional probability of the target $Y$ given an observation $X$: $P[Y|X]$.
 \item Generative models of labelled data model the distribution of individual classes. Given an observable variable $X$ and a target variable $Y$, a generative model is a statistical model that tries to model $P[X|Y]$ and $P[Y]$ in order to model the joint probability distribution $P[X, Y]$.\footnote{Some such models can be sampled conditionally based on a prior $Y$ - e.g. a Conditional VAE: \url{https://papers.nips.cc/paper/5775-learning-structured-output-representation-using-deep-conditional-generative-models}}
 \end{itemize} 
 
@@ -256,13 +256,13 @@ Generative vs. discriminative approaches to classification use different statist
 
 \begin{frame}[fragile]\frametitle{Two Types of Supervised Learning}
 \begin{itemize}
+\item<+-> Regression:  The machine is asked predict $k$ numerical values given some input. The machine is a function $f: \mathbb{R}^n \rightarrow \mathbb{R}^k$.
 \item<+-> Classification:  The machine is asked to specify which of $k$ categories some input belongs to.
 \begin{itemize}
   \item Multiclass classification - target is one of the $k$ classes
   \item Multilabel classification - target is some number of the $k$ classes
   \item In both cases, the machine is a function $f : \mathbb{R}^n \rightarrow \{1, ..., k\}$ (although it is most common for the learning algorithm to actually learn $\hat f : \mathbb{R}^n \rightarrow \mathbb{R}^k$).
 \end{itemize}
-\item<+-> Regression:  The machine is asked predict $k$ numerical values given some input. The machine is a function $f: \mathbb{R}^n \rightarrow \mathbb{R}^k$.
 \item<+-> Note that there are lots of exceptions in the form the inputs (and outputs) can take though! We'll see lots of variations in the coming weeks.
 \end{itemize}
 \end{frame}
@@ -272,7 +272,7 @@ Generative vs. discriminative approaches to classification use different statist
 \begin{frame}[fragile]\frametitle{How Supervised Learning Typically Works}
 \begin{itemize}
 \item Start by choosing a model-class: $\hat y = f(\bm x; \bm W)$ where the model-class $f$ is a way of using some numerical parameters, $\bm W$, to map each input vector $\bm x$ to a predicted output $ \hat y$.
-\item Learning means adjusting the parameters to reduce the discrepancy between the true target output $y$ on each training case and the output $\hat y$, predicted by the model. %\footnote{Reference: Geoffrey Hinton \url{https://www.cs.toronto.edu/~hinton/coursera/lecture1/lec1e.mp4}}
+\item \emph{Learning} means adjusting the parameters to reduce the discrepancy between the true target output $y$ on each training case and the output $\hat y$, predicted by the model. %\footnote{Reference: Geoffrey Hinton \url{https://www.cs.toronto.edu/~hinton/coursera/lecture1/lec1e.mp4}}
 \end{itemize}
 
 \end{frame}
@@ -515,7 +515,7 @@ $\ell_{BCE}(\hat y, y) = -y \log(\hat y) - (1 - y) \log (1 - \hat y)$
 \begin{frame}[fragile]\frametitle{Reminder: Gradient Descent}
 
 \begin{itemize}
-  \item Define total loss as $\mathcal{L} = -\sum_{(\bm x,y) \in \bm D} \ell(g(\bm x,\bm\theta), y)$ for some loss function $\ell$, dataset $\bm D$ and model $g$ with learnable parameters $\bm\theta$.
+  \item Define total loss as $\mathcal{L} = \sum_{(\bm x,y) \in \bm D} \ell(g(\bm x,\bm\theta), y)$ for some loss function $\ell$, dataset $\bm D$ and model $g$ with learnable parameters $\bm\theta$.
   \item Define how many passes over the data to make (each one known as an Epoch)
   \item Define a learning rate $\eta$
 \end{itemize}
