@@ -499,13 +499,13 @@ $\ell_{BCE}(\hat y, y) = -y \log(\hat y) - (1 - y) \log (1 - \hat y)$
   \begin{itemize}
     \item e.g. they are ``one-hot encoded''.
   \end{itemize}
-  \item<+-> In such a case, the obvious loss function is the \emph{negative log likelihood} of the Categorical distribution (aka Multinoulli, Generalised Bernoulli, Multinomial with one sample)\footnote{Note: Keras calls this function `Categorical Cross-Entropy'; you would need to have a Softmax output layer to use this}: $\ell_{NNL} = - \sum_{k = 1}^K y_k \log \hat y_k$
+  \item<+-> In such a case, the obvious loss function is the \emph{negative log likelihood} of the Categorical distribution (aka Multinoulli, Generalised Bernoulli, Multinomial with one sample)\footnote{Note: Keras calls this function `Categorical Cross-Entropy'; you would need to have a Softmax output layer to use this}: $\ell_{NLL} = - \sum_{k = 1}^K y_k \log \hat y_k$
   \begin{itemize}
-    \item Note that in practice as $y_k$ is zero for all but one class you don't actually do this summation, and if $y$ is an integer class index you can write $\ell_{NNL} = - \log \hat y_y$.
+    \item Note that in practice as $y_k$ is zero for all but one class you don't actually do this summation, and if $y$ is an integer class index you can write $\ell_{NLL} = - \log \hat y_y$.
   \end{itemize}
   \item<+-> Analogously to what we saw for BCE, Log-Sum-Exp can be used for better numerical stability.
   \begin{itemize}
-    \item PyTorch combines LogSoftmax with NNL in one loss and calls this ``Categorical Cross-Entropy'' (so you would use this with a \emph{linear output layer})
+    \item PyTorch combines LogSoftmax with NLL in one loss and calls this ``Categorical Cross-Entropy'' (so you would use this with a \emph{linear output layer})
   \end{itemize}
 \end{itemize}
 
