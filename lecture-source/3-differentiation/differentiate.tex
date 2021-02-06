@@ -17,6 +17,7 @@
 \usepackage{textpos} % package for the positioning
 
 \usepackage{pgf, tikz}
+\usepackage{pgfplots}
 \usetikzlibrary{arrows, automata}
 
 \usetheme{Copenhagen}
@@ -97,7 +98,7 @@
 	\end{itemize}
 	\item<+-> With deep learning we're primarily interested in first-order methods\only<3->{\footnote{Second order gradient optimisers are potentially better, but for systems with many variables are currently impractical as they require computing the Hessian.}}.
 	\begin{itemize}
-		\item<+-> Primarily using variants of gradient descent: a function $F(\bm x)$ has \emph{a} minima\only<4->{\footnote{not necessarily global or unique}} at a point $\bm x = \bm a$ where $\bm a$ is given by applying $\bm{a}_{n+1} = \bm a_n - \alpha \nabla F(\bm a_n)$ until convergence from some initial point $\bm a_0$.
+		\item<+-> Primarily using variants of gradient descent: a function $F(\bm x)$ has \emph{a} minima\only<4->{\footnote{not necessarily global or unique}} (or a saddle-point) at a point $\bm x = \bm a$ where $\bm a$ is given by applying $\bm{a}_{n+1} = \bm a_n - \alpha \nabla F(\bm a_n)$ until convergence from some initial point $\bm a_0$.
 	\end{itemize}
 \end{itemize}
 \end{frame}
@@ -120,6 +121,8 @@
 \begin{frame}
 \frametitle{Recap: what are gradients and how do we find them?}
 \framesubtitle{The derivative in 1D}
+\begin{columns}
+\begin{column}{0.65\textwidth}
 \begin{itemize}
 	\item<+-> Recall that the gradient of a straight line is $\frac{\Delta y}{\Delta x}$.
 	\item<+-> For an arbitrary real-valued function, $f(a)$, we can approximate the derivative, $f'(a)$ using the gradient of the \emph{secant line} defined by $(a,f(a))$ and a point a small distance, $h$, away $(a+h,f(a+h))$: $f'(a) \approx \frac{f(a+h) - f(a)}{h}$.
@@ -129,6 +132,29 @@
 		\item<+-> If we take the limit as $h \to 0$, then we have an exact expression for the derivative: $\frac{df}{da} = f'(a) = \lim_{h\to0} \frac{f(a+h) - f(a)}{h}$.
 	\end{itemize}
 \end{itemize}
+\end{column}
+\begin{column}{0.35\textwidth}
+
+\begin{tikzpicture}
+	\begin{axis}[
+		height=5cm,
+		width=5cm,
+		grid=both,
+		xtick distance=1,
+		ytick distance=1,
+		xticklabels={,,},
+		yticklabels={,,},
+		axis equal,
+		xmin=-0.5,
+		xmax=4 
+	]
+		
+	\addplot[]{0.25*x^2};
+	\end{axis}
+\end{tikzpicture}
+
+\end{column}
+\end{columns}
 \end{frame}
 
 \begin{frame}
@@ -148,6 +174,8 @@
 \frametitle{Recap: what are gradients and how do we find them?}
 \framesubtitle{Aside: numerical approximation of the derivative}
 
+\begin{columns}
+\begin{column}{0.65\textwidth}
 % central difference as opposed to one sided
 \begin{itemize}
 \item For numerical computation of derivatives it is better to use a ``centralised'' definition of the derivative:
@@ -156,7 +184,39 @@
 	\item<+-> The bit inside the limit is known as the \emph{symmetric difference quotient}
 	\item<+-> For small values of $h$ this has less error than the standard one-sided difference quotient.
 \end{itemize}
-\item<+-> If you are going to use this to estimate derivatives you need to be aware of potential rounding errors due to floating point representations.
+\end{itemize}
+
+\end{column}
+\begin{column}{0.35\textwidth}
+
+\begin{tikzpicture}
+	\begin{axis}[
+		height=5cm,
+		width=5cm,
+		grid=both,
+		xtick distance=1,
+		ytick distance=1,
+		xticklabels={,,},
+		yticklabels={,,},
+		axis equal,
+		xmin=-0.5,
+		xmax=4 
+	]
+		
+	\addplot[]{0.25*x^2};
+	\end{axis}
+\end{tikzpicture}
+
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Recap: what are gradients and how do we find them?}
+\framesubtitle{Aside: numerical approximation of the derivative}
+\begin{itemize}
+\item<+-> If you are going to use difference quotients to estimate derivatives you need to be aware of potential rounding errors due to floating point representations.
 \begin{itemize}
 	\item Calculating derivatives this way using less than 64-bit precision is rarely going to be useful. (Numbers are not represented exactly, so even if $h$ is represented exactly, $x+h$ will probably not be)
 	\item You need to pick an appropriate $h$ - too small and the subtraction will have a large rounding error!
@@ -334,9 +394,25 @@ $\frac{\partial \mathcal{L}}{\partial W_{uv}} = \sum_{i,j}\frac{\partial \mathca
 \end{itemize}
 \end{frame}
 
+
+\begin{frame}
+\frametitle{Recap: what are gradients and how do we find them?}
+\framesubtitle{STOP! What does a gradient actually mean?}
+
+\begin{itemize}
+	\item<+-> In your early calculus lessons you likely had it hammered into you that gradients represent rates of change of functions.
+	\item<+-> This is of course totally true...
+	\item<+-> But, it isn't a particularly useful way to think about the gradients of a loss with respect to the weights of a parameterised function.
+	\begin{itemize}
+		\item<+-> \textbf{The gradient of the loss with respect to a parameter tells you how much the loss will change with a small perturbation to that parameter.}
+	\end{itemize}
+\end{itemize}
+
+\end{frame}
+
 \begin{frame}
 \frametitle{Recap: Singular Value Decomposition and its applications}
-Let's now change direction - we're going to look at an early success story resulting from using some differentiation and the Singular Value Decomposition (SVD).
+Let's now change direction --- we're going to look at an early success story resulting from using some differentiation and the Singular Value Decomposition (SVD).
 \\[1em]
 For complex $\bm A:$ \\
 \begin{align*}
@@ -421,8 +497,8 @@ Start by expanding our optimisation problem:
 			  &= \min\limits_{\hat{\bm U}, \hat{\bm V}}( \sum_r \sum_c (A_{rc} - \sum_{p=1}^{\rho}\hat{U}_{rp}\hat{V}_{cp})^2 )	 
 \end{align*}
 }
-\uncover<+->{
-Let $e_{rc} = A_{rc} - \sum_{p=0}^{\rho}\hat{U}_{rp}\hat{V}_{cp}$ denote the error. Then, our problem becomes:
+
+\uncover<+->{Let $e_{rc} = A_{rc} - \sum_{p=0}^{\rho}\hat{U}_{rp}\hat{V}_{cp}$ denote the error. Then, our problem becomes:
 
 \begin{align*}
 {\rm Minimise}\,J &= \sum_r \sum_c e_{rc}^2
