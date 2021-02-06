@@ -8,5 +8,5 @@ git add ../../docs/handouts/
 
 if [[ -f "/Users/jsh2/Work/pdf2pptx/pdf2pptx.sh" ]]; then
     /Users/jsh2/Work/pdf2pptx/pdf2pptx.sh differentiate.pdf notwide
-    mv differentiate.pdf.pptx /Users/jsh2/ownCloud/Teaching/COMP6248/slides/2-differentiate.pptx
+    mv differentiate.pdf.pptx /Users/jsh2/ownCloud/Teaching/COMP6248/slides/3-differentiate.pptx
 fi
