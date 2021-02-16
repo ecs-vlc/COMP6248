@@ -385,12 +385,12 @@ In this form, the chain rule can be applied repeatedly to every input variable $
     
 	\column{.6\textwidth}
 	\uncover<2->{\begin{align*}
-		\frac{\partial s}{\partial z} & = ? \\
-		\frac{\partial s}{\partial b} & = \frac{\partial z}{\partial b} \frac{\partial s}{\partial z} = \frac{\partial s}{\partial z} \\
-		\frac{\partial s}{\partial a} & = \frac{\partial z}{\partial a} \frac{\partial s}{\partial z} = \frac{\partial s}{\partial z} \\
-		\frac{\partial s}{\partial y} & = \frac{\partial a}{\partial y} \frac{\partial s}{\partial a} = x \, \frac{\partial s}{\partial a} \\
-		\frac{\partial s}{\partial x} & = \frac{\partial a}{\partial x} \frac{\partial s}{\partial a} + \frac{\partial b}{\partial x} \frac{\partial s}{\partial b} \\
-		& = y \, \frac{\partial s}{\partial a} + \cos(x) \, \frac{\partial s}{\partial b} \\
+		\frac{\partial s}{\partial z} & = ? \\[0.4em]
+		\frac{\partial s}{\partial b} & = \frac{\partial z}{\partial b} \frac{\partial s}{\partial z} = \frac{\partial s}{\partial z} \\[0.4em]
+		\frac{\partial s}{\partial a} & = \frac{\partial z}{\partial a} \frac{\partial s}{\partial z} = \frac{\partial s}{\partial z} \\[0.4em]
+		\frac{\partial s}{\partial y} & = \frac{\partial a}{\partial y} \frac{\partial s}{\partial a} = x \, \frac{\partial s}{\partial a} \\[0.4em]
+		\frac{\partial s}{\partial x} & = \frac{\partial a}{\partial x} \frac{\partial s}{\partial a} + \frac{\partial b}{\partial x} \frac{\partial s}{\partial b} \\[0.4em]
+		& = y \, \frac{\partial s}{\partial a} + \cos(x) \, \frac{\partial s}{\partial b} \\[0.4em]
 		& = (y + \cos(x)) \, \frac{\partial s}{\partial z} \\
 	\end{align*}}
 	\end{columns}
