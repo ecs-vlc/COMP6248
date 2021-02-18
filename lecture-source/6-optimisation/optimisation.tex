@@ -30,7 +30,8 @@
 \usepackage{graphicx}
 \usepackage{hyperref}
 %\graphicspath{{./images/}}
-\usepackage{tikz}
+\usepackage{tikz, pgf}
+\usepackage{pgfplots}
 \usetikzlibrary{shapes.geometric, arrows,chains}
 \usepackage{booktabs,makecell,multirow,tabularx}
 \usepackage{verbatim}
@@ -178,7 +179,7 @@
 \begin{frame}[fragile]\frametitle{Reminder: Gradient Descent}
 
 \begin{itemize}
-  \item Define total loss as $\mathcal{L} = -\sum_{(\bm x,y) \in \bm D} \ell(g(\bm x,\bm\theta), y)$ for some loss function $\ell$, dataset $\bm D$ and model $g$ with learnable parameters $\bm\theta$.
+  \item Define total loss as $\mathcal{L} = \sum_{(\bm x,y) \in \bm D} \ell(g(\bm x,\bm\theta), y)$ for some loss function $\ell$, dataset $\bm D$ and model $g$ with learnable parameters $\bm\theta$.
   \item Define how many passes over the data to make (each one known as an Epoch)
   \item Define a learning rate $\eta$
 \end{itemize}
@@ -231,7 +232,7 @@ Stochastic Gradient Descent updates the parameters $\bm\theta$ by moving them in
 
 \begin{itemize}
   \item Define a batch size $b$
-  \item Define batch loss as $\mathcal{L}_b = -\sum_{(\bm x,y) \in \bm D_b} \ell(g(\bm x,\bm\theta), y)$ for some loss function $\ell$ and model $g$ with learnable parameters $\bm\theta$. $\bm D_b$ is a subset of dataset $\bm D$ of cardinality $b$.
+  \item Define batch loss as $\mathcal{L}_b = \sum_{(\bm x,y) \in \bm D_b} \ell(g(\bm x,\bm\theta), y)$ for some loss function $\ell$ and model $g$ with learnable parameters $\bm\theta$. $\bm D_b$ is a subset of dataset $\bm D$ of cardinality $b$.
   \item Define how many passes over the data to make (each one known as an Epoch)
   \item Define a learning rate $\eta$
 \end{itemize}
@@ -379,6 +380,27 @@ Note $\beta = 0.9$ is a good choice for the momentum parameter.
   \end{itemize}
   \item Remarkably powerful!
 \end{itemize}
+
+\begin{center}
+\begin{tikzpicture}
+  \begin{axis}[
+    height=6cm,
+    width=12cm,
+    grid=both,
+    xtick distance=1,
+    ytick distance=1,
+    xticklabels={,,},
+    yticklabels={,,},
+    axis equal,
+    xmin=0,
+    xmax=5,
+    ymin=0,
+    ymax=10 
+  ]
+  \end{axis}
+\end{tikzpicture}
+\end{center}
+
 \end{frame}
 
 %-------------------------------------------------------------%
