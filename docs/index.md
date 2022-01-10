@@ -44,10 +44,10 @@ The current working timetable/plan is below, and illustrates the topics we inten
 | 1    | 31-Jan  | 54-4011 | Intro and background                                                     | [intro-handouts.pdf](handouts/intro-handouts.pdf)                              |                                         |  |
 |      | 03-Feb | 7-3009 | Review of fundamentals                                                   | [mlreview-handouts.pdf](handouts/mlreview-handouts.pdf)                        | [CH 3 of Michael Nielsen's Book](http://neuralnetworksanddeeplearning.com/chap3.html)                                                                        |  |
 | 2    | 07-Feb | 54-4011 | The Power of Differentiation                                             | [differentiate-handouts.pdf](handouts/differentiate-handouts.pdf)              |                                         |   |
-|      | 10-Feb | 7-3009 | Perceptrons, MLPs and Backpropagation                                    | [backprop-handouts.pdf](handouts/backprop-handouts.pdf)                        | [Learning representations by back-propagating errors](handouts/nature_article.pdf)                    |  [//]: <> (https://southampton.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=f9ee635b-4348-4378-8053-accc00c27dc3) |
+|      | 10-Feb | 7-3009 | Perceptrons, MLPs and Backpropagation                                    | [backprop-handouts.pdf](handouts/backprop-handouts.pdf)                        | [Learning representations by back-propagating errors](handouts/nature_article.pdf)                    |   [//]: # (https://southampton.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=f9ee635b-4348-4378-8053-accc00c27dc3) |
 | 3    | 14-Feb | 54-4011 | Automatic Differentiation                                                | [autograd-handouts.pdf](handouts/autograd-handouts.pdf)                        | [Automatic differentiation in PyTorch](https://openreview.net/pdf?id=BJJsrmfCZ) |  [//]: <>(https://southampton.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=d2b3d6f1-bbba-41c3-a35f-acd100f57f30) |
-|      | 17-Feb | 7-3009 | Optimisation                                                             | [optimisation-handouts.pdf](handouts/optimisation-handouts.pdf)                                                                            |  [Adam: A Method for Stochastic Optimization](https://arxiv.org/abs/1412.6980)  |  [//]: <>(https://southampton.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=2c08987a-fba1-46fa-8c06-acd300c3e9aa) |
-| 4    | 21-Feb | 54-4011 | Deeper Networks: Universal approximation, overfitting and regularisation | [deepnetworks-handouts.pdf](handouts/deepnetworks-handouts.pdf)                |        [Dropout:A Simple Way to Prevent Neural Networks from Overfitting](handouts/srivastava14a.pdf) | [//]: <>(https://southampton.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=4f6a7b80-393b-45bb-b1f4-acd800f0973d) |
+|      | 17-Feb | 7-3009 | Optimisation                                                             | [optimisation-handouts.pdf](handouts/optimisation-handouts.pdf)                                                                            |  [Adam: A Method for Stochastic Optimization](https://arxiv.org/abs/1412.6980)  |  [//]: #(https://southampton.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=2c08987a-fba1-46fa-8c06-acd300c3e9aa) |
+| 4    | 21-Feb | 54-4011 | Deeper Networks: Universal approximation, overfitting and regularisation | [deepnetworks-handouts.pdf](handouts/deepnetworks-handouts.pdf)                |        [Dropout:A Simple Way to Prevent Neural Networks from Overfitting](handouts/srivastava14a.pdf) | [//]: #(https://southampton.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=4f6a7b80-393b-45bb-b1f4-acd800f0973d) |
 |      | 24-Feb | 7-3009 | A Biological Perspective                                                 | [biological-inspiration-handouts.pdf](handouts/biological-inspiration-handouts.pdf)              | [How Convolutional Neural Network Architecture Biases Learned Opponency and Color Tuning](https://www.mitpressjournals.org/doi/pdf/10.1162/neco_a_01356) |  [//]: <>(https://southampton.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=4e4d2610-7371-4ef6-9e06-acda00f588c1) |
 | 5    | 28-Feb | 54-4011 | Guest Lecture - Ethan Harris - Visualising Neural Networks               | [visualisation-handouts.pdf](handouts/visualisation-handouts.pdf)| [Feature Visualisation](https://distill.pub/2017/feature-visualization/) | [//]: <>(https://web.microsoftstream.com/video/89a714cd-795e-469f-8c55-e791cf25f9ec) |
 |      | 03-Mar | 7-3009 | Convolutional Networks                                                   | [Convolution-handouts.pdf](handouts/Convolution-handouts.pdf)                  | [handwritten digit recognition with a back-propagation network](https://papers.nips.cc/paper/293-handwritten-digit-recognition-with-a-back-propagation-network.pdf)                                        |  [link](https://southampton.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=36042d3b-1747-4810-acc1-ace200cf6775) |
@@ -70,7 +70,7 @@ The current working timetable/plan is below, and illustrates the topics we inten
 
 ### Assorted topic lectures
 
-These are bonus lectures/talks on topics that were requested by students last year that you can watch. We're going to have a longer session on NAS this year given by one of my PhD's student working in that space. If there are additional topics that you would like covered, then let us know.
+These are bonus lectures/talks on topics that were requested by students in previous years that you can watch. If there are additional topics that you would like covered, then let us know.
 
 
 | Topic | Description | Handouts/slides | Video |
@@ -85,15 +85,15 @@ These are bonus lectures/talks on topics that were requested by students last ye
 
 For 8 of the weeks (starting week 2) we are organising a 2-hour lab session in which you will need to complete a series of worksheets. The worksheets have been designed to put the theory covered in the lectures into context, and the equip you with practical skills in implementing and training differentiable programs. A team of PhD-student demonstrators will be available in the lab to help you with any questions you might have about the topics you are working on.
 
-40% of the marks for the module are for lab work. Each of the 8 lab sessions will be accompanied by an additional assessed exercise for you to work through in your own time. You will have to work through the exercises __by yourself__ and write-up your findings. You will submit your answers/findings/working to all the assessed exercises to [handin](https://handin.ecs.soton.ac.uk/handin/2021/COMP6248/2/) in week 10 for marking (29th April, 16:00). Each of the 8 exercises will be worth 5% of your overall module mark. We recommend that you do the exercise accompanying the lab as soon as possible after the lab session, rather than leaving them all to the end.
+40% of the marks for the module are for lab work. Each of the 8 lab sessions will be accompanied by an additional assessed exercise for you to work through in your own time. You will have to work through the exercises __by yourself__ and write-up your findings. You will submit your answers/findings/working to all the assessed exercises to [handin](https://handin.ecs.soton.ac.uk/handin/2022/COMP6248/2/) in week 10 for marking (6th May, 16:00). Each of the 8 exercises will be worth 5% of your overall module mark. We recommend that you do the exercise accompanying the lab as soon as possible after the lab session, rather than leaving them all to the end.
 
-Labs will start in the second week (11th Feb) 1-3 on Thursday afternoons. We intend to split the class into lab groups, each of which will be assigned a demonstrator, who will be available to your group for the session in a Team's side channel. The demonstrators can offer advice on both the labs as well as the group coursework, however you should not ask them about the assessed lab exercises that you complete after the lab.
+Labs will start in the second week (11th Feb) 9-11 on Friday mornings. We intend to split the class into lab groups, each of which will be assigned a demonstrator, who will be available to your group for the session in a Team's side channel. The demonstrators can offer advice on both the labs as well as the group coursework, however you should not ask them about the assessed lab exercises that you complete after the lab.
 
 The full lab schedule is below:
 
 | Week | Date   | Location  | Topic                                                                                                 | Exercise Link                        |
 |------|--------|-----------|-------------------------------------------------------------------------------------------------------|--------------------------------------|
-| 1    | 04-Feb |           | NO LAB                                                                                                |                                      |
+| 1    | 4-Feb |           | NO LAB                                                                                                |                                      |
 | 2    | 11-Feb | Teams     | [Introducing PyTorch](./labs/lab1/)                                                                       | [Lab 1 Exercise](./labex/lab1ex.pdf) |
 | 3    | 18-Feb | Teams     | [Automatic Differentiation](./labs/lab2/)                                                                 | [Lab 2 Exercise](./labex/lab2ex.pdf) |
 | 4    | 25-Feb | Teams     | [Optimisation](./labs/lab3/)                                                                              | [Lab 3 Exercise](./labex/lab3ex.pdf) |
@@ -110,19 +110,21 @@ __Note: I've made all the worksheet links available from last year. Please don't
 
 ## Online Quizzes
 
-There will be two assessed online-quizzes; I'm planning for these to be on the 10th March and 5th May. These will be available on blackboard for a 24 hour period and once started you must complete them within one hour.
+There will be two assessed online-quizzes; We are planning for these to be on the 9th March and 11th May. These will be available on blackboard for a 24 hour period and once started you must complete them within one hour.
 
 ## Coursework assignment
 
 Information on the coursework assignment (worth 40% of the module) is [here](coursework.html).
 
+{% comment %}
 <!---
 ## Additional Lecture Notes
 
 Additional Notes from Lectures 5 and 8 can be found [here](handouts/KateNotes.pdf)
 -->
+{% endcomment %}
 
 ## Where to get additional help
 
-Talk to us! You are more than welcome to arrange to meet to discuss issues related to the course during lab sessions or by appointment. The lab sessions are also facilitated by a team of our PhD students who are experts in the deep learning / differentiable programming field in their own right (many of them have published work in this space, or are close to achieving that). I can be reached by [email](mailto:jsh2@ecs.soton.ac.uk) ~~or by coming to find me in my office (32/4043)~~ or in Teams. 
+Talk to us! You are more than welcome to arrange to meet to discuss issues related to the course during lab sessions or by appointment. The lab sessions are also facilitated by a team of our PhD students who are experts in the deep learning / differentiable programming field in their own right (many of them have published work in this space, or are close to achieving that). We can be reached by [email](mailto:kf2u17@ecs.soton.ac.uk) or [email](mailto:jsh2@ecs.soton.ac.uk)
 
