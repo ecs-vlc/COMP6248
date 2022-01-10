@@ -113,8 +113,10 @@ __Note: I've made all the worksheet links available from last year. Please don't
 There will be two assessed online-quizzes; We are planning for these to be on the 9th March and 11th May. These will be available on blackboard for a 24 hour period and once started you must complete them within one hour.
 
 ## Coursework assignment
-
+Information on the coursework assignment will be uploaded soon.
+{% comment %}
 Information on the coursework assignment (worth 40% of the module) is [here](coursework.html).
+{% endcomment %}
 
 {% comment %}
 <!---
@@ -126,5 +128,5 @@ Additional Notes from Lectures 5 and 8 can be found [here](handouts/KateNotes.pd
 
 ## Where to get additional help
 
-Talk to us! You are more than welcome to arrange to meet to discuss issues related to the course during lab sessions or by appointment. The lab sessions are also facilitated by a team of our PhD students who are experts in the deep learning / differentiable programming field in their own right (many of them have published work in this space, or are close to achieving that). We can be reached by [email](mailto:kf2u17@ecs.soton.ac.uk) or [email](mailto:jsh2@ecs.soton.ac.uk)
+Talk to us! You are more than welcome to arrange to meet to discuss issues related to the course during lab sessions or by appointment. The lab sessions are also facilitated by a team of our PhD students who are experts in the deep learning / differentiable programming field in their own right (many of them have published work in this space, or are close to achieving that). We can be reached by [Kate's email](mailto:kf2u17@ecs.soton.ac.uk) or [Jon's email](mailto:jsh2@ecs.soton.ac.uk)
 
