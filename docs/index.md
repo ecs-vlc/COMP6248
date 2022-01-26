@@ -100,10 +100,11 @@ The full lab schedule is below:
 | 5    | 04-Mar | Teams     | [Implementing simple Neural Networks using PyTorch and Torchbearer](./labs/lab4/)                         | [Lab 4 Exercise](./labex/lab4ex.pdf) |
 | 6    | 11-Mar | Teams     | [Implementing and training Convolutional Neural Networks using PyTorch and Torchbearer](./labs/lab5/)     | [Lab 5 Exercise](./labex/lab5ex.pdf) |
 | 7    | 18-Mar | Teams     | [Using pretrained models and transfer learning](./labs/lab6)                                              | [Lab 6 Exercise](./labex/lab6ex.pdf) |
-| 8    | 29-Apr | Teams     | [Recurrent Networks, Sequence Prediction and Embeddings](./labs/lab7)                                     | [Lab 7 Exercise](./labex/lab7ex.pdf)|
-| 9    | 6-May | Teams     | [Autoencoders and Deep Generative Models](./labs/lab8)                                                    | [Lab 8 Exercise](./labex/lab8ex.pdf) |
-| 10   | 13-May | Teams     | Coursework Help and Advice                                                                                |                                      |
-| 11   | 20-May | Teams     | Coursework Help and Advice                                                                                |                           |
+| 8    | 25-Mar | Teams     | [Recurrent Networks, Sequence Prediction and Embeddings](./labs/lab7)                                     | [Lab 7 Exercise](./labex/lab7ex.pdf)|
+| 9    | 29-April | Teams     | [Autoencoders and Deep Generative Models](./labs/lab8)                                                    | [Lab 8 Exercise](./labex/lab8ex.pdf) |
+| 10   | 6-May | Teams     | Coursework Help and Advice                                                                                |                                      |
+| 11   | 13-May | Teams     | Coursework Help and Advice                                                                                |                           |
+| 12   | 20-May | NO LAB     |                                                                               |                           |
 
 __Note: I've made all the worksheet links available from last year. Please don't be surprised if we make some updates before each session!__
 
