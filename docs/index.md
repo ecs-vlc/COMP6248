@@ -1,9 +1,9 @@
 ---
 layout: index
 title: "COMP6248 Differentiable Programming (and Deep Learning)"
-subtitle: "2020-21"
+subtitle: "2021-22"
 githubHeader: "false"
-credits: Maintained by <a href="http://www.ecs.soton.ac.uk/people/jsh2">Dr Jonathon Hare</a>.
+credits: Maintained by <a href="http://www.ecs.soton.ac.uk/people/jsh2">Dr Jonathon Hare & Dr Kate Farrahi</a>.
 ---
 
 
