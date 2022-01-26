@@ -3,7 +3,7 @@ layout: index
 title: "COMP6248 Differentiable Programming (and Deep Learning)"
 subtitle: "2021-22"
 githubHeader: "false"
-credits: Maintained by <a href="http://www.ecs.soton.ac.uk/people/jsh2">Dr Jonathon Hare & Dr Kate Farrahi</a>.
+credits: Maintained by <a href="https://www.ecs.soton.ac.uk/people/kf2u17">Dr Kate Farrahi</a> &amp; <a href="http://www.ecs.soton.ac.uk/people/jsh2">Dr Jonathon Hare</a>.
 ---
 
 
@@ -100,11 +100,11 @@ The full lab schedule is below:
 | 5    | 04-Mar | Teams     | [Implementing simple Neural Networks using PyTorch and Torchbearer](./labs/lab4/)                         | [Lab 4 Exercise](./labex/lab4ex.pdf) |
 | 6    | 11-Mar | Teams     | [Implementing and training Convolutional Neural Networks using PyTorch and Torchbearer](./labs/lab5/)     | [Lab 5 Exercise](./labex/lab5ex.pdf) |
 | 7    | 18-Mar | Teams     | [Using pretrained models and transfer learning](./labs/lab6)                                              | [Lab 6 Exercise](./labex/lab6ex.pdf) |
-| 8    | 15-Apr | Teams     | [Recurrent Networks, Sequence Prediction and Embeddings](./labs/lab7)                                     | [Lab 7 Exercise](./labex/lab7ex.pdf)|
-| 9    | 22-Apr | Teams     | [Autoencoders and Deep Generative Models](./labs/lab8)                                                    | [Lab 8 Exercise](./labex/lab8ex.pdf) |
-| 10   | 29-Apr | Teams     | Coursework Help and Advice                                                                                |                                      |
-| 11   | 06-May | Teams     | Coursework Help and Advice                                                                                |                           |
-| 12   | 13-May |           | NO LAB                                                                                                    |                           |
+| 8    | 25-Mar | Teams     | [Recurrent Networks, Sequence Prediction and Embeddings](./labs/lab7)                                     | [Lab 7 Exercise](./labex/lab7ex.pdf)|
+| 9    | 29-April | Teams     | [Autoencoders and Deep Generative Models](./labs/lab8)                                                    | [Lab 8 Exercise](./labex/lab8ex.pdf) |
+| 10   | 6-May | Teams     | Coursework Help and Advice                                                                                |                                      |
+| 11   | 13-May | Teams     | Coursework Help and Advice                                                                                |                           |
+| 12   | 20-May | NO LAB     |                                                                               |                           |
 
 __Note: I've made all the worksheet links available from last year. Please don't be surprised if we make some updates before each session!__
 

@@ -1,9 +1,9 @@
 ---
 layout: index
 title: "COMP6248 Differentiable Programming (and Deep Learning)"
-subtitle: "2020-21"
+subtitle: "2021-22"
 githubHeader: "false"
-credits: Maintained by <a href="http://www.ecs.soton.ac.uk/people/jsh2">Dr Jonathon Hare</a>.
+credits: Maintained by <a href="https://www.ecs.soton.ac.uk/people/kf2u17">Dr Kate Farrahi</a> &amp; <a href="http://www.ecs.soton.ac.uk/people/jsh2">Dr Jonathon Hare</a>.
 rdir: '../../'
 ---
 
@@ -22,7 +22,7 @@ This lab started out its life as a Keras practical developed for the VLC group b
 
 This version is refocussed on using PyTorch with Torchbearer. A number of changes have been made to ensure that it better fits our format and I've also added additional information and exercises throughout. 
 
-## Introduction 
+## Introduction
 
 In the last lab we saw how to implement and train simple multi-layer perceptrons using PyTorch and Torchbearer.
 
@@ -37,7 +37,7 @@ Through this lab'll learn how to:
 * How to visualise the filters learned by the network.
 * How to implement networks with branching and merging.
 
-## Getting started 
+## Getting started
 
 To work through this lab you'll use the Python 3 language in a Jupyter Notebook environment, with the `pytorch` tensor library, the `torchvision` utility library and the `torchbearer`model training library. We'll also use the `matplotlib`, `scikit-learn` and `numpy` packages. We will primarily be using [Google Colab](http://colab.research.google.com/) to run the notebooks as this gives you access to an environment with all the tools required. If you wish to run the notebooks locally, see the information in the section below.
 

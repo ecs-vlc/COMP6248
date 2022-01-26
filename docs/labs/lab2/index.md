@@ -1,9 +1,9 @@
 ---
 layout: index
 title: "COMP6248 Differentiable Programming (and Deep Learning)"
-subtitle: "2020-21"
+subtitle: "2021-22"
 githubHeader: "false"
-credits: Maintained by <a href="http://www.ecs.soton.ac.uk/people/jsh2">Dr Jonathon Hare</a>.
+credits: Maintained by <a href="https://www.ecs.soton.ac.uk/people/kf2u17">Dr Kate Farrahi</a> &amp; <a href="http://www.ecs.soton.ac.uk/people/jsh2">Dr Jonathon Hare</a>.
 rdir: '../../'
 ---
 
@@ -20,7 +20,7 @@ _[Jonathon Hare, 2nd Nov 2018](https://github.com/ecs-vlc/COMP6248)_
 
 This lab is derived from material that I produced for a training session on Automatic Differentiation for VLC students and staff in the late Spring of 2018. A lot of inspiration for the content came from this [excellent blog post on Reverse Mode AD](https://rufflewind.com/2016-12-30/reverse-mode-automatic-differentiation).
 
-## Introduction 
+## Introduction
 
 Automatic Differentiation (AD) the key to writing and optimising complex differentiable programs. With AD we no do not have to rely on hand-computing or automatically computing analytic solutions to gradients, nor do we have to rely on, potentially highly inaccurate, numerical gradient estimates. 
 
@@ -33,7 +33,7 @@ Through this lab you'll learn how to:
 * Use PyTorch's built in AD system to evaluate the gradients of complex programs; and
 * Differentiate random variables drawn from distributions with respect to the distributions' parameters using the _reparameterisation trick_.
 
-## Getting started 
+## Getting started
 
 To work through this lab you'll use the Python 3 language in a Jupyter Notebook environment, with the `pytorch` tensor library. We will primarily be using [Google Colab](http://colab.research.google.com/) to run the notebooks as this gives you access to an environment with all the tools required. If you wish to run the notebooks locally, see the information in the section below.
 
