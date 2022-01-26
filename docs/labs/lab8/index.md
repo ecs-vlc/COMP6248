@@ -1,9 +1,9 @@
 ---
 layout: index
 title: "COMP6248 Differentiable Programming (and Deep Learning)"
-subtitle: "2020-21"
+subtitle: "2021-22"
 githubHeader: "false"
-credits: Maintained by <a href="http://www.ecs.soton.ac.uk/people/jsh2">Dr Jonathon Hare</a>.
+credits: Maintained by <a href="https://www.ecs.soton.ac.uk/people/kf2u17">Dr Kate Farrahi</a> &amp; <a href="http://www.ecs.soton.ac.uk/people/jsh2">Dr Jonathon Hare</a>.
 rdir: '../../'
 ---
 
@@ -16,7 +16,7 @@ _[Kate Farrahi, 29th April 2019](https://github.com/ecs-vlc/COMP6248)_
 - 20190429: Initial version
 - 20200126: Minor updates for the 1920 AY
 
-## Introduction 
+## Introduction
 In this lab you'll explore Auto-Encoder architectures.
 
 Through this lab you'll learn how to:
@@ -26,7 +26,7 @@ Through this lab you'll learn how to:
 * How to build a variational auto-encoder
 
 
-## Getting started 
+## Getting started
 To work through this lab you'll use the Python 3 language in a Jupyter Notebook environment, with the `pytorch` tensor library, the `torchvision` utility library and the `torchbearer` model training library. We'll also use the `matplotlib`, `scikit-learn` and `numpy` packages. We will primarily be using [Google Colab](http://colab.research.google.com/) to run the notebooks as this gives you access to an environment with all the tools required. If you wish to run the notebooks locally, see the information in the section below.
 
 The following is a list of the notebooks for this lab, with links to open directly in Google Colab (once opened you should immediately save a copy in your Google Drive otherwise anything you do will be lost once the browser closes), or to download locally. You should work through the notebooks in numeric order as they follow on from each other. 

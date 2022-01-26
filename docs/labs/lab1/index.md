@@ -1,9 +1,9 @@
 ---
 layout: index
 title: "COMP6248 Differentiable Programming (and Deep Learning)"
-subtitle: "2020-21"
+subtitle: "2021-22"
 githubHeader: "false"
-credits: Maintained by <a href="http://www.ecs.soton.ac.uk/people/jsh2">Dr Jonathon Hare</a>.
+credits: Maintained by <a href="https://www.ecs.soton.ac.uk/people/kf2u17">Dr Kate Farrahi</a> &amp; <a href="http://www.ecs.soton.ac.uk/people/jsh2">Dr Jonathon Hare</a>.
 rdir: '../../'
 ---
 
@@ -20,7 +20,7 @@ _[Jonathon Hare, 19th Dec 2018](https://github.com/ecs-vlc/COMP6248)_
 
 This lab is heavily inspired by Stanford's 'Unsupervised Feature Learning and Deep Learning' tutorial (originally written by Andrew Ng and team), and Andrei Karpathy's cs213n course (also from Stanford). The bottom-up approach taken by these courses provides a sound grounding in understanding the fundamentals that make differentiable programming and deep learning possible. 
 
-## Introduction 
+## Introduction
 
 The practical aspect of our COMP6248 module is going to require you to implement and train deep neural networks and other forms of differentiable programs. Modern deep learning often works with massive datasets and complex models. Hardware acceleration is key to how we're able to train our models in a timely manner, and it could be argued that advances in GPU hardware was the key driving force that allowed Alex Krizhevsky to implement AlexNet, train it on ImageNet, smash the ILSVRC 2012 competition and kick-start the deep-learning revolution.
 
@@ -41,7 +41,7 @@ Through this lab you'll learn how to:
 * Implement logistic regression; and
 * Implement softmax regression.
 
-## Getting started 
+## Getting started
 
 To work through this lab you'll use the Python 3 language in a Jupyter Notebook environment, with the `pytorch` tensor library and `matplotlib` package to draw graphs. We will primarily be using [Google Colab](http://colab.research.google.com/) to run the notebooks as this gives you access to an environment with all the tools required. If you wish to run the notebooks locally, see the information in the section below.
 
