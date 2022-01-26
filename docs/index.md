@@ -85,7 +85,7 @@ These are bonus lectures/talks on topics that were requested by students in prev
 
 For 8 of the weeks (starting week 2) we are organising a 2-hour lab session in which you will need to complete a series of worksheets. The worksheets have been designed to put the theory covered in the lectures into context, and the equip you with practical skills in implementing and training differentiable programs. A team of PhD-student demonstrators will be available in the lab to help you with any questions you might have about the topics you are working on.
 
-40% of the marks for the module are for lab work. Each of the 8 lab sessions will be accompanied by an additional assessed exercise for you to work through in your own time. You will have to work through the exercises __by yourself__ and write-up your findings. You will submit your answers/findings/working to all the assessed exercises to [handin](https://handin.ecs.soton.ac.uk/handin/2022/COMP6248/2/) in week 10 for marking (6th May, 16:00). Each of the 8 exercises will be worth 5% of your overall module mark. We recommend that you do the exercise accompanying the lab as soon as possible after the lab session, rather than leaving them all to the end.
+40% of the marks for the module are for lab work. Each of the 8 lab sessions will be accompanied by an additional assessed exercise for you to work through in your own time. You will have to work through the exercises __by yourself__ and write-up your findings. You will submit your answers/findings/working to all the assessed exercises to [handin](https://handin.ecs.soton.ac.uk/handin/2022/COMP6248/2/) in week 10 for marking (3rd May, 16:00). Each of the 8 exercises will be worth 5% of your overall module mark. We recommend that you do the exercise accompanying the lab as soon as possible after the lab session, rather than leaving them all to the end.
 
 Labs will start in the second week (11th Feb) 9-11 on Friday mornings. We intend to split the class into lab groups, each of which will be assigned a demonstrator, who will be available to your group for the session in a Team's side channel. The demonstrators can offer advice on both the labs as well as the group coursework, however you should not ask them about the assessed lab exercises that you complete after the lab.
 
@@ -110,13 +110,10 @@ __Note: I've made all the worksheet links available from last year. Please don't
 
 ## Online Quizzes
 
-There will be two assessed online-quizzes; We are planning for these to be on the 9th March and 11th May. These will be available on blackboard for a 24 hour period and once started you must complete them within one hour.
+There will be two assessed online-quizzes; We are planning for these to be on the 9th March and 6th May. These will be available on blackboard for a 24 hour period and once started you must complete them within one hour.
 
 ## Coursework assignment
-Information on the coursework assignment will be uploaded soon.
-{% comment %}
 Information on the coursework assignment (worth 40% of the module) is [here](coursework.html).
-{% endcomment %}
 
 {% comment %}
 <!---
