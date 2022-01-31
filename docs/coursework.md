@@ -16,12 +16,12 @@ Team size: 3-4 students.
 
 ### Handin #1
 Due date: Friday 4th March 2022, 16:00.  
-Handin: [2021/COMP6248/1/](https://handin.ecs.soton.ac.uk/handin/2021/COMP6248/1/)  
+Handin: [2022/COMP6248/1/](https://handin.ecs.soton.ac.uk/handin/2122/COMP6248/1/) 
 Required files: team.txt
 
 ### Handin #2
 Due date: Friday 13th May 2022, 16:00.  
-Handin: [2021/COMP6248/3/](https://handin.ecs.soton.ac.uk/handin/2021/COMP6248/3/)  
+Handin: [2022/COMP6248/3/](https://handin.ecs.soton.ac.uk/handin/2122/COMP6248/3/)  
 Required files: paper.pdf; mark_split.pdf; team.txt
 
 ## Overview
