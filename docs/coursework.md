@@ -99,7 +99,7 @@ If you need computational resources:
 
 * You can use the [ECS GPU compute service](https://sotonproduction.service-now.com/serviceportal?id=kb_article_view&sys_kb_id=31c11542dbad7b408ab945403996198d) for access to single RTX2070s.
 * You have access to a GPU server with 4 GTX 1080Ti GPUs built for this module: [Usage Information](server.html) and [more info](https://sotonproduction.service-now.com/serviceportal?id=kb_article_view&sys_kb_id=d7e0bb37db4a6b008ab9454039961957)
-* For really big models you can access ECS Alpha (time-share access to a 48GB RTX8000 GPU on Iridis)
+* For really big models you can access [ECS Alpha (time-share access to a 48GB RTX8000 GPU on Iridis)](https://sotonproduction.service-now.com/serviceportal?id=kb_article_view&sys_kb_id=2629ec181bdfbc50aa835fc4464bcbe4)
 * Google colab has GPU and TPU support in a Jupyter environment: https://colab.research.google.com
 * You should be able to get $300 of Google Cloud Credits here: https://cloud.google.com/free/
 
