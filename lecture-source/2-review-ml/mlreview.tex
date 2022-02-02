@@ -126,9 +126,9 @@
 \hypersetup{pdfstartview={Fit}}
 \lstset{basicstyle=\small\ttfamily,breaklines=true}
 
-\title[COMP6248 Deep Learning]{Review of Machine Learning}
+\title[COMP6248 Deep Learning]{Learning Machines}
 \subtitle{(and some Deep Network Fundamentals)}
-\author{Jonathon Hare}
+\author{Kate Farrahi \& Jonathon Hare}
 \institute[]
 {
   Vision, Learning and Control\\
@@ -209,19 +209,34 @@
 \end{center}
 \end{frame}
 %%-------------------------------------------------------------%
-
 \begin{frame}[fragile]\frametitle{Self-supervised Learning}
-\begin{center}
-  \resizebox{0.8\textwidth}{!}{\input{figs/emecomm_model.tikz}\unskip}
-  \blfootnote{Daniela Mihai and Jonathon Hare. Avoiding hashing and encouraging visual semantics in referential emergent language games. EmeCom @ NeurIPS 2019. https://arxiv.org/abs/1911.05546}
-\end{center}
-
+	\begin{center}
+		\begin{itemize}
+			\item The basic idea of self-supervised learning (SSL) is to automatically generate some kind of supervisory signal to solve some task (typically, to learn representations of the data or to automatically label a dataset).
+			\item SSL be regarded as an intermediate form between supervised and unsupervised learning.
+			\item Training can occur with data of lower quality. 
+			\item SSL more closely imitates the way humans learn to classify objects. 
+		\end{itemize}
+		\blfootnote{Reference: Wikipedia \url{https://en.wikipedia.org/wiki/Self-supervised_learning}}
+	\end{center}
 \end{frame}
+	
+%
+%\begin{frame}[fragile]\frametitle{Self-supervised Learning}
+%\begin{center}
+%  \resizebox{0.8\textwidth}{!}{\input{figs/emecomm_model.tikz}\unskip}
+%  \blfootnote{Daniela Mihai and Jonathon Hare. Avoiding hashing and encouraging visual semantics in referential emergent language games. EmeCom @ NeurIPS 2019. https://arxiv.org/abs/1911.05546}
+%\end{center}
+%
+%\end{frame}
 %%-------------------------------------------------------------%
 
 \begin{frame}[fragile]\frametitle{Semi-supervised Learning}
 \begin{center}
- \includegraphics[width=0.6\textwidth]{figs/SS.png}\blfootnote{Jeremy Howard. The wonderful and terrifying implications of computers that can learn. TEDxBrussels. \url{http://www.ted.com/talks/jeremy_howard_the_wonderful_and_terrifying_implications_of_computers_that_can_learn}}
+ \includegraphics[width=0.6\textwidth]{figs/SS2.png}
+ 
+ \blfootnote{Jeremy Howard. The wonderful and terrifying implications of computers that can learn. TEDxBrussels. \url{http://www.ted.com/talks/jeremy_howard_the_wonderful_and_terrifying_implications_of_computers_that_can_learn}}
+ \blfootnote{Image taken from: https://medium.com/dataseries/two-minutes-of-semi-supervised-learning-f0eb62729530}
 \end{center}
 \end{frame}
 %%-------------------------------------------------------------%
@@ -245,7 +260,7 @@
 Generative vs. discriminative approaches to classification use different statistical modelling.
 \begin{itemize}
 \item Discriminative models learn the boundary between classes. A (probabilistic) discriminative model is a model of the conditional probability of the target $Y$ given an observation $X$: $P[Y|X]$.
-\item Generative models of labelled data model the distribution of individual classes. Given an observable variable $X$ and a target variable $Y$, a generative model is a statistical model that tries to model $P[X|Y]$ and $P[Y]$ in order to model the joint probability distribution $P[X, Y]$.\footnote{Some such models can be sampled conditionally based on a prior $Y$ - e.g. a Conditional VAE: \url{https://papers.nips.cc/paper/5775-learning-structured-output-representation-using-deep-conditional-generative-models}}
+\item Generative models of labelled data model the distribution of individual classes. Given an observable variable $X$ and a target variable $Y$, a generative model is a statistical model that tries to model $P[X|Y]$ and $P[Y]$ in order to model the joint probability distribution $P[X, Y]$.%\footnote{Some such models can be sampled conditionally based on a prior $Y$ - e.g. a Conditional VAE: \url{https://papers.nips.cc/paper/5775-learning-structured-output-representation-using-deep-conditional-generative-models}}
 \end{itemize} 
 
 % Additional Reading: \url{http://cs229.stanford.edu/notes/cs229-notes2.pdf}
@@ -394,7 +409,7 @@ $\softmax(\bm z)_i = \frac{e^{z_i}}{\sum_{j=1}^K e^{z_j}} \;\;\;\;\;\;\; \forall
   \item<+-> The choice of loss function depends on the task (e.g. classification/regression/something else)
   \item<+-> The choice also depends on the activation function of the last layer
   \begin{itemize}
-    \item<+-> For numerical reasons (see Log-Sum-Exp in a few slides) many times the activation is computed directly within the loss rather than being part of the model
+    %\item<+-> For numerical reasons (see Log-Sum-Exp in a few slides) many times the activation is computed directly within the loss rather than being part of the model
     \item<+-> Some classification losses require \emph{raw outputs} (e.g. a linear layer) of the network as their input 
     \begin{itemize}
       \item These are often called \emph{unnormalised log probabilities} or \emph{logits}
@@ -469,26 +484,26 @@ where $K$ is the number of classes of the classification problem, $\hat y \in \m
 \end{frame}
 
 %%-------------------------------------------------------------%
-\begin{frame}[fragile]\frametitle{Numerical Stability: The Log-Sum-Exp trick}
-\begin{center}
-$\ell_{BCE}(\hat y, y) = -y \log(\hat y) - (1 - y) \log (1 - \hat y)$  
-\end{center}
-
-\begin{itemize}
-  \item Consider what might happen early in training when the model might confidently predict a positive example as negative
-  \begin{itemize}
-    \item<+-> $\hat y = \sigma(z) \approx 0 \implies z<<0$
-    \item<+-> if $\hat y$ is small enough, it will become $0$ due to limited precision of floating-point representations
-    \item<+-> but then $\log(\hat y) = -\inf$, and everything will break!
-  \end{itemize}
-  \item<+-> To tackle this problem implementations usually combine the sigmoid computation and BCE into a single loss function that you would apply to a network with linear outputs (e.g. \texttt{BCEWithLogitsLoss}).
-  \item<+-> Internally, a trick called `log-sum-exp' is used to \emph{shift} the centre of an exponential sum so that only numerical underflow can potentially happen, rather than overflow\footnote{https://www.xarg.org/2016/06/the-log-sum-exp-trick-in-machine-learning/}.
-  \begin{itemize}
-    \item Ultimately this means you'll always get a numerically reasonable result (and will avoid NaNs and Infs originating from this point).
-  \end{itemize}
-\end{itemize}
-
-\end{frame}
+%\begin{frame}[fragile]\frametitle{Numerical Stability: The Log-Sum-Exp trick}
+%\begin{center}
+%$\ell_{BCE}(\hat y, y) = -y \log(\hat y) - (1 - y) \log (1 - \hat y)$  
+%\end{center}
+%
+%\begin{itemize}
+%  \item Consider what might happen early in training when the model might confidently predict a positive example as negative
+%  \begin{itemize}
+%    \item<+-> $\hat y = \sigma(z) \approx 0 \implies z<<0$
+%    \item<+-> if $\hat y$ is small enough, it will become $0$ due to limited precision of floating-point representations
+%    \item<+-> but then $\log(\hat y) = -\inf$, and everything will break!
+%  \end{itemize}
+%  \item<+-> To tackle this problem implementations usually combine the sigmoid computation and BCE into a single loss function that you would apply to a network with linear outputs (e.g. \texttt{BCEWithLogitsLoss}).
+%  \item<+-> Internally, a trick called `log-sum-exp' is used to \emph{shift} the centre of an exponential sum so that only numerical underflow can potentially happen, rather than overflow\footnote{https://www.xarg.org/2016/06/the-log-sum-exp-trick-in-machine-learning/}.
+%  \begin{itemize}
+%    \item Ultimately this means you'll always get a numerically reasonable result (and will avoid NaNs and Infs originating from this point).
+%  \end{itemize}
+%\end{itemize}
+%
+%\end{frame}
 %%-------------------------------------------------------------%
 
 \begin{frame}[fragile]\frametitle{Multiclass classification with Softmax Outputs}
@@ -503,7 +518,7 @@ $\ell_{BCE}(\hat y, y) = -y \log(\hat y) - (1 - y) \log (1 - \hat y)$
   \begin{itemize}
     \item Note that in practice as $y_k$ is zero for all but one class you don't actually do this summation, and if $y$ is an integer class index you can write $\ell_{NLL} = - \log \hat y_y$.
   \end{itemize}
-  \item<+-> Analogously to what we saw for BCE, Log-Sum-Exp can be used for better numerical stability.
+  %\item<+-> Analogously to what we saw for BCE, Log-Sum-Exp can be used for better numerical stability.
   \begin{itemize}
     \item PyTorch combines LogSoftmax with NLL in one loss and calls this ``Categorical Cross-Entropy'' (so you would use this with a \emph{linear output layer})
   \end{itemize}
@@ -515,7 +530,7 @@ $\ell_{BCE}(\hat y, y) = -y \log(\hat y) - (1 - y) \log (1 - \hat y)$
 \begin{frame}[fragile]\frametitle{Reminder: Gradient Descent}
 
 \begin{itemize}
-  \item Define total loss as $\mathcal{L} = \sum_{(\bm x,y) \in \bm D} \ell(g(\bm x,\bm\theta), y)$ for some loss function $\ell$, dataset $\bm D$ and model $g$ with learnable parameters $\bm\theta$.
+  \item Define total loss as $\mathcal{L} = \sum_{(\bm x,y) \in \bm D} \ell(f(\bm x,\bm\theta), y)$ for some loss function $\ell$, dataset $\bm D$ and model $f$ with learnable parameters $\bm\theta$.
   \item Define how many passes over the data to make (each one known as an Epoch)
   \item Define a learning rate $\eta$
 \end{itemize}
@@ -530,7 +545,7 @@ Gradient Descent updates the parameters $\bm\theta$ by moving them in the direct
 \begin{frame}[fragile]\frametitle{Reminder: Stochastic Gradient Descent}
 
 \begin{itemize}
-  \item Define loss function $\ell$, dataset $\bm D$ and model $g$ with learnable parameters $\bm\theta$.
+  \item Define loss function $\ell$, dataset $\bm D$ and model $f$ with learnable parameters $\bm\theta$.
   \item Define how many passes over the data to make (each one known as an Epoch)
   \item Define a learning rate $\eta$
 \end{itemize}
