@@ -16,12 +16,12 @@ Team size: 3-4 students.
 
 ### Handin #1
 Due date: Friday 4th March 2022, 16:00.  
-Handin: [2021/COMP6248/1/](https://handin.ecs.soton.ac.uk/handin/2021/COMP6248/1/)  
+Handin: [2022/COMP6248/1/](https://handin.ecs.soton.ac.uk/handin/2122/COMP6248/1/) 
 Required files: team.txt
 
 ### Handin #2
 Due date: Friday 13th May 2022, 16:00.  
-Handin: [2021/COMP6248/3/](https://handin.ecs.soton.ac.uk/handin/2021/COMP6248/3/)  
+Handin: [2022/COMP6248/3/](https://handin.ecs.soton.ac.uk/handin/2122/COMP6248/3/)  
 Required files: paper.pdf; mark_split.pdf; team.txt
 
 ## Overview
@@ -30,7 +30,7 @@ For the last few years the International Conference on Representation Learning (
 In this coursework you will form a team and choose a paper submitted to one of the ICLR 2021-2020, or NeurIPS 2021-2020 conferences. You will attempt to reproduce the results of your chosen paper and report back on your findings. 
 
 ## Details
-Students will form groups of three members. I've made a page on the student wiki to help you form teams: https://secure.ecs.soton.ac.uk/student/wiki/w/COMP6248-2021-classlist and setup a channel in Teams where you can talk to others in the class about finding a team.
+Students will form groups of three members. I've made a page on the student wiki to help you form teams: https://secure.ecs.soton.ac.uk/student/wiki/w/COMP6248-2122-classlist and setup a channel in Teams where you can talk to others in the class about finding a team.
 
 Each group will propose a paper to reproduce. All papers submitted to ICLR are publically available on the Open Review website (https://openreview.net/group?id=ICLR.cc) together with their reviews. You can pick a paper that was accepted, or one that was not. The lab demonstrators and lecturers can offer advice on good and bad papers to try. You will need to be careful that you do not pick a paper that requires insane amounts of computation power (some of the papers claim experiments using hundreds of GPUs!). In some cases, the paper you pick might include experiments that require more resources than you have available, however in such cases it is fine to try to reproduce constrained or reduced versions of the experiments (e.g. with lower dimensional inputs, smaller datasets or less layers).
 
@@ -99,7 +99,7 @@ If you need computational resources:
 
 * You can use the [ECS GPU compute service](https://sotonproduction.service-now.com/serviceportal?id=kb_article_view&sys_kb_id=31c11542dbad7b408ab945403996198d) for access to single RTX2070s.
 * You have access to a GPU server with 4 GTX 1080Ti GPUs built for this module: [Usage Information](server.html) and [more info](https://sotonproduction.service-now.com/serviceportal?id=kb_article_view&sys_kb_id=d7e0bb37db4a6b008ab9454039961957)
-* For really big models you can access ECS Alpha (time-share access to a 48GB RTX8000 GPU on Iridis)
+* For really big models you can access [ECS Alpha (time-share access to a 48GB RTX8000 GPU on Iridis)](https://sotonproduction.service-now.com/serviceportal?id=kb_article_view&sys_kb_id=2629ec181bdfbc50aa835fc4464bcbe4)
 * Google colab has GPU and TPU support in a Jupyter environment: https://colab.research.google.com
 * You should be able to get $300 of Google Cloud Credits here: https://cloud.google.com/free/
 
