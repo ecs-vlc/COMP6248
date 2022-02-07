@@ -53,6 +53,8 @@
 
 \DeclareMathOperator{\softmax}{softmax}
 
+\pgfplotsset{compat=1.17}
+
 \begin{document}
 
 \begin{frame}[plain]
@@ -127,7 +129,7 @@
 	\item<+-> Recall that the gradient of a straight line is $\frac{\Delta y}{\Delta x}$.
 	\item<+-> For an arbitrary real-valued function, $f(a)$, we can approximate the derivative, $f'(a)$ using the gradient of the \emph{secant line} defined by $(a,f(a))$ and a point a small distance, $h$, away $(a+h,f(a+h))$: $f'(a) \approx \frac{f(a+h) - f(a)}{h}$.
 	\begin{itemize}
-		\item<+-> This expression is `Newton's Difference Quotient'.
+		\item<+-> This expression is `Newton's Quotient' or `Fermat's Difference Quotient'.
 		\item<+-> As $h$ becomes smaller, the approximated derivative becomes more accurate. 
 		\item<+-> If we take the limit as $h \to 0$, then we have an exact expression for the derivative: $\frac{df}{da} = f'(a) = \lim_{h\to0} \frac{f(a+h) - f(a)}{h}$.
 	\end{itemize}
@@ -376,8 +378,8 @@ $\frac{\partial \mathcal{L}}{\partial W_{uv}} = \sum_{i,j}\frac{\partial \mathca
  	\item<+-> Therefore, we can simplify the summation to only consider cases where $j=v$: $\sum_{i,j}\frac{\partial \mathcal{L}}{\partial D_{ij}}\frac{\partial D_{ij}}{\partial W_{uv}} = \sum_i \frac{\partial \mathcal{L}}{\partial D_{iv}}\frac{\partial D_{iv}}{\partial W_{uv}}$.
  	\item<+-> What is $\frac{\partial D_{iv}}{\partial W_{uv}}$?
  		\begin{align*}
- 			\uncover<+->{D_{iv} &= \sum_{k=1}^{q} X_{ik} W_{kv} \\}
- 			\uncover<+->{\frac{\partial D_{iv}}{\partial W_{uv}} &= \frac{\partial}{\partial W_{uv}} \sum_{k=1}^{q} X_{ik} W_{kv} = \sum_{k=1}^{q} \frac{\partial}{\partial W_{uv}} X_{ik} W_{kv} \\}
+ 			\uncover<+->{D_{iv} &= \sum_{k=1}^{m} X_{ik} W_{kv} \\}
+ 			\uncover<+->{\frac{\partial D_{iv}}{\partial W_{uv}} &= \frac{\partial}{\partial W_{uv}} \sum_{k=1}^{m} X_{ik} W_{kv} = \sum_{k=1}^{m} \frac{\partial}{\partial W_{uv}} X_{ik} W_{kv} \\}
  			\uncover<+->{\therefore \frac{\partial D_{iv}}{\partial W_{uv}} &= X_{iu} \\}
  		\end{align*}
 \end{itemize}
