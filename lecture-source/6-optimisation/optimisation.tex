@@ -140,7 +140,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Formatting for title page
 \title[Optimisation]{Optimisation}
-\author{Jonathon Hare}  
+\author{Kate Farrahi (adapted from Jon Hare's lecture)}  
 \institute[]
 {
   Vision, Learning and Control\\
@@ -169,11 +169,11 @@
 \end{frame}
 %%-------------------------------------------------------------%
 
-\begin{frame}
-  \frametitle{Gradient descent and SGD (again), and mini-batch SGD}
-  
-  We'll start up by looking again at gradient descent algorithms and their behaviours...
-\end{frame}
+%\begin{frame}
+%  \frametitle{Gradient descent and SGD (again), and mini-batch SGD}
+%  
+%  We'll start up by looking again at gradient descent algorithms and their behaviours...
+%\end{frame}
 
 %-------------------------------------------------------------%
 \begin{frame}[fragile]\frametitle{Reminder: Gradient Descent}
@@ -194,9 +194,11 @@ Gradient Descent updates the parameters $\bm\theta$ by moving them in the direct
 
 \begin{frame}[fragile]\frametitle{Gradient Descent}
 \begin{itemize}
-  \item Gradient Descent has good statistical properties (very low variance)
-  \item But is very data inefficient (particularly when data has many similarities)
-  \item Doesn't scale to effectively infinite data (e.g. with augmentation)
+	\item<1-> Fewer updates to the model means more computationally efficient.
+	\item<1-> The decreased update frequency results in more stable error gradient and more stable convergence.
+ 	\item<1-> The updates at the end of the training epoch require the additional complexity of accumulating prediction errors across all training examples.
+	Commonly, batch gradient descent is implemented in such a way that it requires the entire training dataset in memory and available to the algorithm.
+	\item<1-> Model updates, and in turn training speed, may become very slow for large datasets.
 \end{itemize}
 \end{frame}
 
@@ -221,8 +223,10 @@ Stochastic Gradient Descent updates the parameters $\bm\theta$ by moving them in
 
 \begin{frame}[fragile]\frametitle{Stochastic Gradient Descent}
 \begin{itemize}
-  \item Stochastic Gradient Descent has poor statistical properties (very high variance)
-  \item But is computationally inefficient (poor utilisation of resources - particularly with respect to vectorisation)
+	\item<1-> The frequent updates immediately give an insight into the performance of the model.
+	\item<1-> The noisy update process can allow the model to avoid local minima.
+  	\item<1-> The frequent updates can result in a noisy gradient signal, which may cause the model parameters and in turn the model error to jump around. This makes it hard for the algorithm to settle on an error minimum.
+  	\item<1-> Computationally inefficient (poor utilisation of resources - particularly with respect to vectorisation)
 \end{itemize}
 \end{frame}
 
@@ -249,13 +253,10 @@ Mini-batch Gradient Descent updates the parameters $\bm\theta$ by moving them in
 
 \begin{frame}[fragile]\frametitle{Mini-batch Stochastic Gradient Descent}
 \begin{itemize}
-  \item<1-> Mini-batch Stochastic Gradient Descent has reasonable statistical properties (much lower variance than SGD)
+	\item<1-> Mini-batch gradient descent seeks to find a balance between the robustness of stochastic gradient descent and the efficiency of batch gradient descent.
+  \item<1-> The model update frequency is higher than  gradient descent, which allows for a more robust convergence, avoiding local minima.
   \item<1-> Allows for computationally efficiency (good utilisation of resources)
-  \item<2-> Ultimately we would normally want to make our batches as big as possible for lower variance gradient estimates, but:
-  \begin{itemize}
-    \item Must still fit in RAM (e.g. on the GPU)
-    \item Must be able to maintain throughput (e.g. pre-processing on the CPU; data transfer time)
-  \end{itemize}
+  \item<2-> The batching allows both the efficiency of not having all training data in memory and algorithm implementations.
 \end{itemize}
 \end{frame}
 
@@ -289,11 +290,11 @@ Mini-batch Gradient Descent updates the parameters $\bm\theta$ by moving them in
 
 \begin{frame}[fragile]\frametitle{*GD in the convex case: failure modes}
 
-% \begin{itemize}
+%\begin{itemize}
 % \item If the ellipse is very elongated, the direction of steepest descent is almost perpendicular to the direction towards the minimum
 % \item The gradient vector will have a large component along the short axis of the ellipse and a small component along the long axis of the ellipse.
 % \item This is the opposite of what we want to optimise efficiently
-% \end{itemize}
+%\end{itemize}
 
 \includegraphics[width=\textwidth]{contours.pdf}
 
@@ -304,7 +305,7 @@ Mini-batch Gradient Descent updates the parameters $\bm\theta$ by moving them in
 \begin{frame}\frametitle{Accelerated Gradient Methods}
 
 \begin{itemize}
-  \item<+-> Accelerated gradient methods use a \emph{leaky} average of the gradient, rather than the instantaneous gradient estimate at each time step
+  \item<+-> Accelerated gradient methods use an exponentially weighted average of the gradient, rather than the instantaneous gradient estimate at each step.
   \item<+-> A physical analogy would be one of the momentum a ball picks up rolling down a hill...
   \item<+-> As you'll see, this helps address the *GD failure modes, but also helps avoid getting stuck in local minima
 \end{itemize}
@@ -312,10 +313,26 @@ Mini-batch Gradient Descent updates the parameters $\bm\theta$ by moving them in
 \end{frame}
 
 %-------------------------------------------------------------%
+\begin{frame}{pause}\frametitle{Exponentially Weighted Averages}
+	
+	$v_t = \beta v_{t-1} + (1 - \beta) \theta_t$ \vspace{3mm} \\ \pause
+	
+	$v_t$ is approximately average over $\approx \frac{1}{1-\beta}$ days \vspace{6mm} \\ \pause
+	
+	For example \\
+	$v_{100} = 0.9 v_{99} + 0.1 \theta_{100}$ \\
+	$v_{99} = 0.9 v_{98} + 0.1 \theta_{99}$ \\
+	$v_{98} = 0.9 v_{97} + 0.1 \theta_{98}$ \\
+	\dots \vspace{3mm} \\ \pause
+	$v_{100} = 0.1 \theta_{100} + 0.9 [0.1 \theta_{99} + 0.9 [\dots]]]$   \vspace{2mm} \\ \pause
+	$v_{100} = 0.1 \theta_{100} + 0.9 * 0.1 * \theta_{99} + 0.1 * (0.9)^2 * \theta_{98} + 0.1 (0.9)^3 \theta_{97} + \dots $ 
+\end{frame}
+
+%-------------------------------------------------------------%
 
 \begin{frame}{pause}\frametitle{Momentum I}
 
-It's common for the `leaky' average (the `velocity', $v_t$) to be a weighted average of the instantaneous gradient $g_t$ and the past velocity\footnote{There are quite a few variants of this; here we're following the PyTorch variant}:
+It's common for the weighted (or `leaky') term (the `velocity', $v_t$) to be a weighted average of the instantaneous gradient $g_t$ and the past velocity\footnote{There are quite a few variants of this; here we're following the PyTorch variant}:
 
 \begin{equation*}
   v_t = \beta v_{t-1} + g_t
@@ -353,8 +370,8 @@ Note $\beta = 0.9$ is a good choice for the momentum parameter.
 \end{frame}
 %-------------------------------------------------------------%
 
-\begin{frame}\frametitle{SGD with Momentum - potentially better convex convergence}
-\includegraphics[width=\textwidth]{contours.pdf}
+\begin{frame}\frametitle{}
+
 \end{frame}
 %-------------------------------------------------------------%
 \begin{frame}\frametitle{Learning rate schedules}
@@ -381,25 +398,25 @@ Note $\beta = 0.9$ is a good choice for the momentum parameter.
   \item Remarkably powerful!
 \end{itemize}
 
-\begin{center}
-\begin{tikzpicture}
-  \begin{axis}[
-    height=6cm,
-    width=12cm,
-    grid=both,
-    xtick distance=1,
-    ytick distance=1,
-    xticklabels={,,},
-    yticklabels={,,},
-    axis equal,
-    xmin=0,
-    xmax=5,
-    ymin=0,
-    ymax=10 
-  ]
-  \end{axis}
-\end{tikzpicture}
-\end{center}
+%\begin{center}
+%\begin{tikzpicture}
+%  \begin{axis}[
+%    height=6cm,
+%    width=12cm,
+%    grid=both,
+%    xtick distance=1,
+%    ytick distance=1,
+%    xticklabels={,,},
+%    yticklabels={,,},
+%    axis equal,
+%    xmin=0,
+%    xmax=5,
+%    ymin=0,
+%    ymax=10 
+%  ]
+%  \end{axis}
+%\end{tikzpicture}
+%\end{center}
 
 \end{frame}
 
@@ -420,8 +437,8 @@ Note $\beta = 0.9$ is a good choice for the momentum parameter.
   \item<+-> Adagrad
   \begin{itemize}
     \item Decrease learning rate dynamically per weight.
-    \item Squared magnitude of the gradient (2nd moment) used to adjust how quickly progress is made - weights with large gradients are compensated with a smaller learning rate.
-    \item Particularly effective for sparse features.
+    \item Squared magnitude of the gradient used to adjust how quickly progress is made - weights with large gradients are compensated with a smaller learning rate.
+    \item Used for less complex models, too slow for deep learning.
   \end{itemize}
   \item<+-> RMSProp
   \begin{itemize}
@@ -432,9 +449,8 @@ Note $\beta = 0.9$ is a good choice for the momentum parameter.
   \item<+-> Adam
   \begin{itemize}
     \item Essentially takes all the best ideas from RMSProp and SDG+Momentum
-    \item Bias corrected momentum and second moment estimation
     \item Shown that it might still diverge (or be non optimal, even in convex settings)...
-    \item LR is still a hyperparameter (you might still schedule)
+
   \end{itemize}
 \end{itemize}
 
