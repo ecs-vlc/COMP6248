@@ -653,7 +653,7 @@ The gumbel-softmax reparameterisation allows us to sample directly using the log
 \begin{equation*}
 t = \underset{ i \in \{1,\cdots,K\} }{\operatorname{argmax}} x_i + z_i
 \end{equation*}
-where $z_1, \dots z_K$ are i.i.d Gumbel(0,1) variates  which can be computed from Uniform variates through $-\log(-\log(-\mathcal{U}(0,1)))$.
+where $z_1, \dots z_K$ are i.i.d Gumbel(0,1) variates  which can be computed from Uniform variates through $-\log(-\log(\mathcal{U}(0,1)))$.
 
 \end{frame}
 
