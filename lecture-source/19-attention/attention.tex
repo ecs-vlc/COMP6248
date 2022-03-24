@@ -389,7 +389,7 @@ or, \textit{factorised},
 \[
 c = \alpha_t^\top \mH \text{ where } \mH = [h_1, h_2, \dotsc, h_T]^T
 \]
-\footnotesize{commonly known as ``Additive Attention'', even though its based on concatenation!}
+\footnotesize{commonly known as ``Additive Attention'', even though it is based on concatenation!}
 \end{column}
 \end{columns}
 \blfootnote{Bahdanau, D., Cho, K. and Bengio, Y., 2014. Neural machine translation by jointly learning to align and translate. ICLR 2015.}
@@ -451,8 +451,9 @@ c = \alpha_t^\top \mH \text{ where } \mH = [h_1, h_2, \dotsc, h_T]^T
 \begin{frame}
 \frametitle{Multi-head Attention}
 
-\includegraphics[width=\columnwidth]{multihead.pdf}
 
+\center
+\includegraphics[width=0.75\textwidth]{multihead.pdf} \vspace{-1em}
 \[
 \MultiHead(\mQ, \mK, \mV) = [\mathrm{head}_1; \dots; \mathrm{head}_n]\mW^O
 \]
@@ -460,7 +461,7 @@ c = \alpha_t^\top \mH \text{ where } \mH = [h_1, h_2, \dotsc, h_T]^T
 \mathrm{head}_i = Attention(QW_i^Q, KW_i^K, VW_i^V)
 \]
 
-\blfootnote{A. Vaswani, N. Shazeer, N. Parmar, J. Uszkoreit, L. Jones, A. N. Gomez, L. u. Kaiser, and I. Polosukhin. Attention is all you need. In I. Guyon, U. V. Luxburg, S. Bengio, H. Wallach, R. Fergus, S. Vish- wanathan, and R. Garnett, editors, Advances in Neural Information Processing Systems, volume 30. Curran Associates, Inc., 2017.}
+\blfootnote{A. Vaswani, N. Shazeer, N. Parmar, J. Uszkoreit, L. Jones, A. N. Gomez, L. u. Kaiser, and I. Polosukhin. Attention is all you need. In Advances in Neural Information Processing Systems, volume 30.}
  
 \end{frame}
 
