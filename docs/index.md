@@ -59,12 +59,13 @@ The current working timetable/plan is below, and illustrates the topics we inten
 |      | 24-Mar | 7-3009 | Attention            | [attention-handout.pdf](handouts/attention-handouts.pdf) |       |   |
 | 9    | 25-Apr | 54-4011 |Auto-encoders and, unsupervised learning and self-supervision            | {% comment %} [vaes-handout.pdf](handouts/autoencoders-handouts.pdf) {% endcomment %}  |      [ Blog Post on Autoencoders](https://blog.keras.io/building-autoencoders-in-keras.html) |   |
 |      | 28-Apr | 7-3009 | Generative Models Part 1: Differentiable Generator Networks | {% comment %} [gans-handout.pdf](handouts/gans-handouts.pdf) {% endcomment %}| |       |   | 
-| 10   | 02-May | 54-4011 | Generative Models Part 2: Variational Autoencoders | {% comment %} [gans-handout.pdf](handouts/gans-handouts.pdf) {% endcomment %}  | [Autoencoding Variational Bayes](https://arxiv.org/abs/1312.6114) |   |
-|      | 05-May | 7-3009 | Generative Models Part 3: Generative Adversarial Networks | {% comment %} [gans-handout.pdf](handouts/gans-handouts.pdf)  {% endcomment %} | [GANs](https://papers.nips.cc/paper/5423-generative-adversarial-nets.pdf), [DCGANs](https://arxiv.org/pdf/1511.06434.pdf) |  |
-| 11   | 09-May | 54-4011 | Guest research lecture - TBC     | | | |
-|      | 12-May | 7-3009 | Assorted/research topics (see below)                                              | | | |
-| 12   | 16-May | 54-4011 | Guest research lecture - TBC                                             | | | |
-|      | 19-May | 7-3009 | Assorted/research topics (see below)                                              | | | |
+| 10   | 02-May | - | No lecture | Bank holiday  |  |   |
+|      | 05-May | 7-3009 | Generative Models Part 2: Variational Autoencoders | {% comment %} [gans-handout.pdf](handouts/gans-handouts.pdf) {% endcomment %}  | [Autoencoding Variational Bayes](https://arxiv.org/abs/1312.6114) |   |
+|  11    | 09-May | 54-4011 | Generative Models Part 3: Generative Adversarial Networks | {% comment %} [gans-handout.pdf](handouts/gans-handouts.pdf)  {% endcomment %} | [GANs](https://papers.nips.cc/paper/5423-generative-adversarial-nets.pdf), [DCGANs](https://arxiv.org/pdf/1511.06434.pdf) |  |
+|     | 12-May | 7-3009 | Guest research lecture - TBC     | | | |
+|  12    | 16-May | 54-4011 | Assorted/research topics (see below)                                              | | | |
+|    | 19-May |  7-3009 | Guest research lecture - TBC                                             | | | |
+
 
 
 
