@@ -181,7 +181,7 @@
 
 \begin{itemize}
   \item<+-> One of the common features of many of the deep learning models we have looked at to this point is that they often try to reduce the dimensionality of the input data in order to capture some kind of underlying information.
-  \item<+-> In the last lecture this was particularly evident when when we looked at embedding models like word2vec which explictly try to capture relationships in the data in a low dimensional `latent' space.
+  \item<+-> A few lectures ago this was particularly evident when when we looked at embedding models like word2vec which explictly try to capture relationships in the data in a low dimensional `latent' space.
 \end{itemize}
 \end{frame}
 
@@ -203,7 +203,7 @@
     \item<+-> CBOW learns to predict the focus word from the context words
     \item<+-> Skip-gram learns to predict the context words from the focus word
   \end{itemize}
-  \item<+-> Let's now consider a different type self-supervised of task where we want to learn a model that learns to copy its input to its output.
+  \item<+-> Let's now consider a different type self-supervised of task where we want to learn a model that learns to \textbf{copy} its input to its output.
 \end{itemize}
 
 \end{frame}
@@ -215,11 +215,11 @@
 \begin{itemize}
   \item<+-> An \textbf{autoencoder} is a network that is trained to copy its input to its output
   \begin{itemize}
-    \item<+-> Internally there is some hidden vector $\bm{h}$ that describes a \textbf{code} that represents the input.
+    \item<+-> Internally there is some hidden vector $\bm{z}$ that describes a \textbf{code} that represents the input.
     \item<+-> Conceptually the autoencoder consists of two parts:
     \begin{itemize}
-      \item The encoder $\bm{h} = f(\bm{x})$
-      \item The decoder $\bm{r} = g(\bm{h})$
+      \item The encoder $\bm{z} = f(\bm{x})$
+      \item The decoder $\bm{r} = g(\bm{z})$
     \end{itemize}
     \item<+-> and has loss that tries to minimise the reconstruction error (typically SSE/MSE: $\|\bm{x} - \bm{r}\|_2^2$)
   \end{itemize}
@@ -233,8 +233,8 @@
 \frametitle{Autoencoder constraints}
 
 \begin{itemize}
-  \item<+-> Clearly a linear autoencoder with a sufficient number of weights (e.g. if the dimension of $\bm{h}$ was greater than or equal to that of $x$) could learn set $g(f(\bm{x}))=\bm{x}$ everywhere, but this obviously wouldn't be useful!
-  \item<+-> In practice we apply \emph{restrictions}\footnote{these are `inductive biases'} to stop this happening.
+  \item<+-> Clearly a linear autoencoder with a sufficient number of weights (e.g. if the dimension of $\bm{z}$ was greater than or equal to that of $x$) could learn set $g(f(\bm{x}))=\bm{x}$ everywhere, but this obviously wouldn't be useful!
+  \item<+-> In practice we apply \emph{restrictions}\footnote{these are `inductive biases' and the `innate priors' of the model and learning algorithm} to stop this happening.
   \item<2-> The objective is to use these restrictions to force the autoencoder to learn useful properties of the data.
 \end{itemize}
 
@@ -244,7 +244,7 @@
 \frametitle{Undercomplete Autoencoders}
 
 \begin{itemize}
-  \item Undercomplete autoencoders have $\dim(\bm{h}) << \dim(\bm{x})$.
+  \item Undercomplete autoencoders have $\dim(\bm{z}) << \dim(\bm{x})$.
   \item This forces the encoder to learn a \emph{compressed representation} of the input.
   \item The representation will capture the most \emph{salient} features of the input data.
 \end{itemize}
@@ -259,10 +259,10 @@ Consider the single-hidden layer linear autoencoder network given by:
 
 \begin{align*}
   h &= \bm{\mathrm{W}}_e \bm{x} + \bm{b}_e \\
-  r &= \bm{\mathrm{W}}_d \bm{h} + \bm{b}_d
+  r &= \bm{\mathrm{W}}_d \bm{z} + \bm{b}_d
 \end{align*}
 
-where $\bm{x} \in \mathbb{R}^n$, $\bm{h} \in \mathbb{R}^m$ and $m<n$.\\[1em]
+where $\bm{x} \in \mathbb{R}^n$, $\bm{z} \in \mathbb{R}^m$ and $m<n$.\\[1em]
 \pause
 With the MSE loss, this autoencoder will learn to span the same subspace as PCA for a given set of training data. \\[1em]
 Note that the autoencoder weights are not however constrained to be orthogonal (like they would be in PCA)
@@ -300,7 +300,7 @@ Note that the autoencoder weights are not however constrained to be orthogonal (
 \begin{itemize}
   \item<+-> Extreme example: 
   \begin{itemize}
-    \item<+-> Consider a powerful encoder that maps $\bm{x}$ to $\bm{h} \in \mathbb{R}^1$
+    \item<+-> Consider a powerful encoder that maps $\bm{x}$ to $\bm{z} \in \mathbb{R}^1$
     \item<+-> Each training example $\bm{x}^{(i)}$ could e.g. be mapped to $i$.
     \item<+-> The decoder just needs to memorise the training examples so that it can map back from $i$.
   \end{itemize}
@@ -362,8 +362,8 @@ Note that the autoencoder weights are not however constrained to be orthogonal (
 
 \begin{itemize}
 \item<+-> In a sparse autoencoder, there can be more hidden units than inputs, but only a small number of the hidden units are allowed to be active at the same time.
-\item<+-> This is simply achieved with a regularised loss function: $\ell = \ell_{mse} + \Omega(\bm{h})$
-\item<+-> A popular choice that you've seen before would be to use an l1 penalty $\Omega(\bm{h}) = \lambda \sum_i | h_i |$
+\item<+-> This is simply achieved with a regularised loss function: $\ell = \ell_{mse} + \Omega(\bm{z})$
+\item<+-> A popular choice that you've seen before would be to use an l1 penalty $\Omega(\bm{z}) = \lambda \sum_i | h_i |$
   \begin{itemize}
     \item<+-> this of course does have a slight problem... what is the derivative of $y=|x|$ with respect to $x$ at $x=0$?
   \end{itemize}
@@ -391,13 +391,13 @@ Note that the autoencoder weights are not however constrained to be orthogonal (
 \frametitle{Beyond Deterministic Autoencoders: Stochastic Encoders and Decoders}
 \begin{itemize}
 \item<+-> When we trained supervised classification networks we usually assume that the network produces an output distribution $p(\bm{y}|\bm{x})$ and try to minimise the negative log-likelihood $-\log(p(\bm{y}|\bm{x}))$.
-\item<+-> In a decoder of an autoencoder we could do the same thing and have the decoder learn $p_{decoder}(\bm{x}|\bm{h})$  by minimising $-\log(p(\bm{x}|\bm{h})$.
+\item<+-> In a decoder of an autoencoder we could do the same thing and have the decoder learn $p_{decoder}(\bm{x}|\bm{z})$  by minimising $-\log(p(\bm{x}|\bm{z}))$.
 \begin{itemize}
   \item<+-> A linear output layer could parameterise the mean of a Gaussian distribution for real-valued $\bm{x}$; in this case the negative log likelihood yields the MSE criterion.
   \item<+-> Binary $\bm{x}$ would correspond to a Bernoulli distribution parameterised by sigmoid outputs
   \item<+-> Discrete (or categorical) $\bm{x}$ would correspond to a softmax distribution.
 \end{itemize}
-\item<+-> What about the encoder - could we make that output $p(\bm{h} | \bm{x})$?
+\item<+-> What about the encoder - could we make that output $p(\bm{z} | \bm{x})$?
 \end{itemize}
 \end{frame}
 %-------------------------------------------------------------%
