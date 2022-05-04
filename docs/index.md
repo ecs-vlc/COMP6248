@@ -57,8 +57,8 @@ The current working timetable/plan is below, and illustrates the topics we inten
 |      | 17-Mar | 7-3009 | LSTMs and GRUs    | [lstm-handout.pdf](handouts/lstm-handouts.pdf)  | [Recurrent Neural Network Regularization](https://arxiv.org/pdf/1409.2329.pdf) |   |	
 | 8    | 21-Mar | 54-4011 | Differentiable relaxations (sampling, etc.)                              | [relaxation-handout.pdf](handouts/relaxation-handouts.pdf) | |  [Panopto Link](https://southampton.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=ec8e56e8-0654-49ab-948c-ae5f00f6aac1)     |   
 |      | 24-Mar | 7-3009 | Attention            | [attention-handout.pdf](handouts/attention-handouts.pdf) |       |   |
-| 9    | 25-Apr | 54-4011 |Auto-encoders and, unsupervised learning and self-supervision            | {% comment %} [vaes-handout.pdf](handouts/autoencoders-handouts.pdf) {% endcomment %}  |      [ Blog Post on Autoencoders](https://blog.keras.io/building-autoencoders-in-keras.html) |   |
-|      | 28-Apr | 7-3009 | Generative Models Part 1: Differentiable Generator Networks | {% comment %} [gans-handout.pdf](handouts/gans-handouts.pdf) {% endcomment %}| |       |   | 
+| 9    | 25-Apr | 54-4011 |Auto-encoders and, unsupervised learning and self-supervision            | [vaes-handout.pdf](handouts/autoencoders-handouts.pdf)   |      [ Blog Post on Autoencoders](https://blog.keras.io/building-autoencoders-in-keras.html) |   |
+|      | 28-Apr | 7-3009 | Generative Models Part 1: Differentiable Generator Networks |  [gans-handout.pdf](handouts/gans-handouts.pdf) | |       |   | 
 | 10   | 02-May | - | No lecture | Bank holiday  |  |   |
 |      | 05-May | 7-3009 | Generative Models Part 2: Variational Autoencoders | {% comment %} [gans-handout.pdf](handouts/gans-handouts.pdf) {% endcomment %}  | [Autoencoding Variational Bayes](https://arxiv.org/abs/1312.6114) |   |
 |  11    | 09-May | 54-4011 | Generative Models Part 3: Generative Adversarial Networks | {% comment %} [gans-handout.pdf](handouts/gans-handouts.pdf)  {% endcomment %} | [GANs](https://papers.nips.cc/paper/5423-generative-adversarial-nets.pdf), [DCGANs](https://arxiv.org/pdf/1511.06434.pdf) |  |
