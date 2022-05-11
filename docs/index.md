@@ -62,9 +62,9 @@ The current working timetable/plan is below, and illustrates the topics we inten
 | 10   | 02-May | - | No lecture | Bank holiday  |  |   |
 |      | 05-May | 7-3009 | Generative Models Part 2: Variational Autoencoders | [vaes-handout.pdf](handouts/vaes.pdf)  | [Autoencoding Variational Bayes](https://arxiv.org/abs/1312.6114) |   |
 |  11    | 09-May | 54-4011 | Generative Models Part 3: Generative Adversarial Networks | {% comment %} [gans-handout.pdf](handouts/gans-handouts.pdf)  {% endcomment %} | [GANs](https://papers.nips.cc/paper/5423-generative-adversarial-nets.pdf), [DCGANs](https://arxiv.org/pdf/1511.06434.pdf) |  |
-|     | 12-May | 7-3009 | Guest research lecture - TBC     | | | |
-|  12    | 16-May | 54-4011 | Assorted/research topics (see below)                                              | | | |
-|    | 19-May |  7-3009 | Guest research lecture - TBC                                             | | | |
+|     | 12-May | 7-3009 | Object Detection     | | | |
+|  12    | 16-May | 54-4011 | Current Research Topics                                              | | | |
+|    | 19-May |  7-3009 | NO LECTURE                                             | | | |
 
 
 
