@@ -61,7 +61,7 @@ The current working timetable/plan is below, and illustrates the topics we inten
 |      | 28-Apr | 7-3009 | Generative Models Part 1: Differentiable Generator Networks |  [gans-handout.pdf](handouts/gans-handouts.pdf) | |    [Panopto Link](https://southampton.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=6a4876d7-3915-4363-8632-ae8500d67063)   |   | 
 | 10   | 02-May | - | No lecture | Bank holiday  |  |   |
 |      | 05-May | 7-3009 | Generative Models Part 2: Variational Autoencoders | [vaes-handout.pdf](handouts/vaes-handout.pdf)  | [Autoencoding Variational Bayes](https://arxiv.org/abs/1312.6114) |   |
-|  11    | 09-May | 54-4011 | Generative Models Part 3: Generative Adversarial Networks | {% comment %} [gans-handout.pdf](handouts/gans-handouts.pdf)  {% endcomment %} | [GANs](https://papers.nips.cc/paper/5423-generative-adversarial-nets.pdf), [DCGANs](https://arxiv.org/pdf/1511.06434.pdf) |  |
+|  11    | 09-May | 54-4011 | Generative Models Part 3: Generative Adversarial Networks | [gans-handout.pdf](handouts/gans-only-handouts.pdf) | [GANs](https://papers.nips.cc/paper/5423-generative-adversarial-nets.pdf), [DCGANs](https://arxiv.org/pdf/1511.06434.pdf) |  |
 |     | 12-May | 7-3009 | Object Detection     | | | |
 |  12    | 16-May | 54-4011 | Current Research Topics                                              | | | |
 |    | 19-May |  7-3009 | NO LECTURE                                             | | | |
